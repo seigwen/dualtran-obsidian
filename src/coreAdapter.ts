@@ -4,5 +4,6 @@
  * tarball — only this file and the integration suite touch the real core.
  */
 import * as core from "dualtran";
+import type { CoreLike } from "./bridge";
 
-export const coreNamespace: any = core;
+export const coreNamespace = core as unknown as CoreLike;

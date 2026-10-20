@@ -1,6 +1,5 @@
 import esbuild from "esbuild";
 import process from "node:process";
-import builtinModules from "builtin-modules";
 
 const prod = process.argv.includes("production");
 

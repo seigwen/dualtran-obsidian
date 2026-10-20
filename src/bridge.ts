@@ -14,7 +14,13 @@ export interface FetchResponseLike {
   text(): Promise<string>;
 }
 
-export type FetchLike = (url: string, init?: any) => Promise<FetchResponseLike>;
+export interface FetchInitLike {
+  method?: string;
+  headers?: Record<string, string>;
+  body?: string;
+}
+
+export type FetchLike = (url: string, init?: FetchInitLike) => Promise<FetchResponseLike>;
 
 export interface CoreLike {
   translateGoogle(args: {
