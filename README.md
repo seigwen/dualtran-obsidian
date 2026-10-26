@@ -1,5 +1,33 @@
 # DualTran for Obsidian
 
+**双语对照，在 Obsidian 里读外文笔记。** 选中一段，译文插在原文下面——原文不丢，随时对照。
+默认用 Google 翻译，装好即用；也可以接自己的 AI Key（OpenAI、DeepSeek、通义、Moonshot、
+OpenRouter、本地 Ollama 等 20+ 家）。
+
+## 安装
+
+1. Obsidian → 设置 → 第三方插件 → 关闭「安全模式」
+2. 浏览 → 搜索 **DualTran Translate** → 安装 → 启用
+3. 或者直接打开：https://community.obsidian.md/plugins/dualtran-translate
+
+## 用法
+
+| 命令 | 作用 |
+|---|---|
+| `Translate selection (insert below)` | 选中文本 → 译文插在下面（对照，推荐） |
+| `Translate selection (replace)` | 选中文本 → 直接替换成译文 |
+| `Translate note to a new file` | 整篇笔记翻译成新文件，原文保留 |
+
+在 设置 → DualTran 里可以设目标语言；要用 AI 就在同一页填入服务商与 Key（Key 只存本机）。
+
+## 浏览器里也想用？
+
+同一套引擎也有浏览器扩展，支持 Chrome / Firefox / Edge：
+https://github.com/seigwen/DualTran-extension
+
+---
+
+
 Translate selections and whole notes inside Obsidian with **Google** or your
 own AI model (BYOK, 20+ providers) — powered by `@dualtran/core`, the engine
 extracted from the [DualTran browser extension](https://github.com/seigwen/DualTran-extension).
