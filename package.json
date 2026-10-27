@@ -1,6 +1,6 @@
 {
   "name": "dualtran-obsidian",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "private": true,
   "description": "DualTran for Obsidian \u2014 translate selections and whole notes with Google or your own AI model (BYOK).",
   "scripts": {

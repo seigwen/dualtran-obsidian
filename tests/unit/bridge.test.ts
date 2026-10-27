@@ -160,3 +160,57 @@ describe("createBridge — ai engine", () => {
     expect((core.streamChat.mock.calls[0][0] as any).extra).toEqual({});
   });
 });
+
+describe("createRequestUrlFetch — json()", () => {
+  it("parses the text body into an object", async () => {
+    const fetchImpl = createRequestUrlFetch((async () => ({ status: 200, text: '{"a":1}' })) as any);
+    const res = await fetchImpl("https://example.com/x", {});
+    expect(await res.json()).toEqual({ a: 1 });
+  });
+
+  it("rejects when the body is not JSON", async () => {
+    const fetchImpl = createRequestUrlFetch((async () => ({ status: 200, text: "<html>" })) as any);
+    const res = await fetchImpl("https://example.com/x", {});
+    await expect(res.json()).rejects.toThrow();
+  });
+});
+
+describe("createBridge — models.dev store", () => {
+  const aiSettings = {
+    ...googleSettings,
+    engine: "ai",
+    aiProvider: "openai",
+    aiModel: "gpt-test",
+    aiBaseUrl: "",
+  };
+
+  it("forwards the store to core.streamChat so catalogue-only providers resolve their endpoint", async () => {
+    const store = { getProvidersData: vi.fn(async () => ({})) };
+    const core = makeCore({
+      streamChat: vi.fn(async ({ onChunk }: any) => {
+        onChunk("OK");
+        return { totalChunks: 1, streamError: null };
+      }),
+    });
+    const bridge = createBridge({
+      core,
+      fetchImpl: null,
+      getSettings: () => aiSettings as any,
+      getStore: () => store,
+    });
+    await bridge.translateBlocks(["x"]);
+    expect((core.streamChat.mock.calls[0][0] as any).store).toBe(store);
+  });
+
+  it("passes null when no store is configured (unchanged legacy behaviour)", async () => {
+    const core = makeCore({
+      streamChat: vi.fn(async ({ onChunk }: any) => {
+        onChunk("OK");
+        return { totalChunks: 1, streamError: null };
+      }),
+    });
+    const bridge = createBridge({ core, fetchImpl: null, getSettings: () => aiSettings as any });
+    await bridge.translateBlocks(["x"]);
+    expect((core.streamChat.mock.calls[0][0] as any).store).toBeNull();
+  });
+});
