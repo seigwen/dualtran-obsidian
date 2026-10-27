@@ -73,3 +73,11 @@ if (!newest) {
 fs.renameSync(path.join(VENDOR_DIR, newest), TARGET);
 fs.rmSync(STAGE_DIR, { recursive: true, force: true });
 console.log(`[sync-core] vendored ${newest} -> vendor/dualtran-core.tgz`);
+
+// 4. Force the installed copy to match the tarball.
+// `npm install` alone keeps node_modules/dualtran when the pack version did not
+// change (core stays 1.0.0 between commits), so a build would silently bundle the
+// PREVIOUS core and any host-side verification would test the old behaviour.
+fs.rmSync(path.join(HOST_ROOT, "node_modules", "dualtran"), { recursive: true, force: true });
+run("npm", ["install", "--no-audit", "--no-fund", `file:${path.relative(HOST_ROOT, TARGET)}`], HOST_ROOT);
+console.log("[sync-core] reinstalled node_modules/dualtran from the fresh tarball");

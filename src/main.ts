@@ -8,7 +8,7 @@ import {
   requestUrl,
 } from "obsidian";
 import type { Editor } from "obsidian";
-import { createBridge, createRequestUrlFetch } from "./bridge";
+import { createBridge, createRequestUrlFetch, createResponseFetch } from "./bridge";
 import { coreNamespace } from "./coreAdapter";
 import {
   CUSTOM_MODEL_VALUE,
@@ -48,15 +48,25 @@ export default class DualTranPlugin extends Plugin {
     // requestUrl bypasses CORS on desktop and mobile alike — the core gets it
     // through the fetchImpl injection point. The same adapter fetches models.dev,
     // so the plugin never opens a second network path.
-    const fetchImpl = createRequestUrlFetch((req) =>
+    const requestUrlImpl = (req: {
+      url: string;
+      method?: string;
+      headers?: unknown;
+      body?: unknown;
+      throw?: boolean;
+    }) =>
       requestUrl({
         url: req.url,
         method: req.method,
         headers: req.headers as Record<string, string> | undefined,
         body: typeof req.body === "string" ? req.body : undefined,
         throw: false,
-      })
-    );
+      });
+
+    const fetchImpl = createRequestUrlFetch(requestUrlImpl);
+    // The AI SDK reads a real Response; going through requestUrl keeps providers
+    // that answer no CORS headers (Anthropic et al.) reachable from app://obsidian.md.
+    const aiFetch = createResponseFetch(requestUrlImpl);
 
     this.store = this.core.createModelsDevStore({
       storage: createObsidianStorage(this.app),
@@ -70,6 +80,7 @@ export default class DualTranPlugin extends Plugin {
       fetchImpl,
       getSettings: () => this.settings,
       getStore: () => this.store,
+      aiFetch,
     });
 
     this.addSettingTab(new DualTranSettingTab(this.app, this));
