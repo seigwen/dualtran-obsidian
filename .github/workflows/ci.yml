@@ -16,3 +16,35 @@ jobs:
         run: npm install --no-audit --no-fund
       - name: Tests + build + dist guards
         run: npm run verify
+
+  e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install dependencies (vendored core included)
+        run: npm install --no-audit --no-fund
+      - name: System deps (Electron + xvfb)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y xvfb libnss3 libatk-bridge2.0-0 libgtk-3-0 libgbm1
+          sudo apt-get install -y libasound2t64 || sudo apt-get install -y libasound2 || true
+      - name: Install Playwright Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Cache the pinned Obsidian build
+        uses: actions/cache@v4
+        with:
+          path: .cache
+          key: obsidian-1.14.5-${{ runner.os }}
+      - name: E2E (real Obsidian, CDP + HTTPS interceptor)
+        run: xvfb-run -a npm run e2e
+      - name: Upload E2E artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: obsidian-e2e-artifacts
+          path: e2e-artifacts/
+          if-no-files-found: ignore

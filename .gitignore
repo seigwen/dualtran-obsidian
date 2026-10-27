@@ -4,3 +4,6 @@ main.js
 *.tsbuildinfo
 # vendor/dualtran-core.tgz is committed on purpose: CI (npm ci + npm run verify)
 # must reproduce the build without the core repository.
+e2e-artifacts/
+.cache/
+.vscode-test/

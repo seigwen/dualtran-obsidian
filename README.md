@@ -86,3 +86,7 @@ npm run verify               # test + build + dist guards (manifest/versions/siz
 ## License
 
 MIT — the bundled `@dualtran/core` portion is MPL-2.0.
+
+## E2E
+
+`npm run e2e` launches the pinned Obsidian build (downloaded once into `.cache/`) with a throwaway vault, loads the freshly built plugin and drives it over CDP: command registration, Google translation (answered through a local HTTPS interceptor, because `requestUrl` runs in Electron's main process), AI request body against a local mock, the loading notice + spinner, and a 401 that must leave the note untouched. Linux needs `xvfb-run -a npm run e2e`.

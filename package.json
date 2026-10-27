@@ -9,7 +9,8 @@
     "build": "node esbuild.config.mjs production",
     "test": "vitest run",
     "test:dist": "node tests/dist/guards.mjs",
-    "verify": "npm run test && npm run build && npm run test:dist"
+    "verify": "npm run test && npm run build && npm run test:dist",
+    "e2e": "npm run build && node e2e/run.mjs"
   },
   "dependencies": {
     "dualtran": "file:vendor/dualtran-core.tgz"
@@ -32,6 +33,7 @@
     "esbuild": "^0.28.0",
     "eventsource-parser": "^1.0.0",
     "obsidian": "^1.8.7",
+    "playwright": "^1.64.1",
     "typescript": "^5.5.0",
     "vitest": "^0.34.6"
   }
