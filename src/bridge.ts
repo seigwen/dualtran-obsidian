@@ -12,6 +12,7 @@ export interface FetchResponseLike {
   status: number;
   statusText: string;
   text(): Promise<string>;
+  json(): Promise<unknown>;
 }
 
 export interface FetchInitLike {
@@ -77,6 +78,8 @@ export function createRequestUrlFetch(
       status: res.status,
       statusText: "",
       text: async () => res.text,
+      // models.dev store and core client resolution read JSON bodies.
+      json: async () => JSON.parse(res.text) as unknown,
     };
   };
 }
@@ -85,10 +88,13 @@ export function createBridge({
   core,
   fetchImpl,
   getSettings,
+  getStore,
 }: {
   core: CoreLike;
   fetchImpl: FetchLike | null;
   getSettings: () => DualTranSettings;
+  /** models.dev store; lets the core resolve catalogue-only providers' endpoints. */
+  getStore?: () => unknown;
 }) {
   /** AI path: one streaming chat request per block, chunks joined in order. */
   async function translateBlocksAi(blocks: string[], settings: DualTranSettings): Promise<string[]> {
@@ -111,7 +117,7 @@ export function createBridge({
         model: settings.aiModel,
         messages,
         extra: settings.aiBaseUrl ? { baseURL: settings.aiBaseUrl } : {},
-        store: null,
+        store: getStore ? getStore() ?? null : null,
         onChunk: (chunk) => {
           text += chunk;
         },

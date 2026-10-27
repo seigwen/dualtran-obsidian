@@ -12,7 +12,8 @@ describe("coreAdapter — the real @dualtran/core through the bridge", () => {
         status: 200,
         statusText: "OK",
         // Real response shape: [[["translated","original",...],...], null, "detectedLang", ...]
-        text: async () => JSON.stringify([[["Bonjour le monde", "Hello world", null, null, 10]], null, "en"]),
+        text: async () => JSON.stringify([[[ "Bonjour le monde", "Hello world", null, null, 10]], null, "en"]),
+        json: async () => JSON.parse(JSON.stringify([[[ "Bonjour le monde", "Hello world", null, null, 10]], null, "en"])),
       };
     };
     const bridge = createBridge({

@@ -2,12 +2,13 @@
 
 **双语对照，在 Obsidian 里读外文笔记。** 选中一段，译文插在原文下面——原文不丢，随时对照。
 默认用 Google 翻译，装好即用；也可以接自己的 AI Key（OpenAI、DeepSeek、通义、Moonshot、
-OpenRouter、本地 Ollama 等 20+ 家）。
+OpenRouter、本地 Ollama 等）。设置页的服务商与模型都是下拉列表，内置一批常用服务商，
+其余来自 [models.dev](https://models.dev) 目录（200+ 服务商），也可以手填自定义模型。
 
 ## 安装
 
 1. Obsidian → 设置 → 第三方插件 → 关闭「安全模式」
-2. 浏览 → 搜索 **DualTran Translate** → 安装 → 启用
+2. 浏览 → 搜索 **DualTran** → 安装 → 启用
 3. 或者直接打开：https://community.obsidian.md/plugins/dualtran-translate
 
 ## 用法
@@ -18,7 +19,14 @@ OpenRouter、本地 Ollama 等 20+ 家）。
 | `Translate selection (replace)` | 选中文本 → 直接替换成译文 |
 | `Translate note to a new file` | 整篇笔记翻译成新文件，原文保留 |
 
-在 设置 → DualTran 里可以设目标语言；要用 AI 就在同一页填入服务商与 Key（Key 只存本机）。
+在 设置 → DualTran 里：
+
+- **Target language** 下拉选目标语言（默认 `en`，中文用户请改 `zh-CN`）。
+- **AI provider / AI model** 下拉：先列内置服务商，再接 models.dev 目录里的全部服务商；
+  Provider 切换后会自动挑一个合适的模型，选 `自定义…` 可手填目录里没有的模型 id。
+- **AI base URL** 留空即用该服务商的默认端点（输入框里的占位符就是实际会用的地址）。
+- 目录列表每天自动刷新一次；想立刻拉最新可点 **Provider & model list → Refresh**。
+- **AI API key** 只存本机。
 
 ## 浏览器里也想用？
 
