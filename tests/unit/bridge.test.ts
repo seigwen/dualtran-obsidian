@@ -1,5 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 import { createBridge, createRequestUrlFetch, createResponseFetch, normalizeBlocks } from "../../src/bridge";
+import { LOWEST_REASONING } from "../../src/settings";
 
 const googleSettings = {
   engine: "google",
@@ -283,5 +284,64 @@ describe("createResponseFetch — requestUrl behind a real Response", () => {
       throw new Error("net::ERR_NAME_NOT_RESOLVED");
     }) as any);
     await expect(aiFetch("https://api.example.com/x", {})).rejects.toThrow("net::ERR_NAME_NOT_RESOLVED");
+  });
+});
+
+describe("createBridge — reasoning effort", () => {
+  const aiSettings = {
+    ...googleSettings,
+    engine: "ai",
+    aiProvider: "openai",
+    aiModel: "gpt-5",
+    aiBaseUrl: "",
+  };
+
+  it("forwards the resolved reasoning depth to core.streamChat", async () => {
+    const core = makeCore({
+      streamChat: vi.fn(async ({ onChunk }: any) => {
+        onChunk("OK");
+        return { totalChunks: 1, streamError: null };
+      }),
+    });
+    const bridge = createBridge({
+      core,
+      fetchImpl: null,
+      getSettings: () => aiSettings as any,
+      resolveReasoningDepth: () => "minimal",
+    });
+    await bridge.translateBlocks(["x"]);
+    expect((core.streamChat.mock.calls[0][0] as any).reasoningDepth).toBe("minimal");
+  });
+
+  it("never leaks the lowest sentinel to the core when no resolver is injected", async () => {
+    const core = makeCore({
+      streamChat: vi.fn(async ({ onChunk }: any) => {
+        onChunk("OK");
+        return { totalChunks: 1, streamError: null };
+      }),
+    });
+    const bridge = createBridge({
+      core,
+      fetchImpl: null,
+      getSettings: () => ({ ...aiSettings, aiReasoningDepth: LOWEST_REASONING }) as any,
+    });
+    await bridge.translateBlocks(["x"]);
+    expect((core.streamChat.mock.calls[0][0] as any).reasoningDepth).toBe("");
+  });
+
+  it("passes an explicit level through unchanged without a resolver", async () => {
+    const core = makeCore({
+      streamChat: vi.fn(async ({ onChunk }: any) => {
+        onChunk("OK");
+        return { totalChunks: 1, streamError: null };
+      }),
+    });
+    const bridge = createBridge({
+      core,
+      fetchImpl: null,
+      getSettings: () => ({ ...aiSettings, aiReasoningDepth: "high" }) as any,
+    });
+    await bridge.translateBlocks(["x"]);
+    expect((core.streamChat.mock.calls[0][0] as any).reasoningDepth).toBe("high");
   });
 });

@@ -4,6 +4,12 @@
  */
 export type Engine = "google" | "ai";
 
+/**
+ * Persisted value meaning "use the lowest reasoning level the current model
+ * accepts". Resolved at request time (model-dependent), never sent to the core.
+ */
+export const LOWEST_REASONING = "__lowest__";
+
 export interface DualTranSettings {
   engine: Engine;
   sourceLanguage: string;
@@ -11,6 +17,7 @@ export interface DualTranSettings {
   aiProvider: string;
   aiApiKey: string;
   aiModel: string;
+  aiReasoningDepth: string;
   aiBaseUrl: string;
 }
 
@@ -21,6 +28,7 @@ export const DEFAULT_SETTINGS: DualTranSettings = {
   aiProvider: "openai",
   aiApiKey: "",
   aiModel: "",
+  aiReasoningDepth: LOWEST_REASONING,
   aiBaseUrl: "",
 };
 
@@ -41,6 +49,7 @@ export function sanitizeSettings(raw: unknown): DualTranSettings {
     "aiProvider",
     "aiApiKey",
     "aiModel",
+    "aiReasoningDepth",
     "aiBaseUrl",
   ] as const;
   for (const key of stringKeys) {

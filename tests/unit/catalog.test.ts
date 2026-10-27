@@ -4,8 +4,12 @@ import {
   PROVIDER_SEPARATOR_VALUE,
   effectiveBaseUrl,
   languageOptions,
+  LOWEST_REASONING,
+  modelReasoningOptions,
   modelsForProvider,
   pickModelForProvider,
+  reasoningDepthChoices,
+  resolveReasoningDepth,
   projectProviders,
   summarizeCatalog,
   type ModelsDevData,
@@ -197,5 +201,102 @@ describe("constants", () => {
     expect(CUSTOM_MODEL_VALUE).not.toBe(PROVIDER_SEPARATOR_VALUE);
     expect(CUSTOM_MODEL_VALUE.startsWith("__")).toBe(true);
     expect(PROVIDER_SEPARATOR_VALUE.startsWith("__")).toBe(true);
+  });
+});
+
+describe("modelReasoningOptions", () => {
+  const REASONING_DATA = {
+    openai: {
+      api: "https://api.openai.com/v1",
+      models: {
+        "gpt-5": {
+          name: "GPT-5",
+          reasoning_options: [{ type: "effort", values: ["minimal", "low", "medium", "high"] }],
+        },
+        "gpt-4o": { name: "GPT-4o" },
+      },
+    },
+    google: {
+      api: "https://generativelanguage.googleapis.com/v1beta",
+      models: {
+        "gemini-2.5-flash": {
+          name: "Gemini 2.5 Flash",
+          reasoning_options: [{ type: "toggle" }, { type: "budget_tokens", min: 0, max: 24576 }],
+        },
+      },
+    },
+  };
+
+  it("returns the model's declared reasoning options", () => {
+    const options = modelReasoningOptions({
+      data: REASONING_DATA as any,
+      resolveId,
+      provider: "openai",
+      model: "gpt-5",
+    });
+    expect(options).toEqual([{ type: "effort", values: ["minimal", "low", "medium", "high"] }]);
+  });
+
+  it("returns an empty list for models without reasoning support or unknown ids", () => {
+    expect(
+      modelReasoningOptions({ data: REASONING_DATA as any, resolveId, provider: "openai", model: "gpt-4o" })
+    ).toEqual([]);
+    expect(
+      modelReasoningOptions({ data: REASONING_DATA as any, resolveId, provider: "openai", model: "nope" })
+    ).toEqual([]);
+    expect(modelReasoningOptions({ data: null, resolveId, provider: "openai", model: "gpt-5" })).toEqual([]);
+  });
+
+  it("resolves provider aliases before looking the model up", () => {
+    const options = modelReasoningOptions({
+      data: REASONING_DATA as any,
+      resolveId,
+      provider: "google-gemini",
+      model: "gemini-2.5-flash",
+    });
+    expect(options[0]).toMatchObject({ type: "toggle" });
+  });
+});
+
+describe("resolveReasoningDepth", () => {
+  const opts = (...values: string[]) => values.map((value) => ({ value }));
+  const lowest = (values: string[]) => resolveReasoningDepth({ setting: LOWEST_REASONING, options: opts(...values) });
+
+  it("maps the lowest sentinel onto the lowest accepted explicit level", () => {
+    expect(lowest(["", "minimal", "low", "medium", "high"])).toBe("minimal");
+    expect(lowest(["", "low", "medium"])).toBe("low");
+    expect(lowest(["", "none", "high"])).toBe("none");
+    expect(lowest(["", "low", "none"])).toBe("none");
+  });
+
+  it("sends nothing when the only explicit level is a toggle-on value", () => {
+    expect(lowest(["", "high"])).toBe("");
+    expect(lowest([""])).toBe("");
+    expect(lowest([])).toBe("");
+  });
+
+  it("passes explicit choices through and keeps provider default empty", () => {
+    expect(resolveReasoningDepth({ setting: "medium", options: opts("", "minimal", "medium") })).toBe("medium");
+    expect(resolveReasoningDepth({ setting: "", options: opts("", "low") })).toBe("");
+  });
+});
+
+describe("reasoningDepthChoices", () => {
+  it("puts Lowest first, then Provider default, then the explicit levels", () => {
+    const choices = reasoningDepthChoices({
+      options: [
+        { value: "", label: "Default" },
+        { value: "minimal", label: "Minimal" },
+        { value: "low", label: "Low" },
+      ],
+    });
+    expect(choices.map((c) => c.value)).toEqual([LOWEST_REASONING, "", "minimal", "low"]);
+    expect(choices[0].text).toBe("Lowest (default)");
+    expect(choices[1].text).toBe("Provider default");
+  });
+
+  it("keeps only the two special entries when the model declares nothing", () => {
+    const choices = reasoningDepthChoices({ options: [{ value: "", label: "Default" }] });
+    expect(choices.map((c) => c.value)).toEqual([LOWEST_REASONING, ""]);
   });
 });

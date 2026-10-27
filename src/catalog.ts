@@ -7,15 +7,26 @@
  * owns the fetch + 24 h cache; this module only decides what the dropdowns show.
  */
 
+import { LOWEST_REASONING } from "./settings";
+export { LOWEST_REASONING };
+
 export interface ModelsDevModel {
   id?: string;
   name?: string;
+  reasoning_options?: ReasoningOption[];
+}
+
+/** models.dev `reasoning_options` entry (`effort` values, `toggle`, `budget_tokens`). */
+export interface ReasoningOption {
+  type?: string;
+  values?: string[];
 }
 
 export interface ModelsDevProvider {
   id?: string;
   name?: string;
   api?: string;
+  npm?: string;
   models?: Record<string, ModelsDevModel>;
 }
 
@@ -163,6 +174,66 @@ export function pickModelForProvider({
   return models[0].value;
 }
 
+/**
+ * Raw `reasoning_options` for one model, straight from the catalogue (the core's
+ * `buildReasoningDepthOptions` decides which of them the provider dialect accepts).
+ */
+export function modelReasoningOptions({
+  data,
+  resolveId,
+  provider,
+  model,
+}: {
+  data: ModelsDevData | null;
+  resolveId: (id: string) => string;
+  provider: string;
+  model: string;
+}): ReasoningOption[] {
+  const record = data?.[resolveId(provider)]?.models?.[model] as ModelsDevModel | undefined;
+  const options = record?.reasoning_options;
+  return Array.isArray(options) ? options.filter(Boolean) : [];
+}
+
+/**
+ * Turn the persisted setting into the value sent to the core. The `lowest`
+ * sentinel becomes the smallest explicit level the model offers (none → minimal
+ * → low); a toggle-only model has no explicit "off", so it sends nothing. An
+ * explicit level passes through and the core drops it if the dialect rejects it.
+ */
+export function resolveReasoningDepth({
+  setting,
+  options,
+}: {
+  setting: string;
+  options: Array<{ value: string }>;
+}): string {
+  if (setting !== LOWEST_REASONING) return setting || "";
+  const values = options.map((option) => option.value);
+  for (const candidate of ["none", "minimal", "low"]) {
+    if (values.includes(candidate)) return candidate;
+  }
+  return "";
+}
+
+/** Settings-pane options: the sentinel, provider default, then the explicit levels. */
+export function reasoningDepthChoices({
+  options,
+}: {
+  options: Array<{ value: string; label?: string }>;
+}): Array<{ value: string; text: string }> {
+  const choices = [
+    { value: LOWEST_REASONING, text: "Lowest (default)" },
+    { value: "", text: "Provider default" },
+  ];
+  const seen = new Set(choices.map((choice) => choice.value));
+  for (const option of options) {
+    if (!option || typeof option.value !== "string" || seen.has(option.value)) continue;
+    choices.push({ value: option.value, text: option.label || option.value });
+    seen.add(option.value);
+  }
+  return choices;
+}
+
 /** Status line under the catalogue controls. */
 export function summarizeCatalog(data: ModelsDevData | null): {
   providerCount: number;
@@ -210,6 +281,11 @@ export interface CatalogCore {
   resolveModelsDevId(id: string): string;
   allLanguagesNames: Record<string, Record<string, string>>;
   getSmartDefaultModel(args: { provider: string; models: ModelOption[] }): string | null;
+  buildReasoningDepthOptions?(args: {
+    provider?: string;
+    npm?: string;
+    reasoningOptions?: ReasoningOption[];
+  }): Array<{ value: string; label?: string }>;
   createModelsDevStore(opts: {
     storage?: unknown;
     fetch?: unknown;
