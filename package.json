@@ -1,8 +1,8 @@
 {
   "name": "dualtran-obsidian",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": true,
-  "description": "DualTran for Obsidian \u2014 translate selections and whole notes with Google or your own AI model (BYOK).",
+  "description": "DualTran for Obsidian — translate selections and whole notes with Google or your own AI model (BYOK).",
   "scripts": {
     "sync-core": "node scripts/sync-core.mjs",
     "dev": "node esbuild.config.mjs",

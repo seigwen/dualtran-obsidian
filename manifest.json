@@ -1,7 +1,7 @@
 {
   "id": "dualtran-translate",
   "name": "DualTran",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "minAppVersion": "1.4.0",
   "description": "Translate selections and whole notes with Google or your own AI model (20+ BYOK providers).",
   "author": "seigwen",

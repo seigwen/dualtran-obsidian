@@ -23,6 +23,14 @@ export interface FetchInitLike {
 
 export type FetchLike = (url: string, init?: FetchInitLike) => Promise<FetchResponseLike>;
 
+/**
+ * The AI SDK calls a WHATWG `fetch` and reads `response.headers`/`response.body`,
+ * so the AI path cannot use the thin FetchResponseLike adapter above — it needs
+ * a real Response. requestUrl still backs it (Electron's net stack ignores CORS),
+ * which is what keeps providers like Anthropic usable from the `app://` origin.
+ */
+export type ResponseFetchLike = (url: string, init?: FetchInitLike) => Promise<Response>;
+
 export interface CoreLike {
   translateGoogle(args: {
     sourceArray: string[];
@@ -38,6 +46,7 @@ export interface CoreLike {
     messages: Array<{ role: string; content: string }>;
     extra?: Record<string, unknown>;
     store?: unknown;
+    fetch?: unknown;
     onChunk?: (text: string) => void;
   }): Promise<{ totalChunks: number; streamError: unknown }>;
   buildTranslationMessages(args: { content: string; targetLanguageName: string }): {
@@ -84,17 +93,44 @@ export function createRequestUrlFetch(
   };
 }
 
+export function createResponseFetch(
+  requestUrl: (req: { url: string; method?: string; headers?: unknown; body?: unknown; throw?: boolean }) => Promise<{
+    status: number;
+    headers?: Record<string, string>;
+    text: string;
+  }>
+): ResponseFetchLike {
+  return async (url, init = {}) => {
+    const res = await requestUrl({
+      url,
+      method: init.method || "GET",
+      headers: init.headers,
+      body: init.body,
+      throw: false,
+    });
+    const headers = new Headers();
+    const contentType = res.headers?.["content-type"] || res.headers?.["Content-Type"];
+    if (contentType) headers.set("content-type", contentType);
+    // 204/304 must not carry a body, otherwise the Response constructor throws.
+    const body = res.status === 204 || res.status === 304 ? null : res.text;
+    return new Response(body, { status: res.status, headers });
+  };
+}
+
 export function createBridge({
   core,
   fetchImpl,
   getSettings,
   getStore,
+  aiFetch,
 }: {
   core: CoreLike;
   fetchImpl: FetchLike | null;
   getSettings: () => DualTranSettings;
   /** models.dev store; lets the core resolve catalogue-only providers' endpoints. */
   getStore?: () => unknown;
+  /** CORS-free transport for the AI SDK; without it the renderer's fetch applies. */
+  aiFetch?: ResponseFetchLike;
 }) {
   /** AI path: one streaming chat request per block, chunks joined in order. */
   async function translateBlocksAi(blocks: string[], settings: DualTranSettings): Promise<string[]> {
@@ -118,6 +154,7 @@ export function createBridge({
         messages,
         extra: settings.aiBaseUrl ? { baseURL: settings.aiBaseUrl } : {},
         store: getStore ? getStore() ?? null : null,
+        fetch: aiFetch,
         onChunk: (chunk) => {
           text += chunk;
         },

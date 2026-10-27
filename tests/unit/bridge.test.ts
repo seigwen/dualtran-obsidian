@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from "vitest";
-import { createBridge, createRequestUrlFetch, normalizeBlocks } from "../../src/bridge";
+import { createBridge, createRequestUrlFetch, createResponseFetch, normalizeBlocks } from "../../src/bridge";
 
 const googleSettings = {
   engine: "google",
@@ -212,5 +212,76 @@ describe("createBridge — models.dev store", () => {
     const bridge = createBridge({ core, fetchImpl: null, getSettings: () => aiSettings as any });
     await bridge.translateBlocks(["x"]);
     expect((core.streamChat.mock.calls[0][0] as any).store).toBeNull();
+  });
+
+  it("forwards the host transport to core.streamChat (renderer fetch is CORS-bound)", async () => {
+    const aiFetch = vi.fn();
+    const core = makeCore({
+      streamChat: vi.fn(async ({ onChunk }: any) => {
+        onChunk("OK");
+        return { totalChunks: 1, streamError: null };
+      }),
+    });
+    const bridge = createBridge({
+      core,
+      fetchImpl: null,
+      getSettings: () => aiSettings as any,
+      aiFetch,
+    });
+    await bridge.translateBlocks(["x"]);
+    expect((core.streamChat.mock.calls[0][0] as any).fetch).toBe(aiFetch);
+  });
+});
+
+describe("createResponseFetch — requestUrl behind a real Response", () => {
+  it("returns a Response the AI SDK can read (status, text, content-type)", async () => {
+    const requestUrl = vi.fn(async () => ({
+      status: 200,
+      headers: { "content-type": "text/event-stream" },
+      text: "data: hi\n\n",
+    }));
+    const aiFetch = createResponseFetch(requestUrl as any);
+    const res = await aiFetch("https://api.example.com/v1/chat/completions", {
+      method: "POST",
+      headers: { Authorization: "Bearer k" },
+      body: "{}",
+    });
+    expect(requestUrl).toHaveBeenCalledWith({
+      url: "https://api.example.com/v1/chat/completions",
+      method: "POST",
+      headers: { Authorization: "Bearer k" },
+      body: "{}",
+      throw: false,
+    });
+    expect(res).toBeInstanceOf(Response);
+    expect(res.status).toBe(200);
+    expect(res.ok).toBe(true);
+    expect(res.headers.get("content-type")).toBe("text/event-stream");
+    expect(await res.text()).toBe("data: hi\n\n");
+  });
+
+  it("keeps error statuses readable so the SDK can surface the API message", async () => {
+    const aiFetch = createResponseFetch((async () => ({
+      status: 401,
+      headers: { "content-type": "application/json" },
+      text: '{"error":{"message":"Incorrect API key provided"}}',
+    })) as any);
+    const res = await aiFetch("https://api.example.com/v1/chat/completions", {});
+    expect(res.ok).toBe(false);
+    expect(res.status).toBe(401);
+    expect(await res.text()).toContain("Incorrect API key");
+  });
+
+  it("does not put a body on 204 responses", async () => {
+    const aiFetch = createResponseFetch((async () => ({ status: 204, headers: {}, text: "" })) as any);
+    const res = await aiFetch("https://api.example.com/x", {});
+    expect(res.status).toBe(204);
+  });
+
+  it("propagates transport rejections", async () => {
+    const aiFetch = createResponseFetch((async () => {
+      throw new Error("net::ERR_NAME_NOT_RESOLVED");
+    }) as any);
+    await expect(aiFetch("https://api.example.com/x", {})).rejects.toThrow("net::ERR_NAME_NOT_RESOLVED");
   });
 });
