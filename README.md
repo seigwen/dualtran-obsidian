@@ -24,6 +24,9 @@ OpenRouter、本地 Ollama 等）。设置页的服务商与模型都是下拉�
 - **Target language** 下拉选目标语言（默认 `en`，中文用户请改 `zh-CN`）。
 - **AI provider / AI model** 下拉：先列内置服务商，再接 models.dev 目录里的全部服务商；
   Provider 切换后会自动挑一个合适的模型，选 `自定义…` 可手填目录里没有的模型 id。
+- **AI reasoning effort**：推理强度，默认 `Lowest`（模型允许的最低档，翻译更快）；
+  选 `Provider default` 则不下发推理参数；只有模型声明了推理档位时才会出现更多选项。
+- 翻译期间右上角会有带转圈的进行中提示，完成后自动消失。
 - **AI base URL** 留空即用该服务商的默认端点（输入框里的占位符就是实际会用的地址）。
 - 目录列表每天自动刷新一次；想立刻拉最新可点 **Provider & model list → Refresh**。
 - **AI API key** 只存本机。

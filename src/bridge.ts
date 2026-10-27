@@ -5,7 +5,7 @@
  * unit suite runs against stub cores with zero module mocking and zero network.
  * The only real import of the vendored core lives in src/coreAdapter.ts.
  */
-import type { DualTranSettings } from "./settings";
+import { LOWEST_REASONING, type DualTranSettings } from "./settings";
 
 export interface FetchResponseLike {
   ok: boolean;
@@ -47,6 +47,7 @@ export interface CoreLike {
     extra?: Record<string, unknown>;
     store?: unknown;
     fetch?: unknown;
+    reasoningDepth?: string;
     onChunk?: (text: string) => void;
   }): Promise<{ totalChunks: number; streamError: unknown }>;
   buildTranslationMessages(args: { content: string; targetLanguageName: string }): {
@@ -123,6 +124,7 @@ export function createBridge({
   getSettings,
   getStore,
   aiFetch,
+  resolveReasoningDepth,
 }: {
   core: CoreLike;
   fetchImpl: FetchLike | null;
@@ -131,6 +133,8 @@ export function createBridge({
   getStore?: () => unknown;
   /** CORS-free transport for the AI SDK; without it the renderer's fetch applies. */
   aiFetch?: ResponseFetchLike;
+  /** Model-aware effort resolution; defaults to the stored string (sentinel → ""). */
+  resolveReasoningDepth?: (settings: DualTranSettings) => string;
 }) {
   /** AI path: one streaming chat request per block, chunks joined in order. */
   async function translateBlocksAi(blocks: string[], settings: DualTranSettings): Promise<string[]> {
@@ -147,6 +151,11 @@ export function createBridge({
         { role: "user", content },
       ];
       let text = "";
+      const reasoningDepth = resolveReasoningDepth
+        ? resolveReasoningDepth(settings)
+        : settings.aiReasoningDepth === LOWEST_REASONING
+          ? ""
+          : settings.aiReasoningDepth || "";
       const { totalChunks, streamError } = await core.streamChat({
         provider: settings.aiProvider,
         apiKey: settings.aiApiKey,
@@ -155,6 +164,7 @@ export function createBridge({
         extra: settings.aiBaseUrl ? { baseURL: settings.aiBaseUrl } : {},
         store: getStore ? getStore() ?? null : null,
         fetch: aiFetch,
+        reasoningDepth,
         onChunk: (chunk) => {
           text += chunk;
         },

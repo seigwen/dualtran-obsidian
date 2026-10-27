@@ -15,9 +15,12 @@ import {
   PROVIDER_SEPARATOR_VALUE,
   effectiveBaseUrl,
   languageOptions,
+  modelReasoningOptions,
   modelsForProvider,
   pickModelForProvider,
   projectProviders,
+  reasoningDepthChoices,
+  resolveReasoningDepth,
   summarizeCatalog,
   type CatalogCore,
   type ModelOption,
@@ -26,7 +29,7 @@ import {
   type ProviderDef,
 } from "./catalog";
 import { insertBelowSelection, replaceSelectionWith } from "./editorOps";
-import { DEFAULT_SETTINGS, DualTranSettings, sanitizeSettings } from "./settings";
+import { DEFAULT_SETTINGS, DualTranSettings, LOWEST_REASONING, sanitizeSettings } from "./settings";
 import { createObsidianStorage } from "./storage";
 
 /** Cache key for the models.dev payload (device-local, see src/storage.ts). */
@@ -81,7 +84,10 @@ export default class DualTranPlugin extends Plugin {
       getSettings: () => this.settings,
       getStore: () => this.store,
       aiFetch,
+      resolveReasoningDepth: (settings) => this.reasoningDepthFor(settings),
     });
+
+    this.injectStyles();
 
     this.addSettingTab(new DualTranSettingTab(this.app, this));
 
@@ -128,6 +134,64 @@ export default class DualTranPlugin extends Plugin {
     return this.core?.allLanguagesNames || {};
   }
 
+  /** Core's dialect-clipped effort options for the current provider + model. */
+  reasoningOptionsFor(provider: string, model: string): Array<{ value: string; label?: string }> {
+    try {
+      const build = this.core?.buildReasoningDepthOptions;
+      if (typeof build !== "function") return [];
+      const reasoningOptions = modelReasoningOptions({
+        data: this.catalog,
+        resolveId: (id) => this.resolveProviderId(id),
+        provider,
+        model,
+      });
+      const npm = this.catalog?.[this.resolveProviderId(provider)]?.npm;
+      const options = build({ provider, npm, reasoningOptions });
+      return Array.isArray(options) ? options : [];
+    } catch {
+      return [];
+    }
+  }
+
+  /** Stored setting → the value the core will send (`lowest` is resolved per model). */
+  reasoningDepthFor(settings: DualTranSettings): string {
+    return resolveReasoningDepth({
+      setting: settings.aiReasoningDepth,
+      options: this.reasoningOptionsFor(settings.aiProvider, settings.aiModel),
+    });
+  }
+
+  // ── loading feedback ──────────────────────────────────────────────
+
+  private loadingNotice: Notice | null = null;
+
+  private showLoading(message: string): void {
+    this.hideLoading();
+    const notice = new Notice(message, 0);
+    notice.noticeEl.classList.add("dualtran-loading");
+    const spinner = document.createElement("span");
+    spinner.className = "dualtran-spinner";
+    notice.noticeEl.prepend(spinner);
+    this.loadingNotice = notice;
+  }
+
+  private hideLoading(): void {
+    if (!this.loadingNotice) return;
+    this.loadingNotice.hide();
+    this.loadingNotice = null;
+  }
+
+  private injectStyles(): void {
+    const style = document.createElement("style");
+    style.id = "dualtran-styles";
+    style.textContent = [
+      ".dualtran-loading .dualtran-spinner{display:inline-block;width:12px;height:12px;margin-right:8px;vertical-align:-1px;border:2px solid var(--text-muted);border-top-color:transparent;border-radius:50%;animation:dualtran-spin .8s linear infinite}",
+      "@keyframes dualtran-spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}",
+    ].join("\n");
+    document.head.appendChild(style);
+    this.register(() => style.remove());
+  }
+
   /** Load the catalogue once; failures leave the pane on the built-in list. */
   async ensureCatalog(): Promise<void> {
     if (this.catalogLoaded) return;
@@ -165,6 +229,7 @@ export default class DualTranPlugin extends Plugin {
       new Notice("DualTran: nothing selected.");
       return;
     }
+    this.showLoading("DualTran: translating…");
     try {
       const [translated] = await this.bridge.translateBlocks([selection]);
       if (mode === "replace") {
@@ -173,7 +238,10 @@ export default class DualTranPlugin extends Plugin {
         insertBelowSelection(editor, translated ?? "");
       }
     } catch (error) {
+      this.hideLoading();
       new Notice(`DualTran: ${error instanceof Error ? error.message : String(error)}`);
+    } finally {
+      this.hideLoading();
     }
   }
 
@@ -186,6 +254,7 @@ export default class DualTranPlugin extends Plugin {
     // Whole-note mode: split into blank-line separated blocks, translate each
     // batch through the configured engine, re-join as the new note.
     const blocks = source.split(/\n{2,}/);
+    this.showLoading("DualTran: translating note…");
     try {
       const translatedBlocks = await this.bridge.translateBlocks(blocks);
       const base = file?.path ?? "Untitled.md";
@@ -199,9 +268,13 @@ export default class DualTranPlugin extends Plugin {
       } else {
         await this.app.vault.create(outPath, content);
       }
+      this.hideLoading();
       new Notice(`DualTran: wrote ${outPath}`);
     } catch (error) {
+      this.hideLoading();
       new Notice(`DualTran: ${error instanceof Error ? error.message : String(error)}`);
+    } finally {
+      this.hideLoading();
     }
   }
 
@@ -276,7 +349,7 @@ class DualTranSettingTab extends PluginSettingTab {
           resolveId,
         })) {
           if (provider.source === "models.dev" && !separatorAdded) {
-            dropdown.addOption(PROVIDER_SEPARATOR_VALUE, "──── models.dev ────");
+            dropdown.addOption(PROVIDER_SEPARATOR_VALUE, "──── more ────");
             separatorAdded = true;
           }
           dropdown.addOption(provider.id, provider.label);
@@ -341,6 +414,9 @@ class DualTranSettingTab extends PluginSettingTab {
           }
           settings.aiModel = value;
           await this.plugin.saveSettings();
+          // Reasoning options are model-specific — refresh the pane so the
+          // effort dropdown matches the model the user just picked.
+          this.display();
         });
       });
 
@@ -357,6 +433,41 @@ class DualTranSettingTab extends PluginSettingTab {
           })
       );
     customRow.settingEl.style.display = customModel ? "" : "none";
+
+    // Reasoning effort: options come from the model's models.dev declaration,
+    // clipped by the core to what the provider dialect accepts.
+    const reasoningOptions = this.plugin.reasoningOptionsFor(settings.aiProvider, settings.aiModel);
+    const reasoningChoices = reasoningDepthChoices({ options: reasoningOptions });
+    if (
+      this.plugin.catalogLoaded &&
+      settings.aiReasoningDepth &&
+      !reasoningChoices.some((choice) => choice.value === settings.aiReasoningDepth)
+    ) {
+      // The newly selected model does not offer this level — fall back to lowest.
+      settings.aiReasoningDepth = LOWEST_REASONING;
+      void this.plugin.saveSettings();
+    }
+    const reasoningValue = reasoningChoices.some((choice) => choice.value === settings.aiReasoningDepth)
+      ? settings.aiReasoningDepth
+      : LOWEST_REASONING;
+    const reasoningItems = reasoningChoices.some((choice) => choice.value === reasoningValue)
+      ? reasoningChoices
+      : [...reasoningChoices, { value: reasoningValue, text: reasoningValue }];
+
+    new Setting(containerEl)
+      .setName("AI reasoning effort")
+      .setDesc(
+        reasoningOptions.length > 1
+          ? "How much the model may think before answering. Lowest keeps translations fast."
+          : "This model declares no reasoning levels, so the setting has no effect for it."
+      )
+      .addDropdown((dropdown) => {
+        for (const choice of reasoningItems) dropdown.addOption(choice.value, choice.text);
+        dropdown.setValue(reasoningValue).onChange(async (value) => {
+          settings.aiReasoningDepth = value;
+          await this.plugin.saveSettings();
+        });
+      });
 
     const defaultBaseUrl = effectiveBaseUrl({ provider: settings.aiProvider, data, builtIns, resolveId });
     new Setting(containerEl)
