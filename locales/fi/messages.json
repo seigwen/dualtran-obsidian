@@ -1,0 +1,137 @@
+{
+  "cmdTranslateReplace": {
+    "message": "Käännä valinta (korvaa)"
+  },
+  "cmdTranslateInsert": {
+    "message": "Käännä valinta (lisää alle)"
+  },
+  "cmdTranslateNote": {
+    "message": "Käännä muistiinpano uuteen tiedostoon"
+  },
+  "noticeNothingSelected": {
+    "message": "DualTran: ei valintaa."
+  },
+  "noticeNoteEmpty": {
+    "message": "DualTran: muistiinpano on tyhjä."
+  },
+  "noticeWrote": {
+    "message": "DualTran: kirjoitettu $PATH$"
+  },
+  "noticeError": {
+    "message": "DualTran: $ERROR$"
+  },
+  "loadingSelection": {
+    "message": "DualTran: käännetään…"
+  },
+  "loadingNote": {
+    "message": "DualTran: käännetään muistiinpanoa…"
+  },
+  "settingEngine": {
+    "message": "Moottori"
+  },
+  "settingEngineDesc": {
+    "message": "Google on ilmainen eikä vaadi tiliä. AI käyttää omaa palveluntarjoajan avaintasi (BYOK)."
+  },
+  "engineGoogle": {
+    "message": "Google"
+  },
+  "engineAi": {
+    "message": "AI (BYOK)"
+  },
+  "settingSource": {
+    "message": "Lähdekieli"
+  },
+  "settingSourceDesc": {
+    "message": "Kielikoodi, jolla teksti on kirjoitettu — \"auto\" tunnistaa sen."
+  },
+  "settingTarget": {
+    "message": "Kohdekieli"
+  },
+  "settingTargetDesc": {
+    "message": "Kieli, jolle teksti käännetään."
+  },
+  "settingProvider": {
+    "message": "AI-palveluntarjoaja"
+  },
+  "settingProviderDesc": {
+    "message": "Sisäänrakennetut palveluntarjoajat ensin, sitten kaikki mitä models.dev tuntee (päivitetään päivittäin)."
+  },
+  "providerSeparator": {
+    "message": "──── lisää ────"
+  },
+  "settingApiKey": {
+    "message": "AI API -avain"
+  },
+  "settingApiKeyDesc": {
+    "message": "Tallennetaan vain tälle laitteelle paikallisesti."
+  },
+  "settingModel": {
+    "message": "Tekoälymalli"
+  },
+  "settingModelDescListed": {
+    "message": "Mallit, jotka models.dev listaa tälle palveluntarjoajalle."
+  },
+  "settingModelDescMissing": {
+    "message": "Ei luettelomerkintää tälle palveluntarjoajalle — syötä mallin tunniste alle."
+  },
+  "customModelOption": {
+    "message": "Mukautettu…"
+  },
+  "settingCustomModel": {
+    "message": "Mukautetun mallin tunniste"
+  },
+  "settingCustomModelDesc": {
+    "message": "Välitetään palveluntarjoajalle sellaisenaan."
+  },
+  "placeholderModelId": {
+    "message": "mallin-tunniste"
+  },
+  "settingReasoning": {
+    "message": "Tekoälyn päättelyteho"
+  },
+  "settingReasoningDesc": {
+    "message": "Kuinka paljon malli voi pohtia ennen vastaamista. Alhaisin pitää käännökset nopeina."
+  },
+  "settingReasoningDescNone": {
+    "message": "Tämä malli ei ilmoita päättelytasoja, joten asetuksella ei ole siihen vaikutusta."
+  },
+  "reasoningLowest": {
+    "message": "Matalin (oletus)"
+  },
+  "reasoningProviderDefault": {
+    "message": "Palveluntarjoajan oletus"
+  },
+  "settingBaseUrl": {
+    "message": "AI-perus-URL (valinnainen)"
+  },
+  "settingBaseUrlDesc": {
+    "message": "Jätä tyhjäksi käyttääksesi kentässä näkyvää palveluntarjoajan päätepistettä."
+  },
+  "settingCatalog": {
+    "message": "Palveluntarjoaja- ja malliluettelo"
+  },
+  "catalogLoading": {
+    "message": "Ladataan palveluntarjoajaluetteloa…"
+  },
+  "catalogOffline": {
+    "message": "models.dev ei ole käytettävissä — vain sisäänrakennetut palveluntarjoajat."
+  },
+  "catalogSummary": {
+    "message": "$PROVIDERS$ palveluntarjoajaa · $MODELS$ mallia models.dev-palvelusta."
+  },
+  "btnRefresh": {
+    "message": "Päivitä"
+  },
+  "btnRefreshing": {
+    "message": "Päivitetään…"
+  },
+  "settingLanguage": {
+    "message": "Käyttöliittymän kieli"
+  },
+  "settingLanguageDesc": {
+    "message": "Noudattaa Obsidianin kieltä, ellet valitse kieltä tästä."
+  },
+  "languageAuto": {
+    "message": "Noudata Obsidiania"
+  }
+}

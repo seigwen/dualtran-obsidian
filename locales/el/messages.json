@@ -1,0 +1,137 @@
+{
+  "cmdTranslateReplace": {
+    "message": "Μετάφραση επιλογής (αντικατάσταση)"
+  },
+  "cmdTranslateInsert": {
+    "message": "Μετάφραση επιλογής (εισαγωγή παρακάτω)"
+  },
+  "cmdTranslateNote": {
+    "message": "Μετάφραση σημείωσης σε νέο αρχείο"
+  },
+  "noticeNothingSelected": {
+    "message": "DualTran: δεν έχει επιλεγεί τίποτα."
+  },
+  "noticeNoteEmpty": {
+    "message": "DualTran: η σημείωση είναι κενή."
+  },
+  "noticeWrote": {
+    "message": "DualTran: εγγράφηκε $PATH$"
+  },
+  "noticeError": {
+    "message": "DualTran: $ERROR$"
+  },
+  "loadingSelection": {
+    "message": "DualTran: μετάφραση…"
+  },
+  "loadingNote": {
+    "message": "DualTran: μετάφραση σημείωσης…"
+  },
+  "settingEngine": {
+    "message": "Μηχανή"
+  },
+  "settingEngineDesc": {
+    "message": "Το Google είναι δωρεάν και δεν απαιτεί λογαριασμό. Το AI χρησιμοποιεί το δικό σας κλειδί παρόχου (BYOK)."
+  },
+  "engineGoogle": {
+    "message": "Google"
+  },
+  "engineAi": {
+    "message": "AI (BYOK)"
+  },
+  "settingSource": {
+    "message": "Γλώσσα πηγής"
+  },
+  "settingSourceDesc": {
+    "message": "Κωδικός γλώσσας του κειμένου — το \"auto\" την ανιχνεύει."
+  },
+  "settingTarget": {
+    "message": "Γλώσσα-στόχος"
+  },
+  "settingTargetDesc": {
+    "message": "Γλώσσα του μεταφρασμένου κειμένου."
+  },
+  "settingProvider": {
+    "message": "Πάροχος τεχνητής νοημοσύνης"
+  },
+  "settingProviderDesc": {
+    "message": "Πρώτα οι ενσωματωμένοι πάροχοι, μετά ό,τι γνωρίζει το models.dev (ενημερώνεται καθημερινά)."
+  },
+  "providerSeparator": {
+    "message": "──── περισσότερα ────"
+  },
+  "settingApiKey": {
+    "message": "Κλειδί AI API"
+  },
+  "settingApiKeyDesc": {
+    "message": "Αποθηκεύεται τοπικά μόνο σε αυτή τη συσκευή."
+  },
+  "settingModel": {
+    "message": "Μοντέλο AI"
+  },
+  "settingModelDescListed": {
+    "message": "Μοντέλα που εμφανίζει το models.dev για αυτόν τον πάροχο."
+  },
+  "settingModelDescMissing": {
+    "message": "Δεν υπάρχει καταχώριση καταλόγου για αυτόν τον πάροχο — εισαγάγετε ένα αναγνωριστικό μοντέλου παρακάτω."
+  },
+  "customModelOption": {
+    "message": "Προσαρμοσμένο…"
+  },
+  "settingCustomModel": {
+    "message": "Προσαρμοσμένο αναγνωριστικό μοντέλου"
+  },
+  "settingCustomModelDesc": {
+    "message": "Διαβιβάζεται στον πάροχο ως έχει."
+  },
+  "placeholderModelId": {
+    "message": "model-id"
+  },
+  "settingReasoning": {
+    "message": "Προσπάθεια συλλογισμού AI"
+  },
+  "settingReasoningDesc": {
+    "message": "Πόσο μπορεί να σκεφτεί το μοντέλο πριν απαντήσει. Το χαμηλότερο διατηρεί τις μεταφράσεις γρήγορες."
+  },
+  "settingReasoningDescNone": {
+    "message": "Αυτό το μοντέλο δεν δηλώνει επίπεδα συλλογισμού, επομένως η ρύθμιση δεν έχει επίδραση σε αυτό."
+  },
+  "reasoningLowest": {
+    "message": "Χαμηλότερο (προεπιλογή)"
+  },
+  "reasoningProviderDefault": {
+    "message": "Προεπιλογή παρόχου"
+  },
+  "settingBaseUrl": {
+    "message": "Βασικό URL AI (προαιρετικό)"
+  },
+  "settingBaseUrlDesc": {
+    "message": "Αφήστε κενό για να χρησιμοποιηθεί το endpoint παρόχου που εμφανίζεται στο πεδίο."
+  },
+  "settingCatalog": {
+    "message": "Λίστα παρόχων & μοντέλων"
+  },
+  "catalogLoading": {
+    "message": "Φόρτωση λίστας παρόχων…"
+  },
+  "catalogOffline": {
+    "message": "Το models.dev δεν είναι διαθέσιμο — μόνο ενσωματωμένοι πάροχοι."
+  },
+  "catalogSummary": {
+    "message": "$PROVIDERS$ πάροχοι · $MODELS$ μοντέλα από το models.dev."
+  },
+  "btnRefresh": {
+    "message": "Ανανέωση"
+  },
+  "btnRefreshing": {
+    "message": "Ανανέωση…"
+  },
+  "settingLanguage": {
+    "message": "Γλώσσα διεπαφής"
+  },
+  "settingLanguageDesc": {
+    "message": "Ακολουθεί τη γλώσσα του Obsidian εκτός αν επιλέξετε μία εδώ."
+  },
+  "languageAuto": {
+    "message": "Ακολουθήστε το Obsidian"
+  }
+}

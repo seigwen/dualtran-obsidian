@@ -1,0 +1,137 @@
+{
+  "cmdTranslateReplace": {
+    "message": "Tulkot atlasi (aizstāt)"
+  },
+  "cmdTranslateInsert": {
+    "message": "Tulkot atlasi (ievietot zemāk)"
+  },
+  "cmdTranslateNote": {
+    "message": "Tulkot piezīmi jaunā failā"
+  },
+  "noticeNothingSelected": {
+    "message": "DualTran: nekas nav atlasīts."
+  },
+  "noticeNoteEmpty": {
+    "message": "DualTran: piezīme ir tukša."
+  },
+  "noticeWrote": {
+    "message": "DualTran: ierakstīts $PATH$"
+  },
+  "noticeError": {
+    "message": "DualTran: $ERROR$"
+  },
+  "loadingSelection": {
+    "message": "DualTran: tulko…"
+  },
+  "loadingNote": {
+    "message": "DualTran: tulko piezīmi…"
+  },
+  "settingEngine": {
+    "message": "Dzinējs"
+  },
+  "settingEngineDesc": {
+    "message": "Google ir bezmaksas un nav nepieciešams konts. AI izmanto jūsu paša pakalpojuma atslēgu (BYOK)."
+  },
+  "engineGoogle": {
+    "message": "Google"
+  },
+  "engineAi": {
+    "message": "AI (BYOK)"
+  },
+  "settingSource": {
+    "message": "Avota valoda"
+  },
+  "settingSourceDesc": {
+    "message": "Valodas kods, kurā teksts ir rakstīts — \"auto\" to nosaka automātiski."
+  },
+  "settingTarget": {
+    "message": "Mērķvaloda"
+  },
+  "settingTargetDesc": {
+    "message": "Valoda, kurā tiek rakstīts tulkotais teksts."
+  },
+  "settingProvider": {
+    "message": "AI pakalpojumu sniedzējs"
+  },
+  "settingProviderDesc": {
+    "message": "Vispirms iebūvētie pakalpojumu sniedzēji, pēc tam viss, ko zina models.dev (atjaunināts katru dienu)."
+  },
+  "providerSeparator": {
+    "message": "──── vairāk ────"
+  },
+  "settingApiKey": {
+    "message": "AI API atslēga"
+  },
+  "settingApiKeyDesc": {
+    "message": "Glabāta tikai lokāli šajā ierīcē."
+  },
+  "settingModel": {
+    "message": "AI modelis"
+  },
+  "settingModelDescListed": {
+    "message": "Modeļi, ko models.dev uzrāda šim pakalpojumu sniedzējam."
+  },
+  "settingModelDescMissing": {
+    "message": "Šim pakalpojumu sniedzējam nav kataloga ieraksta — ievadiet modeļa id zemāk."
+  },
+  "customModelOption": {
+    "message": "Pielāgots…"
+  },
+  "settingCustomModel": {
+    "message": "Pielāgota modeļa id"
+  },
+  "settingCustomModelDesc": {
+    "message": "Tiek nodots pakalpojumu sniedzējam tāds, kāds ir."
+  },
+  "placeholderModelId": {
+    "message": "model-id"
+  },
+  "settingReasoning": {
+    "message": "AI spriešanas intensitāte"
+  },
+  "settingReasoningDesc": {
+    "message": "Cik daudz modelis drīkst domāt pirms atbildes. Zemākā vērtība uztur tulkojumus ātrus."
+  },
+  "settingReasoningDescNone": {
+    "message": "Šis modelis nenorāda spriešanas līmeņus, tāpēc iestatījums tam neietekmē."
+  },
+  "reasoningLowest": {
+    "message": "Zemākais (noklusējums)"
+  },
+  "reasoningProviderDefault": {
+    "message": "Pakalpojuma sniedzēja noklusējums"
+  },
+  "settingBaseUrl": {
+    "message": "AI bāzes URL (neobligāts)"
+  },
+  "settingBaseUrlDesc": {
+    "message": "Atstājiet tukšu, lai izmantotu laukā norādīto pakalpojuma sniedzēja galapunktu."
+  },
+  "settingCatalog": {
+    "message": "Pakalpojumu sniedzēju un modeļu saraksts"
+  },
+  "catalogLoading": {
+    "message": "Ielādē pakalpojumu sniedzēju sarakstu…"
+  },
+  "catalogOffline": {
+    "message": "models.dev nav pieejams — tikai iebūvētie pakalpojumu sniedzēji."
+  },
+  "catalogSummary": {
+    "message": "$PROVIDERS$ pakalpojumu sniedzēji · $MODELS$ modeļi no models.dev."
+  },
+  "btnRefresh": {
+    "message": "Atjaunot"
+  },
+  "btnRefreshing": {
+    "message": "Atjauno…"
+  },
+  "settingLanguage": {
+    "message": "Saskarnes valoda"
+  },
+  "settingLanguageDesc": {
+    "message": "Seko Obsidian valodai, ja vien šeit neizvēlaties citu"
+  },
+  "languageAuto": {
+    "message": "Sekot Obsidian"
+  }
+}

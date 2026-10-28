@@ -1,0 +1,137 @@
+{
+  "cmdTranslateReplace": {
+    "message": "選択範囲を翻訳（置換）"
+  },
+  "cmdTranslateInsert": {
+    "message": "選択範囲を翻訳（下に挿入）"
+  },
+  "cmdTranslateNote": {
+    "message": "ノートを新しいファイルに翻訳"
+  },
+  "noticeNothingSelected": {
+    "message": "DualTran: 選択されていません"
+  },
+  "noticeNoteEmpty": {
+    "message": "DualTran: ノートが空です"
+  },
+  "noticeWrote": {
+    "message": "DualTran: $PATH$ に書き込みました"
+  },
+  "noticeError": {
+    "message": "DualTran: $ERROR$"
+  },
+  "loadingSelection": {
+    "message": "DualTran: 翻訳中…"
+  },
+  "loadingNote": {
+    "message": "DualTran: ノートを翻訳中…"
+  },
+  "settingEngine": {
+    "message": "エンジン"
+  },
+  "settingEngineDesc": {
+    "message": "Googleは無料でアカウント不要です。AIはご自身のプロバイダーキー（BYOK）を使用します。"
+  },
+  "engineGoogle": {
+    "message": "Google"
+  },
+  "engineAi": {
+    "message": "AI（BYOK）"
+  },
+  "settingSource": {
+    "message": "原文の言語"
+  },
+  "settingSourceDesc": {
+    "message": "テキストが書かれている言語コード — 「auto」で自動検出します。"
+  },
+  "settingTarget": {
+    "message": "対象言語"
+  },
+  "settingTargetDesc": {
+    "message": "翻訳後のテキストが書かれる言語。"
+  },
+  "settingProvider": {
+    "message": "AI プロバイダー"
+  },
+  "settingProviderDesc": {
+    "message": "組み込みプロバイダーが先、その後にmodels.devが把握しているすべて（毎日更新）。"
+  },
+  "providerSeparator": {
+    "message": "──── その他 ────"
+  },
+  "settingApiKey": {
+    "message": "AI APIキー"
+  },
+  "settingApiKeyDesc": {
+    "message": "このデバイスにのみローカル保存されます。"
+  },
+  "settingModel": {
+    "message": "AIモデル"
+  },
+  "settingModelDescListed": {
+    "message": "models.devがこのプロバイダー向けに一覧表示しているモデルです"
+  },
+  "settingModelDescMissing": {
+    "message": "このプロバイダーのカタログ情報がありません。以下にモデルIDを入力してください"
+  },
+  "customModelOption": {
+    "message": "カスタム…"
+  },
+  "settingCustomModel": {
+    "message": "カスタムモデルID"
+  },
+  "settingCustomModelDesc": {
+    "message": "プロバイダーにそのまま渡されます"
+  },
+  "placeholderModelId": {
+    "message": "model-id"
+  },
+  "settingReasoning": {
+    "message": "AI推論の強度"
+  },
+  "settingReasoningDesc": {
+    "message": "モデルが回答前にどれだけ思考できるか。最低にすると翻訳が高速になります"
+  },
+  "settingReasoningDescNone": {
+    "message": "このモデルは推論レベルを宣言していないため、この設定は効果がありません"
+  },
+  "reasoningLowest": {
+    "message": "最低 (デフォルト)"
+  },
+  "reasoningProviderDefault": {
+    "message": "プロバイダーのデフォルト"
+  },
+  "settingBaseUrl": {
+    "message": "AI ベース URL（任意）"
+  },
+  "settingBaseUrlDesc": {
+    "message": "空欄の場合はフィールドに表示されているプロバイダーのエンドポイントを使用します"
+  },
+  "settingCatalog": {
+    "message": "プロバイダーとモデルの一覧"
+  },
+  "catalogLoading": {
+    "message": "プロバイダー一覧を読み込み中…"
+  },
+  "catalogOffline": {
+    "message": "models.dev に接続できません — 組み込みプロバイダーのみ利用可能です"
+  },
+  "catalogSummary": {
+    "message": "models.dev から $PROVIDERS$ プロバイダー · $MODELS$ モデル"
+  },
+  "btnRefresh": {
+    "message": "更新"
+  },
+  "btnRefreshing": {
+    "message": "更新中…"
+  },
+  "settingLanguage": {
+    "message": "インターフェース言語"
+  },
+  "settingLanguageDesc": {
+    "message": "ここで選択しない限りObsidianの言語に従います"
+  },
+  "languageAuto": {
+    "message": "Obsidianに従う"
+  }
+}

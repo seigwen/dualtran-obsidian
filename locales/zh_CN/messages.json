@@ -1,0 +1,137 @@
+{
+  "cmdTranslateReplace": {
+    "message": "翻译选区（替换原文）"
+  },
+  "cmdTranslateInsert": {
+    "message": "翻译选区（插入到下方）"
+  },
+  "cmdTranslateNote": {
+    "message": "整篇笔记翻译到新文件"
+  },
+  "noticeNothingSelected": {
+    "message": "DualTran：没有选中内容。"
+  },
+  "noticeNoteEmpty": {
+    "message": "DualTran：这篇笔记是空的。"
+  },
+  "noticeWrote": {
+    "message": "DualTran：已写入 $PATH$"
+  },
+  "noticeError": {
+    "message": "DualTran：$ERROR$"
+  },
+  "loadingSelection": {
+    "message": "DualTran：翻译中…"
+  },
+  "loadingNote": {
+    "message": "DualTran：正在翻译整篇…"
+  },
+  "settingEngine": {
+    "message": "引擎"
+  },
+  "settingEngineDesc": {
+    "message": "Google 免费且无需账号；AI 用你自己的服务商密钥（BYOK）。"
+  },
+  "engineGoogle": {
+    "message": "Google"
+  },
+  "engineAi": {
+    "message": "AI（BYOK）"
+  },
+  "settingSource": {
+    "message": "源语言"
+  },
+  "settingSourceDesc": {
+    "message": "原文所用语言代码 —— 填 \"auto\" 自动识别。"
+  },
+  "settingTarget": {
+    "message": "目标语言"
+  },
+  "settingTargetDesc": {
+    "message": "译文所用语言。"
+  },
+  "settingProvider": {
+    "message": "AI 服务商"
+  },
+  "settingProviderDesc": {
+    "message": "先列内置服务商，再列 models.dev 收录的全部服务商（每日刷新）。"
+  },
+  "providerSeparator": {
+    "message": "──── 更多 ────"
+  },
+  "settingApiKey": {
+    "message": "AI API Key"
+  },
+  "settingApiKeyDesc": {
+    "message": "仅保存在本机。"
+  },
+  "settingModel": {
+    "message": "AI 模型"
+  },
+  "settingModelDescListed": {
+    "message": "models.dev 为该服务商列出的模型。"
+  },
+  "settingModelDescMissing": {
+    "message": "该服务商没有目录条目 —— 在下方填写模型 id。"
+  },
+  "customModelOption": {
+    "message": "自定义…"
+  },
+  "settingCustomModel": {
+    "message": "自定义模型 id"
+  },
+  "settingCustomModelDesc": {
+    "message": "原样传给服务商。"
+  },
+  "placeholderModelId": {
+    "message": "model-id"
+  },
+  "settingReasoning": {
+    "message": "AI 推理强度"
+  },
+  "settingReasoningDesc": {
+    "message": "模型回答前可以思考的程度。选「最低」可让翻译更快。"
+  },
+  "settingReasoningDescNone": {
+    "message": "该模型未声明推理档位，此项对它无效。"
+  },
+  "reasoningLowest": {
+    "message": "最低（默认）"
+  },
+  "reasoningProviderDefault": {
+    "message": "服务商默认"
+  },
+  "settingBaseUrl": {
+    "message": "AI base URL（可选）"
+  },
+  "settingBaseUrlDesc": {
+    "message": "留空则使用输入框中显示的服务商端点。"
+  },
+  "settingCatalog": {
+    "message": "服务商与模型列表"
+  },
+  "catalogLoading": {
+    "message": "正在加载服务商列表…"
+  },
+  "catalogOffline": {
+    "message": "models.dev 不可用 —— 只显示内置服务商。"
+  },
+  "catalogSummary": {
+    "message": "来自 models.dev 的 $PROVIDERS$ 个服务商 · $MODELS$ 个模型。"
+  },
+  "btnRefresh": {
+    "message": "刷新"
+  },
+  "btnRefreshing": {
+    "message": "刷新中…"
+  },
+  "settingLanguage": {
+    "message": "界面语言"
+  },
+  "settingLanguageDesc": {
+    "message": "默认跟随 Obsidian 的语言，也可以在这里单独指定。"
+  },
+  "languageAuto": {
+    "message": "跟随 Obsidian"
+  }
+}

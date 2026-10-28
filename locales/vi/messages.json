@@ -1,0 +1,137 @@
+{
+  "cmdTranslateReplace": {
+    "message": "Dịch phần đã chọn (thay thế)"
+  },
+  "cmdTranslateInsert": {
+    "message": "Dịch phần đã chọn (chèn bên dưới)"
+  },
+  "cmdTranslateNote": {
+    "message": "Dịch ghi chú sang tệp mới"
+  },
+  "noticeNothingSelected": {
+    "message": "DualTran: chưa chọn nội dung nào."
+  },
+  "noticeNoteEmpty": {
+    "message": "DualTran: ghi chú trống."
+  },
+  "noticeWrote": {
+    "message": "DualTran: đã ghi $PATH$"
+  },
+  "noticeError": {
+    "message": "DualTran: $ERROR$"
+  },
+  "loadingSelection": {
+    "message": "DualTran: đang dịch…"
+  },
+  "loadingNote": {
+    "message": "DualTran: đang dịch ghi chú…"
+  },
+  "settingEngine": {
+    "message": "Công cụ dịch"
+  },
+  "settingEngineDesc": {
+    "message": "Google miễn phí và không cần tài khoản. AI sử dụng khóa nhà cung cấp của riêng bạn (BYOK)."
+  },
+  "engineGoogle": {
+    "message": "Google"
+  },
+  "engineAi": {
+    "message": "AI (BYOK)"
+  },
+  "settingSource": {
+    "message": "Ngôn ngữ nguồn"
+  },
+  "settingSourceDesc": {
+    "message": "Mã ngôn ngữ của văn bản — \"auto\" sẽ tự động nhận diện."
+  },
+  "settingTarget": {
+    "message": "Ngôn ngữ đích"
+  },
+  "settingTargetDesc": {
+    "message": "Ngôn ngữ của văn bản được dịch."
+  },
+  "settingProvider": {
+    "message": "Nhà cung cấp AI"
+  },
+  "settingProviderDesc": {
+    "message": "Các nhà cung cấp tích hợp trước, sau đó là mọi thứ models.dev biết (cập nhật hàng ngày)."
+  },
+  "providerSeparator": {
+    "message": "──── thêm ────"
+  },
+  "settingApiKey": {
+    "message": "Khóa API AI"
+  },
+  "settingApiKeyDesc": {
+    "message": "Chỉ lưu trữ cục bộ trên thiết bị này."
+  },
+  "settingModel": {
+    "message": "Mô hình AI"
+  },
+  "settingModelDescListed": {
+    "message": "Các mô hình mà models.dev liệt kê cho nhà cung cấp này."
+  },
+  "settingModelDescMissing": {
+    "message": "Không có mục danh mục cho nhà cung cấp này — nhập id mô hình bên dưới."
+  },
+  "customModelOption": {
+    "message": "Tùy chỉnh…"
+  },
+  "settingCustomModel": {
+    "message": "Id mô hình tùy chỉnh"
+  },
+  "settingCustomModelDesc": {
+    "message": "Được chuyển nguyên trạng đến nhà cung cấp."
+  },
+  "placeholderModelId": {
+    "message": "model-id"
+  },
+  "settingReasoning": {
+    "message": "Mức độ suy luận AI"
+  },
+  "settingReasoningDesc": {
+    "message": "Mức độ mô hình có thể suy nghĩ trước khi trả lời. Mức thấp nhất giúp bản dịch nhanh."
+  },
+  "settingReasoningDescNone": {
+    "message": "Mô hình này không khai báo mức suy luận nào, nên cài đặt không có tác dụng với nó."
+  },
+  "reasoningLowest": {
+    "message": "Thấp nhất (mặc định)"
+  },
+  "reasoningProviderDefault": {
+    "message": "Mặc định của nhà cung cấp"
+  },
+  "settingBaseUrl": {
+    "message": "URL cơ sở AI (tùy chọn)"
+  },
+  "settingBaseUrlDesc": {
+    "message": "Để trống để dùng điểm cuối nhà cung cấp hiển thị trong trường."
+  },
+  "settingCatalog": {
+    "message": "Danh sách nhà cung cấp & mô hình"
+  },
+  "catalogLoading": {
+    "message": "Đang tải danh sách nhà cung cấp…"
+  },
+  "catalogOffline": {
+    "message": "models.dev không khả dụng — chỉ dùng nhà cung cấp tích hợp."
+  },
+  "catalogSummary": {
+    "message": "$PROVIDERS$ nhà cung cấp · $MODELS$ mô hình từ models.dev."
+  },
+  "btnRefresh": {
+    "message": "Làm mới"
+  },
+  "btnRefreshing": {
+    "message": "Đang làm mới…"
+  },
+  "settingLanguage": {
+    "message": "Ngôn ngữ giao diện"
+  },
+  "settingLanguageDesc": {
+    "message": "Theo ngôn ngữ của Obsidian trừ khi bạn chọn ngôn ngữ tại đây."
+  },
+  "languageAuto": {
+    "message": "Theo Obsidian"
+  }
+}

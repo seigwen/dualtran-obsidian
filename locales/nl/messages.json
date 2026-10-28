@@ -1,0 +1,137 @@
+{
+  "cmdTranslateReplace": {
+    "message": "Selectie vertalen (vervangen)"
+  },
+  "cmdTranslateInsert": {
+    "message": "Selectie vertalen (hieronder invoegen)"
+  },
+  "cmdTranslateNote": {
+    "message": "Notitie naar een nieuw bestand vertalen"
+  },
+  "noticeNothingSelected": {
+    "message": "DualTran: niets geselecteerd."
+  },
+  "noticeNoteEmpty": {
+    "message": "DualTran: de notitie is leeg."
+  },
+  "noticeWrote": {
+    "message": "DualTran: $PATH$ geschreven"
+  },
+  "noticeError": {
+    "message": "DualTran: $ERROR$"
+  },
+  "loadingSelection": {
+    "message": "DualTran: vertalen…"
+  },
+  "loadingNote": {
+    "message": "DualTran: notitie vertalen…"
+  },
+  "settingEngine": {
+    "message": "Engine"
+  },
+  "settingEngineDesc": {
+    "message": "Google is gratis en vereist geen account. AI gebruikt je eigen provider-sleutel (BYOK)."
+  },
+  "engineGoogle": {
+    "message": "Google"
+  },
+  "engineAi": {
+    "message": "AI (BYOK)"
+  },
+  "settingSource": {
+    "message": "Brontaal"
+  },
+  "settingSourceDesc": {
+    "message": "Taalcode waarin de tekst is geschreven — \"auto\" detecteert deze."
+  },
+  "settingTarget": {
+    "message": "Doeltaal"
+  },
+  "settingTargetDesc": {
+    "message": "Taal waarin de vertaalde tekst is geschreven."
+  },
+  "settingProvider": {
+    "message": "AI-provider"
+  },
+  "settingProviderDesc": {
+    "message": "Eerst ingebouwde providers, daarna alles wat models.dev kent (dagelijks vernieuwd)."
+  },
+  "providerSeparator": {
+    "message": "──── meer ────"
+  },
+  "settingApiKey": {
+    "message": "AI API-sleutel"
+  },
+  "settingApiKeyDesc": {
+    "message": "Alleen lokaal op dit apparaat opgeslagen."
+  },
+  "settingModel": {
+    "message": "AI-model"
+  },
+  "settingModelDescListed": {
+    "message": "Modellen die models.dev voor deze provider vermeldt."
+  },
+  "settingModelDescMissing": {
+    "message": "Geen catalogusvermelding voor deze provider — voer hieronder een model-id in."
+  },
+  "customModelOption": {
+    "message": "Aangepast…"
+  },
+  "settingCustomModel": {
+    "message": "Aangepaste model-id"
+  },
+  "settingCustomModelDesc": {
+    "message": "Wordt ongewijzigd aan de provider doorgegeven."
+  },
+  "placeholderModelId": {
+    "message": "model-id"
+  },
+  "settingReasoning": {
+    "message": "AI-redeneerinspanning"
+  },
+  "settingReasoningDesc": {
+    "message": "Hoeveel het model mag nadenken voordat het antwoordt. Laagste houdt vertalingen snel."
+  },
+  "settingReasoningDescNone": {
+    "message": "Dit model declareert geen redeneerniveaus, dus de instelling heeft er geen effect."
+  },
+  "reasoningLowest": {
+    "message": "Laagste (standaard)"
+  },
+  "reasoningProviderDefault": {
+    "message": "Standaard van provider"
+  },
+  "settingBaseUrl": {
+    "message": "AI-basis-URL (optioneel)"
+  },
+  "settingBaseUrlDesc": {
+    "message": "Laat leeg om het provider-eindpunt te gebruiken dat in het veld wordt getoond."
+  },
+  "settingCatalog": {
+    "message": "Provider- en modellenlijst"
+  },
+  "catalogLoading": {
+    "message": "Providerlijst laden…"
+  },
+  "catalogOffline": {
+    "message": "models.dev niet beschikbaar — alleen ingebouwde providers."
+  },
+  "catalogSummary": {
+    "message": "$PROVIDERS$ providers · $MODELS$ modellen van models.dev."
+  },
+  "btnRefresh": {
+    "message": "Vernieuwen"
+  },
+  "btnRefreshing": {
+    "message": "Vernieuwen…"
+  },
+  "settingLanguage": {
+    "message": "Interfacetaal"
+  },
+  "settingLanguageDesc": {
+    "message": "Volgt de taal van Obsidian tenzij je hier een taal kiest"
+  },
+  "languageAuto": {
+    "message": "Volg Obsidian"
+  }
+}

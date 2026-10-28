@@ -1,0 +1,137 @@
+{
+  "cmdTranslateReplace": {
+    "message": "Traduire la sélection (remplacer)"
+  },
+  "cmdTranslateInsert": {
+    "message": "Traduire la sélection (insérer en dessous)"
+  },
+  "cmdTranslateNote": {
+    "message": "Traduire la note dans un nouveau fichier"
+  },
+  "noticeNothingSelected": {
+    "message": "DualTran : aucune sélection."
+  },
+  "noticeNoteEmpty": {
+    "message": "DualTran : la note est vide."
+  },
+  "noticeWrote": {
+    "message": "DualTran : $PATH$ écrit"
+  },
+  "noticeError": {
+    "message": "DualTran : $ERROR$"
+  },
+  "loadingSelection": {
+    "message": "DualTran : traduction en cours…"
+  },
+  "loadingNote": {
+    "message": "DualTran : traduction de la note en cours…"
+  },
+  "settingEngine": {
+    "message": "Moteur"
+  },
+  "settingEngineDesc": {
+    "message": "Google est gratuit et ne nécessite aucun compte. L'IA utilise votre propre clé de fournisseur (BYOK)."
+  },
+  "engineGoogle": {
+    "message": "Google"
+  },
+  "engineAi": {
+    "message": "IA (BYOK)"
+  },
+  "settingSource": {
+    "message": "Langue source"
+  },
+  "settingSourceDesc": {
+    "message": "Code de langue du texte — « auto » le détecte."
+  },
+  "settingTarget": {
+    "message": "Langue cible"
+  },
+  "settingTargetDesc": {
+    "message": "Langue du texte traduit."
+  },
+  "settingProvider": {
+    "message": "Fournisseur d'IA"
+  },
+  "settingProviderDesc": {
+    "message": "Fournisseurs intégrés d'abord, puis tout ce que models.dev connaît (actualisé quotidiennement)."
+  },
+  "providerSeparator": {
+    "message": "──── plus ────"
+  },
+  "settingApiKey": {
+    "message": "Clé API IA"
+  },
+  "settingApiKeyDesc": {
+    "message": "Stockée localement sur cet appareil uniquement."
+  },
+  "settingModel": {
+    "message": "Modèle IA"
+  },
+  "settingModelDescListed": {
+    "message": "Modèles listés par models.dev pour ce fournisseur."
+  },
+  "settingModelDescMissing": {
+    "message": "Aucune entrée de catalogue pour ce fournisseur — saisissez un identifiant de modèle ci-dessous."
+  },
+  "customModelOption": {
+    "message": "Personnalisé…"
+  },
+  "settingCustomModel": {
+    "message": "Identifiant de modèle personnalisé"
+  },
+  "settingCustomModelDesc": {
+    "message": "Transmis au fournisseur tel quel."
+  },
+  "placeholderModelId": {
+    "message": "identifiant-modele"
+  },
+  "settingReasoning": {
+    "message": "Effort de raisonnement IA"
+  },
+  "settingReasoningDesc": {
+    "message": "Dans quelle mesure le modèle peut réfléchir avant de répondre. Le niveau le plus bas garde les traductions rapides."
+  },
+  "settingReasoningDescNone": {
+    "message": "Ce modèle ne déclare aucun niveau de raisonnement, ce réglage n'a donc aucun effet pour lui."
+  },
+  "reasoningLowest": {
+    "message": "Le plus faible (par défaut)"
+  },
+  "reasoningProviderDefault": {
+    "message": "Par défaut du fournisseur"
+  },
+  "settingBaseUrl": {
+    "message": "URL de base de l'IA (facultatif)"
+  },
+  "settingBaseUrlDesc": {
+    "message": "Laissez vide pour utiliser le point de terminaison du fournisseur affiché dans le champ."
+  },
+  "settingCatalog": {
+    "message": "Liste des fournisseurs et modèles"
+  },
+  "catalogLoading": {
+    "message": "Chargement de la liste des fournisseurs…"
+  },
+  "catalogOffline": {
+    "message": "models.dev indisponible — fournisseurs intégrés uniquement."
+  },
+  "catalogSummary": {
+    "message": "$PROVIDERS$ fournisseurs · $MODELS$ modèles depuis models.dev."
+  },
+  "btnRefresh": {
+    "message": "Actualiser"
+  },
+  "btnRefreshing": {
+    "message": "Actualisation…"
+  },
+  "settingLanguage": {
+    "message": "Langue de l'interface"
+  },
+  "settingLanguageDesc": {
+    "message": "Suit la langue d'Obsidian sauf si vous en choisissez une ici."
+  },
+  "languageAuto": {
+    "message": "Suivre Obsidian"
+  }
+}

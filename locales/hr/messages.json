@@ -1,0 +1,137 @@
+{
+  "cmdTranslateReplace": {
+    "message": "Prevedi odabrano (zamijeni)"
+  },
+  "cmdTranslateInsert": {
+    "message": "Prevedi odabrano (umetni ispod)"
+  },
+  "cmdTranslateNote": {
+    "message": "Prevedi bilješku u novu datoteku"
+  },
+  "noticeNothingSelected": {
+    "message": "DualTran: ništa nije odabrano."
+  },
+  "noticeNoteEmpty": {
+    "message": "DualTran: bilješka je prazna."
+  },
+  "noticeWrote": {
+    "message": "DualTran: zapisano $PATH$"
+  },
+  "noticeError": {
+    "message": "DualTran: $ERROR$"
+  },
+  "loadingSelection": {
+    "message": "DualTran: prevođenje…"
+  },
+  "loadingNote": {
+    "message": "DualTran: prevođenje bilješke…"
+  },
+  "settingEngine": {
+    "message": "Motor"
+  },
+  "settingEngineDesc": {
+    "message": "Google je besplatan i ne zahtijeva račun. AI koristi vaš vlastiti ključ pružatelja usluge (BYOK)."
+  },
+  "engineGoogle": {
+    "message": "Google"
+  },
+  "engineAi": {
+    "message": "AI (BYOK)"
+  },
+  "settingSource": {
+    "message": "Izvorni jezik"
+  },
+  "settingSourceDesc": {
+    "message": "Kôd jezika na kojem je tekst napisan — \"auto\" ga otkriva."
+  },
+  "settingTarget": {
+    "message": "Ciljni jezik"
+  },
+  "settingTargetDesc": {
+    "message": "Jezik na koji se prevodi tekst."
+  },
+  "settingProvider": {
+    "message": "Dobavljač AI-a"
+  },
+  "settingProviderDesc": {
+    "message": "Prvo ugrađeni pružatelji usluga, zatim sve što models.dev poznaje (osvježava se dnevno)."
+  },
+  "providerSeparator": {
+    "message": "──── više ────"
+  },
+  "settingApiKey": {
+    "message": "AI API ključ"
+  },
+  "settingApiKeyDesc": {
+    "message": "Pohranjeno lokalno samo na ovom uređaju."
+  },
+  "settingModel": {
+    "message": "AI model"
+  },
+  "settingModelDescListed": {
+    "message": "Modeli koje models.dev navodi za ovog pružatelja usluga."
+  },
+  "settingModelDescMissing": {
+    "message": "Nema unosa u katalogu za ovog pružatelja usluga — unesite ID modela u nastavku."
+  },
+  "customModelOption": {
+    "message": "Prilagođeno…"
+  },
+  "settingCustomModel": {
+    "message": "Prilagođeni ID modela"
+  },
+  "settingCustomModelDesc": {
+    "message": "Pružatelju usluga prosljeđuje se nepromijenjen."
+  },
+  "placeholderModelId": {
+    "message": "model-id"
+  },
+  "settingReasoning": {
+    "message": "AI razina zaključivanja"
+  },
+  "settingReasoningDesc": {
+    "message": "Koliko model može razmišljati prije odgovora. Najniža razina održava prijevode brzima."
+  },
+  "settingReasoningDescNone": {
+    "message": "Ovaj model ne navodi razine zaključivanja pa ova postavka na njega ne utječe."
+  },
+  "reasoningLowest": {
+    "message": "Najniža (zadano)"
+  },
+  "reasoningProviderDefault": {
+    "message": "Zadano pružatelja"
+  },
+  "settingBaseUrl": {
+    "message": "AI osnovni URL (neobavezno)"
+  },
+  "settingBaseUrlDesc": {
+    "message": "Ostavite prazno za korištenje krajnje točke pružatelja prikazane u polju."
+  },
+  "settingCatalog": {
+    "message": "Popis pružatelja i modela"
+  },
+  "catalogLoading": {
+    "message": "Učitavanje popisa pružatelja…"
+  },
+  "catalogOffline": {
+    "message": "models.dev nedostupan — samo ugrađeni pružatelji."
+  },
+  "catalogSummary": {
+    "message": "$PROVIDERS$ pružatelja · $MODELS$ modela s models.dev."
+  },
+  "btnRefresh": {
+    "message": "Osvježi"
+  },
+  "btnRefreshing": {
+    "message": "Osvježavanje…"
+  },
+  "settingLanguage": {
+    "message": "Jezik sučelja"
+  },
+  "settingLanguageDesc": {
+    "message": "Slijedi jezik aplikacije Obsidian osim ako ovdje odaberete drugi"
+  },
+  "languageAuto": {
+    "message": "Slijedi Obsidian"
+  }
+}

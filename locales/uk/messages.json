@@ -1,0 +1,137 @@
+{
+  "cmdTranslateReplace": {
+    "message": "Перекласти виділене (замінити)"
+  },
+  "cmdTranslateInsert": {
+    "message": "Перекласти виділене (вставити нижче)"
+  },
+  "cmdTranslateNote": {
+    "message": "Перекласти нотатку в новий файл"
+  },
+  "noticeNothingSelected": {
+    "message": "DualTran: нічого не виділено."
+  },
+  "noticeNoteEmpty": {
+    "message": "DualTran: нотатка порожня."
+  },
+  "noticeWrote": {
+    "message": "DualTran: записано $PATH$"
+  },
+  "noticeError": {
+    "message": "DualTran: $ERROR$"
+  },
+  "loadingSelection": {
+    "message": "DualTran: переклад…"
+  },
+  "loadingNote": {
+    "message": "DualTran: переклад нотатки…"
+  },
+  "settingEngine": {
+    "message": "Рушій"
+  },
+  "settingEngineDesc": {
+    "message": "Google безкоштовний і не потребує облікового запису. AI використовує ваш власний ключ постачальника (BYOK)."
+  },
+  "engineGoogle": {
+    "message": "Google"
+  },
+  "engineAi": {
+    "message": "AI (BYOK)"
+  },
+  "settingSource": {
+    "message": "Мова джерела"
+  },
+  "settingSourceDesc": {
+    "message": "Код мови, якою написано текст — \"auto\" визначає її автоматично."
+  },
+  "settingTarget": {
+    "message": "Цільова мова"
+  },
+  "settingTargetDesc": {
+    "message": "Мова, якою написано перекладений текст."
+  },
+  "settingProvider": {
+    "message": "Постачальник ШІ"
+  },
+  "settingProviderDesc": {
+    "message": "Спочатку вбудовані постачальники, потім усе, що відомо models.dev (оновлюється щодня)."
+  },
+  "providerSeparator": {
+    "message": "──── більше ────"
+  },
+  "settingApiKey": {
+    "message": "Ключ AI API"
+  },
+  "settingApiKeyDesc": {
+    "message": "Зберігається лише локально на цьому пристрої."
+  },
+  "settingModel": {
+    "message": "Модель AI"
+  },
+  "settingModelDescListed": {
+    "message": "Моделі, які models.dev вказує для цього постачальника."
+  },
+  "settingModelDescMissing": {
+    "message": "Немає запису в каталозі для цього постачальника — введіть ідентифікатор моделі нижче."
+  },
+  "customModelOption": {
+    "message": "Власна…"
+  },
+  "settingCustomModel": {
+    "message": "Власний ідентифікатор моделі"
+  },
+  "settingCustomModelDesc": {
+    "message": "Передається постачальнику без змін."
+  },
+  "placeholderModelId": {
+    "message": "model-id"
+  },
+  "settingReasoning": {
+    "message": "Зусилля міркування AI"
+  },
+  "settingReasoningDesc": {
+    "message": "Скільки модель може міркувати перед відповіддю. Найнижчий рівень зберігає швидкість перекладу."
+  },
+  "settingReasoningDescNone": {
+    "message": "Ця модель не оголошує рівнів міркування, тому налаштування для неї не діє."
+  },
+  "reasoningLowest": {
+    "message": "Найнижчий (за замовчуванням)"
+  },
+  "reasoningProviderDefault": {
+    "message": "Типово в постачальника"
+  },
+  "settingBaseUrl": {
+    "message": "Базова URL-адреса ШІ (необов'язково)"
+  },
+  "settingBaseUrlDesc": {
+    "message": "Залиште порожнім, щоб використовувати кінцеву точку постачальника, показану в полі."
+  },
+  "settingCatalog": {
+    "message": "Список постачальників і моделей"
+  },
+  "catalogLoading": {
+    "message": "Завантаження списку постачальників…"
+  },
+  "catalogOffline": {
+    "message": "models.dev недоступний — лише вбудовані постачальники."
+  },
+  "catalogSummary": {
+    "message": "$PROVIDERS$ постачальників · $MODELS$ моделей з models.dev."
+  },
+  "btnRefresh": {
+    "message": "Оновити"
+  },
+  "btnRefreshing": {
+    "message": "Оновлення…"
+  },
+  "settingLanguage": {
+    "message": "Мова інтерфейсу"
+  },
+  "settingLanguageDesc": {
+    "message": "Використовує мову Obsidian, якщо ви не виберете іншу тут"
+  },
+  "languageAuto": {
+    "message": "Як в Obsidian"
+  }
+}

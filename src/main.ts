@@ -31,6 +31,7 @@ import {
 import { insertBelowSelection, replaceSelectionWith } from "./editorOps";
 import { DEFAULT_SETTINGS, DualTranSettings, LOWEST_REASONING, sanitizeSettings } from "./settings";
 import { createObsidianStorage } from "./storage";
+import { LOCALE_CODES, LOCALE_NAMES, createTranslator, obsidianLocale, type Translator } from "./i18n";
 
 /** Cache key for the models.dev payload (device-local, see src/storage.ts). */
 const MODELSDEV_CACHE_KEY = "dualtran:modelsdev:v1";
@@ -43,9 +44,13 @@ export default class DualTranPlugin extends Plugin {
   private bridge!: ReturnType<typeof createBridge>;
   private store!: ModelsDevStore;
   private core!: CatalogCore;
+  /** Resolved catalogue code ("de", "zh_CN", …) and its translator. */
+  locale = "en";
+  t: Translator["t"] = (key) => key;
 
   async onload(): Promise<void> {
     this.settings = sanitizeSettings(await this.loadData());
+    this.applyLanguage();
     this.core = coreNamespace as unknown as CatalogCore;
 
     // requestUrl bypasses CORS on desktop and mobile alike — the core gets it
@@ -90,22 +95,44 @@ export default class DualTranPlugin extends Plugin {
     this.injectStyles();
 
     this.addSettingTab(new DualTranSettingTab(this.app, this));
+    this.registerCommands();
+  }
 
-    this.addCommand({
-      id: "translate-selection-replace",
-      name: "Translate selection (replace)",
-      editorCallback: (editor) => this.translateSelection(editor, "replace"),
-    });
-    this.addCommand({
-      id: "translate-selection-insert",
-      name: "Translate selection (insert below)",
-      editorCallback: (editor) => this.translateSelection(editor, "insert"),
-    });
-    this.addCommand({
-      id: "translate-note",
-      name: "Translate note to a new file",
-      editorCallback: (editor, ctx) => this.translateNote(editor, ctx.file),
-    });
+  /**
+   * Resolve the interface language (settings override → Obsidian's own language)
+   * and rebuild the translator. Called on load and whenever the picker changes.
+   */
+  applyLanguage(): void {
+    const translator = createTranslator(this.settings.uiLang || obsidianLocale());
+    this.locale = translator.code;
+    this.t = translator.t;
+  }
+
+  /** Commands are (re)registered so their names follow the interface language. */
+  registerCommands(): void {
+    const commands = [
+      {
+        id: "translate-selection-replace",
+        name: this.t("cmdTranslateReplace"),
+        editorCallback: (editor: Editor) => this.translateSelection(editor, "replace"),
+      },
+      {
+        id: "translate-selection-insert",
+        name: this.t("cmdTranslateInsert"),
+        editorCallback: (editor: Editor) => this.translateSelection(editor, "insert"),
+      },
+      {
+        id: "translate-note",
+        name: this.t("cmdTranslateNote"),
+        editorCallback: (editor: Editor, ctx: { file: TFile | null }) => this.translateNote(editor, ctx.file),
+      },
+    ];
+    for (const command of commands) {
+      // Obsidian 1.4+ can drop a command before re-adding it; older builds only add.
+      const remove = (this as unknown as { removeCommand?: (id: string) => void }).removeCommand;
+      if (typeof remove === "function") remove.call(this, command.id);
+      this.addCommand(command);
+    }
   }
 
   // ── catalogue accessors (defensive: the pane must survive a core reshuffle) ──
@@ -226,10 +253,10 @@ export default class DualTranPlugin extends Plugin {
   private async translateSelection(editor: Editor, mode: "replace" | "insert"): Promise<void> {
     const selection = editor.getSelection().trim();
     if (!selection) {
-      new Notice("DualTran: nothing selected.");
+      new Notice(this.t("noticeNothingSelected"));
       return;
     }
-    this.showLoading("DualTran: translating…");
+    this.showLoading(this.t("loadingSelection"));
     try {
       const [translated] = await this.bridge.translateBlocks([selection]);
       if (mode === "replace") {
@@ -239,7 +266,7 @@ export default class DualTranPlugin extends Plugin {
       }
     } catch (error) {
       this.hideLoading();
-      new Notice(`DualTran: ${error instanceof Error ? error.message : String(error)}`);
+      new Notice(this.t("noticeError", { ERROR: error instanceof Error ? error.message : String(error) }));
     } finally {
       this.hideLoading();
     }
@@ -248,13 +275,13 @@ export default class DualTranPlugin extends Plugin {
   private async translateNote(editor: Editor, file: TFile | null): Promise<void> {
     const source = editor.getValue();
     if (!source.trim()) {
-      new Notice("DualTran: the note is empty.");
+      new Notice(this.t("noticeNoteEmpty"));
       return;
     }
     // Whole-note mode: split into blank-line separated blocks, translate each
     // batch through the configured engine, re-join as the new note.
     const blocks = source.split(/\n{2,}/);
-    this.showLoading("DualTran: translating note…");
+    this.showLoading(this.t("loadingNote"));
     try {
       const translatedBlocks = await this.bridge.translateBlocks(blocks);
       const base = file?.path ?? "Untitled.md";
@@ -269,10 +296,10 @@ export default class DualTranPlugin extends Plugin {
         await this.app.vault.create(outPath, content);
       }
       this.hideLoading();
-      new Notice(`DualTran: wrote ${outPath}`);
+      new Notice(this.t("noticeWrote", { PATH: outPath }));
     } catch (error) {
       this.hideLoading();
-      new Notice(`DualTran: ${error instanceof Error ? error.message : String(error)}`);
+      new Notice(this.t("noticeError", { ERROR: error instanceof Error ? error.message : String(error) }));
     } finally {
       this.hideLoading();
     }
@@ -302,11 +329,27 @@ class DualTranSettingTab extends PluginSettingTab {
     const data = this.plugin.catalog;
 
     new Setting(containerEl)
-      .setName("Engine")
-      .setDesc("Google is free and needs no account. AI uses your own provider key (BYOK).")
+      .setName(this.plugin.t("settingLanguage"))
+      .setDesc(this.plugin.t("settingLanguageDesc"))
+      .addDropdown((dropdown) => {
+        dropdown.addOption("", this.plugin.t("languageAuto"));
+        for (const code of LOCALE_CODES) dropdown.addOption(code, LOCALE_NAMES[code] || code);
+        dropdown.setValue(this.plugin.settings.uiLang || "");
+        dropdown.onChange(async (value) => {
+          this.plugin.settings.uiLang = value;
+          await this.plugin.saveSettings();
+          this.plugin.applyLanguage();
+          this.plugin.registerCommands();
+          this.display();
+        });
+      });
+
+    new Setting(containerEl)
+      .setName(this.plugin.t("settingEngine"))
+      .setDesc(this.plugin.t("settingEngineDesc"))
       .addDropdown((dropdown) =>
         dropdown
-          .addOptions({ google: "Google", ai: "AI (BYOK)" })
+          .addOptions({ google: this.plugin.t("engineGoogle"), ai: this.plugin.t("engineAi") })
           .setValue(settings.engine)
           .onChange(async (value) => {
             settings.engine = value as DualTranSettings["engine"];
@@ -315,8 +358,8 @@ class DualTranSettingTab extends PluginSettingTab {
       );
 
     new Setting(containerEl)
-      .setName("Source language")
-      .setDesc('Language code the text is written in — "auto" detects it.')
+      .setName(this.plugin.t("settingSource"))
+      .setDesc(this.plugin.t("settingSourceDesc"))
       .addText((text) =>
         text.setValue(settings.sourceLanguage).onChange(async (value) => {
           settings.sourceLanguage = value.trim() || "auto";
@@ -325,8 +368,8 @@ class DualTranSettingTab extends PluginSettingTab {
       );
 
     new Setting(containerEl)
-      .setName("Target language")
-      .setDesc("Language the translated text is written in.")
+      .setName(this.plugin.t("settingTarget"))
+      .setDesc(this.plugin.t("settingTargetDesc"))
       .addDropdown((dropdown) => {
         for (const option of languageOptions({ names: this.languageNames(), current: settings.targetLanguage })) {
           dropdown.addOption(option.value, option.text);
@@ -338,8 +381,8 @@ class DualTranSettingTab extends PluginSettingTab {
       });
 
     new Setting(containerEl)
-      .setName("AI provider")
-      .setDesc("Built-in providers first, then everything models.dev knows about (refreshed daily).")
+      .setName(this.plugin.t("settingProvider"))
+      .setDesc(this.plugin.t("settingProviderDesc"))
       .addDropdown((dropdown) => {
         let separatorAdded = false;
         for (const provider of projectProviders({
@@ -349,7 +392,7 @@ class DualTranSettingTab extends PluginSettingTab {
           resolveId,
         })) {
           if (provider.source === "models.dev" && !separatorAdded) {
-            dropdown.addOption(PROVIDER_SEPARATOR_VALUE, "──── more ────");
+            dropdown.addOption(PROVIDER_SEPARATOR_VALUE, this.plugin.t("providerSeparator"));
             separatorAdded = true;
           }
           dropdown.addOption(provider.id, provider.label);
@@ -379,8 +422,8 @@ class DualTranSettingTab extends PluginSettingTab {
       });
 
     new Setting(containerEl)
-      .setName("AI API key")
-      .setDesc("Stored locally on this device only.")
+      .setName(this.plugin.t("settingApiKey"))
+      .setDesc(this.plugin.t("settingApiKeyDesc"))
       .addText((text) => {
         text.inputEl.type = "password";
         text.setValue(settings.aiApiKey).onChange(async (value) => {
@@ -395,15 +438,11 @@ class DualTranSettingTab extends PluginSettingTab {
     let customRow: Setting | null = null;
 
     new Setting(containerEl)
-      .setName("AI model")
-      .setDesc(
-        models.length
-          ? "Models models.dev lists for this provider."
-          : "No catalogue entry for this provider — enter a model id below."
-      )
+      .setName(this.plugin.t("settingModel"))
+      .setDesc(models.length ? this.plugin.t("settingModelDescListed") : this.plugin.t("settingModelDescMissing"))
       .addDropdown((dropdown) => {
         for (const model of models) dropdown.addOption(model.value, model.text);
-        dropdown.addOption(CUSTOM_MODEL_VALUE, "自定义… / Custom…");
+        dropdown.addOption(CUSTOM_MODEL_VALUE, this.plugin.t("customModelOption"));
         dropdown.setValue(customModel ? CUSTOM_MODEL_VALUE : settings.aiModel).onChange(async (value) => {
           const wantsCustom = value === CUSTOM_MODEL_VALUE;
           if (customRow) customRow.settingEl.style.display = wantsCustom ? "" : "none";
@@ -421,11 +460,11 @@ class DualTranSettingTab extends PluginSettingTab {
       });
 
     customRow = new Setting(containerEl)
-      .setName("Custom model id")
-      .setDesc("Passed to the provider as-is.")
+      .setName(this.plugin.t("settingCustomModel"))
+      .setDesc(this.plugin.t("settingCustomModelDesc"))
       .addText((text) =>
         text
-          .setPlaceholder("model-id")
+          .setPlaceholder(this.plugin.t("placeholderModelId"))
           .setValue(settings.aiModel)
           .onChange(async (value) => {
             settings.aiModel = value.trim();
@@ -437,7 +476,7 @@ class DualTranSettingTab extends PluginSettingTab {
     // Reasoning effort: options come from the model's models.dev declaration,
     // clipped by the core to what the provider dialect accepts.
     const reasoningOptions = this.plugin.reasoningOptionsFor(settings.aiProvider, settings.aiModel);
-    const reasoningChoices = reasoningDepthChoices({ options: reasoningOptions });
+    const reasoningChoices = reasoningDepthChoices({ options: reasoningOptions, t: this.plugin.t });
     if (
       this.plugin.catalogLoaded &&
       settings.aiReasoningDepth &&
@@ -455,12 +494,8 @@ class DualTranSettingTab extends PluginSettingTab {
       : [...reasoningChoices, { value: reasoningValue, text: reasoningValue }];
 
     new Setting(containerEl)
-      .setName("AI reasoning effort")
-      .setDesc(
-        reasoningOptions.length > 1
-          ? "How much the model may think before answering. Lowest keeps translations fast."
-          : "This model declares no reasoning levels, so the setting has no effect for it."
-      )
+      .setName(this.plugin.t("settingReasoning"))
+      .setDesc(reasoningOptions.length > 1 ? this.plugin.t("settingReasoningDesc") : this.plugin.t("settingReasoningDescNone"))
       .addDropdown((dropdown) => {
         for (const choice of reasoningItems) dropdown.addOption(choice.value, choice.text);
         dropdown.setValue(reasoningValue).onChange(async (value) => {
@@ -471,8 +506,8 @@ class DualTranSettingTab extends PluginSettingTab {
 
     const defaultBaseUrl = effectiveBaseUrl({ provider: settings.aiProvider, data, builtIns, resolveId });
     new Setting(containerEl)
-      .setName("AI base URL (optional)")
-      .setDesc("Leave empty to use the provider endpoint shown in the field.")
+      .setName(this.plugin.t("settingBaseUrl"))
+      .setDesc(this.plugin.t("settingBaseUrlDesc"))
       .addText((text) =>
         text
           .setPlaceholder(defaultBaseUrl || "https://api.example.com/v1")
@@ -485,16 +520,16 @@ class DualTranSettingTab extends PluginSettingTab {
 
     const summary = summarizeCatalog(data);
     const status = !this.plugin.catalogLoaded
-      ? "Loading provider list…"
+      ? this.plugin.t("catalogLoading")
       : summary.offline
-        ? "models.dev unavailable — built-in providers only."
-        : `${summary.providerCount} providers · ${summary.modelCount} models from models.dev.`;
+        ? this.plugin.t("catalogOffline")
+        : this.plugin.t("catalogSummary", { PROVIDERS: summary.providerCount, MODELS: summary.modelCount });
     new Setting(containerEl)
-      .setName("Provider & model list")
+      .setName(this.plugin.t("settingCatalog"))
       .setDesc(status)
       .addButton((button) =>
-        button.setButtonText("Refresh").onClick(async () => {
-          button.setDisabled(true).setButtonText("Refreshing…");
+        button.setButtonText(this.plugin.t("btnRefresh")).onClick(async () => {
+          button.setDisabled(true).setButtonText(this.plugin.t("btnRefreshing"));
           await this.plugin.refreshCatalog();
           this.display();
         })

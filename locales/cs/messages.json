@@ -1,0 +1,137 @@
+{
+  "cmdTranslateReplace": {
+    "message": "Přeložit výběr (nahradit)"
+  },
+  "cmdTranslateInsert": {
+    "message": "Přeložit výběr (vložit pod)"
+  },
+  "cmdTranslateNote": {
+    "message": "Přeložit poznámku do nového souboru"
+  },
+  "noticeNothingSelected": {
+    "message": "DualTran: nic není vybráno."
+  },
+  "noticeNoteEmpty": {
+    "message": "DualTran: poznámka je prázdná."
+  },
+  "noticeWrote": {
+    "message": "DualTran: zapsáno $PATH$"
+  },
+  "noticeError": {
+    "message": "DualTran: $ERROR$"
+  },
+  "loadingSelection": {
+    "message": "DualTran: překládám…"
+  },
+  "loadingNote": {
+    "message": "DualTran: překládám poznámku…"
+  },
+  "settingEngine": {
+    "message": "Engine"
+  },
+  "settingEngineDesc": {
+    "message": "Google je zdarma a nevyžaduje účet. AI používá váš vlastní klíč poskytovatele (BYOK)."
+  },
+  "engineGoogle": {
+    "message": "Google"
+  },
+  "engineAi": {
+    "message": "AI (BYOK)"
+  },
+  "settingSource": {
+    "message": "Zdrojový jazyk"
+  },
+  "settingSourceDesc": {
+    "message": "Kód jazyka, ve kterém je text napsán — \"auto\" jej rozpozná."
+  },
+  "settingTarget": {
+    "message": "Cílový jazyk"
+  },
+  "settingTargetDesc": {
+    "message": "Jazyk, do kterého je přeložený text napsán."
+  },
+  "settingProvider": {
+    "message": "Poskytovatel AI"
+  },
+  "settingProviderDesc": {
+    "message": "Nejprve vestavění poskytovatelé, poté vše, co models.dev zná (aktualizováno denně)."
+  },
+  "providerSeparator": {
+    "message": "──── více ────"
+  },
+  "settingApiKey": {
+    "message": "API klíč AI"
+  },
+  "settingApiKeyDesc": {
+    "message": "Uloženo pouze lokálně na tomto zařízení."
+  },
+  "settingModel": {
+    "message": "AI model"
+  },
+  "settingModelDescListed": {
+    "message": "Modely, které models.dev uvádí pro tohoto poskytovatele."
+  },
+  "settingModelDescMissing": {
+    "message": "Pro tohoto poskytovatele není v katalogu záznam — zadejte ID modelu níže."
+  },
+  "customModelOption": {
+    "message": "Vlastní…"
+  },
+  "settingCustomModel": {
+    "message": "Vlastní ID modelu"
+  },
+  "settingCustomModelDesc": {
+    "message": "Předáno poskytovateli beze změny."
+  },
+  "placeholderModelId": {
+    "message": "model-id"
+  },
+  "settingReasoning": {
+    "message": "Úsilí AI při uvažování"
+  },
+  "settingReasoningDesc": {
+    "message": "Jak moc může model přemýšlet před odpovědí. Nejnižší hodnota udržuje překlady rychlé."
+  },
+  "settingReasoningDescNone": {
+    "message": "Tento model neuvádí žádné úrovně uvažování, takže toto nastavení na něj nemá vliv."
+  },
+  "reasoningLowest": {
+    "message": "Nejnižší (výchozí)"
+  },
+  "reasoningProviderDefault": {
+    "message": "Výchozí nastavení poskytovatele"
+  },
+  "settingBaseUrl": {
+    "message": "Základní URL AI (volitelné)"
+  },
+  "settingBaseUrlDesc": {
+    "message": "Ponechte prázdné pro použití koncového bodu poskytovatele zobrazeného v poli."
+  },
+  "settingCatalog": {
+    "message": "Seznam poskytovatelů a modelů"
+  },
+  "catalogLoading": {
+    "message": "Načítání seznamu poskytovatelů…"
+  },
+  "catalogOffline": {
+    "message": "models.dev není dostupné — pouze vestavění poskytovatelé."
+  },
+  "catalogSummary": {
+    "message": "$PROVIDERS$ poskytovatelů · $MODELS$ modelů z models.dev."
+  },
+  "btnRefresh": {
+    "message": "Obnovit"
+  },
+  "btnRefreshing": {
+    "message": "Obnovování…"
+  },
+  "settingLanguage": {
+    "message": "Jazyk rozhraní"
+  },
+  "settingLanguageDesc": {
+    "message": "Řídí se jazykem Obsidian, pokud zde nějaký nevyberete."
+  },
+  "languageAuto": {
+    "message": "Podle Obsidian"
+  }
+}

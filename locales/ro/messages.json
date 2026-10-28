@@ -1,0 +1,137 @@
+{
+  "cmdTranslateReplace": {
+    "message": "Traduce selecția (înlocuiește)"
+  },
+  "cmdTranslateInsert": {
+    "message": "Traduce selecția (inserează dedesubt)"
+  },
+  "cmdTranslateNote": {
+    "message": "Traduce nota într-un fișier nou"
+  },
+  "noticeNothingSelected": {
+    "message": "DualTran: nimic selectat."
+  },
+  "noticeNoteEmpty": {
+    "message": "DualTran: nota este goală."
+  },
+  "noticeWrote": {
+    "message": "DualTran: s-a scris $PATH$"
+  },
+  "noticeError": {
+    "message": "DualTran: $ERROR$"
+  },
+  "loadingSelection": {
+    "message": "DualTran: se traduce…"
+  },
+  "loadingNote": {
+    "message": "DualTran: se traduce nota…"
+  },
+  "settingEngine": {
+    "message": "Motor"
+  },
+  "settingEngineDesc": {
+    "message": "Google este gratuit și nu necesită cont. AI folosește cheia proprie a furnizorului (BYOK)."
+  },
+  "engineGoogle": {
+    "message": "Google"
+  },
+  "engineAi": {
+    "message": "AI (BYOK)"
+  },
+  "settingSource": {
+    "message": "Limba sursă"
+  },
+  "settingSourceDesc": {
+    "message": "Codul limbii în care este scris textul — „auto” o detectează."
+  },
+  "settingTarget": {
+    "message": "Limba țintă"
+  },
+  "settingTargetDesc": {
+    "message": "Limba în care este scris textul tradus."
+  },
+  "settingProvider": {
+    "message": "Furnizor de IA"
+  },
+  "settingProviderDesc": {
+    "message": "Mai întâi furnizorii încorporați, apoi tot ce cunoaște models.dev (actualizat zilnic)."
+  },
+  "providerSeparator": {
+    "message": "──── mai multe ────"
+  },
+  "settingApiKey": {
+    "message": "Cheie API AI"
+  },
+  "settingApiKeyDesc": {
+    "message": "Stocată local doar pe acest dispozitiv."
+  },
+  "settingModel": {
+    "message": "Model AI"
+  },
+  "settingModelDescListed": {
+    "message": "Modelele listate de models.dev pentru acest furnizor."
+  },
+  "settingModelDescMissing": {
+    "message": "Nu există o intrare în catalog pentru acest furnizor — introduceți un id de model mai jos."
+  },
+  "customModelOption": {
+    "message": "Personalizat…"
+  },
+  "settingCustomModel": {
+    "message": "Id de model personalizat"
+  },
+  "settingCustomModelDesc": {
+    "message": "Transmis furnizorului ca atare."
+  },
+  "placeholderModelId": {
+    "message": "model-id"
+  },
+  "settingReasoning": {
+    "message": "Efort de raționament AI"
+  },
+  "settingReasoningDesc": {
+    "message": "Cât de mult poate gândi modelul înainte de a răspunde. Nivelul cel mai scăzut menține traducerile rapide."
+  },
+  "settingReasoningDescNone": {
+    "message": "Acest model nu declară niveluri de raționament, deci setarea nu are efect pentru el."
+  },
+  "reasoningLowest": {
+    "message": "Cea mai mică (implicit)"
+  },
+  "reasoningProviderDefault": {
+    "message": "Implicit furnizor"
+  },
+  "settingBaseUrl": {
+    "message": "URL de bază AI (opțional)"
+  },
+  "settingBaseUrlDesc": {
+    "message": "Lăsați gol pentru a utiliza endpointul furnizorului afișat în câmp."
+  },
+  "settingCatalog": {
+    "message": "Listă furnizori și modele"
+  },
+  "catalogLoading": {
+    "message": "Se încarcă lista de furnizori…"
+  },
+  "catalogOffline": {
+    "message": "models.dev indisponibil — doar furnizori încorporați."
+  },
+  "catalogSummary": {
+    "message": "$PROVIDERS$ furnizori · $MODELS$ modele de la models.dev."
+  },
+  "btnRefresh": {
+    "message": "Reîmprospătează"
+  },
+  "btnRefreshing": {
+    "message": "Se reîmprospătează…"
+  },
+  "settingLanguage": {
+    "message": "Limba interfeței"
+  },
+  "settingLanguageDesc": {
+    "message": "Urmează limba Obsidian dacă nu alegeți una aici."
+  },
+  "languageAuto": {
+    "message": "Urmează Obsidian"
+  }
+}

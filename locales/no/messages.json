@@ -1,0 +1,137 @@
+{
+  "cmdTranslateReplace": {
+    "message": "Oversett utvalg (erstatt)"
+  },
+  "cmdTranslateInsert": {
+    "message": "Oversett utvalg (sett inn under)"
+  },
+  "cmdTranslateNote": {
+    "message": "Oversett notat til ny fil"
+  },
+  "noticeNothingSelected": {
+    "message": "DualTran: ingenting valgt."
+  },
+  "noticeNoteEmpty": {
+    "message": "DualTran: notatet er tomt."
+  },
+  "noticeWrote": {
+    "message": "DualTran: skrev $PATH$"
+  },
+  "noticeError": {
+    "message": "DualTran: $ERROR$"
+  },
+  "loadingSelection": {
+    "message": "DualTran: oversetter…"
+  },
+  "loadingNote": {
+    "message": "DualTran: oversetter notat…"
+  },
+  "settingEngine": {
+    "message": "Motor"
+  },
+  "settingEngineDesc": {
+    "message": "Google er gratis og krever ingen konto. AI bruker din egen leverandørnøkkel (BYOK)."
+  },
+  "engineGoogle": {
+    "message": "Google"
+  },
+  "engineAi": {
+    "message": "AI (BYOK)"
+  },
+  "settingSource": {
+    "message": "Kildespråk"
+  },
+  "settingSourceDesc": {
+    "message": "Språkkoden teksten er skrevet på – «auto» oppdager den."
+  },
+  "settingTarget": {
+    "message": "Målspråk"
+  },
+  "settingTargetDesc": {
+    "message": "Språket den oversatte teksten er skrevet på."
+  },
+  "settingProvider": {
+    "message": "AI-leverandør"
+  },
+  "settingProviderDesc": {
+    "message": "Innebygde leverandører først, deretter alt models.dev kjenner til (oppdateres daglig)."
+  },
+  "providerSeparator": {
+    "message": "──── mer ────"
+  },
+  "settingApiKey": {
+    "message": "AI API-nøkkel"
+  },
+  "settingApiKeyDesc": {
+    "message": "Lagres lokalt på denne enheten."
+  },
+  "settingModel": {
+    "message": "AI-modell"
+  },
+  "settingModelDescListed": {
+    "message": "Modeller som models.dev viser for denne leverandøren."
+  },
+  "settingModelDescMissing": {
+    "message": "Ingen katalogoppføring for denne leverandøren – skriv inn en modell-id nedenfor."
+  },
+  "customModelOption": {
+    "message": "Egendefinert …"
+  },
+  "settingCustomModel": {
+    "message": "Egendefinert modell-id"
+  },
+  "settingCustomModelDesc": {
+    "message": "Sendes til leverandøren uendret."
+  },
+  "placeholderModelId": {
+    "message": "modell-id"
+  },
+  "settingReasoning": {
+    "message": "AI-resonneringsinnsats"
+  },
+  "settingReasoningDesc": {
+    "message": "Hvor mye modellen kan tenke før den svarer. Lavest holder oversettelsene raske."
+  },
+  "settingReasoningDescNone": {
+    "message": "Denne modellen oppgir ingen resonneringsnivåer, så innstillingen har ingen effekt for den."
+  },
+  "reasoningLowest": {
+    "message": "Laveste (standard)"
+  },
+  "reasoningProviderDefault": {
+    "message": "Leverandørens standard"
+  },
+  "settingBaseUrl": {
+    "message": "AI-basis-URL (valgfritt)"
+  },
+  "settingBaseUrlDesc": {
+    "message": "La stå tom for å bruke leverandørens endepunkt som vises i feltet."
+  },
+  "settingCatalog": {
+    "message": "Leverandør- og modelliste"
+  },
+  "catalogLoading": {
+    "message": "Laster inn leverandørliste…"
+  },
+  "catalogOffline": {
+    "message": "models.dev er utilgjengelig – kun innebygde leverandører."
+  },
+  "catalogSummary": {
+    "message": "$PROVIDERS$ leverandører · $MODELS$ modeller fra models.dev."
+  },
+  "btnRefresh": {
+    "message": "Oppdater"
+  },
+  "btnRefreshing": {
+    "message": "Oppdaterer…"
+  },
+  "settingLanguage": {
+    "message": "Grensesnittspråk"
+  },
+  "settingLanguageDesc": {
+    "message": "Følger Obsidian-språket med mindre du velger ett her."
+  },
+  "languageAuto": {
+    "message": "Følg Obsidian"
+  }
+}

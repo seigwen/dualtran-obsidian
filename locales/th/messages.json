@@ -1,0 +1,137 @@
+{
+  "cmdTranslateReplace": {
+    "message": "แปลข้อความที่เลือก (แทนที่)"
+  },
+  "cmdTranslateInsert": {
+    "message": "แปลข้อความที่เลือก (แทรกด้านล่าง)"
+  },
+  "cmdTranslateNote": {
+    "message": "แปลโน้ตเป็นไฟล์ใหม่"
+  },
+  "noticeNothingSelected": {
+    "message": "DualTran: ไม่มีข้อความที่เลือก"
+  },
+  "noticeNoteEmpty": {
+    "message": "DualTran: โน้ตว่างเปล่า"
+  },
+  "noticeWrote": {
+    "message": "DualTran: เขียน $PATH$ แล้ว"
+  },
+  "noticeError": {
+    "message": "DualTran: $ERROR$"
+  },
+  "loadingSelection": {
+    "message": "DualTran: กำลังแปล…"
+  },
+  "loadingNote": {
+    "message": "DualTran: กำลังแปลโน้ต…"
+  },
+  "settingEngine": {
+    "message": "เอนจิน"
+  },
+  "settingEngineDesc": {
+    "message": "Google ฟรีและไม่ต้องใช้บัญชี AI ใช้คีย์ผู้ให้บริการของคุณเอง (BYOK)"
+  },
+  "engineGoogle": {
+    "message": "Google"
+  },
+  "engineAi": {
+    "message": "AI (BYOK)"
+  },
+  "settingSource": {
+    "message": "ภาษาต้นฉบับ"
+  },
+  "settingSourceDesc": {
+    "message": "รหัสภาษาของข้อความต้นฉบับ — \"auto\" จะตรวจจับให้"
+  },
+  "settingTarget": {
+    "message": "ภาษาปลายทาง"
+  },
+  "settingTargetDesc": {
+    "message": "ภาษาของข้อความที่แปลแล้ว"
+  },
+  "settingProvider": {
+    "message": "ผู้ให้บริการ AI"
+  },
+  "settingProviderDesc": {
+    "message": "ผู้ให้บริการในตัวก่อน จากนั้นทุกอย่างที่ models.dev รู้จัก (อัปเดตทุกวัน)"
+  },
+  "providerSeparator": {
+    "message": "──── เพิ่มเติม ────"
+  },
+  "settingApiKey": {
+    "message": "คีย์ AI API"
+  },
+  "settingApiKeyDesc": {
+    "message": "จัดเก็บไว้ในเครื่องนี้เท่านั้น"
+  },
+  "settingModel": {
+    "message": "โมเดล AI"
+  },
+  "settingModelDescListed": {
+    "message": "โมเดลที่ models.dev แสดงสำหรับผู้ให้บริการรายนี้"
+  },
+  "settingModelDescMissing": {
+    "message": "ไม่มีรายการแคตตาล็อกสำหรับผู้ให้บริการรายนี้ — ป้อนรหัสโมเดลด้านล่าง"
+  },
+  "customModelOption": {
+    "message": "กำหนดเอง…"
+  },
+  "settingCustomModel": {
+    "message": "รหัสโมเดลกำหนดเอง"
+  },
+  "settingCustomModelDesc": {
+    "message": "ส่งไปยังผู้ให้บริการตามที่เป็นอยู่"
+  },
+  "placeholderModelId": {
+    "message": "model-id"
+  },
+  "settingReasoning": {
+    "message": "ระดับการใช้เหตุผลของ AI"
+  },
+  "settingReasoningDesc": {
+    "message": "โมเดลสามารถคิดได้มากเพียงใดก่อนตอบ ระดับต่ำสุดช่วยให้การแปลรวดเร็ว"
+  },
+  "settingReasoningDescNone": {
+    "message": "โมเดลนี้ไม่ได้ประกาศระดับการใช้เหตุผล ดังนั้นการตั้งค่านี้จึงไม่มีผล"
+  },
+  "reasoningLowest": {
+    "message": "ต่ำสุด (ค่าเริ่มต้น)"
+  },
+  "reasoningProviderDefault": {
+    "message": "ค่าเริ่มต้นของผู้ให้บริการ"
+  },
+  "settingBaseUrl": {
+    "message": "URL ฐานของ AI (ไม่บังคับ)"
+  },
+  "settingBaseUrlDesc": {
+    "message": "เว้นว่างไว้เพื่อใช้ปลายทางของผู้ให้บริการที่แสดงในช่อง"
+  },
+  "settingCatalog": {
+    "message": "รายการผู้ให้บริการและโมเดล"
+  },
+  "catalogLoading": {
+    "message": "กำลังโหลดรายการผู้ให้บริการ…"
+  },
+  "catalogOffline": {
+    "message": "models.dev ไม่พร้อมใช้งาน — ใช้เฉพาะผู้ให้บริการในตัวเท่านั้น"
+  },
+  "catalogSummary": {
+    "message": "$PROVIDERS$ ผู้ให้บริการ · $MODELS$ โมเดลจาก models.dev"
+  },
+  "btnRefresh": {
+    "message": "รีเฟรช"
+  },
+  "btnRefreshing": {
+    "message": "กำลังรีเฟรช…"
+  },
+  "settingLanguage": {
+    "message": "ภาษาของอินเทอร์เฟซ"
+  },
+  "settingLanguageDesc": {
+    "message": "ใช้ภาษาตาม Obsidian เว้นแต่คุณจะเลือกภาษาที่นี่"
+  },
+  "languageAuto": {
+    "message": "ตาม Obsidian"
+  }
+}

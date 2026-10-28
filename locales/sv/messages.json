@@ -1,0 +1,137 @@
+{
+  "cmdTranslateReplace": {
+    "message": "Översätt markering (ersätt)"
+  },
+  "cmdTranslateInsert": {
+    "message": "Översätt markering (infoga nedan)"
+  },
+  "cmdTranslateNote": {
+    "message": "Översätt anteckning till en ny fil"
+  },
+  "noticeNothingSelected": {
+    "message": "DualTran: inget markerat."
+  },
+  "noticeNoteEmpty": {
+    "message": "DualTran: anteckningen är tom."
+  },
+  "noticeWrote": {
+    "message": "DualTran: skrev $PATH$"
+  },
+  "noticeError": {
+    "message": "DualTran: $ERROR$"
+  },
+  "loadingSelection": {
+    "message": "DualTran: översätter…"
+  },
+  "loadingNote": {
+    "message": "DualTran: översätter anteckning…"
+  },
+  "settingEngine": {
+    "message": "Motor"
+  },
+  "settingEngineDesc": {
+    "message": "Google är gratis och kräver inget konto. AI använder din egen leverantörsnyckel (BYOK)."
+  },
+  "engineGoogle": {
+    "message": "Google"
+  },
+  "engineAi": {
+    "message": "AI (BYOK)"
+  },
+  "settingSource": {
+    "message": "Källspråk"
+  },
+  "settingSourceDesc": {
+    "message": "Språkkod som texten är skriven i – \"auto\" identifierar den."
+  },
+  "settingTarget": {
+    "message": "Målspråk"
+  },
+  "settingTargetDesc": {
+    "message": "Språk som den översatta texten är skriven i."
+  },
+  "settingProvider": {
+    "message": "AI-leverantör"
+  },
+  "settingProviderDesc": {
+    "message": "Inbyggda leverantörer först, sedan allt som models.dev känner till (uppdateras dagligen)."
+  },
+  "providerSeparator": {
+    "message": "──── fler ────"
+  },
+  "settingApiKey": {
+    "message": "AI API-nyckel"
+  },
+  "settingApiKeyDesc": {
+    "message": "Lagras endast lokalt på den här enheten."
+  },
+  "settingModel": {
+    "message": "AI-modell"
+  },
+  "settingModelDescListed": {
+    "message": "Modeller som models.dev listar för den här leverantören."
+  },
+  "settingModelDescMissing": {
+    "message": "Ingen katalogpost för den här leverantören – ange ett modell-id nedan."
+  },
+  "customModelOption": {
+    "message": "Anpassad…"
+  },
+  "settingCustomModel": {
+    "message": "Anpassat modell-id"
+  },
+  "settingCustomModelDesc": {
+    "message": "Skickas till leverantören som det är."
+  },
+  "placeholderModelId": {
+    "message": "modell-id"
+  },
+  "settingReasoning": {
+    "message": "AI-resonemangsinsats"
+  },
+  "settingReasoningDesc": {
+    "message": "Hur mycket modellen får tänka innan den svarar. Lägst håller översättningarna snabba."
+  },
+  "settingReasoningDescNone": {
+    "message": "Den här modellen anger inga resonemangsnivåer, så inställningen har ingen effekt för den."
+  },
+  "reasoningLowest": {
+    "message": "Lägsta (standard)"
+  },
+  "reasoningProviderDefault": {
+    "message": "Leverantörens standard"
+  },
+  "settingBaseUrl": {
+    "message": "AI-bas-URL (valfritt)"
+  },
+  "settingBaseUrlDesc": {
+    "message": "Lämna tomt för att använda leverantörens slutpunkt som visas i fältet."
+  },
+  "settingCatalog": {
+    "message": "Leverantörs- och modellista"
+  },
+  "catalogLoading": {
+    "message": "Läser in leverantörslista…"
+  },
+  "catalogOffline": {
+    "message": "models.dev är inte tillgänglig – endast inbyggda leverantörer."
+  },
+  "catalogSummary": {
+    "message": "$PROVIDERS$ leverantörer · $MODELS$ modeller från models.dev."
+  },
+  "btnRefresh": {
+    "message": "Uppdatera"
+  },
+  "btnRefreshing": {
+    "message": "Uppdaterar…"
+  },
+  "settingLanguage": {
+    "message": "Gränssnittsspråk"
+  },
+  "settingLanguageDesc": {
+    "message": "Följer Obsidians språk om du inte väljer ett här."
+  },
+  "languageAuto": {
+    "message": "Följ Obsidian"
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "cmdTranslateReplace": {
+    "message": "תרגם בחירה (החלפה)"
+  },
+  "cmdTranslateInsert": {
+    "message": "תרגם בחירה (הוספה למטה)"
+  },
+  "cmdTranslateNote": {
+    "message": "תרגם הערה לקובץ חדש"
+  },
+  "noticeNothingSelected": {
+    "message": "DualTran: לא נבחר דבר."
+  },
+  "noticeNoteEmpty": {
+    "message": "DualTran: ההערה ריקה."
+  },
+  "noticeWrote": {
+    "message": "DualTran: נכתב $PATH$"
+  },
+  "noticeError": {
+    "message": "DualTran: $ERROR$"
+  },
+  "loadingSelection": {
+    "message": "DualTran: מתרגם…"
+  },
+  "loadingNote": {
+    "message": "DualTran: מתרגם הערה…"
+  },
+  "settingEngine": {
+    "message": "מנוע"
+  },
+  "settingEngineDesc": {
+    "message": "Google בחינם ואינו דורש חשבון. AI משתמש במפתח ספק משלך (BYOK)."
+  },
+  "engineGoogle": {
+    "message": "Google"
+  },
+  "engineAi": {
+    "message": "AI (BYOK)"
+  },
+  "settingSource": {
+    "message": "שפת מקור"
+  },
+  "settingSourceDesc": {
+    "message": "קוד השפה שבה נכתב הטקסט — \"auto\" מזהה אותה."
+  },
+  "settingTarget": {
+    "message": "שפת יעד"
+  },
+  "settingTargetDesc": {
+    "message": "השפה שאליה מתורגם הטקסט."
+  },
+  "settingProvider": {
+    "message": "ספק בינה מלאכותית"
+  },
+  "settingProviderDesc": {
+    "message": "ספקים מובנים תחילה, ואחר כך כל מה ש-models.dev מכיר (מתעדכן מדי יום)."
+  },
+  "providerSeparator": {
+    "message": "──── עוד ────"
+  },
+  "settingApiKey": {
+    "message": "מפתח API של AI"
+  },
+  "settingApiKeyDesc": {
+    "message": "נשמר מקומית במכשיר זה בלבד."
+  },
+  "settingModel": {
+    "message": "מודל AI"
+  },
+  "settingModelDescListed": {
+    "message": "מודלים ש-models.dev מפרט עבור ספק זה."
+  },
+  "settingModelDescMissing": {
+    "message": "אין רשומת קטלוג עבור ספק זה — הזן מזהה מודל למטה."
+  },
+  "customModelOption": {
+    "message": "מותאם אישית…"
+  },
+  "settingCustomModel": {
+    "message": "מזהה מודל מותאם אישית"
+  },
+  "settingCustomModelDesc": {
+    "message": "מועבר לספק כפי שהוא."
+  },
+  "placeholderModelId": {
+    "message": "model-id"
+  },
+  "settingReasoning": {
+    "message": "מאמץ חשיבה של AI"
+  },
+  "settingReasoningDesc": {
+    "message": "כמה המודל רשאי לחשוב לפני מענה. הנמוך ביותר שומר על תרגומים מהירים."
+  },
+  "settingReasoningDescNone": {
+    "message": "מודל זה אינו מצהיר על רמות חשיבה, ולכן ההגדרה אינה משפיעה עליו."
+  },
+  "reasoningLowest": {
+    "message": "הנמוך ביותר (ברירת מחדל)"
+  },
+  "reasoningProviderDefault": {
+    "message": "ברירת מחדל של הספק"
+  },
+  "settingBaseUrl": {
+    "message": "כתובת בסיס של AI (אופציונלי)"
+  },
+  "settingBaseUrlDesc": {
+    "message": "השאר ריק כדי להשתמש בכתובת נקודת הקצה של הספק המוצגת בשדה."
+  },
+  "settingCatalog": {
+    "message": "רשימת ספקים ודגמים"
+  },
+  "catalogLoading": {
+    "message": "טוען רשימת ספקים…"
+  },
+  "catalogOffline": {
+    "message": "models.dev אינו זמין — רק ספקים מובנים."
+  },
+  "catalogSummary": {
+    "message": "$PROVIDERS$ ספקים · $MODELS$ דגמים מ-models.dev."
+  },
+  "btnRefresh": {
+    "message": "רענן"
+  },
+  "btnRefreshing": {
+    "message": "מרענן…"
+  },
+  "settingLanguage": {
+    "message": "שפת הממשק"
+  },
+  "settingLanguageDesc": {
+    "message": "עוקב אחר שפת Obsidian אלא אם תבחר שפה כאן."
+  },
+  "languageAuto": {
+    "message": "עקוב אחר Obsidian"
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "cmdTranslateReplace": {
+    "message": "Vertaal seleksie (vervang)"
+  },
+  "cmdTranslateInsert": {
+    "message": "Vertaal seleksie (voeg hieronder in)"
+  },
+  "cmdTranslateNote": {
+    "message": "Vertaal nota na nuwe lêer"
+  },
+  "noticeNothingSelected": {
+    "message": "DualTran: niks geselekteer nie."
+  },
+  "noticeNoteEmpty": {
+    "message": "DualTran: die nota is leeg."
+  },
+  "noticeWrote": {
+    "message": "DualTran: het $PATH$ geskryf"
+  },
+  "noticeError": {
+    "message": "DualTran: $ERROR$"
+  },
+  "loadingSelection": {
+    "message": "DualTran: vertaal tans…"
+  },
+  "loadingNote": {
+    "message": "DualTran: vertaal tans nota…"
+  },
+  "settingEngine": {
+    "message": "Enjin"
+  },
+  "settingEngineDesc": {
+    "message": "Google is gratis en benodig geen rekening nie. AI gebruik jou eie verskaffer-sleutel (BYOK)."
+  },
+  "engineGoogle": {
+    "message": "Google"
+  },
+  "engineAi": {
+    "message": "AI (BYOK)"
+  },
+  "settingSource": {
+    "message": "Brontaal"
+  },
+  "settingSourceDesc": {
+    "message": "Taalkode waarin die teks geskryf is — \"auto\" bespeur dit."
+  },
+  "settingTarget": {
+    "message": "Teikentaal"
+  },
+  "settingTargetDesc": {
+    "message": "Taal waarin die vertaalde teks geskryf is."
+  },
+  "settingProvider": {
+    "message": "KI-verskaffer"
+  },
+  "settingProviderDesc": {
+    "message": "Ingeboude verskaffers eerste, dan alles wat models.dev van weet (daagliks verfris)."
+  },
+  "providerSeparator": {
+    "message": "──── meer ────"
+  },
+  "settingApiKey": {
+    "message": "AI API-sleutel"
+  },
+  "settingApiKeyDesc": {
+    "message": "Slegs plaaslik op hierdie toestel gestoor."
+  },
+  "settingModel": {
+    "message": "KI-model"
+  },
+  "settingModelDescListed": {
+    "message": "Modelle wat models.dev vir hierdie verskaffer lys."
+  },
+  "settingModelDescMissing": {
+    "message": "Geen katalogusinskrywing vir hierdie verskaffer nie — voer 'n model-id hieronder in."
+  },
+  "customModelOption": {
+    "message": "Pasgemaak…"
+  },
+  "settingCustomModel": {
+    "message": "Pasgemaakte model-id"
+  },
+  "settingCustomModelDesc": {
+    "message": "Word soos dit is aan die verskaffer deurgegee."
+  },
+  "placeholderModelId": {
+    "message": "model-id"
+  },
+  "settingReasoning": {
+    "message": "KI-redenasie-inspanning"
+  },
+  "settingReasoningDesc": {
+    "message": "Hoeveel die model mag dink voordat dit antwoord. Laagste hou vertalings vinnig."
+  },
+  "settingReasoningDescNone": {
+    "message": "Hierdie model verklaar geen redenasievlakke nie, dus het die instelling geen effek daarop nie."
+  },
+  "reasoningLowest": {
+    "message": "Laagste (standaard)"
+  },
+  "reasoningProviderDefault": {
+    "message": "Verskaffer verstek"
+  },
+  "settingBaseUrl": {
+    "message": "KI-basis-URL (opsioneel)"
+  },
+  "settingBaseUrlDesc": {
+    "message": "Laat leeg om die verskaffer-eindpunt te gebruik wat in die veld gewys word."
+  },
+  "settingCatalog": {
+    "message": "Verskaffer- en modellys"
+  },
+  "catalogLoading": {
+    "message": "Laai tans verskafferlys…"
+  },
+  "catalogOffline": {
+    "message": "models.dev nie beskikbaar nie — slegs ingeboude verskaffers."
+  },
+  "catalogSummary": {
+    "message": "$PROVIDERS$ verskaffers · $MODELS$ modelle van models.dev."
+  },
+  "btnRefresh": {
+    "message": "Verfris"
+  },
+  "btnRefreshing": {
+    "message": "Verfris tans…"
+  },
+  "settingLanguage": {
+    "message": "Koppelvlaktaal"
+  },
+  "settingLanguageDesc": {
+    "message": "Volg die Obsidian-taal tensy jy een hier kies."
+  },
+  "languageAuto": {
+    "message": "Volg Obsidian"
+  }
+}

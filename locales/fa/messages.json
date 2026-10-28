@@ -1,0 +1,137 @@
+{
+  "cmdTranslateReplace": {
+    "message": "ترجمه انتخاب (جایگزینی)"
+  },
+  "cmdTranslateInsert": {
+    "message": "ترجمه انتخاب (درج در زیر)"
+  },
+  "cmdTranslateNote": {
+    "message": "ترجمه یادداشت به فایل جدید"
+  },
+  "noticeNothingSelected": {
+    "message": "DualTran: چیزی انتخاب نشده است."
+  },
+  "noticeNoteEmpty": {
+    "message": "DualTran: یادداشت خالی است."
+  },
+  "noticeWrote": {
+    "message": "DualTran: نوشته شد $PATH$"
+  },
+  "noticeError": {
+    "message": "DualTran: $ERROR$"
+  },
+  "loadingSelection": {
+    "message": "DualTran: در حال ترجمه…"
+  },
+  "loadingNote": {
+    "message": "DualTran: در حال ترجمه یادداشت…"
+  },
+  "settingEngine": {
+    "message": "موتور"
+  },
+  "settingEngineDesc": {
+    "message": "Google رایگان است و به حساب کاربری نیاز ندارد. AI از کلید ارائه‌دهنده خودتان استفاده می‌کند (BYOK)."
+  },
+  "engineGoogle": {
+    "message": "Google"
+  },
+  "engineAi": {
+    "message": "AI (BYOK)"
+  },
+  "settingSource": {
+    "message": "زبان مبدأ"
+  },
+  "settingSourceDesc": {
+    "message": "کد زبانی که متن به آن نوشته شده است — «auto» آن را تشخیص می‌دهد."
+  },
+  "settingTarget": {
+    "message": "زبان مقصد"
+  },
+  "settingTargetDesc": {
+    "message": "زبانی که متن ترجمه‌شده به آن نوشته می‌شود."
+  },
+  "settingProvider": {
+    "message": "ارائه‌دهنده هوش مصنوعی"
+  },
+  "settingProviderDesc": {
+    "message": "ابتدا ارائه‌دهنده‌های داخلی، سپس هر چیزی که models.dev می‌شناسد (روزانه به‌روزرسانی می‌شود)."
+  },
+  "providerSeparator": {
+    "message": "──── بیشتر ────"
+  },
+  "settingApiKey": {
+    "message": "کلید API هوش مصنوعی"
+  },
+  "settingApiKeyDesc": {
+    "message": "فقط به‌صورت محلی روی این دستگاه ذخیره می‌شود."
+  },
+  "settingModel": {
+    "message": "مدل هوش مصنوعی"
+  },
+  "settingModelDescListed": {
+    "message": "مدل‌هایی که models.dev برای این ارائه‌دهنده فهرست کرده است."
+  },
+  "settingModelDescMissing": {
+    "message": "هیچ مدخلی در فهرست برای این ارائه‌دهنده وجود ندارد — شناسه مدل را در زیر وارد کنید."
+  },
+  "customModelOption": {
+    "message": "سفارشی…"
+  },
+  "settingCustomModel": {
+    "message": "شناسه مدل سفارشی"
+  },
+  "settingCustomModelDesc": {
+    "message": "بدون تغییر به ارائه‌دهنده ارسال می‌شود."
+  },
+  "placeholderModelId": {
+    "message": "model-id"
+  },
+  "settingReasoning": {
+    "message": "میزان استدلال هوش مصنوعی"
+  },
+  "settingReasoningDesc": {
+    "message": "میزان تفکر مدل پیش از پاسخ‌دهی. کمترین مقدار ترجمه‌ها را سریع نگه می‌دارد."
+  },
+  "settingReasoningDescNone": {
+    "message": "این مدل هیچ سطح استدلالی اعلام نکرده است، بنابراین این تنظیم برای آن اثری ندارد."
+  },
+  "reasoningLowest": {
+    "message": "پایین‌ترین (پیش‌فرض)"
+  },
+  "reasoningProviderDefault": {
+    "message": "پیش‌فرض ارائه‌دهنده"
+  },
+  "settingBaseUrl": {
+    "message": "نشانی پایه هوش مصنوعی (اختیاری)"
+  },
+  "settingBaseUrlDesc": {
+    "message": "برای استفاده از نقطه پایانی ارائه‌دهنده نمایش‌داده‌شده در فیلد، خالی بگذارید."
+  },
+  "settingCatalog": {
+    "message": "فهرست ارائه‌دهنده و مدل"
+  },
+  "catalogLoading": {
+    "message": "در حال بارگذاری فهرست ارائه‌دهندگان…"
+  },
+  "catalogOffline": {
+    "message": "models.dev در دسترس نیست — فقط ارائه‌دهندگان داخلی."
+  },
+  "catalogSummary": {
+    "message": "$PROVIDERS$ ارائه‌دهنده · $MODELS$ مدل از models.dev."
+  },
+  "btnRefresh": {
+    "message": "تازه‌سازی"
+  },
+  "btnRefreshing": {
+    "message": "در حال تازه‌سازی…"
+  },
+  "settingLanguage": {
+    "message": "زبان رابط کاربری"
+  },
+  "settingLanguageDesc": {
+    "message": "از زبان Obsidian پیروی می‌کند مگر اینکه زبان دیگری را اینجا انتخاب کنید."
+  },
+  "languageAuto": {
+    "message": "پیروی از Obsidian"
+  }
+}

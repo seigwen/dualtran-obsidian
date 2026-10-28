@@ -1,0 +1,137 @@
+{
+  "cmdTranslateReplace": {
+    "message": "Kijelölés fordítása (csere)"
+  },
+  "cmdTranslateInsert": {
+    "message": "Kijelölés fordítása (beszúrás alá)"
+  },
+  "cmdTranslateNote": {
+    "message": "Jegyzet fordítása új fájlba"
+  },
+  "noticeNothingSelected": {
+    "message": "DualTran: nincs kijelölés."
+  },
+  "noticeNoteEmpty": {
+    "message": "DualTran: a jegyzet üres."
+  },
+  "noticeWrote": {
+    "message": "DualTran: $PATH$ kiírva"
+  },
+  "noticeError": {
+    "message": "DualTran: $ERROR$"
+  },
+  "loadingSelection": {
+    "message": "DualTran: fordítás…"
+  },
+  "loadingNote": {
+    "message": "DualTran: jegyzet fordítása…"
+  },
+  "settingEngine": {
+    "message": "Motor"
+  },
+  "settingEngineDesc": {
+    "message": "A Google ingyenes és nem igényel fiókot. Az AI a saját szolgáltatói kulcsodat használja (BYOK)."
+  },
+  "engineGoogle": {
+    "message": "Google"
+  },
+  "engineAi": {
+    "message": "AI (BYOK)"
+  },
+  "settingSource": {
+    "message": "Forrásnyelv"
+  },
+  "settingSourceDesc": {
+    "message": "A szöveg nyelvi kódja — az „auto” felismeri."
+  },
+  "settingTarget": {
+    "message": "Célnyelv"
+  },
+  "settingTargetDesc": {
+    "message": "A lefordított szöveg nyelve."
+  },
+  "settingProvider": {
+    "message": "MI-szolgáltató"
+  },
+  "settingProviderDesc": {
+    "message": "Először a beépített szolgáltatók, majd minden, amit a models.dev ismer (naponta frissül)."
+  },
+  "providerSeparator": {
+    "message": "──── további ────"
+  },
+  "settingApiKey": {
+    "message": "AI API-kulcs"
+  },
+  "settingApiKeyDesc": {
+    "message": "Csak ezen az eszközön, helyben tárolva."
+  },
+  "settingModel": {
+    "message": "AI-modell"
+  },
+  "settingModelDescListed": {
+    "message": "A models.dev által ehhez a szolgáltatóhoz listázott modellek."
+  },
+  "settingModelDescMissing": {
+    "message": "Nincs katalógusbejegyzés ehhez a szolgáltatóhoz – adjon meg egy modell-azonosítót alább."
+  },
+  "customModelOption": {
+    "message": "Egyéni…"
+  },
+  "settingCustomModel": {
+    "message": "Egyéni modell-azonosító"
+  },
+  "settingCustomModelDesc": {
+    "message": "Változatlanul kerül továbbításra a szolgáltatónak."
+  },
+  "placeholderModelId": {
+    "message": "modell-azonosító"
+  },
+  "settingReasoning": {
+    "message": "AI-gondolkodási erőfeszítés"
+  },
+  "settingReasoningDesc": {
+    "message": "Mennyit gondolkodhat a modell a válasz előtt. A legalacsonyabb érték gyors fordításokat tart."
+  },
+  "settingReasoningDescNone": {
+    "message": "Ez a modell nem deklarál gondolkodási szinteket, így a beállításnak nincs hatása rá."
+  },
+  "reasoningLowest": {
+    "message": "Legalacsonyabb (alapértelmezett)"
+  },
+  "reasoningProviderDefault": {
+    "message": "Szolgáltató alapértelmezése"
+  },
+  "settingBaseUrl": {
+    "message": "AI alap URL (opcionális)"
+  },
+  "settingBaseUrlDesc": {
+    "message": "Hagyja üresen a mezőben látható szolgáltatói végpont használatához."
+  },
+  "settingCatalog": {
+    "message": "Szolgáltatók és modellek listája"
+  },
+  "catalogLoading": {
+    "message": "Szolgáltatólista betöltése…"
+  },
+  "catalogOffline": {
+    "message": "A models.dev nem érhető el — csak beépített szolgáltatók."
+  },
+  "catalogSummary": {
+    "message": "$PROVIDERS$ szolgáltató · $MODELS$ modell a models.dev-ről."
+  },
+  "btnRefresh": {
+    "message": "Frissítés"
+  },
+  "btnRefreshing": {
+    "message": "Frissítés…"
+  },
+  "settingLanguage": {
+    "message": "Felület nyelve"
+  },
+  "settingLanguageDesc": {
+    "message": "Az Obsidian nyelvét követi, kivéve ha itt választasz egyet."
+  },
+  "languageAuto": {
+    "message": "Obsidian követése"
+  }
+}

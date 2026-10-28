@@ -1,0 +1,137 @@
+{
+  "cmdTranslateReplace": {
+    "message": "Seçimi çevir (değiştir)"
+  },
+  "cmdTranslateInsert": {
+    "message": "Seçimi çevir (altına ekle)"
+  },
+  "cmdTranslateNote": {
+    "message": "Notu yeni bir dosyaya çevir"
+  },
+  "noticeNothingSelected": {
+    "message": "DualTran: hiçbir şey seçilmedi."
+  },
+  "noticeNoteEmpty": {
+    "message": "DualTran: not boş."
+  },
+  "noticeWrote": {
+    "message": "DualTran: $PATH$ yazıldı"
+  },
+  "noticeError": {
+    "message": "DualTran: $ERROR$"
+  },
+  "loadingSelection": {
+    "message": "DualTran: çevriliyor…"
+  },
+  "loadingNote": {
+    "message": "DualTran: not çevriliyor…"
+  },
+  "settingEngine": {
+    "message": "Motor"
+  },
+  "settingEngineDesc": {
+    "message": "Google ücretsizdir ve hesap gerektirmez. AI kendi sağlayıcı anahtarınızı kullanır (BYOK)."
+  },
+  "engineGoogle": {
+    "message": "Google"
+  },
+  "engineAi": {
+    "message": "AI (BYOK)"
+  },
+  "settingSource": {
+    "message": "Kaynak dil"
+  },
+  "settingSourceDesc": {
+    "message": "Metnin yazıldığı dil kodu — \"auto\" otomatik algılar."
+  },
+  "settingTarget": {
+    "message": "Hedef dil"
+  },
+  "settingTargetDesc": {
+    "message": "Çevrilen metnin yazıldığı dil."
+  },
+  "settingProvider": {
+    "message": "Yapay zekâ sağlayıcısı"
+  },
+  "settingProviderDesc": {
+    "message": "Önce yerleşik sağlayıcılar, ardından models.dev'in bildiği her şey (günlük yenilenir)."
+  },
+  "providerSeparator": {
+    "message": "──── daha fazla ────"
+  },
+  "settingApiKey": {
+    "message": "AI API anahtarı"
+  },
+  "settingApiKeyDesc": {
+    "message": "Yalnızca bu cihazda yerel olarak saklanır."
+  },
+  "settingModel": {
+    "message": "AI modeli"
+  },
+  "settingModelDescListed": {
+    "message": "models.dev bu sağlayıcı için listelenen modeller."
+  },
+  "settingModelDescMissing": {
+    "message": "Bu sağlayıcı için katalog kaydı yok — aşağıya bir model kimliği girin."
+  },
+  "customModelOption": {
+    "message": "Özel…"
+  },
+  "settingCustomModel": {
+    "message": "Özel model kimliği"
+  },
+  "settingCustomModelDesc": {
+    "message": "Sağlayıcıya olduğu gibi iletilir."
+  },
+  "placeholderModelId": {
+    "message": "model-kimliği"
+  },
+  "settingReasoning": {
+    "message": "AI akıl yürütme düzeyi"
+  },
+  "settingReasoningDesc": {
+    "message": "Modelin yanıtlamadan önce ne kadar düşünebileceği. En düşük seviye çevirileri hızlı tutar."
+  },
+  "settingReasoningDescNone": {
+    "message": "Bu model akıl yürütme düzeyi bildirmiyor, bu nedenle ayarın onun için etkisi yok."
+  },
+  "reasoningLowest": {
+    "message": "En düşük (varsayılan)"
+  },
+  "reasoningProviderDefault": {
+    "message": "Sağlayıcı varsayılanı"
+  },
+  "settingBaseUrl": {
+    "message": "AI temel URL'si (isteğe bağlı)"
+  },
+  "settingBaseUrlDesc": {
+    "message": "Sağlayıcı uç noktasını kullanmak için boş bırakın."
+  },
+  "settingCatalog": {
+    "message": "Sağlayıcı ve model listesi"
+  },
+  "catalogLoading": {
+    "message": "Sağlayıcı listesi yükleniyor…"
+  },
+  "catalogOffline": {
+    "message": "models.dev kullanılamıyor — yalnızca yerleşik sağlayıcılar."
+  },
+  "catalogSummary": {
+    "message": "models.dev üzerinden $PROVIDERS$ sağlayıcı · $MODELS$ model."
+  },
+  "btnRefresh": {
+    "message": "Yenile"
+  },
+  "btnRefreshing": {
+    "message": "Yenileniyor…"
+  },
+  "settingLanguage": {
+    "message": "Arayüz dili"
+  },
+  "settingLanguageDesc": {
+    "message": "Obsidian dilini takip eder, burada bir dil seçmediğiniz sürece."
+  },
+  "languageAuto": {
+    "message": "Obsidian'ı takip et"
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "cmdTranslateReplace": {
+    "message": "Auswahl übersetzen (ersetzen)"
+  },
+  "cmdTranslateInsert": {
+    "message": "Auswahl übersetzen (unten einfügen)"
+  },
+  "cmdTranslateNote": {
+    "message": "Notiz in neue Datei übersetzen"
+  },
+  "noticeNothingSelected": {
+    "message": "DualTran: nichts ausgewählt."
+  },
+  "noticeNoteEmpty": {
+    "message": "DualTran: die Notiz ist leer."
+  },
+  "noticeWrote": {
+    "message": "DualTran: $PATH$ geschrieben"
+  },
+  "noticeError": {
+    "message": "DualTran: $ERROR$"
+  },
+  "loadingSelection": {
+    "message": "DualTran: übersetze…"
+  },
+  "loadingNote": {
+    "message": "DualTran: übersetze Notiz…"
+  },
+  "settingEngine": {
+    "message": "Engine"
+  },
+  "settingEngineDesc": {
+    "message": "Google ist kostenlos und benötigt kein Konto. AI verwendet deinen eigenen Provider-Schlüssel (BYOK)."
+  },
+  "engineGoogle": {
+    "message": "Google"
+  },
+  "engineAi": {
+    "message": "AI (BYOK)"
+  },
+  "settingSource": {
+    "message": "Ausgangssprache"
+  },
+  "settingSourceDesc": {
+    "message": "Sprachcode, in dem der Text geschrieben ist — \"auto\" erkennt ihn."
+  },
+  "settingTarget": {
+    "message": "Zielsprache"
+  },
+  "settingTargetDesc": {
+    "message": "Sprache, in die der Text übersetzt wird."
+  },
+  "settingProvider": {
+    "message": "KI-Anbieter"
+  },
+  "settingProviderDesc": {
+    "message": "Zuerst integrierte Provider, dann alles, was models.dev kennt (täglich aktualisiert)."
+  },
+  "providerSeparator": {
+    "message": "──── mehr ────"
+  },
+  "settingApiKey": {
+    "message": "AI-API-Schlüssel"
+  },
+  "settingApiKeyDesc": {
+    "message": "Nur lokal auf diesem Gerät gespeichert."
+  },
+  "settingModel": {
+    "message": "KI-Modell"
+  },
+  "settingModelDescListed": {
+    "message": "Modelle, die models.dev für diesen Anbieter auflistet."
+  },
+  "settingModelDescMissing": {
+    "message": "Kein Katalogeintrag für diesen Anbieter — geben Sie unten eine Modell-ID ein."
+  },
+  "customModelOption": {
+    "message": "Benutzerdefiniert…"
+  },
+  "settingCustomModel": {
+    "message": "Benutzerdefinierte Modell-ID"
+  },
+  "settingCustomModelDesc": {
+    "message": "Wird unverändert an den Anbieter übergeben."
+  },
+  "placeholderModelId": {
+    "message": "modell-id"
+  },
+  "settingReasoning": {
+    "message": "KI-Denkaufwand"
+  },
+  "settingReasoningDesc": {
+    "message": "Wie viel das Modell vor der Antwort nachdenken darf. Niedrigste Stufe hält Übersetzungen schnell."
+  },
+  "settingReasoningDescNone": {
+    "message": "Dieses Modell deklariert keine Denkstufen, daher hat die Einstellung keine Auswirkung darauf."
+  },
+  "reasoningLowest": {
+    "message": "Niedrigste (Standard)"
+  },
+  "reasoningProviderDefault": {
+    "message": "Anbietervorgabe"
+  },
+  "settingBaseUrl": {
+    "message": "KI-Basis-URL (optional)"
+  },
+  "settingBaseUrlDesc": {
+    "message": "Leer lassen, um den im Feld angezeigten Anbieter-Endpunkt zu verwenden."
+  },
+  "settingCatalog": {
+    "message": "Anbieter- und Modellliste"
+  },
+  "catalogLoading": {
+    "message": "Anbieterliste wird geladen…"
+  },
+  "catalogOffline": {
+    "message": "models.dev nicht verfügbar — nur integrierte Anbieter."
+  },
+  "catalogSummary": {
+    "message": "$PROVIDERS$ Anbieter · $MODELS$ Modelle von models.dev."
+  },
+  "btnRefresh": {
+    "message": "Aktualisieren"
+  },
+  "btnRefreshing": {
+    "message": "Wird aktualisiert…"
+  },
+  "settingLanguage": {
+    "message": "Oberflächensprache"
+  },
+  "settingLanguageDesc": {
+    "message": "Folgt der Obsidian-Sprache, sofern du hier keine auswählst."
+  },
+  "languageAuto": {
+    "message": "Obsidian folgen"
+  }
+}

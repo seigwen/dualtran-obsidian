@@ -19,6 +19,8 @@ export interface DualTranSettings {
   aiModel: string;
   aiReasoningDepth: string;
   aiBaseUrl: string;
+  /** Interface language override ("" = follow Obsidian). */
+  uiLang: string;
 }
 
 export const DEFAULT_SETTINGS: DualTranSettings = {
@@ -30,6 +32,7 @@ export const DEFAULT_SETTINGS: DualTranSettings = {
   aiModel: "",
   aiReasoningDepth: LOWEST_REASONING,
   aiBaseUrl: "",
+  uiLang: "",
 };
 
 /**
@@ -51,6 +54,7 @@ export function sanitizeSettings(raw: unknown): DualTranSettings {
     "aiModel",
     "aiReasoningDepth",
     "aiBaseUrl",
+    "uiLang",
   ] as const;
   for (const key of stringKeys) {
     if (typeof source[key] === "string") {

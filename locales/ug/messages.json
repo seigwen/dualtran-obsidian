@@ -1,0 +1,137 @@
+{
+  "cmdTranslateReplace": {
+    "message": "تاللانمىنى تەرجىمە قىلىش (ئالماشتۇرۇش)"
+  },
+  "cmdTranslateInsert": {
+    "message": "تاللانمىنى تەرجىمە قىلىش (ئاستىغا قىستۇرۇش)"
+  },
+  "cmdTranslateNote": {
+    "message": "ئىزاھاتنى يېڭى ھۆججەتكە تەرجىمە قىلىش"
+  },
+  "noticeNothingSelected": {
+    "message": "DualTran: ھېچنېمە تاللانمىدى."
+  },
+  "noticeNoteEmpty": {
+    "message": "DualTran: ئىزاھات قۇرۇق."
+  },
+  "noticeWrote": {
+    "message": "DualTran: $PATH$ يېزىلدى"
+  },
+  "noticeError": {
+    "message": "DualTran: $ERROR$"
+  },
+  "loadingSelection": {
+    "message": "DualTran: تەرجىمە قىلىنىۋاتىدۇ…"
+  },
+  "loadingNote": {
+    "message": "DualTran: ئىزاھات تەرجىمە قىلىنىۋاتىدۇ…"
+  },
+  "settingEngine": {
+    "message": "قوزغاتقۇچ"
+  },
+  "settingEngineDesc": {
+    "message": "Google ھەقسىز، ھېسابات تەلەپ قىلمايدۇ. AI ئۆزىڭىزنىڭ تەمىنلىگۈچى ئاچقۇچىنى ئىشلىتىدۇ (BYOK)."
+  },
+  "engineGoogle": {
+    "message": "Google"
+  },
+  "engineAi": {
+    "message": "AI (BYOK)"
+  },
+  "settingSource": {
+    "message": "مەنبە تىل"
+  },
+  "settingSourceDesc": {
+    "message": "تېكىست يېزىلغان تىل كودى — \"auto\" ئۇنى بايقايدۇ."
+  },
+  "settingTarget": {
+    "message": "نىشان تىل"
+  },
+  "settingTargetDesc": {
+    "message": "تەرجىمە قىلىنغان تېكىست يېزىلغان تىل."
+  },
+  "settingProvider": {
+    "message": "AI تەمىنلىگۈچىسى"
+  },
+  "settingProviderDesc": {
+    "message": "ئالدى بىلەن قۇرۇلغان تەمىنلىگۈچىلەر، ئاندىن models.dev بىلگەن ھەممە نەرسە (كۈندىلىك يېڭىلىنىدۇ)."
+  },
+  "providerSeparator": {
+    "message": "──── تېخىمۇ كۆپ ────"
+  },
+  "settingApiKey": {
+    "message": "AI API ئاچقۇچى"
+  },
+  "settingApiKeyDesc": {
+    "message": "پەقەت بۇ ئۈسكۈنىدە يەرلىك ساقلىنىدۇ."
+  },
+  "settingModel": {
+    "message": "AI مودېلى"
+  },
+  "settingModelDescListed": {
+    "message": "models.dev بۇ تەمىنلىگۈچى ئۈچۈن تىزىملىگەن مودېللار."
+  },
+  "settingModelDescMissing": {
+    "message": "بۇ تەمىنلىگۈچى ئۈچۈن كاتالوگ تۈرى يوق — تۆۋەندە مودېل id نى كىرگۈزۈڭ."
+  },
+  "customModelOption": {
+    "message": "ئىختىيارى…"
+  },
+  "settingCustomModel": {
+    "message": "ئىختىيارى مودېل id"
+  },
+  "settingCustomModelDesc": {
+    "message": "تەمىنلىگۈچىگە شۇنداقلا يوللىنىدۇ."
+  },
+  "placeholderModelId": {
+    "message": "model-id"
+  },
+  "settingReasoning": {
+    "message": "AI پىكىر قىلىش كۈچى"
+  },
+  "settingReasoningDesc": {
+    "message": "مودېل جاۋاب بېرىشتىن بۇرۇن قانچىلىك ئويلايدۇ. ئەڭ تۆۋەن تەرجىمىنى تېز ساقلايدۇ."
+  },
+  "settingReasoningDescNone": {
+    "message": "بۇ مودېل ھېچقانداق پىكىر قىلىش دەرىجىسىنى ئېلان قىلمايدۇ، شۇڭا بۇ تەڭشەك ئۇنىڭغا تەسىر كۆرسەتمەيدۇ."
+  },
+  "reasoningLowest": {
+    "message": "ئەڭ تۆۋەن (سۈكۈتتىكى)"
+  },
+  "reasoningProviderDefault": {
+    "message": "تەمىنلىگۈچىنىڭ سۈكۈتتىكى قىممىتى"
+  },
+  "settingBaseUrl": {
+    "message": "AI ئاساسىي URL (ئىختىيارىي)"
+  },
+  "settingBaseUrlDesc": {
+    "message": "بوش قالدۇرسىڭىز، رايوندا كۆرسىتىلگەن تەمىنلىگۈچى ئاخىرلاشقان نۇقتىسى ئىشلىتىلىدۇ."
+  },
+  "settingCatalog": {
+    "message": "تەمىنلىگۈچى ۋە مودېل تىزىملىكى"
+  },
+  "catalogLoading": {
+    "message": "تەمىنلىگۈچى تىزىملىكى يۈكلىنىۋاتىدۇ…"
+  },
+  "catalogOffline": {
+    "message": "models.dev ئىشلەتكىلى بولمايدۇ — پەقەت قۇرۇلغان تەمىنلىگۈچىلەر."
+  },
+  "catalogSummary": {
+    "message": "$PROVIDERS$ تەمىنلىگۈچى · models.dev دىن $MODELS$ مودېل."
+  },
+  "btnRefresh": {
+    "message": "يېڭىلاش"
+  },
+  "btnRefreshing": {
+    "message": "يېڭىلىنىۋاتىدۇ…"
+  },
+  "settingLanguage": {
+    "message": "كۆرۈنمە يۈزى تىلى"
+  },
+  "settingLanguageDesc": {
+    "message": "Obsidian تىلىغا ئەگىشىدۇ، ئەگەر بۇ يەردە بىر تىل تاللىمىسىڭىز."
+  },
+  "languageAuto": {
+    "message": "Obsidian غا ئەگىشىش"
+  }
+}

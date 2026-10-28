@@ -26,7 +26,9 @@ describe("coreAdapter — the real @dualtran/core through the bridge", () => {
         aiProvider: "",
         aiApiKey: "",
         aiModel: "",
+        aiReasoningDepth: "__lowest__",
         aiBaseUrl: "",
+        uiLang: "",
       }),
     });
     const out = await bridge.translateBlocks(["Hello world"]);

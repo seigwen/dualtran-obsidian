@@ -1,0 +1,137 @@
+{
+  "cmdTranslateReplace": {
+    "message": "Przetłumacz zaznaczenie (zastąp)"
+  },
+  "cmdTranslateInsert": {
+    "message": "Przetłumacz zaznaczenie (wstaw poniżej)"
+  },
+  "cmdTranslateNote": {
+    "message": "Przetłumacz notatkę do nowego pliku"
+  },
+  "noticeNothingSelected": {
+    "message": "DualTran: nic nie zaznaczono."
+  },
+  "noticeNoteEmpty": {
+    "message": "DualTran: notatka jest pusta."
+  },
+  "noticeWrote": {
+    "message": "DualTran: zapisano $PATH$"
+  },
+  "noticeError": {
+    "message": "DualTran: $ERROR$"
+  },
+  "loadingSelection": {
+    "message": "DualTran: tłumaczenie…"
+  },
+  "loadingNote": {
+    "message": "DualTran: tłumaczenie notatki…"
+  },
+  "settingEngine": {
+    "message": "Silnik"
+  },
+  "settingEngineDesc": {
+    "message": "Google jest darmowy i nie wymaga konta. AI korzysta z własnego klucza dostawcy (BYOK)."
+  },
+  "engineGoogle": {
+    "message": "Google"
+  },
+  "engineAi": {
+    "message": "AI (BYOK)"
+  },
+  "settingSource": {
+    "message": "Język źródłowy"
+  },
+  "settingSourceDesc": {
+    "message": "Kod języka tekstu — „auto” wykrywa go automatycznie."
+  },
+  "settingTarget": {
+    "message": "Język docelowy"
+  },
+  "settingTargetDesc": {
+    "message": "Język tekstu tłumaczonego."
+  },
+  "settingProvider": {
+    "message": "Dostawca AI"
+  },
+  "settingProviderDesc": {
+    "message": "Najpierw wbudowani dostawcy, potem wszystko, co zna models.dev (odświeżane codziennie)."
+  },
+  "providerSeparator": {
+    "message": "──── więcej ────"
+  },
+  "settingApiKey": {
+    "message": "Klucz API AI"
+  },
+  "settingApiKeyDesc": {
+    "message": "Przechowywany lokalnie tylko na tym urządzeniu."
+  },
+  "settingModel": {
+    "message": "Model AI"
+  },
+  "settingModelDescListed": {
+    "message": "Modele wymienione przez models.dev dla tego dostawcy."
+  },
+  "settingModelDescMissing": {
+    "message": "Brak wpisu w katalogu dla tego dostawcy — wpisz identyfikator modelu poniżej."
+  },
+  "customModelOption": {
+    "message": "Niestandardowy…"
+  },
+  "settingCustomModel": {
+    "message": "Niestandardowy identyfikator modelu"
+  },
+  "settingCustomModelDesc": {
+    "message": "Przekazywany do dostawcy bez zmian."
+  },
+  "placeholderModelId": {
+    "message": "model-id"
+  },
+  "settingReasoning": {
+    "message": "Wysiłek rozumowania AI"
+  },
+  "settingReasoningDesc": {
+    "message": "Jak długo model może myśleć przed odpowiedzią. Najniższy poziom zapewnia szybkie tłumaczenia."
+  },
+  "settingReasoningDescNone": {
+    "message": "Ten model nie deklaruje poziomów rozumowania, więc to ustawienie nie ma dla niego wpływu."
+  },
+  "reasoningLowest": {
+    "message": "Najniższy (domyślnie)"
+  },
+  "reasoningProviderDefault": {
+    "message": "Domyślny dostawca"
+  },
+  "settingBaseUrl": {
+    "message": "Bazowy adres URL AI (opcjonalnie)"
+  },
+  "settingBaseUrlDesc": {
+    "message": "Pozostaw puste, aby użyć punktu końcowego dostawcy wyświetlanego w polu."
+  },
+  "settingCatalog": {
+    "message": "Lista dostawców i modeli"
+  },
+  "catalogLoading": {
+    "message": "Ładowanie listy dostawców…"
+  },
+  "catalogOffline": {
+    "message": "models.dev niedostępny — tylko wbudowani dostawcy."
+  },
+  "catalogSummary": {
+    "message": "$PROVIDERS$ dostawców · $MODELS$ modeli z models.dev."
+  },
+  "btnRefresh": {
+    "message": "Odśwież"
+  },
+  "btnRefreshing": {
+    "message": "Odświeżanie…"
+  },
+  "settingLanguage": {
+    "message": "Język interfejsu"
+  },
+  "settingLanguageDesc": {
+    "message": "Język jest zgodny z językiem Obsidian, chyba że wybierzesz go tutaj."
+  },
+  "languageAuto": {
+    "message": "Zgodnie z Obsidian"
+  }
+}

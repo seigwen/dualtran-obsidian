@@ -1,0 +1,137 @@
+{
+  "cmdTranslateReplace": {
+    "message": "Tradueix la selecció (reemplaça)"
+  },
+  "cmdTranslateInsert": {
+    "message": "Tradueix la selecció (insereix a sota)"
+  },
+  "cmdTranslateNote": {
+    "message": "Tradueix la nota a un fitxer nou"
+  },
+  "noticeNothingSelected": {
+    "message": "DualTran: no hi ha res seleccionat."
+  },
+  "noticeNoteEmpty": {
+    "message": "DualTran: la nota és buida."
+  },
+  "noticeWrote": {
+    "message": "DualTran: s'ha escrit $PATH$"
+  },
+  "noticeError": {
+    "message": "DualTran: $ERROR$"
+  },
+  "loadingSelection": {
+    "message": "DualTran: traduint…"
+  },
+  "loadingNote": {
+    "message": "DualTran: traduint la nota…"
+  },
+  "settingEngine": {
+    "message": "Motor"
+  },
+  "settingEngineDesc": {
+    "message": "Google és gratuït i no necessita cap compte. L'AI utilitza la teva pròpia clau de proveïdor (BYOK)."
+  },
+  "engineGoogle": {
+    "message": "Google"
+  },
+  "engineAi": {
+    "message": "AI (BYOK)"
+  },
+  "settingSource": {
+    "message": "Idioma d'origen"
+  },
+  "settingSourceDesc": {
+    "message": "Codi d'idioma en què està escrit el text — \"auto\" el detecta."
+  },
+  "settingTarget": {
+    "message": "Llengua de destinació"
+  },
+  "settingTargetDesc": {
+    "message": "Idioma en què està escrit el text traduït."
+  },
+  "settingProvider": {
+    "message": "Proveïdor d'IA"
+  },
+  "settingProviderDesc": {
+    "message": "Primer els proveïdors integrats, després tot el que models.dev coneix (actualitzat diàriament)."
+  },
+  "providerSeparator": {
+    "message": "──── més ────"
+  },
+  "settingApiKey": {
+    "message": "Clau API d'AI"
+  },
+  "settingApiKeyDesc": {
+    "message": "Emmagatzemada localment només en aquest dispositiu."
+  },
+  "settingModel": {
+    "message": "Model d'IA"
+  },
+  "settingModelDescListed": {
+    "message": "Models que models.dev llista per a aquest proveïdor."
+  },
+  "settingModelDescMissing": {
+    "message": "No hi ha cap entrada al catàleg per a aquest proveïdor: introduïu un id de model a continuació."
+  },
+  "customModelOption": {
+    "message": "Personalitzat…"
+  },
+  "settingCustomModel": {
+    "message": "Id de model personalitzat"
+  },
+  "settingCustomModelDesc": {
+    "message": "Es passa al proveïdor tal com és."
+  },
+  "placeholderModelId": {
+    "message": "model-id"
+  },
+  "settingReasoning": {
+    "message": "Esforç de raonament de la IA"
+  },
+  "settingReasoningDesc": {
+    "message": "Quant pot pensar el model abans de respondre. El més baix manté les traduccions ràpides."
+  },
+  "settingReasoningDescNone": {
+    "message": "Aquest model no declara nivells de raonament, així que aquesta opció no té efecte."
+  },
+  "reasoningLowest": {
+    "message": "El més baix (per defecte)"
+  },
+  "reasoningProviderDefault": {
+    "message": "Predeterminat del proveïdor"
+  },
+  "settingBaseUrl": {
+    "message": "URL base d'IA (opcional)"
+  },
+  "settingBaseUrlDesc": {
+    "message": "Deixa-ho buit per utilitzar el punt de connexió del proveïdor mostrat al camp."
+  },
+  "settingCatalog": {
+    "message": "Llista de proveïdors i models"
+  },
+  "catalogLoading": {
+    "message": "S'està carregant la llista de proveïdors…"
+  },
+  "catalogOffline": {
+    "message": "models.dev no disponible — només proveïdors integrats."
+  },
+  "catalogSummary": {
+    "message": "$PROVIDERS$ proveïdors · $MODELS$ models de models.dev."
+  },
+  "btnRefresh": {
+    "message": "Actualitza"
+  },
+  "btnRefreshing": {
+    "message": "S'està actualitzant…"
+  },
+  "settingLanguage": {
+    "message": "Idioma de la interfície"
+  },
+  "settingLanguageDesc": {
+    "message": "Segueix l'idioma de l'Obsidian tret que en triïs un aquí."
+  },
+  "languageAuto": {
+    "message": "Segueix l'Obsidian"
+  }
+}

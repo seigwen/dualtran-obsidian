@@ -1,0 +1,137 @@
+{
+  "cmdTranslateReplace": {
+    "message": "Þýða val (skipta út)"
+  },
+  "cmdTranslateInsert": {
+    "message": "Þýða val (setja inn fyrir neðan)"
+  },
+  "cmdTranslateNote": {
+    "message": "Þýða athugasemd í nýja skrá"
+  },
+  "noticeNothingSelected": {
+    "message": "DualTran: ekkert valið."
+  },
+  "noticeNoteEmpty": {
+    "message": "DualTran: athugasemdin er tóm."
+  },
+  "noticeWrote": {
+    "message": "DualTran: skrifaði $PATH$"
+  },
+  "noticeError": {
+    "message": "DualTran: $ERROR$"
+  },
+  "loadingSelection": {
+    "message": "DualTran: þýði…"
+  },
+  "loadingNote": {
+    "message": "DualTran: þýði athugasemd…"
+  },
+  "settingEngine": {
+    "message": "Vél"
+  },
+  "settingEngineDesc": {
+    "message": "Google er ókeypis og þarf ekki reikning. AI notar þinn eigin lykil (BYOK)."
+  },
+  "engineGoogle": {
+    "message": "Google"
+  },
+  "engineAi": {
+    "message": "AI (BYOK)"
+  },
+  "settingSource": {
+    "message": "Upprunamál"
+  },
+  "settingSourceDesc": {
+    "message": "Málkóði textans — \"auto\" greinir hann."
+  },
+  "settingTarget": {
+    "message": "Markmál"
+  },
+  "settingTargetDesc": {
+    "message": "Málið sem þýddi textinn er skrifaður á."
+  },
+  "settingProvider": {
+    "message": "AI-veitandi"
+  },
+  "settingProviderDesc": {
+    "message": "Innbyggðir veitendur fyrst, síðan allt sem models.dev þekkir (endurnýjað daglega)."
+  },
+  "providerSeparator": {
+    "message": "──── meira ────"
+  },
+  "settingApiKey": {
+    "message": "AI API-lykill"
+  },
+  "settingApiKeyDesc": {
+    "message": "Geymdur staðbundið á þessu tæki eingöngu."
+  },
+  "settingModel": {
+    "message": "AI líkan"
+  },
+  "settingModelDescListed": {
+    "message": "Líkön sem models.dev skráir fyrir þennan þjónustuveitanda."
+  },
+  "settingModelDescMissing": {
+    "message": "Engin skráning í vörulista fyrir þennan þjónustuveitanda — sláðu inn auðkenni líkans hér að neðan."
+  },
+  "customModelOption": {
+    "message": "Sérsniðið…"
+  },
+  "settingCustomModel": {
+    "message": "Sérsniðið auðkenni líkans"
+  },
+  "settingCustomModelDesc": {
+    "message": "Sent til þjónustuveitandans óbreytt."
+  },
+  "placeholderModelId": {
+    "message": "model-id"
+  },
+  "settingReasoning": {
+    "message": "AI rökhugsunarátak"
+  },
+  "settingReasoningDesc": {
+    "message": "Hversu mikið líkanið má hugsa áður en það svarar. Lægsta gildi heldur þýðingum hröðum."
+  },
+  "settingReasoningDescNone": {
+    "message": "Þetta líkan skilgreinir engin rökhugsunarstig, svo stillingin hefur engin áhrif á það."
+  },
+  "reasoningLowest": {
+    "message": "Lægst (sjálfgefið)"
+  },
+  "reasoningProviderDefault": {
+    "message": "Sjálfgefið hjá veitanda"
+  },
+  "settingBaseUrl": {
+    "message": "AI grunnslóð (valfrjálst)"
+  },
+  "settingBaseUrlDesc": {
+    "message": "Skildu eftir autt til að nota endapunkt veitandans sem sýndur er í reitnum."
+  },
+  "settingCatalog": {
+    "message": "Listi yfir veitendur og líkön"
+  },
+  "catalogLoading": {
+    "message": "Hleð lista yfir veitendur…"
+  },
+  "catalogOffline": {
+    "message": "models.dev ekki tiltækt — aðeins innbyggðir veitendur."
+  },
+  "catalogSummary": {
+    "message": "$PROVIDERS$ veitendur · $MODELS$ líkön frá models.dev."
+  },
+  "btnRefresh": {
+    "message": "Endurnýja"
+  },
+  "btnRefreshing": {
+    "message": "Endurnýja…"
+  },
+  "settingLanguage": {
+    "message": "Tungumál viðmóts"
+  },
+  "settingLanguageDesc": {
+    "message": "Fylgir tungumáli Obsidian nema þú veljir annað hér."
+  },
+  "languageAuto": {
+    "message": "Fylgja Obsidian"
+  }
+}

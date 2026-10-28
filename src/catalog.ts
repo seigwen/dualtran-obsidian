@@ -218,12 +218,16 @@ export function resolveReasoningDepth({
 /** Settings-pane options: the sentinel, provider default, then the explicit levels. */
 export function reasoningDepthChoices({
   options,
+  t,
 }: {
   options: Array<{ value: string; label?: string }>;
+  /** Optional translator; without it the English labels are used (unit tests). */
+  t?: (key: string) => string;
 }): Array<{ value: string; text: string }> {
+  const label = (key: string, fallback: string) => (t ? t(key) : fallback);
   const choices = [
-    { value: LOWEST_REASONING, text: "Lowest (default)" },
-    { value: "", text: "Provider default" },
+    { value: LOWEST_REASONING, text: label("reasoningLowest", "Lowest (default)") },
+    { value: "", text: label("reasoningProviderDefault", "Provider default") },
   ];
   const seen = new Set(choices.map((choice) => choice.value));
   for (const option of options) {

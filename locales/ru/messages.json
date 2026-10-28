@@ -1,0 +1,137 @@
+{
+  "cmdTranslateReplace": {
+    "message": "Перевести выделенное (заменить)"
+  },
+  "cmdTranslateInsert": {
+    "message": "Перевести выделенное (вставить ниже)"
+  },
+  "cmdTranslateNote": {
+    "message": "Перевести заметку в новый файл"
+  },
+  "noticeNothingSelected": {
+    "message": "DualTran: ничего не выделено."
+  },
+  "noticeNoteEmpty": {
+    "message": "DualTran: заметка пуста."
+  },
+  "noticeWrote": {
+    "message": "DualTran: записано $PATH$"
+  },
+  "noticeError": {
+    "message": "DualTran: $ERROR$"
+  },
+  "loadingSelection": {
+    "message": "DualTran: перевод…"
+  },
+  "loadingNote": {
+    "message": "DualTran: перевод заметки…"
+  },
+  "settingEngine": {
+    "message": "Движок"
+  },
+  "settingEngineDesc": {
+    "message": "Google бесплатен и не требует аккаунта. AI использует ваш собственный ключ провайдера (BYOK)."
+  },
+  "engineGoogle": {
+    "message": "Google"
+  },
+  "engineAi": {
+    "message": "AI (BYOK)"
+  },
+  "settingSource": {
+    "message": "Исходный язык"
+  },
+  "settingSourceDesc": {
+    "message": "Код языка, на котором написан текст — \"auto\" определяет его."
+  },
+  "settingTarget": {
+    "message": "Целевой язык"
+  },
+  "settingTargetDesc": {
+    "message": "Язык, на который переводится текст."
+  },
+  "settingProvider": {
+    "message": "Поставщик ИИ"
+  },
+  "settingProviderDesc": {
+    "message": "Сначала встроенные провайдеры, затем все, что известно models.dev (обновляется ежедневно)."
+  },
+  "providerSeparator": {
+    "message": "──── ещё ────"
+  },
+  "settingApiKey": {
+    "message": "Ключ AI API"
+  },
+  "settingApiKeyDesc": {
+    "message": "Хранится только локально на этом устройстве."
+  },
+  "settingModel": {
+    "message": "Модель ИИ"
+  },
+  "settingModelDescListed": {
+    "message": "Модели, которые models.dev указывает для этого провайдера."
+  },
+  "settingModelDescMissing": {
+    "message": "Нет записи в каталоге для этого провайдера — введите идентификатор модели ниже."
+  },
+  "customModelOption": {
+    "message": "Другая…"
+  },
+  "settingCustomModel": {
+    "message": "Свой идентификатор модели"
+  },
+  "settingCustomModelDesc": {
+    "message": "Передаётся провайдеру как есть."
+  },
+  "placeholderModelId": {
+    "message": "model-id"
+  },
+  "settingReasoning": {
+    "message": "Усилие рассуждения ИИ"
+  },
+  "settingReasoningDesc": {
+    "message": "Насколько модель может размышлять перед ответом. Наименьшее значение сохраняет перевод быстрым."
+  },
+  "settingReasoningDescNone": {
+    "message": "Эта модель не объявляет уровни рассуждения, поэтому настройка для неё не действует."
+  },
+  "reasoningLowest": {
+    "message": "Минимальный (по умолчанию)"
+  },
+  "reasoningProviderDefault": {
+    "message": "По умолчанию у провайдера"
+  },
+  "settingBaseUrl": {
+    "message": "Базовый URL ИИ (необязательно)"
+  },
+  "settingBaseUrlDesc": {
+    "message": "Оставьте пустым, чтобы использовать эндпоинт провайдера, указанный в поле."
+  },
+  "settingCatalog": {
+    "message": "Список провайдеров и моделей"
+  },
+  "catalogLoading": {
+    "message": "Загрузка списка провайдеров…"
+  },
+  "catalogOffline": {
+    "message": "models.dev недоступен — только встроенные провайдеры."
+  },
+  "catalogSummary": {
+    "message": "$PROVIDERS$ провайдеров · $MODELS$ моделей из models.dev."
+  },
+  "btnRefresh": {
+    "message": "Обновить"
+  },
+  "btnRefreshing": {
+    "message": "Обновление…"
+  },
+  "settingLanguage": {
+    "message": "Язык интерфейса"
+  },
+  "settingLanguageDesc": {
+    "message": "Использует язык Obsidian, если вы не выберете другой здесь."
+  },
+  "languageAuto": {
+    "message": "Как в Obsidian"
+  }
+}

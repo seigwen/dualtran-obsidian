@@ -1,0 +1,137 @@
+{
+  "cmdTranslateReplace": {
+    "message": "ترجمة التحديد (استبدال)"
+  },
+  "cmdTranslateInsert": {
+    "message": "ترجمة التحديد (إدراج أدناه)"
+  },
+  "cmdTranslateNote": {
+    "message": "ترجمة الملاحظة إلى ملف جديد"
+  },
+  "noticeNothingSelected": {
+    "message": "DualTran: لم يتم تحديد شيء."
+  },
+  "noticeNoteEmpty": {
+    "message": "DualTran: الملاحظة فارغة."
+  },
+  "noticeWrote": {
+    "message": "DualTran: تمت الكتابة إلى $PATH$"
+  },
+  "noticeError": {
+    "message": "DualTran: $ERROR$"
+  },
+  "loadingSelection": {
+    "message": "DualTran: جارٍ الترجمة…"
+  },
+  "loadingNote": {
+    "message": "DualTran: جارٍ ترجمة الملاحظة…"
+  },
+  "settingEngine": {
+    "message": "المحرك"
+  },
+  "settingEngineDesc": {
+    "message": "Google مجاني ولا يحتاج إلى حساب. يستخدم AI مفتاح المزود الخاص بك (BYOK)."
+  },
+  "engineGoogle": {
+    "message": "Google"
+  },
+  "engineAi": {
+    "message": "AI (BYOK)"
+  },
+  "settingSource": {
+    "message": "لغة المصدر"
+  },
+  "settingSourceDesc": {
+    "message": "رمز اللغة التي كُتب بها النص — \"auto\" يكتشفها."
+  },
+  "settingTarget": {
+    "message": "اللغة المستهدفة"
+  },
+  "settingTargetDesc": {
+    "message": "اللغة التي تُكتب بها الترجمة."
+  },
+  "settingProvider": {
+    "message": "مزود الذكاء الاصطناعي"
+  },
+  "settingProviderDesc": {
+    "message": "المزودون المدمجون أولاً، ثم كل ما يعرفه models.dev (يُحدَّث يومياً)."
+  },
+  "providerSeparator": {
+    "message": "──── المزيد ────"
+  },
+  "settingApiKey": {
+    "message": "مفتاح AI API"
+  },
+  "settingApiKeyDesc": {
+    "message": "يُخزَّن محلياً على هذا الجهاز فقط."
+  },
+  "settingModel": {
+    "message": "طراز الذكاء الاصطناعي"
+  },
+  "settingModelDescListed": {
+    "message": "الطرازات التي يسردها models.dev لهذا المزوّد."
+  },
+  "settingModelDescMissing": {
+    "message": "لا يوجد إدخال في الكتالوج لهذا المزوّد — أدخل معرّف طراز أدناه."
+  },
+  "customModelOption": {
+    "message": "مخصّص…"
+  },
+  "settingCustomModel": {
+    "message": "معرّف طراز مخصّص"
+  },
+  "settingCustomModelDesc": {
+    "message": "يُمرَّر إلى المزوّد كما هو."
+  },
+  "placeholderModelId": {
+    "message": "model-id"
+  },
+  "settingReasoning": {
+    "message": "جهد استدلال الذكاء الاصطناعي"
+  },
+  "settingReasoningDesc": {
+    "message": "مقدار ما يمكن للطراز التفكير فيه قبل الإجابة. الأدنى يحافظ على سرعة الترجمات."
+  },
+  "settingReasoningDescNone": {
+    "message": "لا يعلن هذا الطراز عن مستويات استدلال، لذا لا يؤثر هذا الإعداد عليه."
+  },
+  "reasoningLowest": {
+    "message": "الأدنى (افتراضي)"
+  },
+  "reasoningProviderDefault": {
+    "message": "الافتراضي للمزود"
+  },
+  "settingBaseUrl": {
+    "message": "عنوان URL الأساسي للذكاء الاصطناعي (اختياري)"
+  },
+  "settingBaseUrlDesc": {
+    "message": "اتركه فارغًا لاستخدام نقطة نهاية المزود المعروضة في الحقل."
+  },
+  "settingCatalog": {
+    "message": "قائمة المزودين والنماذج"
+  },
+  "catalogLoading": {
+    "message": "جارٍ تحميل قائمة المزودين…"
+  },
+  "catalogOffline": {
+    "message": "models.dev غير متاح — المزودون المدمجون فقط."
+  },
+  "catalogSummary": {
+    "message": "$PROVIDERS$ مزودًا · $MODELS$ نموذجًا من models.dev."
+  },
+  "btnRefresh": {
+    "message": "تحديث"
+  },
+  "btnRefreshing": {
+    "message": "جارٍ التحديث…"
+  },
+  "settingLanguage": {
+    "message": "لغة الواجهة"
+  },
+  "settingLanguageDesc": {
+    "message": "يتبع لغة Obsidian ما لم تختر لغة هنا."
+  },
+  "languageAuto": {
+    "message": "اتبع Obsidian"
+  }
+}

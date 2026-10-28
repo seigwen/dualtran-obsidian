@@ -1,0 +1,137 @@
+{
+  "cmdTranslateReplace": {
+    "message": "Prevedi izbor (zameni)"
+  },
+  "cmdTranslateInsert": {
+    "message": "Prevedi izbor (unesi ispod)"
+  },
+  "cmdTranslateNote": {
+    "message": "Prevedi belešku u novu datoteku"
+  },
+  "noticeNothingSelected": {
+    "message": "DualTran: ništa nije izabrano."
+  },
+  "noticeNoteEmpty": {
+    "message": "DualTran: beleška je prazna."
+  },
+  "noticeWrote": {
+    "message": "DualTran: upisano $PATH$"
+  },
+  "noticeError": {
+    "message": "DualTran: $ERROR$"
+  },
+  "loadingSelection": {
+    "message": "DualTran: prevodim…"
+  },
+  "loadingNote": {
+    "message": "DualTran: prevodim belešku…"
+  },
+  "settingEngine": {
+    "message": "Mehanizam"
+  },
+  "settingEngineDesc": {
+    "message": "Google je besplatan i ne zahteva nalog. AI koristi vaš sopstveni ključ provajdera (BYOK)."
+  },
+  "engineGoogle": {
+    "message": "Google"
+  },
+  "engineAi": {
+    "message": "AI (BYOK)"
+  },
+  "settingSource": {
+    "message": "Izvorni jezik"
+  },
+  "settingSourceDesc": {
+    "message": "Kod jezika na kom je tekst napisan — „auto“ ga prepoznaje."
+  },
+  "settingTarget": {
+    "message": "Циљни језик"
+  },
+  "settingTargetDesc": {
+    "message": "Jezik na koji se prevodi tekst."
+  },
+  "settingProvider": {
+    "message": "AI dobavljač"
+  },
+  "settingProviderDesc": {
+    "message": "Prvo ugrađeni provajderi, zatim sve što models.dev poznaje (osvežava se dnevno)."
+  },
+  "providerSeparator": {
+    "message": "──── više ────"
+  },
+  "settingApiKey": {
+    "message": "AI API ključ"
+  },
+  "settingApiKeyDesc": {
+    "message": "Čuva se lokalno samo na ovom uređaju."
+  },
+  "settingModel": {
+    "message": "AI model"
+  },
+  "settingModelDescListed": {
+    "message": "Modeli koje models.dev navodi za ovog provajdera."
+  },
+  "settingModelDescMissing": {
+    "message": "Nema unosa u katalogu za ovog provajdera — unesite ID modela ispod."
+  },
+  "customModelOption": {
+    "message": "Prilagođeno…"
+  },
+  "settingCustomModel": {
+    "message": "ID prilagođenog modela"
+  },
+  "settingCustomModelDesc": {
+    "message": "Prosleđuje se provajderu nepromenjeno."
+  },
+  "placeholderModelId": {
+    "message": "model-id"
+  },
+  "settingReasoning": {
+    "message": "Nivo AI rezonovanja"
+  },
+  "settingReasoningDesc": {
+    "message": "Koliko model može da razmišlja pre odgovora. Najniži nivo održava prevode brzim."
+  },
+  "settingReasoningDescNone": {
+    "message": "Ovaj model ne deklariše nivoe rezonovanja, pa ovo podešavanje na njega ne utiče."
+  },
+  "reasoningLowest": {
+    "message": "Најнижи (подразумевано)"
+  },
+  "reasoningProviderDefault": {
+    "message": "Podrazumevano za provajdera"
+  },
+  "settingBaseUrl": {
+    "message": "AI osnovni URL (opciono)"
+  },
+  "settingBaseUrlDesc": {
+    "message": "Ostavite prazno da biste koristili endpoint provajdera prikazan u polju."
+  },
+  "settingCatalog": {
+    "message": "Lista provajdera i modela"
+  },
+  "catalogLoading": {
+    "message": "Učitavanje liste provajdera…"
+  },
+  "catalogOffline": {
+    "message": "models.dev nije dostupan — samo ugrađeni provajderi."
+  },
+  "catalogSummary": {
+    "message": "$PROVIDERS$ provajdera · $MODELS$ modela sa models.dev."
+  },
+  "btnRefresh": {
+    "message": "Osveži"
+  },
+  "btnRefreshing": {
+    "message": "Osvežavanje…"
+  },
+  "settingLanguage": {
+    "message": "Jezik interfejsa"
+  },
+  "settingLanguageDesc": {
+    "message": "Prati jezik aplikacije Obsidian osim ako ovde izaberete drugi."
+  },
+  "languageAuto": {
+    "message": "Prati Obsidian"
+  }
+}

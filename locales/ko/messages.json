@@ -1,0 +1,137 @@
+{
+  "cmdTranslateReplace": {
+    "message": "선택 항목 번역 (바꾸기)"
+  },
+  "cmdTranslateInsert": {
+    "message": "선택 항목 번역 (아래에 삽입)"
+  },
+  "cmdTranslateNote": {
+    "message": "노트를 새 파일로 번역"
+  },
+  "noticeNothingSelected": {
+    "message": "DualTran: 선택된 항목이 없습니다."
+  },
+  "noticeNoteEmpty": {
+    "message": "DualTran: 노트가 비어 있습니다."
+  },
+  "noticeWrote": {
+    "message": "DualTran: $PATH$에 작성했습니다"
+  },
+  "noticeError": {
+    "message": "DualTran: $ERROR$"
+  },
+  "loadingSelection": {
+    "message": "DualTran: 번역 중…"
+  },
+  "loadingNote": {
+    "message": "DualTran: 노트 번역 중…"
+  },
+  "settingEngine": {
+    "message": "엔진"
+  },
+  "settingEngineDesc": {
+    "message": "Google은 무료이며 계정이 필요 없습니다. AI는 사용자의 제공자 키(BYOK)를 사용합니다."
+  },
+  "engineGoogle": {
+    "message": "Google"
+  },
+  "engineAi": {
+    "message": "AI (BYOK)"
+  },
+  "settingSource": {
+    "message": "원본 언어"
+  },
+  "settingSourceDesc": {
+    "message": "텍스트가 작성된 언어 코드 — \"auto\"는 자동 감지합니다."
+  },
+  "settingTarget": {
+    "message": "대상 언어"
+  },
+  "settingTargetDesc": {
+    "message": "번역된 텍스트가 작성될 언어입니다."
+  },
+  "settingProvider": {
+    "message": "AI 공급자"
+  },
+  "settingProviderDesc": {
+    "message": "내장 제공자가 먼저 표시되고, 그다음 models.dev가 아는 모든 제공자가 표시됩니다(매일 갱신)."
+  },
+  "providerSeparator": {
+    "message": "──── 더 보기 ────"
+  },
+  "settingApiKey": {
+    "message": "AI API 키"
+  },
+  "settingApiKeyDesc": {
+    "message": "이 기기에만 로컬로 저장됩니다."
+  },
+  "settingModel": {
+    "message": "AI 모델"
+  },
+  "settingModelDescListed": {
+    "message": "models.dev에서 이 제공자에 대해 나열한 모델입니다."
+  },
+  "settingModelDescMissing": {
+    "message": "이 제공자에 대한 카탈로그 항목이 없습니다. 아래에 모델 ID를 입력하세요."
+  },
+  "customModelOption": {
+    "message": "사용자 지정…"
+  },
+  "settingCustomModel": {
+    "message": "사용자 지정 모델 ID"
+  },
+  "settingCustomModelDesc": {
+    "message": "제공자에게 그대로 전달됩니다."
+  },
+  "placeholderModelId": {
+    "message": "model-id"
+  },
+  "settingReasoning": {
+    "message": "AI 추론 강도"
+  },
+  "settingReasoningDesc": {
+    "message": "모델이 답변 전에 생각할 수 있는 정도입니다. 가장 낮게 설정하면 번역 속도가 빠릅니다."
+  },
+  "settingReasoningDescNone": {
+    "message": "이 모델은 추론 수준을 선언하지 않으므로 이 설정은 적용되지 않습니다."
+  },
+  "reasoningLowest": {
+    "message": "가장 낮음 (기본값)"
+  },
+  "reasoningProviderDefault": {
+    "message": "제공자 기본값"
+  },
+  "settingBaseUrl": {
+    "message": "AI 기본 URL (선택 사항)"
+  },
+  "settingBaseUrlDesc": {
+    "message": "비워 두면 필드에 표시된 제공자 엔드포인트를 사용합니다."
+  },
+  "settingCatalog": {
+    "message": "제공자 및 모델 목록"
+  },
+  "catalogLoading": {
+    "message": "제공자 목록 불러오는 중…"
+  },
+  "catalogOffline": {
+    "message": "models.dev를 사용할 수 없음 — 내장 제공자만 사용합니다."
+  },
+  "catalogSummary": {
+    "message": "models.dev에서 $PROVIDERS$개 제공자 · $MODELS$개 모델."
+  },
+  "btnRefresh": {
+    "message": "새로 고침"
+  },
+  "btnRefreshing": {
+    "message": "새로 고치는 중…"
+  },
+  "settingLanguage": {
+    "message": "인터페이스 언어"
+  },
+  "settingLanguageDesc": {
+    "message": "여기에서 언어를 선택하지 않으면 Obsidian 언어를 따릅니다"
+  },
+  "languageAuto": {
+    "message": "Obsidian 따르기"
+  }
+}

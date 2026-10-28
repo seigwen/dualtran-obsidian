@@ -5,6 +5,20 @@
 OpenRouter、本地 Ollama 等）。设置页的服务商与模型都是下拉列表，内置一批常用服务商，
 其余来自 [models.dev](https://models.dev) 目录（200+ 服务商），也可以手填自定义模型。
 
+## 界面语言 / Languages
+
+界面提供 **38 种语言**（与浏览器扩展同一套 `locales/<code>/messages.json`）：
+af ar ca cs da de el en es fa fi fr he hi hr hu is it ja ko lv nl no pl pt_BR pt_PT ro ru sl
+sr sv th tr ug uk vi zh_CN zh_TW。默认跟随 Obsidian 自己的界面语言（读 `localStorage.language`
+→ `moment.locale()`），也可以在设置里单独指定并持久化。
+
+```bash
+npm run i18n:sync    # 补齐所有语言（复用扩展译文，其余机译）
+npm run i18n:check   # 缺键 / 空值 / 丢失占位符 / 中文残留 → 失败
+```
+
+`zh_CN` / `zh_TW` 手写、不参与机译；`npm run verify` 会跑 `i18n:check`，语言掉队即构建失败。
+
 ## 安装
 
 1. Obsidian → 设置 → 第三方插件 → 关闭「安全模式」
