@@ -53,6 +53,13 @@ describe("obsidianLocale", () => {
     expect(typeof obsidianLocale()).toBe("string");
     expect(createTranslator(obsidianLocale()).code).toBe("en");
   });
+
+  it("uses the language the host passes in (Obsidian getLanguage())", () => {
+    // main.ts passes getLanguage(); this module must not fall back to the
+    // renderer's moment/localStorage (plan 101, prefer-get-language).
+    expect(obsidianLocale("zh-CN")).toBe("zh-CN");
+    expect(createTranslator(obsidianLocale("zh-CN")).code).toBe("zh_CN");
+  });
 });
 
 describe("locale catalogues", () => {

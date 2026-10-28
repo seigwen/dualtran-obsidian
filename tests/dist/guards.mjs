@@ -41,6 +41,28 @@ for (const id of ["translate-selection-replace", "translate-selection-insert", "
   assert.ok(main.includes(id), `main.js is missing command id ${id}`);
 }
 
+// ── community review rules (plan 101) ──────────────────────────────
+// The directory's scanner rejects runtime <style> injection: plugin CSS must
+// ship as styles.css, which Obsidian loads for us.
+assert.ok(!/createElement\(\s*["']style["']\s*\)/.test(main), "main.js must not create <style> elements (use styles.css)");
+assert.ok(!/\.head\.appendChild\(/.test(main), "main.js must not append to document.head (use styles.css)");
+
+const stylesPath = path.join(ROOT, "styles.css");
+assert.ok(fs.existsSync(stylesPath), "styles.css missing — the loading spinner CSS must ship as a file");
+const styles = fs.readFileSync(stylesPath, "utf8");
+assert.ok(styles.includes(".dualtran-spinner"), "styles.css must style .dualtran-spinner");
+assert.ok(styles.includes("@keyframes dualtran-spin"), "styles.css must define the dualtran-spin animation");
+
+// minAppVersion must cover the newest Obsidian API we call: App.saveLocalStorage
+// is @since 1.8.7 (obsidian.d.ts), and the scanner fails the release when the
+// manifest declares an older floor.
+const [minMajor, minMinor, minPatch] = manifest.minAppVersion.split(".").map(Number);
+const floor = [1, 8, 7];
+const coversFloor =
+  minMajor > floor[0] ||
+  (minMajor === floor[0] && (minMinor > floor[1] || (minMinor === floor[1] && minPatch >= floor[2])));
+assert.ok(coversFloor, `manifest.minAppVersion ${manifest.minAppVersion} is below the 1.8.7 API floor`);
+
 console.log(
-  `[guards] PASS — main.js ${sizeMb.toFixed(2)} MB, ${manifest.id}@${manifest.version}, 3 command ids present`
+  `[guards] PASS — main.js ${sizeMb.toFixed(2)} MB, ${manifest.id}@${manifest.version}, 3 command ids present, styles.css + minAppVersion ${manifest.minAppVersion} ok`
 );

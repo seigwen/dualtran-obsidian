@@ -12,8 +12,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
       - name: Install dependencies (vendored core included)
-        run: npm install --no-audit --no-fund
+        run: npm ci --no-audit --no-fund
       - name: Tests + build + dist guards
         run: npm run verify
 
@@ -25,8 +26,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
       - name: Install dependencies (vendored core included)
-        run: npm install --no-audit --no-fund
+        run: npm ci --no-audit --no-fund
       - name: System deps (Electron + xvfb)
         run: |
           sudo apt-get update

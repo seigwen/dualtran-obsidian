@@ -9,8 +9,8 @@
  */
 
 export interface LocalStorageHost {
-  loadLocalStorage(key: string): unknown | null;
-  saveLocalStorage(key: string, data: unknown | null): void;
+  loadLocalStorage(key: string): unknown;
+  saveLocalStorage(key: string, data: unknown): void;
 }
 
 export interface StorageAdapter {

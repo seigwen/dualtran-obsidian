@@ -9,7 +9,8 @@
     "build": "node scripts/build-i18n.mjs && node esbuild.config.mjs production",
     "test": "vitest run",
     "test:dist": "node tests/dist/guards.mjs",
-    "verify": "npm run test && npm run build && npm run test:dist && npm run i18n:check",
+    "lint": "eslint src",
+    "verify": "npm run lint && npm run test && npm run build && npm run test:dist && npm run i18n:check",
     "e2e": "npm run build && node e2e/run.mjs",
     "i18n:sync": "node scripts/locale-kit.mjs",
     "i18n:check": "node scripts/locale-kit.mjs --check"
@@ -30,13 +31,17 @@
     "@ai-sdk/perplexity": "^3.0.35",
     "@ai-sdk/togetherai": "^2.0.55",
     "@ai-sdk/xai": "^3.0.93",
+    "@eslint/js": "^9.39.5",
     "ai": "^6.0.199",
     "common-tags": "^1.8.2",
     "esbuild": "^0.28.0",
+    "eslint": "^9.39.5",
+    "eslint-plugin-obsidianmd": "^0.4.2",
     "eventsource-parser": "^1.0.0",
     "obsidian": "^1.8.7",
     "playwright": "^1.64.1",
     "typescript": "^5.5.0",
+    "typescript-eslint": "^8.72.1",
     "vitest": "^0.34.6"
   }
 }

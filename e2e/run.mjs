@@ -90,6 +90,9 @@ function seedVault(base) {
   fs.writeFileSync(path.join(vault, "note.md"), "Hello world, this is a test note.\n", "utf8");
   fs.writeFileSync(path.join(pluginDir, "main.js"), fs.readFileSync(path.join(ROOT, "main.js")));
   fs.writeFileSync(path.join(pluginDir, "manifest.json"), fs.readFileSync(path.join(ROOT, "manifest.json")));
+  // Obsidian loads the plugin's styles.css from its folder; the e2e asserts the
+  // spinner animation comes from there (plan 101).
+  fs.writeFileSync(path.join(pluginDir, "styles.css"), fs.readFileSync(path.join(ROOT, "styles.css")));
   fs.writeFileSync(
     path.join(vault, ".obsidian", "community-plugins.json"),
     JSON.stringify([PLUGIN_ID]),
@@ -299,7 +302,7 @@ async function main() {
       // is not always the document Playwright attached to; assert on the notice
       // object itself and on the rendered spinner inside it.
       const notice = plugin.loadingNotice;
-      const el = notice && notice.noticeEl;
+      const el = notice && (notice.messageEl || notice.noticeEl);
       const spinner = el ? el.querySelector(".dualtran-spinner") : null;
       const during = {
         hasNotice: !!notice,
@@ -307,6 +310,9 @@ async function main() {
         hasSpinner: !!spinner,
         display: spinner ? getComputedStyle(spinner).display : null,
         width: spinner ? getComputedStyle(spinner).width : null,
+        // Proves styles.css (and not inlined JS) is what styles the spinner:
+        // the animation name only exists in that file.
+        animation: spinner ? getComputedStyle(spinner).animationName : null,
       };
       await pending;
       await new Promise((resolve) => setTimeout(resolve, 300));
@@ -315,6 +321,10 @@ async function main() {
     assert(loading.during.hasNotice, "no loading notice was created");
     assert(loading.during.hasSpinner, "the loading notice has no spinner element");
     assert(loading.during.display !== "none", `the spinner is not displayed: ${loading.during.display}`);
+    assert(
+      loading.during.animation === "dualtran-spin",
+      `styles.css was not applied to the spinner (animationName=${loading.during.animation})`
+    );
     assert(
       loading.during.text.length > 0,
       "the loading notice had no text"
