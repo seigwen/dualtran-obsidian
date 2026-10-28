@@ -65,6 +65,9 @@ extracted from the [DualTran browser extension](https://github.com/seigwen/DualT
 - **Translate note to a new file** — translates the whole note into a new file
   next to the original.
 
+The e2e run drives the real Obsidian app and finishes with a language switch
+(settings dropdown path → German settings labels, German command names).
+
 ## Development
 
 ```bash
