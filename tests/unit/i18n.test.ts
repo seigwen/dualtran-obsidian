@@ -83,6 +83,15 @@ describe("locale catalogues", () => {
     }
   });
 
+  it("does not bypass the translator for user-visible text", () => {
+    const source = fs.readFileSync(path.join(ROOT, "src", "main.ts"), "utf8");
+    const offenders: string[] = [];
+    for (const pattern of [/\.setName\(\s*"/g, /\.setDesc\(\s*"/g, /\.setText\(\s*"/g, /\.setPlaceholder\(\s*"/g]) {
+      for (const match of source.matchAll(pattern)) offenders.push(match[0]);
+    }
+    expect(offenders, offenders.join(" | ")).toEqual([]);
+  });
+
   it("does not leave Chinese in non-Chinese locales", () => {
     for (const code of LOCALE_CODES) {
       if (code.startsWith("zh") || code.startsWith("ja")) continue;
