@@ -189,7 +189,7 @@ export function modelReasoningOptions({
   provider: string;
   model: string;
 }): ReasoningOption[] {
-  const record = data?.[resolveId(provider)]?.models?.[model] as ModelsDevModel | undefined;
+  const record = data?.[resolveId(provider)]?.models?.[model];
   const options = record?.reasoning_options;
   return Array.isArray(options) ? options.filter(Boolean) : [];
 }

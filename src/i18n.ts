@@ -51,9 +51,10 @@ export function detectLocale(preferred: string | undefined | null, available: st
 
 function interpolate(text: string, subs?: Record<string, string | number>): string {
   if (!subs) return text;
-  return text.replace(/\$([A-Z0-9_]+)\$/g, (whole, name) =>
-    Object.prototype.hasOwnProperty.call(subs, name) ? String(subs[name]) : whole
-  );
+  return text.replace(/\$([A-Z0-9_]+)\$/g, (whole: string, name: string) => {
+    const value = subs[name];
+    return value !== undefined ? String(value) : whole;
+  });
 }
 
 export interface Translator {
@@ -76,16 +77,12 @@ export function createTranslator(preferred: string | undefined | null): Translat
 }
 
 /**
- * The language Obsidian itself is running in: its own localStorage key first,
- * then moment (what the settings pane already uses), then the browser.
+ * The language Obsidian itself is running in. Callers pass Obsidian's
+ * `getLanguage()` first; this module deliberately imports nothing from the
+ * Obsidian API so it stays unit-testable in a plain node environment.
  */
-export function obsidianLocale(): string {
-  try {
-    const stored = window.localStorage.getItem("language");
-    if (stored) return stored;
-  } catch {
-    /* no localStorage (tests, mobile edge) */
-  }
+export function obsidianLocale(preferred?: string): string {
+  if (preferred) return preferred;
   try {
     const momentLocale = (window as unknown as { moment?: { locale?: () => string } }).moment?.locale?.();
     if (momentLocale) return momentLocale;

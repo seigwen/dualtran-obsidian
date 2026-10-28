@@ -48,3 +48,23 @@ translate. No analytics, no account, no server of ours.
       Obsidian mode is replace/insert; show the insert-below command result)
 - [ ] "Translate note to a new file" result
 - [ ] Settings tab with engine + AI fields
+
+## What the automated review checks (learned from 0.2.0–0.3.0 rejections)
+
+The dashboard scans every published release and records each finding on the
+entry's Reviews panel (`community.obsidian.md/account/plugins/<id>`), with
+`Error` findings blocking the release.
+
+- **No runtime `<style>` injection** — plugin CSS must live in `styles.css`.
+- **No API newer than `minAppVersion`** — the scanner reads `@since` from
+  `obsidian.d.ts`; e.g. `App.saveLocalStorage` / `Notice.messageEl` /
+  `getLanguage()` are all 1.8.7.
+- **The release asset must match a rebuild of the tagged source byte for byte** —
+  so the build has to be reproducible (no timestamps in the bundle banner) and
+  produced by CI with a committed lockfile.
+- Warnings (e.g. `PluginSettingTab.getSettingDefinitions()` for 1.13 settings
+  search) do not block, but they stay on the panel.
+
+`npm run lint` runs the same ESLint plugin (`eslint-plugin-obsidianmd`) with its
+recommended config, which is what the scanner reports; keep it green before
+tagging. "Review branch" on the dashboard pre-scans a branch without releasing.

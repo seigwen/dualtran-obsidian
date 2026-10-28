@@ -58,7 +58,7 @@ export function sanitizeSettings(raw: unknown): DualTranSettings {
   ] as const;
   for (const key of stringKeys) {
     if (typeof source[key] === "string") {
-      settings[key] = source[key] as string;
+      settings[key] = source[key];
     }
   }
   return settings;

@@ -1,10 +1,15 @@
 import esbuild from "esbuild";
 import process from "node:process";
+import { readFileSync } from "node:fs";
 
 const prod = process.argv.includes("production");
+const { version } = JSON.parse(readFileSync("package.json", "utf8"));
 
+// No build timestamp: the community directory rebuilds the tagged source and
+// byte-compares it with the released main.js, so the banner must be identical
+// across builds (plan 101).
 const banner = `/*
-DualTran for Obsidian — built ${new Date().toISOString()}
+DualTran for Obsidian — v${version}
 Bundles @dualtran/core (MPL-2.0, https://github.com/seigwen/DualTran-extension).
 */`;
 

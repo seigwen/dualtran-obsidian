@@ -93,12 +93,19 @@ npm run verify               # test + build + dist guards (manifest/versions/siz
 ## Releasing
 
 1. Bump `manifest.json` + `package.json` + `versions.json` (minAppVersion map).
-2. `npm run verify` green.
-3. Commit, tag **without a `v` prefix** matching the manifest version exactly,
-   push the tag, then attach `main.js`, `manifest.json` and `styles.css` (if
-   any) to the GitHub release.
-4. Submit via community.obsidian.md (see docs/SUBMISSION.md in the repo — added
-   with the submission materials).
+2. `npm run verify` green — it runs `npm run lint` first, which reproduces the
+   community directory's automated review (ESLint `eslint-plugin-obsidianmd`).
+3. Commit and push, then push a tag **without a `v` prefix**, matching the
+   manifest version exactly. The `Release` workflow builds from that tag and
+   publishes `main.js`, `manifest.json` and `styles.css` together with build
+   provenance attestations — never upload assets by hand: the directory rebuilds
+   the tagged source and byte-compares it against the released `main.js`, so the
+   build must come from CI (the banner carries no timestamp for that reason).
+4. Trigger "Check for new releases" in community.obsidian.md (async scan), or
+   use "Review branch" there to pre-scan a branch before tagging.
+
+Plugin CSS ships as `styles.css` — the directory rejects plugins that inject a
+`<style>` element at runtime.
 
 ## License
 

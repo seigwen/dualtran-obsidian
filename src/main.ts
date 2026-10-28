@@ -5,6 +5,7 @@ import {
   PluginSettingTab,
   Setting,
   TFile,
+  getLanguage,
   requestUrl,
 } from "obsidian";
 import type { Editor } from "obsidian";
@@ -92,8 +93,6 @@ export default class DualTranPlugin extends Plugin {
       resolveReasoningDepth: (settings) => this.reasoningDepthFor(settings),
     });
 
-    this.injectStyles();
-
     this.addSettingTab(new DualTranSettingTab(this.app, this));
     this.registerCommands();
   }
@@ -103,7 +102,7 @@ export default class DualTranPlugin extends Plugin {
    * and rebuild the translator. Called on load and whenever the picker changes.
    */
   applyLanguage(): void {
-    const translator = createTranslator(this.settings.uiLang || obsidianLocale());
+    const translator = createTranslator(this.settings.uiLang || obsidianLocale(getLanguage()));
     this.locale = translator.code;
     this.t = translator.t;
   }
@@ -164,8 +163,8 @@ export default class DualTranPlugin extends Plugin {
   /** Core's dialect-clipped effort options for the current provider + model. */
   reasoningOptionsFor(provider: string, model: string): Array<{ value: string; label?: string }> {
     try {
-      const build = this.core?.buildReasoningDepthOptions;
-      if (typeof build !== "function") return [];
+      const core = this.core;
+      if (typeof core?.buildReasoningDepthOptions !== "function") return [];
       const reasoningOptions = modelReasoningOptions({
         data: this.catalog,
         resolveId: (id) => this.resolveProviderId(id),
@@ -173,7 +172,8 @@ export default class DualTranPlugin extends Plugin {
         model,
       });
       const npm = this.catalog?.[this.resolveProviderId(provider)]?.npm;
-      const options = build({ provider, npm, reasoningOptions });
+      // Call through the object so the receiver stays `core` (no unbound method).
+      const options = core.buildReasoningDepthOptions({ provider, npm, reasoningOptions });
       return Array.isArray(options) ? options : [];
     } catch {
       return [];
@@ -195,10 +195,10 @@ export default class DualTranPlugin extends Plugin {
   private showLoading(message: string): void {
     this.hideLoading();
     const notice = new Notice(message, 0);
-    notice.noticeEl.classList.add("dualtran-loading");
-    const spinner = document.createElement("span");
-    spinner.className = "dualtran-spinner";
-    notice.noticeEl.prepend(spinner);
+    // CSS comes from styles.css (the directory forbids injecting <style>), so the
+    // element only needs its class names here.
+    notice.messageEl.classList.add("dualtran-loading");
+    notice.messageEl.prepend(createSpan({ cls: "dualtran-spinner" }));
     this.loadingNotice = notice;
   }
 
@@ -206,17 +206,6 @@ export default class DualTranPlugin extends Plugin {
     if (!this.loadingNotice) return;
     this.loadingNotice.hide();
     this.loadingNotice = null;
-  }
-
-  private injectStyles(): void {
-    const style = document.createElement("style");
-    style.id = "dualtran-styles";
-    style.textContent = [
-      ".dualtran-loading .dualtran-spinner{display:inline-block;width:12px;height:12px;margin-right:8px;vertical-align:-1px;border:2px solid var(--text-muted);border-top-color:transparent;border-radius:50%;animation:dualtran-spin .8s linear infinite}",
-      "@keyframes dualtran-spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}",
-    ].join("\n");
-    document.head.appendChild(style);
-    this.register(() => style.remove());
   }
 
   /** Load the catalogue once; failures leave the pane on the built-in list. */
@@ -397,9 +386,9 @@ class DualTranSettingTab extends PluginSettingTab {
           }
           dropdown.addOption(provider.id, provider.label);
         }
-        const separator = dropdown.selectEl.querySelector(
+        const separator = dropdown.selectEl.querySelector<HTMLOptionElement>(
           `option[value="${PROVIDER_SEPARATOR_VALUE}"]`
-        ) as HTMLOptionElement | null;
+        );
         if (separator) separator.disabled = true;
 
         dropdown.setValue(settings.aiProvider).onChange(async (value) => {
@@ -557,7 +546,7 @@ class DualTranSettingTab extends PluginSettingTab {
   private languageNames(): Record<string, string> {
     const tables = this.plugin.languageTables;
     const fallback = tables.en || {};
-    const wanted = String((window as any).moment?.locale?.() || "en").toLowerCase();
+    const wanted = getLanguage().toLowerCase();
     const exact = Object.keys(tables).find((code) => code.toLowerCase() === wanted);
     if (exact) return tables[exact];
     const prefix = wanted.split("-")[0];
