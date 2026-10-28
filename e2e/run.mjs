@@ -358,6 +358,85 @@ async function main() {
     assert(failure.loadingCleared, "the loading notice stayed after a failure");
     await page.screenshot({ path: path.join(ARTIFACTS, "error-path.png") });
 
+    // 6) the language switch really re-renders the plugin, not just a dictionary
+    const de = JSON.parse(fs.readFileSync(path.join(ROOT, "locales", "de", "messages.json"), "utf8"));
+    const i18n = await page.evaluate(async () => {
+      const plugin = window.app.plugins.plugins["dualtran-translate"];
+      // What the settings dropdown does: persist, rebuild, re-register commands.
+      plugin.settings.uiLang = "de";
+      await plugin.saveSettings();
+      plugin.applyLanguage();
+      plugin.registerCommands();
+      // Render our settings tab into a detached container: the modal itself is
+      // Obsidian's chrome, what matters here is the labels the plugin produces.
+      const tabs = (window.app.setting && window.app.setting.pluginTabs) || [];
+      const tab = tabs.find(
+        (entry) =>
+          entry.id === "dualtran-translate" ||
+          (entry.manifest && entry.manifest.id === "dualtran-translate") ||
+          (entry.plugin && entry.plugin.manifest && entry.plugin.manifest.id === "dualtran-translate")
+      );
+      if (!tab) {
+        return {
+          names: [],
+          descs: [],
+          commands: {},
+          leaks: [],
+          code: plugin.locale,
+          debug: { tabs: tabs.length, ids: tabs.map((entry) => entry.id || null) },
+        };
+      }
+      tab.containerEl = createDiv();
+      tab.display();
+      const names = Array.from(tab.containerEl.querySelectorAll(".setting-item-name")).map((node) =>
+        node.textContent.trim()
+      );
+      const descs = Array.from(tab.containerEl.querySelectorAll(".setting-item-description")).map((node) =>
+        node.textContent.trim()
+      );
+      const commands = Object.fromEntries(
+        Object.entries(window.app.commands.commands)
+          .filter(([id]) => id.startsWith("dualtran-translate:"))
+          .map(([id, command]) => [id, command.name])
+      );
+      const leaks = names.filter((name) => /^[a-z][A-Za-z]*$/.test(name));
+      const debug = {
+        settingRows: document.querySelectorAll(".setting-item").length,
+        sample: Array.from(document.querySelectorAll(".setting-item")).slice(0, 3).map((node) => ({
+          text: node.textContent.trim().slice(0, 40),
+          parent: node.parentElement ? node.parentElement.className : null,
+          nameNodes: node.querySelectorAll(".setting-item-name").length,
+        })),
+        modals: document.querySelectorAll(".modal-container, .modal").length,
+        tabs: Array.from(document.querySelectorAll(".vertical-tab-nav-item")).map((node) => node.textContent.trim()),
+        bodyHint: (document.querySelector(".modal-container, .modal") || document.body).className,
+      };
+      return { names, descs, commands, leaks, code: plugin.locale, debug };
+    });
+    assert(i18n.code === "de", `the plugin translator must switch to German, got "${i18n.code}"`);
+    if (i18n.names.length === 0) throw new Error(`settings modal empty: ${JSON.stringify(i18n.debug)}`);
+    assert(i18n.names.includes(de.settingLanguage.message), `settings must be German, got ${i18n.names.join(" | ")}`);
+    assert(i18n.names.includes(de.settingEngine.message), `engine setting must be German, got ${i18n.names.join(" | ")}`);
+    assert(i18n.names.includes(de.settingTarget.message), `target setting must be German, got ${i18n.names.join(" | ")}`);
+    assert(i18n.descs.includes(de.settingEngineDesc.message), `settings description must be German, got ${i18n.descs.join(" | ")}`);
+    assert(i18n.leaks.length === 0, `untranslated setting names: ${i18n.leaks.join(", ")}`);
+    const replaceName = i18n.commands["dualtran-translate:translate-selection-replace"];
+    // Obsidian prefixes the plugin name; the localised part is the suffix.
+    assert(
+      typeof replaceName === "string" && replaceName.endsWith(de.cmdTranslateReplace.message),
+      `command names must follow the locale, got "${replaceName}"`
+    );
+    await page.screenshot({ path: path.join(ARTIFACTS, "i18n-de.png") });
+
+    // Back to auto so a later scenario is not stuck in German.
+    await page.evaluate(async () => {
+      const plugin = window.app.plugins.plugins["dualtran-translate"];
+      plugin.settings.uiLang = "";
+      await plugin.saveSettings();
+      plugin.applyLanguage();
+      plugin.registerCommands();
+    });
+
     fs.writeFileSync(path.join(ARTIFACTS, "ok.txt"), "obsidian e2e passed\n");
     console.log("\nObsidian E2E: all checks passed");
   } finally {
