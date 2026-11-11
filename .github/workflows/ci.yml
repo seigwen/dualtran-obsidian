@@ -17,6 +17,8 @@ jobs:
         run: npm ci --no-audit --no-fund
       - name: Tests + build + dist guards
         run: npm run verify
+      - name: Host conformance (SPEC v2)
+        run: npm run conformance
 
   e2e:
     runs-on: ubuntu-latest

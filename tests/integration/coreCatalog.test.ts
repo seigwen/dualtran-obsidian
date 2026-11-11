@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 import { coreNamespace } from "../../src/coreAdapter";
-import { modelsForProvider, projectProviders, type ModelsDevData, type ProviderDef } from "../../src/catalog";
+import { CUSTOM_MODEL_VALUE, modelsForProvider, projectProviders, type ModelsDevData, type ProviderDef } from "../../src/catalog";
 
 /**
  * Contract tests against the real vendored @dualtran/core (no network).
@@ -67,14 +67,26 @@ describe("@dualtran/core — catalogue contracts", () => {
       selectedId: "openai",
       resolveId: core.resolveModelsDevId,
     });
-    expect(out[0]).toMatchObject({ id: "openai", source: "built-in" });
+    // One alphabetical list: built-ins and catalogue entries are mixed by label.
+    const labels = out.map((p) => p.label);
+    expect(labels).toEqual(
+      [...labels].sort((left, right) =>
+        new Intl.Collator("en", { numeric: true, sensitivity: "base" }).compare(left, right)
+      )
+    );
+    expect(out.some((p) => p.source === "built-in")).toBe(true);
+    expect(out.some((p) => p.source === "models.dev")).toBe(true);
     // `google` is the models.dev id for the `google-gemini` built-in → deduped
     expect(out.map((p) => p.id)).not.toContain("google");
     expect(out.filter((p) => p.source === "models.dev").length).toBeGreaterThan(5);
-    // and the alias still resolves to real models
-    expect(
-      modelsForProvider({ provider: "google-gemini", data: makeCatalogue(), resolveId: core.resolveModelsDevId })
-    ).toEqual([{ value: "gemini-2.5-flash", text: "Gemini 2.5 Flash" }]);
+    // and the alias still resolves to real models (custom entry stays last)
+    const models = modelsForProvider({
+      provider: "google-gemini",
+      data: makeCatalogue(),
+      resolveId: core.resolveModelsDevId,
+    });
+    expect(models[0]).toEqual({ value: "gemini-2.5-flash", text: "Gemini 2.5 Flash" });
+    expect(models.at(-1)?.value).toBe(CUSTOM_MODEL_VALUE);
   });
 
   it("creates a store that fetches models.dev once and memoizes the payload", async () => {

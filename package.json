@@ -2,15 +2,16 @@
   "name": "dualtran-obsidian",
   "version": "0.4.0",
   "private": true,
-  "description": "DualTran for Obsidian — translate selections and whole notes with Google or your own AI model (BYOK).",
+  "description": "DualTran for Obsidian \u2014 translate selections and whole notes with Google or your own AI model (BYOK).",
   "scripts": {
     "sync-core": "node scripts/sync-core.mjs",
     "dev": "node scripts/build-i18n.mjs && node esbuild.config.mjs",
     "build": "node scripts/build-i18n.mjs && node esbuild.config.mjs production",
     "test": "vitest run",
+    "conformance": "vitest run tests/unit/conformance.test.ts",
     "test:dist": "node tests/dist/guards.mjs",
     "lint": "eslint src",
-    "verify": "npm run lint && npm run test && npm run build && npm run test:dist && npm run i18n:check",
+    "verify": "npm run lint && npm run test && npm run build && npm run test:dist && npm run i18n:check && npm run conformance",
     "e2e": "npm run build && node e2e/run.mjs",
     "i18n:sync": "node scripts/locale-kit.mjs",
     "i18n:check": "node scripts/locale-kit.mjs --check"

@@ -49,12 +49,22 @@ export interface ModelOption {
   text: string;
 }
 
-/** Sentinel option that renders a disabled divider inside the provider dropdown. */
-export const PROVIDER_SEPARATOR_VALUE = "__separator__";
 /** Sentinel option that reveals the free-text model input. */
 export const CUSTOM_MODEL_VALUE = "__custom__";
 
 const TEMPLATE_VAR = /\$\{[^}]+\}/;
+/**
+ * Sort order shared with the conformance contract (scripts/conformance/validate.mjs):
+ * case-insensitive code-unit order, numeric runs compared as numbers. Not
+ * `localeCompare` — ICU collation is not stable across engine builds (one host
+ * ordered "t" after "c", which would push "text-embedding…" above "Custom…").
+ */
+const LABEL_ORDER = new Intl.Collator("en", { numeric: true, sensitivity: "base" });
+
+/** Sort by the label the user sees; a fixed locale keeps the list stable everywhere. */
+function compareLabels(left: string, right: string): number {
+  return LABEL_ORDER.compare(String(left || "").trim(), String(right || "").trim());
+}
 
 /** Strip the request path so the value can be used as an SDK base URL. */
 export function normalizeApiBase(value: string | undefined): string {
@@ -74,9 +84,11 @@ function usableApi(api: string | undefined): string {
 }
 
 /**
- * Built-in providers first (registry order), then every models.dev provider that
- * is not the catalogue twin of a built-in (google ↔ google-gemini, xai ↔ grok…),
- * sorted by label. A saved value the catalogue no longer knows stays selectable.
+ * One provider list: built-ins and models.dev entries merged and sorted by the
+ * visible label (no grouping, no divider). A models.dev entry that is the
+ * catalogue twin of a built-in (google ↔ google-gemini, xai ↔ grok…) is dropped
+ * so each provider appears once; built-ins win. A saved value the catalogue no
+ * longer knows stays selectable and is sorted into place like any other entry.
  */
 export function projectProviders({
   data,
@@ -89,45 +101,48 @@ export function projectProviders({
   selectedId: string;
   resolveId: (id: string) => string;
 }): ProviderOption[] {
+  const builtInDevIds = new Set(builtIns.map((def) => resolveId(def.id)));
+  const taken = new Set(builtIns.map((def) => def.id));
   const options: ProviderOption[] = builtIns.map((def) => ({
     id: def.id,
     label: def.name,
     source: "built-in",
   }));
-  const taken = new Set(options.map((option) => option.id));
-  const builtInDevIds = new Set(builtIns.map((def) => resolveId(def.id)));
-  const discovered: ProviderOption[] = [];
 
   for (const [id, info] of Object.entries(data || {})) {
-    if (!usableApi(info?.api) || builtInDevIds.has(id) || taken.has(id)) continue;
+    if (!usableApi(info?.api) || builtInDevIds.has(resolveId(id)) || taken.has(id)) continue;
     const label = (info?.name || info?.id || id).trim() || id;
-    discovered.push({ id, label, source: "models.dev" });
+    options.push({ id, label, source: "models.dev" });
     taken.add(id);
   }
-  discovered.sort((left, right) => left.label.localeCompare(right.label));
-  options.push(...discovered);
 
   if (selectedId && !taken.has(selectedId)) {
     options.push({ id: selectedId, label: selectedId, source: "models.dev" });
   }
-  return options;
+
+  return options.sort((left, right) => compareLabels(left.label, right.label));
 }
 
-/** Model candidates for a provider; the internal id is resolved to its models.dev id first. */
+/**
+ * Model candidates for a provider; the internal id is resolved to its models.dev
+ * id first. Sorted by label, with the free-text entry always last.
+ */
 export function modelsForProvider({
   provider,
   data,
   resolveId,
+  t,
 }: {
   provider: string;
   data: ModelsDevData | null;
   resolveId: (id: string) => string;
+  /** Optional translator; without it the English label is used (unit tests). */
+  t?: (key: string) => string;
 }): ModelOption[] {
-  const entry = data?.[resolveId(provider)];
-  if (!entry?.models) return [];
-  return Object.entries(entry.models)
+  const models = Object.entries(data?.[resolveId(provider)]?.models || {})
     .map(([id, model]) => ({ value: id, text: model?.name || model?.id || id }))
-    .sort((left, right) => left.text.localeCompare(right.text));
+    .sort((left, right) => compareLabels(left.text, right.text));
+  return [...models, { value: CUSTOM_MODEL_VALUE, text: t ? t("customModelOption") : "Custom model" }];
 }
 
 /**
@@ -144,7 +159,7 @@ export function languageOptions({
   const options = Object.entries(names || {})
     .filter(([code]) => code !== "auto" && code !== "und")
     .map(([code, name]) => ({ value: code, text: `${name} (${code})` }))
-    .sort((left, right) => left.text.localeCompare(right.text));
+    .sort((left, right) => compareLabels(left.text, right.text));
   if (current && !options.some((option) => option.value === current)) {
     options.push({ value: current, text: current });
   }
@@ -271,6 +286,32 @@ export function effectiveBaseUrl({
     builtIns.find((candidate) => candidate.id === provider) ||
     builtIns.find((candidate) => resolveId(candidate.id) === resolveId(provider));
   return normalizeApiBase(def?.apiBase);
+}
+
+/**
+ * Endpoint input after the provider picker changes. The box shows the
+ * provider's api base as its *value* (not a placeholder); an untouched box (or
+ * one still holding the previous provider's default) moves to the new default,
+ * while anything the user typed themselves is left alone.
+ */
+export function resolveEndpointOnProviderChange({
+  current,
+  previousDefault,
+  nextDefault,
+}: {
+  /** What the input holds right now. */
+  current: string;
+  /** The default that was written for the provider being left ("" if none). */
+  previousDefault: string;
+  /** The new provider's api base ("" when it has none). */
+  nextDefault: string;
+}): string {
+  const value = (current || "").trim();
+  const previous = normalizeApiBase(previousDefault);
+  const next = (nextDefault || "").trim();
+  if (!value) return next;
+  if (previous && normalizeApiBase(value) === previous) return next;
+  return current;
 }
 
 // ── Core surface the settings pane consumes (kept structural: core ships no types) ──

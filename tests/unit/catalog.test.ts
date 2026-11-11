@@ -1,14 +1,15 @@
 import { describe, expect, it } from "vitest";
 import {
   CUSTOM_MODEL_VALUE,
-  PROVIDER_SEPARATOR_VALUE,
   effectiveBaseUrl,
   languageOptions,
   LOWEST_REASONING,
   modelReasoningOptions,
   modelsForProvider,
+  normalizeApiBase,
   pickModelForProvider,
   reasoningDepthChoices,
+  resolveEndpointOnProviderChange,
   resolveReasoningDepth,
   projectProviders,
   summarizeCatalog,
@@ -55,18 +56,42 @@ const DATA: ModelsDevData = {
   idonly: { api: "https://api.idonly.example/v1", models: {} },
 };
 
+/** Case-insensitive label order — the same contract the conformance validator enforces. */
+const byLabel = (values: string[]) => [...values].sort((a, b) => {
+  const left = a.trim().toLowerCase();
+  const right = b.trim().toLowerCase();
+  if (left === right) return 0;
+  return left < right ? -1 : 1;
+});
+
 describe("projectProviders", () => {
-  it("lists built-ins first, in registry order", () => {
+  it("merges built-ins and models.dev entries into ONE list sorted by visible label", () => {
     const out = projectProviders({ data: DATA, builtIns: BUILT_INS, selectedId: "openai", resolveId });
-    expect(out.slice(0, 3).map((p) => p.id)).toEqual(["openai", "google-gemini", "moonshot"]);
-    expect(out.slice(0, 3).every((p) => p.source === "built-in")).toBe(true);
+    expect(out.map((p) => p.label)).toEqual(byLabel(out.map((p) => p.label)));
+    // No grouping: a catalogue entry sorts ahead of built-ins and a built-in
+    // sorts ahead of a catalogue entry — the two sources interleave.
+    const ids = out.map((p) => p.id);
+    expect(ids.indexOf("alpha")).toBeLessThan(ids.indexOf("google-gemini"));
+    expect(ids.indexOf("google-gemini")).toBeLessThan(ids.indexOf("zeta"));
+    expect(out.find((p) => p.id === "alpha")?.source).toBe("models.dev");
+    expect(out.find((p) => p.id === "google-gemini")?.source).toBe("built-in");
   });
 
-  it("appends models.dev providers sorted by label", () => {
+  it("contains no separator, divider or disabled placeholder entry", () => {
     const out = projectProviders({ data: DATA, builtIns: BUILT_INS, selectedId: "openai", resolveId });
-    const dev = out.filter((p) => p.source === "models.dev");
-    // alpha < idonly < zeta (locale order); openai/google/moonshotai are aliases of built-ins and skipped
-    expect(dev.map((p) => p.label)).toEqual(["Alpha Labs", "idonly", "Zeta AI"]);
+    for (const option of out) {
+      expect(option.label).not.toMatch(/─{2,}|separator|divider|^more\b/i);
+      expect(option.id).not.toMatch(/^__(separator|more)__$/);
+      expect(option).not.toHaveProperty("disabled");
+    }
+  });
+
+  it("lists every built-in and every distinct catalogue provider exactly once", () => {
+    const out = projectProviders({ data: DATA, builtIns: BUILT_INS, selectedId: "openai", resolveId });
+    const ids = out.map((p) => p.id);
+    expect(new Set(ids).size).toBe(ids.length);
+    expect(ids).toEqual(expect.arrayContaining(["openai", "google-gemini", "moonshot"]));
+    expect(ids).toEqual(expect.arrayContaining(["alpha", "idonly", "zeta"]));
   });
 
   it("dedupes catalogue entries that alias a built-in provider", () => {
@@ -85,7 +110,7 @@ describe("projectProviders", () => {
     expect(ids).not.toContain("noapi");
   });
 
-  it("falls back to the id when a provider has no name, and keeps an unknown selection visible", () => {
+  it("falls back to the id when a provider has no name, and sorts an unknown selection into place", () => {
     const out = projectProviders({
       data: DATA,
       builtIns: BUILT_INS,
@@ -93,32 +118,51 @@ describe("projectProviders", () => {
       resolveId,
     });
     expect(out.find((p) => p.id === "idonly")?.label).toBe("idonly");
-    expect(out[out.length - 1]).toMatchObject({ id: "legacy-provider", label: "legacy-provider", source: "models.dev" });
+    expect(out.some((p) => p.id === "legacy-provider")).toBe(true);
+    // Still one alphabetical list — the kept entry is not tacked on at the end.
+    expect(out.map((p) => p.label)).toEqual(byLabel(out.map((p) => p.label)));
   });
 
   it("works with no catalogue data at all (offline)", () => {
     const out = projectProviders({ data: null, builtIns: BUILT_INS, selectedId: "openai", resolveId });
-    expect(out.map((p) => p.id)).toEqual(["openai", "google-gemini", "moonshot"]);
+    expect(out.map((p) => p.label)).toEqual(byLabel(BUILT_INS.map((p) => p.name)));
+    expect(out.every((p) => p.source === "built-in")).toBe(true);
   });
 });
 
 describe("modelsForProvider", () => {
   it("resolves the internal provider id through the alias map and sorts by label", () => {
     const out = modelsForProvider({ provider: "google-gemini", data: DATA, resolveId });
-    expect(out).toEqual([{ value: "gemini-2.5-flash", text: "Gemini 2.5 Flash" }]);
+    expect(out).toEqual([
+      { value: "gemini-2.5-flash", text: "Gemini 2.5 Flash" },
+      { value: CUSTOM_MODEL_VALUE, text: "Custom model" },
+    ]);
 
     const openai = modelsForProvider({ provider: "openai", data: DATA, resolveId });
-    expect(openai.map((m) => m.text)).toEqual(["GPT-4o", "GPT-4o Mini"]);
+    expect(openai.map((m) => m.text)).toEqual(["GPT-4o", "GPT-4o Mini", "Custom model"]);
+  });
+
+  it("always puts the custom model id last, whatever its label collates to", () => {
+    const out = modelsForProvider({ provider: "openai", data: DATA, resolveId, t: () => "Custom…" });
+    expect(out[out.length - 1].value).toBe(CUSTOM_MODEL_VALUE);
+    expect(out.slice(0, -1).map((m) => m.text)).toEqual(["GPT-4o", "GPT-4o Mini"]);
   });
 
   it("falls back to the model id when it has no name", () => {
     const out = modelsForProvider({ provider: "idonly", data: { idonly: { api: "https://x/v1", models: { m: {} } } }, resolveId });
-    expect(out).toEqual([{ value: "m", text: "m" }]);
+    expect(out).toEqual([
+      { value: "m", text: "m" },
+      { value: CUSTOM_MODEL_VALUE, text: "Custom model" },
+    ]);
   });
 
-  it("returns an empty list for unknown providers or missing data", () => {
-    expect(modelsForProvider({ provider: "nope", data: DATA, resolveId })).toEqual([]);
-    expect(modelsForProvider({ provider: "openai", data: null, resolveId })).toEqual([]);
+  it("returns only the custom entry for unknown providers or missing data", () => {
+    expect(modelsForProvider({ provider: "nope", data: DATA, resolveId })).toEqual([
+      { value: CUSTOM_MODEL_VALUE, text: "Custom model" },
+    ]);
+    expect(modelsForProvider({ provider: "openai", data: null, resolveId })).toEqual([
+      { value: CUSTOM_MODEL_VALUE, text: "Custom model" },
+    ]);
   });
 });
 
@@ -196,11 +240,60 @@ describe("effectiveBaseUrl", () => {
   });
 });
 
+describe("resolveEndpointOnProviderChange", () => {
+  const OPENAI = "https://api.openai.com/v1";
+  const DEEPSEEK = "https://api.deepseek.com/v1";
+
+  it("fills the new provider's default when the box is empty", () => {
+    expect(
+      resolveEndpointOnProviderChange({ current: "", previousDefault: "", nextDefault: DEEPSEEK })
+    ).toBe(DEEPSEEK);
+  });
+
+  it("moves an untouched box (still holding the previous default) to the new default", () => {
+    expect(
+      resolveEndpointOnProviderChange({ current: OPENAI, previousDefault: OPENAI, nextDefault: DEEPSEEK })
+    ).toBe(DEEPSEEK);
+  });
+
+  it("compares against the normalized previous default (trailing slash, /chat/completions)", () => {
+    expect(
+      resolveEndpointOnProviderChange({
+        current: "https://api.openai.com/v1/chat/completions",
+        previousDefault: "https://api.openai.com/v1/",
+        nextDefault: DEEPSEEK,
+      })
+    ).toBe(DEEPSEEK);
+  });
+
+  it("never overwrites a value the user typed themselves", () => {
+    const typed = "https://proxy.example/v1";
+    expect(
+      resolveEndpointOnProviderChange({ current: typed, previousDefault: OPENAI, nextDefault: DEEPSEEK })
+    ).toBe(typed);
+    expect(
+      resolveEndpointOnProviderChange({ current: typed, previousDefault: "", nextDefault: DEEPSEEK })
+    ).toBe(typed);
+  });
+
+  it("returns an empty string when the new provider has no api base", () => {
+    expect(
+      resolveEndpointOnProviderChange({ current: OPENAI, previousDefault: OPENAI, nextDefault: "" })
+    ).toBe("");
+  });
+});
+
+describe("normalizeApiBase", () => {
+  it("trims slashes and drops a /chat/completions suffix", () => {
+    expect(normalizeApiBase(" https://api.openai.com/v1/chat/completions ")).toBe("https://api.openai.com/v1");
+    expect(normalizeApiBase("https://api.openai.com/v1///")).toBe("https://api.openai.com/v1");
+    expect(normalizeApiBase(undefined)).toBe("");
+  });
+});
+
 describe("constants", () => {
-  it("exposes distinct sentinel values for the custom model and the list separator", () => {
-    expect(CUSTOM_MODEL_VALUE).not.toBe(PROVIDER_SEPARATOR_VALUE);
+  it("exposes the sentinel value for the custom model id", () => {
     expect(CUSTOM_MODEL_VALUE.startsWith("__")).toBe(true);
-    expect(PROVIDER_SEPARATOR_VALUE.startsWith("__")).toBe(true);
   });
 });
 

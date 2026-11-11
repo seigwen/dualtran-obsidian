@@ -13,7 +13,6 @@ import { createBridge, createRequestUrlFetch, createResponseFetch } from "./brid
 import { coreNamespace } from "./coreAdapter";
 import {
   CUSTOM_MODEL_VALUE,
-  PROVIDER_SEPARATOR_VALUE,
   effectiveBaseUrl,
   languageOptions,
   modelReasoningOptions,
@@ -21,6 +20,7 @@ import {
   pickModelForProvider,
   projectProviders,
   reasoningDepthChoices,
+  resolveEndpointOnProviderChange,
   resolveReasoningDepth,
   summarizeCatalog,
   type CatalogCore,
@@ -373,35 +373,37 @@ class DualTranSettingTab extends PluginSettingTab {
       .setName(this.plugin.t("settingProvider"))
       .setDesc(this.plugin.t("settingProviderDesc"))
       .addDropdown((dropdown) => {
-        let separatorAdded = false;
         for (const provider of projectProviders({
           data,
           builtIns,
           selectedId: settings.aiProvider,
           resolveId,
         })) {
-          if (provider.source === "models.dev" && !separatorAdded) {
-            dropdown.addOption(PROVIDER_SEPARATOR_VALUE, this.plugin.t("providerSeparator"));
-            separatorAdded = true;
-          }
           dropdown.addOption(provider.id, provider.label);
         }
-        const separator = dropdown.selectEl.querySelector<HTMLOptionElement>(
-          `option[value="${PROVIDER_SEPARATOR_VALUE}"]`
-        );
-        if (separator) separator.disabled = true;
 
         dropdown.setValue(settings.aiProvider).onChange(async (value) => {
-          if (value === PROVIDER_SEPARATOR_VALUE) {
-            dropdown.setValue(settings.aiProvider);
-            return;
-          }
           const models = modelsForProvider({ provider: value, data, resolveId });
           const nextModel = pickModelForProvider({
             models,
             current: settings.aiModel,
             provider: value,
             smartDefault: (args) => this.plugin.smartDefaultModel(args),
+          });
+          const nextBaseUrl = effectiveBaseUrl({ provider: value, data, builtIns, resolveId });
+          const previousBaseUrl = effectiveBaseUrl({
+            provider: settings.aiProvider,
+            data,
+            builtIns,
+            resolveId,
+          });
+          // The endpoint box always carries a value: an untouched box (or one
+          // still on the previous default) follows the provider, a typed
+          // override survives the switch.
+          settings.aiBaseUrl = resolveEndpointOnProviderChange({
+            current: settings.aiBaseUrl,
+            previousDefault: previousBaseUrl,
+            nextDefault: nextBaseUrl,
           });
           settings.aiProvider = value;
           if (nextModel) settings.aiModel = nextModel;
@@ -421,17 +423,22 @@ class DualTranSettingTab extends PluginSettingTab {
         });
       });
 
-    const models = modelsForProvider({ provider: settings.aiProvider, data, resolveId });
-    const modelIsListed = models.some((model) => model.value === settings.aiModel);
+    // modelsForProvider always appends the free-text entry last.
+    const models = modelsForProvider({ provider: settings.aiProvider, data, resolveId, t: this.plugin.t });
+    const catalogueModels = models.filter((model) => model.value !== CUSTOM_MODEL_VALUE);
+    const modelIsListed = catalogueModels.some((model) => model.value === settings.aiModel);
     const customModel = !modelIsListed;
     let customRow: Setting | null = null;
 
     new Setting(containerEl)
       .setName(this.plugin.t("settingModel"))
-      .setDesc(models.length ? this.plugin.t("settingModelDescListed") : this.plugin.t("settingModelDescMissing"))
+      .setDesc(
+        catalogueModels.length
+          ? this.plugin.t("settingModelDescListed")
+          : this.plugin.t("settingModelDescMissing")
+      )
       .addDropdown((dropdown) => {
         for (const model of models) dropdown.addOption(model.value, model.text);
-        dropdown.addOption(CUSTOM_MODEL_VALUE, this.plugin.t("customModelOption"));
         dropdown.setValue(customModel ? CUSTOM_MODEL_VALUE : settings.aiModel).onChange(async (value) => {
           const wantsCustom = value === CUSTOM_MODEL_VALUE;
           if (customRow) customRow.settingEl.style.display = wantsCustom ? "" : "none";
@@ -493,13 +500,19 @@ class DualTranSettingTab extends PluginSettingTab {
         });
       });
 
+    // The provider's api base is written into the value (not only a
+    // placeholder) so the box is filled the moment a provider is chosen; it
+    // stays an ordinary editable text override from there on.
     const defaultBaseUrl = effectiveBaseUrl({ provider: settings.aiProvider, data, builtIns, resolveId });
+    if (!settings.aiBaseUrl.trim() && defaultBaseUrl) {
+      settings.aiBaseUrl = defaultBaseUrl;
+      void this.plugin.saveSettings();
+    }
     new Setting(containerEl)
       .setName(this.plugin.t("settingBaseUrl"))
       .setDesc(this.plugin.t("settingBaseUrlDesc"))
       .addText((text) =>
         text
-          .setPlaceholder(defaultBaseUrl || "https://api.example.com/v1")
           .setValue(settings.aiBaseUrl)
           .onChange(async (value) => {
             settings.aiBaseUrl = value.trim();

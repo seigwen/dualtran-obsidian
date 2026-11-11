@@ -1,0 +1,18 @@
+{
+  "spec": "2.0.0",
+  "host": "dualtran-obsidian",
+  "payload": "tests/unit/conformance.test.ts",
+  "static": {
+    "files": [
+      "src/main.ts",
+      "src/catalog.ts"
+    ],
+    "patterns": [
+      "providerSeparator",
+      "__separator__",
+      "__more__",
+      "More (models.dev)"
+    ]
+  },
+  "platformLimits": []
+}
