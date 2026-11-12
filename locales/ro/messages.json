@@ -56,6 +56,18 @@
   "settingProviderDesc": {
     "message": "Mai întâi furnizorii încorporați, apoi tot ce cunoaște models.dev (actualizat zilnic)."
   },
+  "providerPlaceholder": {
+    "message": "Selectați un furnizor"
+  },
+  "providerRequiredForModel": {
+    "message": "Selectați mai întâi un furnizor"
+  },
+  "providerRequiredError": {
+    "message": "Alegeți un furnizor AI din setări înainte de a traduce."
+  },
+  "customProviderOption": {
+    "message": "Furnizor personalizat"
+  },
   "providerSeparator": {
     "message": "──── mai multe ────"
   },
@@ -133,5 +145,20 @@
   },
   "languageAuto": {
     "message": "Urmează Obsidian"
+  },
+  "settingTranslateNow": {
+    "message": "Testează traducerea"
+  },
+  "settingTranslateNowDesc": {
+    "message": "Traduce o propoziție exemplu cu setările de mai sus."
+  },
+  "btnTranslateNow": {
+    "message": "Tradu acum"
+  },
+  "translateExampleText": {
+    "message": "Salut, lume!"
+  },
+  "noticeExample": {
+    "message": "DualTran: $TEXT$"
   }
 }

@@ -56,6 +56,18 @@
   "settingProviderDesc": {
     "message": "ספקים מובנים תחילה, ואחר כך כל מה ש-models.dev מכיר (מתעדכן מדי יום)."
   },
+  "providerPlaceholder": {
+    "message": "בחרו ספק"
+  },
+  "providerRequiredForModel": {
+    "message": "בחרו ספק תחילה"
+  },
+  "providerRequiredError": {
+    "message": "בחרו ספק AI בהגדרות לפני התרגום."
+  },
+  "customProviderOption": {
+    "message": "ספק מותאם אישית"
+  },
   "providerSeparator": {
     "message": "──── עוד ────"
   },
@@ -133,5 +145,20 @@
   },
   "languageAuto": {
     "message": "עקוב אחר Obsidian"
+  },
+  "settingTranslateNow": {
+    "message": "בדיקת תרגום"
+  },
+  "settingTranslateNowDesc": {
+    "message": "מתרגם משפט לדוגמה אחד עם ההגדרות שלמעלה."
+  },
+  "btnTranslateNow": {
+    "message": "תרגם עכשיו"
+  },
+  "translateExampleText": {
+    "message": "שלום, עולם!"
+  },
+  "noticeExample": {
+    "message": "DualTran: $TEXT$"
   }
 }

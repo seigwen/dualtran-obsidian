@@ -56,6 +56,18 @@
   "settingProviderDesc": {
     "message": "Nejprve vestavění poskytovatelé, poté vše, co models.dev zná (aktualizováno denně)."
   },
+  "providerPlaceholder": {
+    "message": "Vyberte poskytovatele"
+  },
+  "providerRequiredForModel": {
+    "message": "Nejprve vyberte poskytovatele"
+  },
+  "providerRequiredError": {
+    "message": "Před překladem vyberte v nastavení poskytovatele AI."
+  },
+  "customProviderOption": {
+    "message": "Vlastní poskytovatel"
+  },
   "providerSeparator": {
     "message": "──── více ────"
   },
@@ -133,5 +145,20 @@
   },
   "languageAuto": {
     "message": "Podle Obsidian"
+  },
+  "settingTranslateNow": {
+    "message": "Vyzkoušet překlad"
+  },
+  "settingTranslateNowDesc": {
+    "message": "Přeloží jednu ukázkovou větu s výše uvedeným nastavením."
+  },
+  "btnTranslateNow": {
+    "message": "Přeložit nyní"
+  },
+  "translateExampleText": {
+    "message": "Ahoj světe!"
+  },
+  "noticeExample": {
+    "message": "DualTran: $TEXT$"
   }
 }

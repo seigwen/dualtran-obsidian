@@ -56,6 +56,18 @@
   "settingProviderDesc": {
     "message": "Először a beépített szolgáltatók, majd minden, amit a models.dev ismer (naponta frissül)."
   },
+  "providerPlaceholder": {
+    "message": "Válasszon szolgáltatót"
+  },
+  "providerRequiredForModel": {
+    "message": "Először válasszon szolgáltatót"
+  },
+  "providerRequiredError": {
+    "message": "Fordítás előtt válasszon AI-szolgáltatót a beállításokban."
+  },
+  "customProviderOption": {
+    "message": "Egyéni szolgáltató"
+  },
   "providerSeparator": {
     "message": "──── további ────"
   },
@@ -133,5 +145,20 @@
   },
   "languageAuto": {
     "message": "Obsidian követése"
+  },
+  "settingTranslateNow": {
+    "message": "Fordítás kipróbálása"
+  },
+  "settingTranslateNowDesc": {
+    "message": "Egy minta mondatot fordít le a fenti beállításokkal."
+  },
+  "btnTranslateNow": {
+    "message": "Fordítás most"
+  },
+  "translateExampleText": {
+    "message": "Helló, világ!"
+  },
+  "noticeExample": {
+    "message": "DualTran: $TEXT$"
   }
 }

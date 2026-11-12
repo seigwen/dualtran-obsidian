@@ -56,6 +56,18 @@
   "settingProviderDesc": {
     "message": "Eerst ingebouwde providers, daarna alles wat models.dev kent (dagelijks vernieuwd)."
   },
+  "providerPlaceholder": {
+    "message": "Selecteer een provider"
+  },
+  "providerRequiredForModel": {
+    "message": "Selecteer eerst een provider"
+  },
+  "providerRequiredError": {
+    "message": "Kies een AI-provider in de instellingen voordat je vertaalt."
+  },
+  "customProviderOption": {
+    "message": "Aangepaste provider"
+  },
   "providerSeparator": {
     "message": "──── meer ────"
   },
@@ -133,5 +145,20 @@
   },
   "languageAuto": {
     "message": "Volg Obsidian"
+  },
+  "settingTranslateNow": {
+    "message": "Vertaling testen"
+  },
+  "settingTranslateNowDesc": {
+    "message": "Vertaalt één voorbeeldzin met de instellingen hierboven."
+  },
+  "btnTranslateNow": {
+    "message": "Nu vertalen"
+  },
+  "translateExampleText": {
+    "message": "Hallo, wereld!"
+  },
+  "noticeExample": {
+    "message": "DualTran: $TEXT$"
   }
 }

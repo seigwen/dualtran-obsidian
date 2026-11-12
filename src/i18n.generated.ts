@@ -59,6 +59,18 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     "settingProviderDesc": {
       "message": "Ingeboude verskaffers eerste, dan alles wat models.dev van weet (daagliks verfris)."
     },
+    "providerPlaceholder": {
+      "message": "Kies 'n verskaffer"
+    },
+    "providerRequiredForModel": {
+      "message": "Kies eers 'n verskaffer"
+    },
+    "providerRequiredError": {
+      "message": "Kies 'n KI-verskaffer in die instellings voordat jy vertaal."
+    },
+    "customProviderOption": {
+      "message": "Pasgemaakte verskaffer"
+    },
     "providerSeparator": {
       "message": "──── meer ────"
     },
@@ -136,6 +148,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "Volg Obsidian"
+    },
+    "settingTranslateNow": {
+      "message": "Toetsvertaling"
+    },
+    "settingTranslateNowDesc": {
+      "message": "Vertaal een voorbeeldsin met die instellings hierbo."
+    },
+    "btnTranslateNow": {
+      "message": "Vertaal nou"
+    },
+    "translateExampleText": {
+      "message": "Hallo, wêreld!"
+    },
+    "noticeExample": {
+      "message": "DualTran: $TEXT$"
     }
   },
   "ar": {
@@ -195,6 +222,18 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "settingProviderDesc": {
       "message": "المزودون المدمجون أولاً، ثم كل ما يعرفه models.dev (يُحدَّث يومياً)."
+    },
+    "providerPlaceholder": {
+      "message": "اختر مزودًا"
+    },
+    "providerRequiredForModel": {
+      "message": "اختر مزودًا أولاً"
+    },
+    "providerRequiredError": {
+      "message": "اختر مزود الذكاء الاصطناعي في الإعدادات قبل الترجمة."
+    },
+    "customProviderOption": {
+      "message": "مزود مخصص"
     },
     "providerSeparator": {
       "message": "──── المزيد ────"
@@ -273,6 +312,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "اتبع Obsidian"
+    },
+    "settingTranslateNow": {
+      "message": "اختبار الترجمة"
+    },
+    "settingTranslateNowDesc": {
+      "message": "يترجم جملة نموذجية واحدة بالإعدادات أعلاه."
+    },
+    "btnTranslateNow": {
+      "message": "ترجم الآن"
+    },
+    "translateExampleText": {
+      "message": "مرحبًا بالعالم!"
+    },
+    "noticeExample": {
+      "message": "DualTran: $TEXT$"
     }
   },
   "ca": {
@@ -332,6 +386,18 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "settingProviderDesc": {
       "message": "Primer els proveïdors integrats, després tot el que models.dev coneix (actualitzat diàriament)."
+    },
+    "providerPlaceholder": {
+      "message": "Selecciona un proveïdor"
+    },
+    "providerRequiredForModel": {
+      "message": "Selecciona primer un proveïdor"
+    },
+    "providerRequiredError": {
+      "message": "Tria un proveïdor d'IA a la configuració abans de traduir."
+    },
+    "customProviderOption": {
+      "message": "Proveïdor personalitzat"
     },
     "providerSeparator": {
       "message": "──── més ────"
@@ -410,6 +476,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "Segueix l'Obsidian"
+    },
+    "settingTranslateNow": {
+      "message": "Prova la traducció"
+    },
+    "settingTranslateNowDesc": {
+      "message": "Tradueix una frase d'exemple amb la configuració anterior."
+    },
+    "btnTranslateNow": {
+      "message": "Tradueix ara"
+    },
+    "translateExampleText": {
+      "message": "Hola, món!"
+    },
+    "noticeExample": {
+      "message": "DualTran: $TEXT$"
     }
   },
   "cs": {
@@ -469,6 +550,18 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "settingProviderDesc": {
       "message": "Nejprve vestavění poskytovatelé, poté vše, co models.dev zná (aktualizováno denně)."
+    },
+    "providerPlaceholder": {
+      "message": "Vyberte poskytovatele"
+    },
+    "providerRequiredForModel": {
+      "message": "Nejprve vyberte poskytovatele"
+    },
+    "providerRequiredError": {
+      "message": "Před překladem vyberte v nastavení poskytovatele AI."
+    },
+    "customProviderOption": {
+      "message": "Vlastní poskytovatel"
     },
     "providerSeparator": {
       "message": "──── více ────"
@@ -547,6 +640,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "Podle Obsidian"
+    },
+    "settingTranslateNow": {
+      "message": "Vyzkoušet překlad"
+    },
+    "settingTranslateNowDesc": {
+      "message": "Přeloží jednu ukázkovou větu s výše uvedeným nastavením."
+    },
+    "btnTranslateNow": {
+      "message": "Přeložit nyní"
+    },
+    "translateExampleText": {
+      "message": "Ahoj světe!"
+    },
+    "noticeExample": {
+      "message": "DualTran: $TEXT$"
     }
   },
   "da": {
@@ -606,6 +714,18 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "settingProviderDesc": {
       "message": "Indbyggede udbydere først, derefter alt som models.dev kender til (opdateres dagligt)."
+    },
+    "providerPlaceholder": {
+      "message": "Vælg en udbyder"
+    },
+    "providerRequiredForModel": {
+      "message": "Vælg en udbyder først"
+    },
+    "providerRequiredError": {
+      "message": "Vælg en AI-udbyder i indstillingerne, før du oversætter."
+    },
+    "customProviderOption": {
+      "message": "Tilpasset udbyder"
     },
     "providerSeparator": {
       "message": "──── mere ────"
@@ -684,6 +804,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "Følg Obsidian"
+    },
+    "settingTranslateNow": {
+      "message": "Afprøv oversættelse"
+    },
+    "settingTranslateNowDesc": {
+      "message": "Oversætter én eksempelsætning med indstillingerne ovenfor."
+    },
+    "btnTranslateNow": {
+      "message": "Oversæt nu"
+    },
+    "translateExampleText": {
+      "message": "Hej verden!"
+    },
+    "noticeExample": {
+      "message": "DualTran: $TEXT$"
     }
   },
   "de": {
@@ -743,6 +878,18 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "settingProviderDesc": {
       "message": "Zuerst integrierte Provider, dann alles, was models.dev kennt (täglich aktualisiert)."
+    },
+    "providerPlaceholder": {
+      "message": "Anbieter auswählen"
+    },
+    "providerRequiredForModel": {
+      "message": "Zuerst einen Anbieter auswählen"
+    },
+    "providerRequiredError": {
+      "message": "Wähle vor dem Übersetzen einen KI-Anbieter in den Einstellungen."
+    },
+    "customProviderOption": {
+      "message": "Eigener Anbieter"
     },
     "providerSeparator": {
       "message": "──── mehr ────"
@@ -821,6 +968,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "Obsidian folgen"
+    },
+    "settingTranslateNow": {
+      "message": "Übersetzung testen"
+    },
+    "settingTranslateNowDesc": {
+      "message": "Übersetzt einen Beispielsatz mit den Einstellungen oben."
+    },
+    "btnTranslateNow": {
+      "message": "Jetzt übersetzen"
+    },
+    "translateExampleText": {
+      "message": "Hallo, Welt!"
+    },
+    "noticeExample": {
+      "message": "DualTran: $TEXT$"
     }
   },
   "el": {
@@ -880,6 +1042,18 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "settingProviderDesc": {
       "message": "Πρώτα οι ενσωματωμένοι πάροχοι, μετά ό,τι γνωρίζει το models.dev (ενημερώνεται καθημερινά)."
+    },
+    "providerPlaceholder": {
+      "message": "Επιλέξτε πάροχο"
+    },
+    "providerRequiredForModel": {
+      "message": "Επιλέξτε πρώτα πάροχο"
+    },
+    "providerRequiredError": {
+      "message": "Επιλέξτε πάροχο AI στις ρυθμίσεις πριν από τη μετάφραση."
+    },
+    "customProviderOption": {
+      "message": "Προσαρμοσμένος πάροχος"
     },
     "providerSeparator": {
       "message": "──── περισσότερα ────"
@@ -958,6 +1132,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "Ακολουθήστε το Obsidian"
+    },
+    "settingTranslateNow": {
+      "message": "Δοκιμή μετάφρασης"
+    },
+    "settingTranslateNowDesc": {
+      "message": "Μεταφράζει μία προτάση δείγματος με τις ρυθμίσεις παραπάνω."
+    },
+    "btnTranslateNow": {
+      "message": "Μετάφραση τώρα"
+    },
+    "translateExampleText": {
+      "message": "Γεια σου, κόσμε!"
+    },
+    "noticeExample": {
+      "message": "DualTran: $TEXT$"
     }
   },
   "en": {
@@ -1016,7 +1205,19 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
       "message": "AI provider"
     },
     "settingProviderDesc": {
-      "message": "Built-in providers first, then everything models.dev knows about (refreshed daily)."
+      "message": "Pick the provider you want to use. The list merges built-in providers with models.dev."
+    },
+    "providerPlaceholder": {
+      "message": "Select a provider"
+    },
+    "providerRequiredForModel": {
+      "message": "Select a provider first"
+    },
+    "providerRequiredError": {
+      "message": "Choose an AI provider in settings before translating."
+    },
+    "customProviderOption": {
+      "message": "Custom provider"
     },
     "providerSeparator": {
       "message": "──── more ────"
@@ -1095,6 +1296,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "Follow Obsidian"
+    },
+    "settingTranslateNow": {
+      "message": "Test translation"
+    },
+    "settingTranslateNowDesc": {
+      "message": "Translates one sample sentence with the settings above."
+    },
+    "btnTranslateNow": {
+      "message": "Translate now"
+    },
+    "translateExampleText": {
+      "message": "Hello, world!"
+    },
+    "noticeExample": {
+      "message": "DualTran: $TEXT$"
     }
   },
   "es": {
@@ -1154,6 +1370,18 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "settingProviderDesc": {
       "message": "Primero los proveedores integrados, luego todo lo que conoce models.dev (actualizado a diario)."
+    },
+    "providerPlaceholder": {
+      "message": "Selecciona un proveedor"
+    },
+    "providerRequiredForModel": {
+      "message": "Selecciona primero un proveedor"
+    },
+    "providerRequiredError": {
+      "message": "Elige un proveedor de IA en los ajustes antes de traducir."
+    },
+    "customProviderOption": {
+      "message": "Proveedor personalizado"
     },
     "providerSeparator": {
       "message": "──── más ────"
@@ -1232,6 +1460,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "Seguir Obsidian"
+    },
+    "settingTranslateNow": {
+      "message": "Probar traducción"
+    },
+    "settingTranslateNowDesc": {
+      "message": "Traduce una frase de ejemplo con los ajustes anteriores."
+    },
+    "btnTranslateNow": {
+      "message": "Traducir ahora"
+    },
+    "translateExampleText": {
+      "message": "¡Hola, mundo!"
+    },
+    "noticeExample": {
+      "message": "DualTran: $TEXT$"
     }
   },
   "fa": {
@@ -1291,6 +1534,18 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "settingProviderDesc": {
       "message": "ابتدا ارائه‌دهنده‌های داخلی، سپس هر چیزی که models.dev می‌شناسد (روزانه به‌روزرسانی می‌شود)."
+    },
+    "providerPlaceholder": {
+      "message": "یک ارائه‌دهنده انتخاب کنید"
+    },
+    "providerRequiredForModel": {
+      "message": "ابتدا یک ارائه‌دهنده انتخاب کنید"
+    },
+    "providerRequiredError": {
+      "message": "پیش از ترجمه، یک ارائه‌دهنده هوش مصنوعی در تنظیمات انتخاب کنید."
+    },
+    "customProviderOption": {
+      "message": "ارائه‌دهنده سفارشی"
     },
     "providerSeparator": {
       "message": "──── بیشتر ────"
@@ -1369,6 +1624,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "پیروی از Obsidian"
+    },
+    "settingTranslateNow": {
+      "message": "آزمایش ترجمه"
+    },
+    "settingTranslateNowDesc": {
+      "message": "یک جمله نمونه را با تنظیمات بالا ترجمه می‌کند."
+    },
+    "btnTranslateNow": {
+      "message": "همین حالا ترجمه کن"
+    },
+    "translateExampleText": {
+      "message": "سلام دنیا!"
+    },
+    "noticeExample": {
+      "message": "DualTran: $TEXT$"
     }
   },
   "fi": {
@@ -1428,6 +1698,18 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "settingProviderDesc": {
       "message": "Sisäänrakennetut palveluntarjoajat ensin, sitten kaikki mitä models.dev tuntee (päivitetään päivittäin)."
+    },
+    "providerPlaceholder": {
+      "message": "Valitse palveluntarjoaja"
+    },
+    "providerRequiredForModel": {
+      "message": "Valitse ensin palveluntarjoaja"
+    },
+    "providerRequiredError": {
+      "message": "Valitse AI-palveluntarjoaja asetuksista ennen kääntämistä."
+    },
+    "customProviderOption": {
+      "message": "Mukautettu palveluntarjoaja"
     },
     "providerSeparator": {
       "message": "──── lisää ────"
@@ -1506,6 +1788,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "Noudata Obsidiania"
+    },
+    "settingTranslateNow": {
+      "message": "Testaa käännös"
+    },
+    "settingTranslateNowDesc": {
+      "message": "Kääntää yhden esimerkkilauseen yllä olevilla asetuksilla."
+    },
+    "btnTranslateNow": {
+      "message": "Käännä nyt"
+    },
+    "translateExampleText": {
+      "message": "Hei maailma!"
+    },
+    "noticeExample": {
+      "message": "DualTran: $TEXT$"
     }
   },
   "fr": {
@@ -1565,6 +1862,18 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "settingProviderDesc": {
       "message": "Fournisseurs intégrés d'abord, puis tout ce que models.dev connaît (actualisé quotidiennement)."
+    },
+    "providerPlaceholder": {
+      "message": "Sélectionner un fournisseur"
+    },
+    "providerRequiredForModel": {
+      "message": "Sélectionnez d'abord un fournisseur"
+    },
+    "providerRequiredError": {
+      "message": "Choisissez un fournisseur d'IA dans les paramètres avant de traduire."
+    },
+    "customProviderOption": {
+      "message": "Fournisseur personnalisé"
     },
     "providerSeparator": {
       "message": "──── plus ────"
@@ -1643,6 +1952,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "Suivre Obsidian"
+    },
+    "settingTranslateNow": {
+      "message": "Tester la traduction"
+    },
+    "settingTranslateNowDesc": {
+      "message": "Traduit une phrase d'exemple avec les paramètres ci-dessus."
+    },
+    "btnTranslateNow": {
+      "message": "Traduire maintenant"
+    },
+    "translateExampleText": {
+      "message": "Bonjour le monde !"
+    },
+    "noticeExample": {
+      "message": "DualTran : $TEXT$"
     }
   },
   "he": {
@@ -1702,6 +2026,18 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "settingProviderDesc": {
       "message": "ספקים מובנים תחילה, ואחר כך כל מה ש-models.dev מכיר (מתעדכן מדי יום)."
+    },
+    "providerPlaceholder": {
+      "message": "בחרו ספק"
+    },
+    "providerRequiredForModel": {
+      "message": "בחרו ספק תחילה"
+    },
+    "providerRequiredError": {
+      "message": "בחרו ספק AI בהגדרות לפני התרגום."
+    },
+    "customProviderOption": {
+      "message": "ספק מותאם אישית"
     },
     "providerSeparator": {
       "message": "──── עוד ────"
@@ -1780,6 +2116,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "עקוב אחר Obsidian"
+    },
+    "settingTranslateNow": {
+      "message": "בדיקת תרגום"
+    },
+    "settingTranslateNowDesc": {
+      "message": "מתרגם משפט לדוגמה אחד עם ההגדרות שלמעלה."
+    },
+    "btnTranslateNow": {
+      "message": "תרגם עכשיו"
+    },
+    "translateExampleText": {
+      "message": "שלום, עולם!"
+    },
+    "noticeExample": {
+      "message": "DualTran: $TEXT$"
     }
   },
   "hi": {
@@ -1839,6 +2190,18 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "settingProviderDesc": {
       "message": "पहले अंतर्निहित प्रोवाइडर, फिर वे सभी जिन्हें models.dev जानता है (रोज़ाना रीफ़्रेश होता है)।"
+    },
+    "providerPlaceholder": {
+      "message": "प्रदाता चुनें"
+    },
+    "providerRequiredForModel": {
+      "message": "पहले प्रदाता चुनें"
+    },
+    "providerRequiredError": {
+      "message": "अनुवाद करने से पहले सेटिंग्स में AI प्रदाता चुनें।"
+    },
+    "customProviderOption": {
+      "message": "कस्टम प्रदाता"
     },
     "providerSeparator": {
       "message": "──── और ────"
@@ -1917,6 +2280,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "Obsidian का अनुसरण करें"
+    },
+    "settingTranslateNow": {
+      "message": "अनुवाद जाँचें"
+    },
+    "settingTranslateNowDesc": {
+      "message": "ऊपर की सेटिंग्स के साथ एक नमूना वाक्य का अनुवाद करता है।"
+    },
+    "btnTranslateNow": {
+      "message": "अभी अनुवाद करें"
+    },
+    "translateExampleText": {
+      "message": "नमस्ते दुनिया!"
+    },
+    "noticeExample": {
+      "message": "DualTran: $TEXT$"
     }
   },
   "hr": {
@@ -1976,6 +2354,18 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "settingProviderDesc": {
       "message": "Prvo ugrađeni pružatelji usluga, zatim sve što models.dev poznaje (osvježava se dnevno)."
+    },
+    "providerPlaceholder": {
+      "message": "Odaberite pružatelja"
+    },
+    "providerRequiredForModel": {
+      "message": "Najprije odaberite pružatelja"
+    },
+    "providerRequiredError": {
+      "message": "Prije prevođenja odaberite AI pružatelja u postavkama."
+    },
+    "customProviderOption": {
+      "message": "Prilagođeni pružatelj"
     },
     "providerSeparator": {
       "message": "──── više ────"
@@ -2054,6 +2444,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "Slijedi Obsidian"
+    },
+    "settingTranslateNow": {
+      "message": "Isprobaj prijevod"
+    },
+    "settingTranslateNowDesc": {
+      "message": "Prevodi jednu oglednu rečenicu s gore navedenim postavkama."
+    },
+    "btnTranslateNow": {
+      "message": "Prevedi sada"
+    },
+    "translateExampleText": {
+      "message": "Pozdrav, svijete!"
+    },
+    "noticeExample": {
+      "message": "DualTran: $TEXT$"
     }
   },
   "hu": {
@@ -2113,6 +2518,18 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "settingProviderDesc": {
       "message": "Először a beépített szolgáltatók, majd minden, amit a models.dev ismer (naponta frissül)."
+    },
+    "providerPlaceholder": {
+      "message": "Válasszon szolgáltatót"
+    },
+    "providerRequiredForModel": {
+      "message": "Először válasszon szolgáltatót"
+    },
+    "providerRequiredError": {
+      "message": "Fordítás előtt válasszon AI-szolgáltatót a beállításokban."
+    },
+    "customProviderOption": {
+      "message": "Egyéni szolgáltató"
     },
     "providerSeparator": {
       "message": "──── további ────"
@@ -2191,6 +2608,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "Obsidian követése"
+    },
+    "settingTranslateNow": {
+      "message": "Fordítás kipróbálása"
+    },
+    "settingTranslateNowDesc": {
+      "message": "Egy minta mondatot fordít le a fenti beállításokkal."
+    },
+    "btnTranslateNow": {
+      "message": "Fordítás most"
+    },
+    "translateExampleText": {
+      "message": "Helló, világ!"
+    },
+    "noticeExample": {
+      "message": "DualTran: $TEXT$"
     }
   },
   "is": {
@@ -2250,6 +2682,18 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "settingProviderDesc": {
       "message": "Innbyggðir veitendur fyrst, síðan allt sem models.dev þekkir (endurnýjað daglega)."
+    },
+    "providerPlaceholder": {
+      "message": "Veldu þjónustuveitu"
+    },
+    "providerRequiredForModel": {
+      "message": "Veldu þjónustuveitu fyrst"
+    },
+    "providerRequiredError": {
+      "message": "Veldu AI-þjónustuveitu í stillingum áður en þú þýðir."
+    },
+    "customProviderOption": {
+      "message": "Sérsniðin þjónustuveita"
     },
     "providerSeparator": {
       "message": "──── meira ────"
@@ -2328,6 +2772,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "Fylgja Obsidian"
+    },
+    "settingTranslateNow": {
+      "message": "Prófa þýðingu"
+    },
+    "settingTranslateNowDesc": {
+      "message": "Þýðir eina sýningsetningu með stillingunum hér að ofan."
+    },
+    "btnTranslateNow": {
+      "message": "Þýða núna"
+    },
+    "translateExampleText": {
+      "message": "Halló, heimur!"
+    },
+    "noticeExample": {
+      "message": "DualTran: $TEXT$"
     }
   },
   "it": {
@@ -2387,6 +2846,18 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "settingProviderDesc": {
       "message": "Prima i provider integrati, poi tutto ciò che models.dev conosce (aggiornato ogni giorno)."
+    },
+    "providerPlaceholder": {
+      "message": "Seleziona un provider"
+    },
+    "providerRequiredForModel": {
+      "message": "Seleziona prima un provider"
+    },
+    "providerRequiredError": {
+      "message": "Scegli un provider AI nelle impostazioni prima di tradurre."
+    },
+    "customProviderOption": {
+      "message": "Provider personalizzato"
     },
     "providerSeparator": {
       "message": "──── altri ────"
@@ -2465,6 +2936,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "Segui Obsidian"
+    },
+    "settingTranslateNow": {
+      "message": "Prova traduzione"
+    },
+    "settingTranslateNowDesc": {
+      "message": "Traduce una frase di esempio con le impostazioni qui sopra."
+    },
+    "btnTranslateNow": {
+      "message": "Traduci ora"
+    },
+    "translateExampleText": {
+      "message": "Ciao, mondo!"
+    },
+    "noticeExample": {
+      "message": "DualTran: $TEXT$"
     }
   },
   "ja": {
@@ -2524,6 +3010,18 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "settingProviderDesc": {
       "message": "組み込みプロバイダーが先、その後にmodels.devが把握しているすべて（毎日更新）。"
+    },
+    "providerPlaceholder": {
+      "message": "プロバイダーを選択"
+    },
+    "providerRequiredForModel": {
+      "message": "先にプロバイダーを選択してください"
+    },
+    "providerRequiredError": {
+      "message": "翻訳する前に設定で AI プロバイダーを選択してください。"
+    },
+    "customProviderOption": {
+      "message": "カスタムプロバイダー"
     },
     "providerSeparator": {
       "message": "──── その他 ────"
@@ -2602,6 +3100,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "Obsidianに従う"
+    },
+    "settingTranslateNow": {
+      "message": "翻訳をテスト"
+    },
+    "settingTranslateNowDesc": {
+      "message": "上の設定でサンプル文を1つ翻訳します。"
+    },
+    "btnTranslateNow": {
+      "message": "今すぐ翻訳"
+    },
+    "translateExampleText": {
+      "message": "こんにちは、世界！"
+    },
+    "noticeExample": {
+      "message": "DualTran: $TEXT$"
     }
   },
   "ko": {
@@ -2661,6 +3174,18 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "settingProviderDesc": {
       "message": "내장 제공자가 먼저 표시되고, 그다음 models.dev가 아는 모든 제공자가 표시됩니다(매일 갱신)."
+    },
+    "providerPlaceholder": {
+      "message": "공급자 선택"
+    },
+    "providerRequiredForModel": {
+      "message": "먼저 공급자를 선택하세요"
+    },
+    "providerRequiredError": {
+      "message": "번역하기 전에 설정에서 AI 공급자를 선택하세요."
+    },
+    "customProviderOption": {
+      "message": "사용자 지정 공급자"
     },
     "providerSeparator": {
       "message": "──── 더 보기 ────"
@@ -2739,6 +3264,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "Obsidian 따르기"
+    },
+    "settingTranslateNow": {
+      "message": "번역 테스트"
+    },
+    "settingTranslateNowDesc": {
+      "message": "위 설정으로 예문 한 문장을 번역합니다."
+    },
+    "btnTranslateNow": {
+      "message": "지금 번역"
+    },
+    "translateExampleText": {
+      "message": "안녕하세요!"
+    },
+    "noticeExample": {
+      "message": "DualTran: $TEXT$"
     }
   },
   "lv": {
@@ -2798,6 +3338,18 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "settingProviderDesc": {
       "message": "Vispirms iebūvētie pakalpojumu sniedzēji, pēc tam viss, ko zina models.dev (atjaunināts katru dienu)."
+    },
+    "providerPlaceholder": {
+      "message": "Atlasiet pakalpojumu sniedzēju"
+    },
+    "providerRequiredForModel": {
+      "message": "Vispirms atlasiet pakalpojumu sniedzēju"
+    },
+    "providerRequiredError": {
+      "message": "Pirms tulkošanas iestatījumos atlasiet AI pakalpojumu sniedzēju."
+    },
+    "customProviderOption": {
+      "message": "Pielāgots pakalpojumu sniedzējs"
     },
     "providerSeparator": {
       "message": "──── vairāk ────"
@@ -2876,6 +3428,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "Sekot Obsidian"
+    },
+    "settingTranslateNow": {
+      "message": "Pārbaudīt tulkojumu"
+    },
+    "settingTranslateNowDesc": {
+      "message": "Tulko vienu parauga teikumu ar iepriekš norādītajiem iestatījumiem."
+    },
+    "btnTranslateNow": {
+      "message": "Tulkot tagad"
+    },
+    "translateExampleText": {
+      "message": "Sveika, pasaule!"
+    },
+    "noticeExample": {
+      "message": "DualTran: $TEXT$"
     }
   },
   "nl": {
@@ -2935,6 +3502,18 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "settingProviderDesc": {
       "message": "Eerst ingebouwde providers, daarna alles wat models.dev kent (dagelijks vernieuwd)."
+    },
+    "providerPlaceholder": {
+      "message": "Selecteer een provider"
+    },
+    "providerRequiredForModel": {
+      "message": "Selecteer eerst een provider"
+    },
+    "providerRequiredError": {
+      "message": "Kies een AI-provider in de instellingen voordat je vertaalt."
+    },
+    "customProviderOption": {
+      "message": "Aangepaste provider"
     },
     "providerSeparator": {
       "message": "──── meer ────"
@@ -3013,6 +3592,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "Volg Obsidian"
+    },
+    "settingTranslateNow": {
+      "message": "Vertaling testen"
+    },
+    "settingTranslateNowDesc": {
+      "message": "Vertaalt één voorbeeldzin met de instellingen hierboven."
+    },
+    "btnTranslateNow": {
+      "message": "Nu vertalen"
+    },
+    "translateExampleText": {
+      "message": "Hallo, wereld!"
+    },
+    "noticeExample": {
+      "message": "DualTran: $TEXT$"
     }
   },
   "no": {
@@ -3072,6 +3666,18 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "settingProviderDesc": {
       "message": "Innebygde leverandører først, deretter alt models.dev kjenner til (oppdateres daglig)."
+    },
+    "providerPlaceholder": {
+      "message": "Velg en leverandør"
+    },
+    "providerRequiredForModel": {
+      "message": "Velg en leverandør først"
+    },
+    "providerRequiredError": {
+      "message": "Velg en AI-leverandør i innstillingene før du oversetter."
+    },
+    "customProviderOption": {
+      "message": "Tilpasset leverandør"
     },
     "providerSeparator": {
       "message": "──── mer ────"
@@ -3150,6 +3756,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "Følg Obsidian"
+    },
+    "settingTranslateNow": {
+      "message": "Test oversettelse"
+    },
+    "settingTranslateNowDesc": {
+      "message": "Oversetter én eksempelsetning med innstillingene ovenfor."
+    },
+    "btnTranslateNow": {
+      "message": "Oversett nå"
+    },
+    "translateExampleText": {
+      "message": "Hei, verden!"
+    },
+    "noticeExample": {
+      "message": "DualTran: $TEXT$"
     }
   },
   "pl": {
@@ -3209,6 +3830,18 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "settingProviderDesc": {
       "message": "Najpierw wbudowani dostawcy, potem wszystko, co zna models.dev (odświeżane codziennie)."
+    },
+    "providerPlaceholder": {
+      "message": "Wybierz dostawcę"
+    },
+    "providerRequiredForModel": {
+      "message": "Najpierw wybierz dostawcę"
+    },
+    "providerRequiredError": {
+      "message": "Przed tłumaczeniem wybierz dostawcę AI w ustawieniach."
+    },
+    "customProviderOption": {
+      "message": "Dostawca niestandardowy"
     },
     "providerSeparator": {
       "message": "──── więcej ────"
@@ -3287,6 +3920,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "Zgodnie z Obsidian"
+    },
+    "settingTranslateNow": {
+      "message": "Testuj tłumaczenie"
+    },
+    "settingTranslateNowDesc": {
+      "message": "Tłumaczy jedno zdanie przykładowe z powyższymi ustawieniami."
+    },
+    "btnTranslateNow": {
+      "message": "Przetłumacz teraz"
+    },
+    "translateExampleText": {
+      "message": "Witaj, świecie!"
+    },
+    "noticeExample": {
+      "message": "DualTran: $TEXT$"
     }
   },
   "pt_BR": {
@@ -3346,6 +3994,18 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "settingProviderDesc": {
       "message": "Provedores integrados primeiro, depois tudo o que o models.dev conhece (atualizado diariamente)."
+    },
+    "providerPlaceholder": {
+      "message": "Selecione um provedor"
+    },
+    "providerRequiredForModel": {
+      "message": "Selecione um provedor primeiro"
+    },
+    "providerRequiredError": {
+      "message": "Escolha um provedor de IA nas configurações antes de traduzir."
+    },
+    "customProviderOption": {
+      "message": "Provedor personalizado"
     },
     "providerSeparator": {
       "message": "──── mais ────"
@@ -3424,6 +4084,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "Seguir o Obsidian"
+    },
+    "settingTranslateNow": {
+      "message": "Testar tradução"
+    },
+    "settingTranslateNowDesc": {
+      "message": "Traduz uma frase de exemplo com as configurações acima."
+    },
+    "btnTranslateNow": {
+      "message": "Traduzir agora"
+    },
+    "translateExampleText": {
+      "message": "Olá, mundo!"
+    },
+    "noticeExample": {
+      "message": "DualTran: $TEXT$"
     }
   },
   "pt_PT": {
@@ -3483,6 +4158,18 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "settingProviderDesc": {
       "message": "Primeiro os fornecedores integrados, depois tudo o que o models.dev conhece (atualizado diariamente)."
+    },
+    "providerPlaceholder": {
+      "message": "Selecione um fornecedor"
+    },
+    "providerRequiredForModel": {
+      "message": "Selecione primeiro um fornecedor"
+    },
+    "providerRequiredError": {
+      "message": "Escolha um fornecedor de IA nas definições antes de traduzir."
+    },
+    "customProviderOption": {
+      "message": "Fornecedor personalizado"
     },
     "providerSeparator": {
       "message": "──── mais ────"
@@ -3561,6 +4248,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "Seguir o Obsidian"
+    },
+    "settingTranslateNow": {
+      "message": "Testar tradução"
+    },
+    "settingTranslateNowDesc": {
+      "message": "Traduz uma frase de exemplo com as definições acima."
+    },
+    "btnTranslateNow": {
+      "message": "Traduzir agora"
+    },
+    "translateExampleText": {
+      "message": "Olá, mundo!"
+    },
+    "noticeExample": {
+      "message": "DualTran: $TEXT$"
     }
   },
   "ro": {
@@ -3620,6 +4322,18 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "settingProviderDesc": {
       "message": "Mai întâi furnizorii încorporați, apoi tot ce cunoaște models.dev (actualizat zilnic)."
+    },
+    "providerPlaceholder": {
+      "message": "Selectați un furnizor"
+    },
+    "providerRequiredForModel": {
+      "message": "Selectați mai întâi un furnizor"
+    },
+    "providerRequiredError": {
+      "message": "Alegeți un furnizor AI din setări înainte de a traduce."
+    },
+    "customProviderOption": {
+      "message": "Furnizor personalizat"
     },
     "providerSeparator": {
       "message": "──── mai multe ────"
@@ -3698,6 +4412,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "Urmează Obsidian"
+    },
+    "settingTranslateNow": {
+      "message": "Testează traducerea"
+    },
+    "settingTranslateNowDesc": {
+      "message": "Traduce o propoziție exemplu cu setările de mai sus."
+    },
+    "btnTranslateNow": {
+      "message": "Tradu acum"
+    },
+    "translateExampleText": {
+      "message": "Salut, lume!"
+    },
+    "noticeExample": {
+      "message": "DualTran: $TEXT$"
     }
   },
   "ru": {
@@ -3757,6 +4486,18 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "settingProviderDesc": {
       "message": "Сначала встроенные провайдеры, затем все, что известно models.dev (обновляется ежедневно)."
+    },
+    "providerPlaceholder": {
+      "message": "Выберите провайдера"
+    },
+    "providerRequiredForModel": {
+      "message": "Сначала выберите провайдера"
+    },
+    "providerRequiredError": {
+      "message": "Перед переводом выберите провайдера ИИ в настройках."
+    },
+    "customProviderOption": {
+      "message": "Свой провайдер"
     },
     "providerSeparator": {
       "message": "──── ещё ────"
@@ -3835,6 +4576,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "Как в Obsidian"
+    },
+    "settingTranslateNow": {
+      "message": "Проверить перевод"
+    },
+    "settingTranslateNowDesc": {
+      "message": "Переводит одно примерное предложение с указанными выше настройками."
+    },
+    "btnTranslateNow": {
+      "message": "Перевести сейчас"
+    },
+    "translateExampleText": {
+      "message": "Привет, мир!"
+    },
+    "noticeExample": {
+      "message": "DualTran: $TEXT$"
     }
   },
   "sl": {
@@ -3894,6 +4650,18 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "settingProviderDesc": {
       "message": "Najprej vgrajeni ponudniki, nato vse, kar pozna models.dev (osveženo dnevno)."
+    },
+    "providerPlaceholder": {
+      "message": "Izberite ponudnika"
+    },
+    "providerRequiredForModel": {
+      "message": "Najprej izberite ponudnika"
+    },
+    "providerRequiredError": {
+      "message": "Pred prevajanjem v nastavitvah izberite ponudnika AI."
+    },
+    "customProviderOption": {
+      "message": "Ponudnik po meri"
     },
     "providerSeparator": {
       "message": "──── več ────"
@@ -3972,6 +4740,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "Sledi Obsidianu"
+    },
+    "settingTranslateNow": {
+      "message": "Preizkusi prevajanje"
+    },
+    "settingTranslateNowDesc": {
+      "message": "Prevede en zgledni stavek z zgornjimi nastavitvami."
+    },
+    "btnTranslateNow": {
+      "message": "Prevedi zdaj"
+    },
+    "translateExampleText": {
+      "message": "Pozdravljen, svet!"
+    },
+    "noticeExample": {
+      "message": "DualTran: $TEXT$"
     }
   },
   "sr": {
@@ -4031,6 +4814,18 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "settingProviderDesc": {
       "message": "Prvo ugrađeni provajderi, zatim sve što models.dev poznaje (osvežava se dnevno)."
+    },
+    "providerPlaceholder": {
+      "message": "Изаберите провајдера"
+    },
+    "providerRequiredForModel": {
+      "message": "Прво изаберите провајдера"
+    },
+    "providerRequiredError": {
+      "message": "Пре превођења изаберите AI провајдера у подешавањима."
+    },
+    "customProviderOption": {
+      "message": "Прилагођени провајдер"
     },
     "providerSeparator": {
       "message": "──── više ────"
@@ -4109,6 +4904,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "Prati Obsidian"
+    },
+    "settingTranslateNow": {
+      "message": "Испробај превод"
+    },
+    "settingTranslateNowDesc": {
+      "message": "Преводи једну пример реченицу са горњим подешавањима."
+    },
+    "btnTranslateNow": {
+      "message": "Преведи сада"
+    },
+    "translateExampleText": {
+      "message": "Здраво, свете!"
+    },
+    "noticeExample": {
+      "message": "DualTran: $TEXT$"
     }
   },
   "sv": {
@@ -4168,6 +4978,18 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "settingProviderDesc": {
       "message": "Inbyggda leverantörer först, sedan allt som models.dev känner till (uppdateras dagligen)."
+    },
+    "providerPlaceholder": {
+      "message": "Välj en leverantör"
+    },
+    "providerRequiredForModel": {
+      "message": "Välj en leverantör först"
+    },
+    "providerRequiredError": {
+      "message": "Välj en AI-leverantör i inställningarna innan du översätter."
+    },
+    "customProviderOption": {
+      "message": "Anpassad leverantör"
     },
     "providerSeparator": {
       "message": "──── fler ────"
@@ -4246,6 +5068,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "Följ Obsidian"
+    },
+    "settingTranslateNow": {
+      "message": "Testa översättning"
+    },
+    "settingTranslateNowDesc": {
+      "message": "Översätter en exempelmening med inställningarna ovan."
+    },
+    "btnTranslateNow": {
+      "message": "Översätt nu"
+    },
+    "translateExampleText": {
+      "message": "Hej, världen!"
+    },
+    "noticeExample": {
+      "message": "DualTran: $TEXT$"
     }
   },
   "th": {
@@ -4305,6 +5142,18 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "settingProviderDesc": {
       "message": "ผู้ให้บริการในตัวก่อน จากนั้นทุกอย่างที่ models.dev รู้จัก (อัปเดตทุกวัน)"
+    },
+    "providerPlaceholder": {
+      "message": "เลือกผู้ให้บริการ"
+    },
+    "providerRequiredForModel": {
+      "message": "เลือกผู้ให้บริการก่อน"
+    },
+    "providerRequiredError": {
+      "message": "เลือกผู้ให้บริการ AI ในการตั้งค่าก่อนแปล"
+    },
+    "customProviderOption": {
+      "message": "ผู้ให้บริการที่กำหนดเอง"
     },
     "providerSeparator": {
       "message": "──── เพิ่มเติม ────"
@@ -4383,6 +5232,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "ตาม Obsidian"
+    },
+    "settingTranslateNow": {
+      "message": "ทดสอบการแปล"
+    },
+    "settingTranslateNowDesc": {
+      "message": "แปลประโยคตัวอย่างหนึ่งประโยคด้วยการตั้งค่าด้านบน"
+    },
+    "btnTranslateNow": {
+      "message": "แปลเลย"
+    },
+    "translateExampleText": {
+      "message": "สวัสดีชาวโลก!"
+    },
+    "noticeExample": {
+      "message": "DualTran: $TEXT$"
     }
   },
   "tr": {
@@ -4442,6 +5306,18 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "settingProviderDesc": {
       "message": "Önce yerleşik sağlayıcılar, ardından models.dev'in bildiği her şey (günlük yenilenir)."
+    },
+    "providerPlaceholder": {
+      "message": "Bir sağlayıcı seçin"
+    },
+    "providerRequiredForModel": {
+      "message": "Önce bir sağlayıcı seçin"
+    },
+    "providerRequiredError": {
+      "message": "Çeviri yapmadan önce ayarlardan bir AI sağlayıcısı seçin."
+    },
+    "customProviderOption": {
+      "message": "Özel sağlayıcı"
     },
     "providerSeparator": {
       "message": "──── daha fazla ────"
@@ -4520,6 +5396,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "Obsidian'ı takip et"
+    },
+    "settingTranslateNow": {
+      "message": "Çeviriyi sına"
+    },
+    "settingTranslateNowDesc": {
+      "message": "Yukarıdaki ayarlarla bir örnek cümleyi çevirir."
+    },
+    "btnTranslateNow": {
+      "message": "Şimdi çevir"
+    },
+    "translateExampleText": {
+      "message": "Merhaba, dünya!"
+    },
+    "noticeExample": {
+      "message": "DualTran: $TEXT$"
     }
   },
   "ug": {
@@ -4579,6 +5470,18 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "settingProviderDesc": {
       "message": "ئالدى بىلەن قۇرۇلغان تەمىنلىگۈچىلەر، ئاندىن models.dev بىلگەن ھەممە نەرسە (كۈندىلىك يېڭىلىنىدۇ)."
+    },
+    "providerPlaceholder": {
+      "message": "تەمىنلىگۈچى تاللاڭ"
+    },
+    "providerRequiredForModel": {
+      "message": "ئالدى بىلەن تەمىنلىگۈچى تاللاڭ"
+    },
+    "providerRequiredError": {
+      "message": "تەرجىمە قىلىشتىن بۇرۇن تەڭشەكتە AI تەمىنلىگۈچىسىنى تاللاڭ."
+    },
+    "customProviderOption": {
+      "message": "ئۆزىڭىز بەلگىلىگەن تەمىنلىگۈچى"
     },
     "providerSeparator": {
       "message": "──── تېخىمۇ كۆپ ────"
@@ -4657,6 +5560,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "Obsidian غا ئەگىشىش"
+    },
+    "settingTranslateNow": {
+      "message": "تەرجىمىنى سىناش"
+    },
+    "settingTranslateNowDesc": {
+      "message": "يۇقىرىدىكى تەڭشەكلەر بىلەن بىر ئۈلگە جۈملىنى تەرجىمە قىلىدۇ."
+    },
+    "btnTranslateNow": {
+      "message": "ھازىر تەرجىمە قىلىش"
+    },
+    "translateExampleText": {
+      "message": "ياخشىمۇسىز، دۇنيا!"
+    },
+    "noticeExample": {
+      "message": "DualTran: $TEXT$"
     }
   },
   "uk": {
@@ -4716,6 +5634,18 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "settingProviderDesc": {
       "message": "Спочатку вбудовані постачальники, потім усе, що відомо models.dev (оновлюється щодня)."
+    },
+    "providerPlaceholder": {
+      "message": "Виберіть постачальника"
+    },
+    "providerRequiredForModel": {
+      "message": "Спочатку виберіть постачальника"
+    },
+    "providerRequiredError": {
+      "message": "Перед перекладом виберіть постачальника ШІ у налаштуваннях."
+    },
+    "customProviderOption": {
+      "message": "Власний постачальник"
     },
     "providerSeparator": {
       "message": "──── більше ────"
@@ -4794,6 +5724,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "Як в Obsidian"
+    },
+    "settingTranslateNow": {
+      "message": "Перевірити переклад"
+    },
+    "settingTranslateNowDesc": {
+      "message": "Перекладає одне прикладне речення з наведеними вище налаштуваннями."
+    },
+    "btnTranslateNow": {
+      "message": "Перекласти зараз"
+    },
+    "translateExampleText": {
+      "message": "Привіт, світе!"
+    },
+    "noticeExample": {
+      "message": "DualTran: $TEXT$"
     }
   },
   "vi": {
@@ -4853,6 +5798,18 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "settingProviderDesc": {
       "message": "Các nhà cung cấp tích hợp trước, sau đó là mọi thứ models.dev biết (cập nhật hàng ngày)."
+    },
+    "providerPlaceholder": {
+      "message": "Chọn nhà cung cấp"
+    },
+    "providerRequiredForModel": {
+      "message": "Chọn nhà cung cấp trước"
+    },
+    "providerRequiredError": {
+      "message": "Chọn nhà cung cấp AI trong cài đặt trước khi dịch."
+    },
+    "customProviderOption": {
+      "message": "Nhà cung cấp tùy chỉnh"
     },
     "providerSeparator": {
       "message": "──── thêm ────"
@@ -4931,6 +5888,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "Theo Obsidian"
+    },
+    "settingTranslateNow": {
+      "message": "Thử bản dịch"
+    },
+    "settingTranslateNowDesc": {
+      "message": "Dịch một câu mẫu bằng cài đặt ở trên."
+    },
+    "btnTranslateNow": {
+      "message": "Dịch ngay"
+    },
+    "translateExampleText": {
+      "message": "Xin chào, thế giới!"
+    },
+    "noticeExample": {
+      "message": "DualTran: $TEXT$"
     }
   },
   "zh_CN": {
@@ -4990,6 +5962,18 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "settingProviderDesc": {
       "message": "先列内置服务商，再列 models.dev 收录的全部服务商（每日刷新）。"
+    },
+    "providerPlaceholder": {
+      "message": "请选择 AI 提供商"
+    },
+    "providerRequiredForModel": {
+      "message": "请先选择提供商"
+    },
+    "providerRequiredError": {
+      "message": "翻译前请先在设置中选择 AI 提供商。"
+    },
+    "customProviderOption": {
+      "message": "自定义提供商"
     },
     "providerSeparator": {
       "message": "──── 更多 ────"
@@ -5068,6 +6052,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "跟随 Obsidian"
+    },
+    "settingTranslateNow": {
+      "message": "测试翻译"
+    },
+    "settingTranslateNowDesc": {
+      "message": "用上面的设置翻译一句示例文本。"
+    },
+    "btnTranslateNow": {
+      "message": "立即翻译"
+    },
+    "translateExampleText": {
+      "message": "你好，世界！"
+    },
+    "noticeExample": {
+      "message": "DualTran：$TEXT$"
     }
   },
   "zh_TW": {
@@ -5127,6 +6126,18 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "settingProviderDesc": {
       "message": "先列內建服務商，再列 models.dev 收錄的全部服務商（每日更新）。"
+    },
+    "providerPlaceholder": {
+      "message": "請選擇 AI 提供商"
+    },
+    "providerRequiredForModel": {
+      "message": "請先選擇提供商"
+    },
+    "providerRequiredError": {
+      "message": "翻譯前請先在設定中選擇 AI 提供商。"
+    },
+    "customProviderOption": {
+      "message": "自訂提供商"
     },
     "providerSeparator": {
       "message": "──── 更多 ────"
@@ -5205,6 +6216,21 @@ export const LOCALES: Record<string, LocaleCatalogue> = {
     },
     "languageAuto": {
       "message": "跟隨 Obsidian"
+    },
+    "settingTranslateNow": {
+      "message": "測試翻譯"
+    },
+    "settingTranslateNowDesc": {
+      "message": "用上面的設定翻譯一句範例文字。"
+    },
+    "btnTranslateNow": {
+      "message": "立即翻譯"
+    },
+    "translateExampleText": {
+      "message": "你好，世界！"
+    },
+    "noticeExample": {
+      "message": "DualTran：$TEXT$"
     }
   }
 };

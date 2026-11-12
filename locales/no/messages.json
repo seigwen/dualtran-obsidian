@@ -56,6 +56,18 @@
   "settingProviderDesc": {
     "message": "Innebygde leverandører først, deretter alt models.dev kjenner til (oppdateres daglig)."
   },
+  "providerPlaceholder": {
+    "message": "Velg en leverandør"
+  },
+  "providerRequiredForModel": {
+    "message": "Velg en leverandør først"
+  },
+  "providerRequiredError": {
+    "message": "Velg en AI-leverandør i innstillingene før du oversetter."
+  },
+  "customProviderOption": {
+    "message": "Tilpasset leverandør"
+  },
   "providerSeparator": {
     "message": "──── mer ────"
   },
@@ -133,5 +145,20 @@
   },
   "languageAuto": {
     "message": "Følg Obsidian"
+  },
+  "settingTranslateNow": {
+    "message": "Test oversettelse"
+  },
+  "settingTranslateNowDesc": {
+    "message": "Oversetter én eksempelsetning med innstillingene ovenfor."
+  },
+  "btnTranslateNow": {
+    "message": "Oversett nå"
+  },
+  "translateExampleText": {
+    "message": "Hei, verden!"
+  },
+  "noticeExample": {
+    "message": "DualTran: $TEXT$"
   }
 }

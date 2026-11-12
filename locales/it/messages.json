@@ -56,6 +56,18 @@
   "settingProviderDesc": {
     "message": "Prima i provider integrati, poi tutto ciò che models.dev conosce (aggiornato ogni giorno)."
   },
+  "providerPlaceholder": {
+    "message": "Seleziona un provider"
+  },
+  "providerRequiredForModel": {
+    "message": "Seleziona prima un provider"
+  },
+  "providerRequiredError": {
+    "message": "Scegli un provider AI nelle impostazioni prima di tradurre."
+  },
+  "customProviderOption": {
+    "message": "Provider personalizzato"
+  },
   "providerSeparator": {
     "message": "──── altri ────"
   },
@@ -133,5 +145,20 @@
   },
   "languageAuto": {
     "message": "Segui Obsidian"
+  },
+  "settingTranslateNow": {
+    "message": "Prova traduzione"
+  },
+  "settingTranslateNowDesc": {
+    "message": "Traduce una frase di esempio con le impostazioni qui sopra."
+  },
+  "btnTranslateNow": {
+    "message": "Traduci ora"
+  },
+  "translateExampleText": {
+    "message": "Ciao, mondo!"
+  },
+  "noticeExample": {
+    "message": "DualTran: $TEXT$"
   }
 }

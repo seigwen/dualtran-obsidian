@@ -7,6 +7,9 @@
  */
 import { LOWEST_REASONING, type DualTranSettings } from "./settings";
 
+/** English source string for the unconfigured-provider error (overridable). */
+export const PROVIDER_REQUIRED_ERROR = "Choose an AI provider in settings before translating.";
+
 export interface FetchResponseLike {
   ok: boolean;
   status: number;
@@ -125,6 +128,7 @@ export function createBridge({
   getStore,
   aiFetch,
   resolveReasoningDepth,
+  providerRequiredError,
 }: {
   core: CoreLike;
   fetchImpl: FetchLike | null;
@@ -135,9 +139,21 @@ export function createBridge({
   aiFetch?: ResponseFetchLike;
   /** Model-aware effort resolution; defaults to the stored string (sentinel → ""). */
   resolveReasoningDepth?: (settings: DualTranSettings) => string;
+  /**
+   * Localized "no provider chosen" message (SPEC 2.1). Without it the English
+   * source string is used, so an unconfigured AI request never guesses a
+   * provider or reaches the network.
+   */
+  providerRequiredError?: () => string;
 }) {
   /** AI path: one streaming chat request per block, chunks joined in order. */
   async function translateBlocksAi(blocks: string[], settings: DualTranSettings): Promise<string[]> {
+    // SPEC 2.1: no provider means no request. Never substitute a default
+    // provider here — the user has to choose one in settings first.
+    const provider = (settings.aiProvider || "").trim();
+    if (!provider) {
+      throw new Error(providerRequiredError ? providerRequiredError() : PROVIDER_REQUIRED_ERROR);
+    }
     const results: string[] = [];
     for (const content of blocks) {
       const targetLanguageName =
@@ -157,7 +173,7 @@ export function createBridge({
           ? ""
           : settings.aiReasoningDepth || "";
       const { totalChunks, streamError } = await core.streamChat({
-        provider: settings.aiProvider,
+        provider,
         apiKey: settings.aiApiKey,
         model: settings.aiModel,
         messages,

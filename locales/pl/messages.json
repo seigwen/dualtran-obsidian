@@ -56,6 +56,18 @@
   "settingProviderDesc": {
     "message": "Najpierw wbudowani dostawcy, potem wszystko, co zna models.dev (odświeżane codziennie)."
   },
+  "providerPlaceholder": {
+    "message": "Wybierz dostawcę"
+  },
+  "providerRequiredForModel": {
+    "message": "Najpierw wybierz dostawcę"
+  },
+  "providerRequiredError": {
+    "message": "Przed tłumaczeniem wybierz dostawcę AI w ustawieniach."
+  },
+  "customProviderOption": {
+    "message": "Dostawca niestandardowy"
+  },
   "providerSeparator": {
     "message": "──── więcej ────"
   },
@@ -133,5 +145,20 @@
   },
   "languageAuto": {
     "message": "Zgodnie z Obsidian"
+  },
+  "settingTranslateNow": {
+    "message": "Testuj tłumaczenie"
+  },
+  "settingTranslateNowDesc": {
+    "message": "Tłumaczy jedno zdanie przykładowe z powyższymi ustawieniami."
+  },
+  "btnTranslateNow": {
+    "message": "Przetłumacz teraz"
+  },
+  "translateExampleText": {
+    "message": "Witaj, świecie!"
+  },
+  "noticeExample": {
+    "message": "DualTran: $TEXT$"
   }
 }

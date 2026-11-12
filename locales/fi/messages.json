@@ -56,6 +56,18 @@
   "settingProviderDesc": {
     "message": "Sisäänrakennetut palveluntarjoajat ensin, sitten kaikki mitä models.dev tuntee (päivitetään päivittäin)."
   },
+  "providerPlaceholder": {
+    "message": "Valitse palveluntarjoaja"
+  },
+  "providerRequiredForModel": {
+    "message": "Valitse ensin palveluntarjoaja"
+  },
+  "providerRequiredError": {
+    "message": "Valitse AI-palveluntarjoaja asetuksista ennen kääntämistä."
+  },
+  "customProviderOption": {
+    "message": "Mukautettu palveluntarjoaja"
+  },
   "providerSeparator": {
     "message": "──── lisää ────"
   },
@@ -133,5 +145,20 @@
   },
   "languageAuto": {
     "message": "Noudata Obsidiania"
+  },
+  "settingTranslateNow": {
+    "message": "Testaa käännös"
+  },
+  "settingTranslateNowDesc": {
+    "message": "Kääntää yhden esimerkkilauseen yllä olevilla asetuksilla."
+  },
+  "btnTranslateNow": {
+    "message": "Käännä nyt"
+  },
+  "translateExampleText": {
+    "message": "Hei maailma!"
+  },
+  "noticeExample": {
+    "message": "DualTran: $TEXT$"
   }
 }

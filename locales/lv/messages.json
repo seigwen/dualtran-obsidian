@@ -56,6 +56,18 @@
   "settingProviderDesc": {
     "message": "Vispirms iebūvētie pakalpojumu sniedzēji, pēc tam viss, ko zina models.dev (atjaunināts katru dienu)."
   },
+  "providerPlaceholder": {
+    "message": "Atlasiet pakalpojumu sniedzēju"
+  },
+  "providerRequiredForModel": {
+    "message": "Vispirms atlasiet pakalpojumu sniedzēju"
+  },
+  "providerRequiredError": {
+    "message": "Pirms tulkošanas iestatījumos atlasiet AI pakalpojumu sniedzēju."
+  },
+  "customProviderOption": {
+    "message": "Pielāgots pakalpojumu sniedzējs"
+  },
   "providerSeparator": {
     "message": "──── vairāk ────"
   },
@@ -133,5 +145,20 @@
   },
   "languageAuto": {
     "message": "Sekot Obsidian"
+  },
+  "settingTranslateNow": {
+    "message": "Pārbaudīt tulkojumu"
+  },
+  "settingTranslateNowDesc": {
+    "message": "Tulko vienu parauga teikumu ar iepriekš norādītajiem iestatījumiem."
+  },
+  "btnTranslateNow": {
+    "message": "Tulkot tagad"
+  },
+  "translateExampleText": {
+    "message": "Sveika, pasaule!"
+  },
+  "noticeExample": {
+    "message": "DualTran: $TEXT$"
   }
 }

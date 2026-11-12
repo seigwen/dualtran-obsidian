@@ -56,6 +56,18 @@
   "settingProviderDesc": {
     "message": "पहले अंतर्निहित प्रोवाइडर, फिर वे सभी जिन्हें models.dev जानता है (रोज़ाना रीफ़्रेश होता है)।"
   },
+  "providerPlaceholder": {
+    "message": "प्रदाता चुनें"
+  },
+  "providerRequiredForModel": {
+    "message": "पहले प्रदाता चुनें"
+  },
+  "providerRequiredError": {
+    "message": "अनुवाद करने से पहले सेटिंग्स में AI प्रदाता चुनें।"
+  },
+  "customProviderOption": {
+    "message": "कस्टम प्रदाता"
+  },
   "providerSeparator": {
     "message": "──── और ────"
   },
@@ -133,5 +145,20 @@
   },
   "languageAuto": {
     "message": "Obsidian का अनुसरण करें"
+  },
+  "settingTranslateNow": {
+    "message": "अनुवाद जाँचें"
+  },
+  "settingTranslateNowDesc": {
+    "message": "ऊपर की सेटिंग्स के साथ एक नमूना वाक्य का अनुवाद करता है।"
+  },
+  "btnTranslateNow": {
+    "message": "अभी अनुवाद करें"
+  },
+  "translateExampleText": {
+    "message": "नमस्ते दुनिया!"
+  },
+  "noticeExample": {
+    "message": "DualTran: $TEXT$"
   }
 }

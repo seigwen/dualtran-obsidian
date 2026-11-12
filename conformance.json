@@ -1,5 +1,5 @@
 {
-  "spec": "2.0.0",
+  "spec": "2.1.0",
   "host": "dualtran-obsidian",
   "payload": "tests/unit/conformance.test.ts",
   "static": {

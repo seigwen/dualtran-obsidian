@@ -56,6 +56,18 @@
   "settingProviderDesc": {
     "message": "내장 제공자가 먼저 표시되고, 그다음 models.dev가 아는 모든 제공자가 표시됩니다(매일 갱신)."
   },
+  "providerPlaceholder": {
+    "message": "공급자 선택"
+  },
+  "providerRequiredForModel": {
+    "message": "먼저 공급자를 선택하세요"
+  },
+  "providerRequiredError": {
+    "message": "번역하기 전에 설정에서 AI 공급자를 선택하세요."
+  },
+  "customProviderOption": {
+    "message": "사용자 지정 공급자"
+  },
   "providerSeparator": {
     "message": "──── 더 보기 ────"
   },
@@ -133,5 +145,20 @@
   },
   "languageAuto": {
     "message": "Obsidian 따르기"
+  },
+  "settingTranslateNow": {
+    "message": "번역 테스트"
+  },
+  "settingTranslateNowDesc": {
+    "message": "위 설정으로 예문 한 문장을 번역합니다."
+  },
+  "btnTranslateNow": {
+    "message": "지금 번역"
+  },
+  "translateExampleText": {
+    "message": "안녕하세요!"
+  },
+  "noticeExample": {
+    "message": "DualTran: $TEXT$"
   }
 }
