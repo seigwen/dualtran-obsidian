@@ -50,7 +50,10 @@ describe("settings pane — empty provider state (SPEC 2.1)", () => {
     const providerSection = paneSection('.setName(this.plugin.t("settingProvider"))');
     expect(providerSection).toMatch(/providerIsUnconfigured\(\s*settings\.aiProvider\s*\)/);
     expect(providerSection).toMatch(/providerPlaceholderOption\(\{\s*t:\s*this\.plugin\.t\s*\}\)/);
-    expect(providerSection).toMatch(/setDisabled\(\s*true\s*\)/);
+    // Disable the placeholder row, not the picker — a disabled picker would
+    // trap the user in the empty state.
+    expect(providerSection).toMatch(/placeholderOption\.disabled\s*=\s*true/);
+    expect(providerSection).not.toMatch(/setDisabled\(\s*true\s*\)/);
   });
 
   it("offers no way back to an empty provider and no \"None\" row", () => {
