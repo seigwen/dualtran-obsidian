@@ -56,6 +56,18 @@
   "settingProviderDesc": {
     "message": "Сначала встроенные провайдеры, затем все, что известно models.dev (обновляется ежедневно)."
   },
+  "providerPlaceholder": {
+    "message": "Выберите провайдера"
+  },
+  "providerRequiredForModel": {
+    "message": "Сначала выберите провайдера"
+  },
+  "providerRequiredError": {
+    "message": "Перед переводом выберите провайдера ИИ в настройках."
+  },
+  "customProviderOption": {
+    "message": "Свой провайдер"
+  },
   "providerSeparator": {
     "message": "──── ещё ────"
   },
@@ -133,5 +145,20 @@
   },
   "languageAuto": {
     "message": "Как в Obsidian"
+  },
+  "settingTranslateNow": {
+    "message": "Проверить перевод"
+  },
+  "settingTranslateNowDesc": {
+    "message": "Переводит одно примерное предложение с указанными выше настройками."
+  },
+  "btnTranslateNow": {
+    "message": "Перевести сейчас"
+  },
+  "translateExampleText": {
+    "message": "Привет, мир!"
+  },
+  "noticeExample": {
+    "message": "DualTran: $TEXT$"
   }
 }

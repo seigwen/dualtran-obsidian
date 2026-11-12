@@ -14,11 +14,15 @@ import { coreNamespace } from "./coreAdapter";
 import {
   CUSTOM_MODEL_VALUE,
   effectiveBaseUrl,
+  endpointState,
   languageOptions,
+  modelPickerState,
   modelReasoningOptions,
   modelsForProvider,
   pickModelForProvider,
-  projectProviders,
+  providerIsUnconfigured,
+  providerPlaceholderOption,
+  providerPickerOptions,
   reasoningDepthChoices,
   resolveEndpointOnProviderChange,
   resolveReasoningDepth,
@@ -91,6 +95,7 @@ export default class DualTranPlugin extends Plugin {
       getStore: () => this.store,
       aiFetch,
       resolveReasoningDepth: (settings) => this.reasoningDepthFor(settings),
+      providerRequiredError: () => this.t("providerRequiredError"),
     });
 
     this.addSettingTab(new DualTranSettingTab(this.app, this));
@@ -146,6 +151,23 @@ export default class DualTranPlugin extends Plugin {
     } catch {
       return id;
     }
+  }
+
+  /** SPEC 2.1: no provider chosen yet — AI translation must not run. */
+  get providerUnconfigured(): boolean {
+    return providerIsUnconfigured(this.settings.aiProvider);
+  }
+
+  /**
+   * Translate through the bridge — the single entry point for both commands and
+   * the note action. With no AI provider chosen it refuses with the localized
+   * message and never opens a network request.
+   */
+  async translateBlocks(blocks: string[]): Promise<string[]> {
+    if (this.settings.engine === "ai" && this.providerUnconfigured) {
+      throw new Error(this.t("providerRequiredError"));
+    }
+    return this.bridge.translateBlocks(blocks);
   }
 
   smartDefaultModel(args: { provider: string; models: ModelOption[] }): string | null {
@@ -247,7 +269,7 @@ export default class DualTranPlugin extends Plugin {
     }
     this.showLoading(this.t("loadingSelection"));
     try {
-      const [translated] = await this.bridge.translateBlocks([selection]);
+      const [translated] = await this.translateBlocks([selection]);
       if (mode === "replace") {
         replaceSelectionWith(editor, translated ?? "");
       } else {
@@ -272,7 +294,7 @@ export default class DualTranPlugin extends Plugin {
     const blocks = source.split(/\n{2,}/);
     this.showLoading(this.t("loadingNote"));
     try {
-      const translatedBlocks = await this.bridge.translateBlocks(blocks);
+      const translatedBlocks = await this.translateBlocks(blocks);
       const base = file?.path ?? "Untitled.md";
       const dir = base.includes("/") ? base.slice(0, base.lastIndexOf("/") + 1) : "";
       const name = base.slice(base.lastIndexOf("/") + 1).replace(/\.md$/, "");
@@ -373,42 +395,31 @@ class DualTranSettingTab extends PluginSettingTab {
       .setName(this.plugin.t("settingProvider"))
       .setDesc(this.plugin.t("settingProviderDesc"))
       .addDropdown((dropdown) => {
-        for (const provider of projectProviders({
+        const unconfigured = providerIsUnconfigured(settings.aiProvider);
+        // SPEC 2.1: a fresh install has no provider. The picker shows one
+        // disabled, selected placeholder on top of the real options; it is not
+        // part of the list and never takes part in the sort.
+        if (unconfigured) {
+          const placeholder = providerPlaceholderOption({ t: this.plugin.t });
+          dropdown.addOption(placeholder.value, placeholder.label);
+          if (typeof dropdown.setDisabled === "function") dropdown.setDisabled(true);
+        }
+        for (const provider of providerPickerOptions({
           data,
           builtIns,
-          selectedId: settings.aiProvider,
+          selectedId: unconfigured ? "" : settings.aiProvider,
           resolveId,
+          t: this.plugin.t,
         })) {
           dropdown.addOption(provider.id, provider.label);
         }
 
-        dropdown.setValue(settings.aiProvider).onChange(async (value) => {
-          const models = modelsForProvider({ provider: value, data, resolveId });
-          const nextModel = pickModelForProvider({
-            models,
-            current: settings.aiModel,
-            provider: value,
-            smartDefault: (args) => this.plugin.smartDefaultModel(args),
-          });
-          const nextBaseUrl = effectiveBaseUrl({ provider: value, data, builtIns, resolveId });
-          const previousBaseUrl = effectiveBaseUrl({
-            provider: settings.aiProvider,
-            data,
-            builtIns,
-            resolveId,
-          });
-          // The endpoint box always carries a value: an untouched box (or one
-          // still on the previous default) follows the provider, a typed
-          // override survives the switch.
-          settings.aiBaseUrl = resolveEndpointOnProviderChange({
-            current: settings.aiBaseUrl,
-            previousDefault: previousBaseUrl,
-            nextDefault: nextBaseUrl,
-          });
-          settings.aiProvider = value;
-          if (nextModel) settings.aiModel = nextModel;
-          await this.plugin.saveSettings();
-          this.display();
+        dropdown.setValue(unconfigured ? "" : settings.aiProvider).onChange(async (value) => {
+          // "" is the disabled placeholder: there is no way back to an empty
+          // provider once one has been chosen, and no "None" entry.
+          if (value) {
+            await this.applyProviderChoice(value);
+          }
         });
       });
 
@@ -423,11 +434,19 @@ class DualTranSettingTab extends PluginSettingTab {
         });
       });
 
-    // modelsForProvider always appends the free-text entry last.
-    const models = modelsForProvider({ provider: settings.aiProvider, data, resolveId, t: this.plugin.t });
+    // modelsForProvider always appends the free-text entry last. With no
+    // provider chosen the picker is empty and disabled (SPEC 2.1).
+    const modelState = modelPickerState({
+      provider: settings.aiProvider,
+      current: settings.aiModel,
+      data,
+      resolveId,
+      t: this.plugin.t,
+    });
+    const models = modelState.options;
     const catalogueModels = models.filter((model) => model.value !== CUSTOM_MODEL_VALUE);
     const modelIsListed = catalogueModels.some((model) => model.value === settings.aiModel);
-    const customModel = !modelIsListed;
+    const customModel = !modelState.disabled && !modelIsListed;
     let customRow: Setting | null = null;
 
     new Setting(containerEl)
@@ -438,6 +457,12 @@ class DualTranSettingTab extends PluginSettingTab {
           : this.plugin.t("settingModelDescMissing")
       )
       .addDropdown((dropdown) => {
+        if (modelState.disabled) {
+          // Empty list, disabled, labelled "Select a provider first".
+          dropdown.addOption("", modelState.placeholder);
+          if (typeof dropdown.setDisabled === "function") dropdown.setDisabled(true);
+          return;
+        }
         for (const model of models) dropdown.addOption(model.value, model.text);
         dropdown.setValue(customModel ? CUSTOM_MODEL_VALUE : settings.aiModel).onChange(async (value) => {
           const wantsCustom = value === CUSTOM_MODEL_VALUE;
@@ -470,8 +495,12 @@ class DualTranSettingTab extends PluginSettingTab {
     customRow.settingEl.style.display = customModel ? "" : "none";
 
     // Reasoning effort: options come from the model's models.dev declaration,
-    // clipped by the core to what the provider dialect accepts.
-    const reasoningOptions = this.plugin.reasoningOptionsFor(settings.aiProvider, settings.aiModel);
+    // clipped by the core to what the provider dialect accepts. Without a
+    // provider the picker is disabled and the stored sentinel is left alone.
+    const reasoningDisabled = providerIsUnconfigured(settings.aiProvider);
+    const reasoningOptions = reasoningDisabled
+      ? []
+      : this.plugin.reasoningOptionsFor(settings.aiProvider, settings.aiModel);
     const reasoningChoices = reasoningDepthChoices({ options: reasoningOptions, t: this.plugin.t });
     if (
       this.plugin.catalogLoaded &&
@@ -493,6 +522,12 @@ class DualTranSettingTab extends PluginSettingTab {
       .setName(this.plugin.t("settingReasoning"))
       .setDesc(reasoningOptions.length > 1 ? this.plugin.t("settingReasoningDesc") : this.plugin.t("settingReasoningDescNone"))
       .addDropdown((dropdown) => {
+        if (reasoningDisabled) {
+          // Stored sentinel stays untouched; the picker only waits for a provider.
+          dropdown.addOption("", modelState.placeholder);
+          if (typeof dropdown.setDisabled === "function") dropdown.setDisabled(true);
+          return;
+        }
         for (const choice of reasoningItems) dropdown.addOption(choice.value, choice.text);
         dropdown.setValue(reasoningValue).onChange(async (value) => {
           settings.aiReasoningDepth = value;
@@ -502,10 +537,18 @@ class DualTranSettingTab extends PluginSettingTab {
 
     // The provider's api base is written into the value (not only a
     // placeholder) so the box is filled the moment a provider is chosen; it
-    // stays an ordinary editable text override from there on.
-    const defaultBaseUrl = effectiveBaseUrl({ provider: settings.aiProvider, data, builtIns, resolveId });
-    if (!settings.aiBaseUrl.trim() && defaultBaseUrl) {
-      settings.aiBaseUrl = defaultBaseUrl;
+    // stays an ordinary editable text override from there on. Without a
+    // provider the box is empty and shows `https://` as its placeholder.
+    const endpoint = endpointState({
+      provider: settings.aiProvider,
+      stored: settings.aiBaseUrl,
+      data,
+      builtIns,
+      resolveId,
+    });
+    if (endpoint.autofill && !settings.aiBaseUrl.trim()) {
+      settings.aiBaseUrl = endpoint.value;
+      settings.aiEndpointStale = true;
       void this.plugin.saveSettings();
     }
     new Setting(containerEl)
@@ -513,9 +556,12 @@ class DualTranSettingTab extends PluginSettingTab {
       .setDesc(this.plugin.t("settingBaseUrlDesc"))
       .addText((text) =>
         text
-          .setValue(settings.aiBaseUrl)
+          .setPlaceholder(endpoint.placeholder)
+          .setValue(endpoint.value)
           .onChange(async (value) => {
             settings.aiBaseUrl = value.trim();
+            // Anything typed here is the user's own value: never overwritten.
+            settings.aiEndpointStale = false;
             await this.plugin.saveSettings();
           })
       );
@@ -537,8 +583,75 @@ class DualTranSettingTab extends PluginSettingTab {
         })
       );
 
+    // The pane's primary action. Without an AI provider it stays disabled and
+    // explains why with the same localized message the request path throws.
+    const needsProvider = settings.engine === "ai" && providerIsUnconfigured(settings.aiProvider);
+    new Setting(containerEl)
+      .setName(this.plugin.t("settingTranslateNow"))
+      .setDesc(this.plugin.t("settingTranslateNowDesc"))
+      .addButton((button) => {
+        button.setButtonText(this.plugin.t("btnTranslateNow")).onClick(() => this.translateExample());
+        if (needsProvider) {
+          button.setDisabled(true);
+          button.buttonEl.setAttribute("title", this.plugin.t("providerRequiredError"));
+          button.buttonEl.setAttribute("aria-label", this.plugin.t("providerRequiredError"));
+        }
+      });
+
     if (!this.plugin.catalogLoaded) {
       void this.plugin.ensureCatalog().then(() => this.redrawAfterLoad());
+    }
+  }
+
+  /**
+   * Provider picker choice (SPEC 2.1). Picking a real provider fills the model
+   * list, writes the provider api into the endpoint *value*, enables reasoning
+   * and redraws. An endpoint the user typed is never overwritten; the pane's own
+   * autofilled value follows the provider. `""` (the placeholder) is ignored.
+   */
+  private async applyProviderChoice(value: string): Promise<void> {
+    if (!value) return;
+    const settings = this.plugin.settings;
+    const builtIns = this.plugin.builtInProviders;
+    const resolveId = (id: string) => this.plugin.resolveProviderId(id);
+    const data = this.plugin.catalog;
+
+    const nextModel = pickModelForProvider({
+      models: modelsForProvider({ provider: value, data, resolveId }),
+      current: settings.aiModel,
+      provider: value,
+      smartDefault: (args) => this.plugin.smartDefaultModel(args),
+    });
+    const nextBaseUrl = effectiveBaseUrl({ provider: value, data, builtIns, resolveId });
+    const previousBaseUrl = effectiveBaseUrl({ provider: settings.aiProvider, data, builtIns, resolveId });
+    const untouched = settings.aiEndpointStale;
+    const previousEndpoint = settings.aiBaseUrl;
+    // The endpoint box always carries a value: an untouched box (or one still
+    // on the previous default) follows the provider, a typed override survives.
+    const nextEndpoint = resolveEndpointOnProviderChange({
+      current: settings.aiBaseUrl,
+      previousDefault: previousBaseUrl,
+      nextDefault: nextBaseUrl,
+      untouched,
+    });
+    // Fresh provider: the model belongs to the old provider and must not leak.
+    if (untouched && settings.aiBaseUrl.trim() && nextEndpoint !== settings.aiBaseUrl) {
+      settings.aiModel = nextModel || "";
+    }
+    settings.aiBaseUrl = nextEndpoint;
+    settings.aiEndpointStale = untouched || nextEndpoint !== previousEndpoint;
+    settings.aiProvider = value;
+    await this.plugin.saveSettings();
+    this.display();
+  }
+
+  /** Primary pane action: translate a short sample with the configured engine. */
+  private async translateExample(): Promise<void> {
+    try {
+      const [translated] = await this.plugin.translateBlocks([this.plugin.t("translateExampleText")]);
+      new Notice(this.plugin.t("noticeExample", { TEXT: translated ?? "" }));
+    } catch (error) {
+      new Notice(this.plugin.t("noticeError", { ERROR: error instanceof Error ? error.message : String(error) }));
     }
   }
 

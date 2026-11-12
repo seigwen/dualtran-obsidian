@@ -7,7 +7,7 @@
  * owns the fetch + 24 h cache; this module only decides what the dropdowns show.
  */
 
-import { LOWEST_REASONING } from "./settings";
+import { LOWEST_REASONING, ENDPOINT_PLACEHOLDER } from "./settings";
 export { LOWEST_REASONING };
 
 export interface ModelsDevModel {
@@ -41,7 +41,7 @@ export interface ProviderDef {
 export interface ProviderOption {
   id: string;
   label: string;
-  source: "built-in" | "models.dev";
+  source: "built-in" | "models.dev" | "custom";
 }
 
 export interface ModelOption {
@@ -51,6 +51,9 @@ export interface ModelOption {
 
 /** Sentinel option that reveals the free-text model input. */
 export const CUSTOM_MODEL_VALUE = "__custom__";
+
+/** Id of the host's custom provider entry — always last, never sorted. */
+export const CUSTOM_PROVIDER_ID = "__custom_provider__";
 
 const TEMPLATE_VAR = /\$\{[^}]+\}/;
 /**
@@ -123,6 +126,51 @@ export function projectProviders({
   return options.sort((left, right) => compareLabels(left.label, right.label));
 }
 
+/** The empty provider id means "nothing chosen yet" (fresh install). */
+export function providerIsUnconfigured(provider: string | null | undefined): boolean {
+  return String(provider ?? "").trim() === "";
+}
+
+/**
+ * Disabled, selected placeholder the provider picker shows while
+ * `provider.current === ""`. It is NOT one of the real options: the pane adds
+ * it as a single disabled entry selected on top of the alphabetical list.
+ */
+export function providerPlaceholderOption({ t }: { t: (key: string) => string }): {
+  value: "";
+  label: string;
+  disabled: true;
+} {
+  return { value: "", label: t("providerPlaceholder"), disabled: true };
+}
+
+/**
+ * Provider picker options, exactly as the pane lists them: one alphabetical
+ * list of real providers, with the host's custom provider entry last.
+ */
+export function providerPickerOptions({
+  data,
+  builtIns,
+  selectedId,
+  resolveId,
+  t,
+}: {
+  data: ModelsDevData | null;
+  builtIns: ProviderDef[];
+  selectedId: string;
+  resolveId: (id: string) => string;
+  /** Optional translator; the English label is used without it (unit tests). */
+  t?: (key: string) => string;
+}): ProviderOption[] {
+  const real = projectProviders({ data, builtIns, selectedId, resolveId });
+  const custom: ProviderOption = {
+    id: CUSTOM_PROVIDER_ID,
+    label: t ? t("customProviderOption") : "Custom provider",
+    source: "custom",
+  };
+  return [...real, custom];
+}
+
 /**
  * Model candidates for a provider; the internal id is resolved to its models.dev
  * id first. Sorted by label, with the free-text entry always last.
@@ -143,6 +191,39 @@ export function modelsForProvider({
     .map(([id, model]) => ({ value: id, text: model?.name || model?.id || id }))
     .sort((left, right) => compareLabels(left.text, right.text));
   return [...models, { value: CUSTOM_MODEL_VALUE, text: t ? t("customModelOption") : "Custom model" }];
+}
+
+/**
+ * Model picker state. With no provider chosen the list is empty, the picker is
+ * disabled and its placeholder asks for a provider first; a chosen provider
+ * lists that provider's models (free-text entry last).
+ */
+export function modelPickerState({
+  provider,
+  current,
+  data,
+  resolveId,
+  t,
+}: {
+  provider: string;
+  current: string;
+  data: ModelsDevData | null;
+  resolveId: (id: string) => string;
+  t?: (key: string) => string;
+}): { disabled: boolean; options: ModelOption[]; placeholder: string } {
+  const label = (key: string, fallback: string) => (t ? t(key) : fallback);
+  if (providerIsUnconfigured(provider)) {
+    return {
+      disabled: true,
+      options: [],
+      placeholder: label("providerRequiredForModel", "Select a provider first"),
+    };
+  }
+  return {
+    disabled: false,
+    options: modelsForProvider({ provider, data, resolveId, t }),
+    placeholder: label("providerRequiredForModel", "Select a provider first"),
+  };
 }
 
 /**
@@ -289,6 +370,46 @@ export function effectiveBaseUrl({
 }
 
 /**
+ * Endpoint input state for the pane.
+ *
+ * - No provider chosen: value `""`, placeholder exactly `https://`.
+ * - Provider chosen: the stored value is used verbatim when there is one,
+ *   otherwise the provider's api base fills the box as its **value** (never a
+ *   placeholder).
+ *
+ * `autofill` reports whether the value came from the provider (so the pane can
+ * persist the default and mark it untouched) or from the user's own text.
+ */
+export function endpointState({
+  provider,
+  stored,
+  data,
+  builtIns,
+  resolveId,
+}: {
+  provider: string;
+  stored: string;
+  data?: ModelsDevData | null;
+  builtIns?: ProviderDef[];
+  resolveId?: (id: string) => string;
+}): { value: string; placeholder: string; empty: boolean; autofill: boolean } {
+  if (providerIsUnconfigured(provider)) {
+    return { value: "", placeholder: ENDPOINT_PLACEHOLDER, empty: true, autofill: false };
+  }
+  const current = (stored || "").trim();
+  if (current) {
+    return { value: current, placeholder: ENDPOINT_PLACEHOLDER, empty: false, autofill: false };
+  }
+  const apiBase = effectiveBaseUrl({
+    provider,
+    data: data ?? null,
+    builtIns: builtIns ?? [],
+    resolveId: resolveId ?? ((id: string) => id),
+  });
+  return { value: apiBase, placeholder: ENDPOINT_PLACEHOLDER, empty: !apiBase, autofill: !!apiBase };
+}
+
+/**
  * Endpoint input after the provider picker changes. The box shows the
  * provider's api base as its *value* (not a placeholder); an untouched box (or
  * one still holding the previous provider's default) moves to the new default,
@@ -298,6 +419,7 @@ export function resolveEndpointOnProviderChange({
   current,
   previousDefault,
   nextDefault,
+  untouched,
 }: {
   /** What the input holds right now. */
   current: string;
@@ -305,11 +427,18 @@ export function resolveEndpointOnProviderChange({
   previousDefault: string;
   /** The new provider's api base ("" when it has none). */
   nextDefault: string;
+  /**
+   * The endpoint box was filled by the pane and never edited (optional). When
+   * omitted, the value is compared with the previous default — the historical
+   * behaviour. When `true`, the box is definitely still the pane's own value.
+   */
+  untouched?: boolean;
 }): string {
   const value = (current || "").trim();
   const previous = normalizeApiBase(previousDefault);
   const next = (nextDefault || "").trim();
   if (!value) return next;
+  if (untouched === true) return next;
   if (previous && normalizeApiBase(value) === previous) return next;
   return current;
 }

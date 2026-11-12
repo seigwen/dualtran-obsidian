@@ -56,6 +56,18 @@
   "settingProviderDesc": {
     "message": "ئالدى بىلەن قۇرۇلغان تەمىنلىگۈچىلەر، ئاندىن models.dev بىلگەن ھەممە نەرسە (كۈندىلىك يېڭىلىنىدۇ)."
   },
+  "providerPlaceholder": {
+    "message": "تەمىنلىگۈچى تاللاڭ"
+  },
+  "providerRequiredForModel": {
+    "message": "ئالدى بىلەن تەمىنلىگۈچى تاللاڭ"
+  },
+  "providerRequiredError": {
+    "message": "تەرجىمە قىلىشتىن بۇرۇن تەڭشەكتە AI تەمىنلىگۈچىسىنى تاللاڭ."
+  },
+  "customProviderOption": {
+    "message": "ئۆزىڭىز بەلگىلىگەن تەمىنلىگۈچى"
+  },
   "providerSeparator": {
     "message": "──── تېخىمۇ كۆپ ────"
   },
@@ -133,5 +145,20 @@
   },
   "languageAuto": {
     "message": "Obsidian غا ئەگىشىش"
+  },
+  "settingTranslateNow": {
+    "message": "تەرجىمىنى سىناش"
+  },
+  "settingTranslateNowDesc": {
+    "message": "يۇقىرىدىكى تەڭشەكلەر بىلەن بىر ئۈلگە جۈملىنى تەرجىمە قىلىدۇ."
+  },
+  "btnTranslateNow": {
+    "message": "ھازىر تەرجىمە قىلىش"
+  },
+  "translateExampleText": {
+    "message": "ياخشىمۇسىز، دۇنيا!"
+  },
+  "noticeExample": {
+    "message": "DualTran: $TEXT$"
   }
 }

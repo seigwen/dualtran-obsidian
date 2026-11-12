@@ -32,4 +32,22 @@ describe("sanitizeSettings", () => {
     expect(sanitizeSettings({ aiReasoningDepth: "high" }).aiReasoningDepth).toBe("high");
     expect(sanitizeSettings({ aiReasoningDepth: 3 }).aiReasoningDepth).toBe(LOWEST_REASONING);
   });
+
+  // ── SPEC 2.1: a fresh install has no AI provider at all ────────────────────
+  it("leaves the AI provider empty on a fresh install (no OpenAI / custom default)", () => {
+    expect(DEFAULT_SETTINGS.aiProvider).toBe("");
+    expect(sanitizeSettings(undefined).aiProvider).toBe("");
+    expect(sanitizeSettings({}).aiProvider).toBe("");
+    expect(sanitizeSettings({ engine: "ai" }).aiProvider).toBe("");
+  });
+
+  it("never rewrites a stored provider (empty stays empty, any id is kept verbatim)", () => {
+    expect(sanitizeSettings({ aiProvider: "" }).aiProvider).toBe("");
+    expect(sanitizeSettings({ aiProvider: "anthropic" }).aiProvider).toBe("anthropic");
+    expect(sanitizeSettings({ aiProvider: "my-gateway" }).aiProvider).toBe("my-gateway");
+  });
+
+  it("keeps the reasoning sentinel on a fresh install", () => {
+    expect(sanitizeSettings(undefined).aiReasoningDepth).toBe(LOWEST_REASONING);
+  });
 });

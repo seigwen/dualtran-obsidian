@@ -28,6 +28,7 @@ describe("coreAdapter — the real @dualtran/core through the bridge", () => {
         aiModel: "",
         aiReasoningDepth: "__lowest__",
         aiBaseUrl: "",
+        aiEndpointStale: false,
         uiLang: "",
       }),
     });

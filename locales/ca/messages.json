@@ -56,6 +56,18 @@
   "settingProviderDesc": {
     "message": "Primer els proveïdors integrats, després tot el que models.dev coneix (actualitzat diàriament)."
   },
+  "providerPlaceholder": {
+    "message": "Selecciona un proveïdor"
+  },
+  "providerRequiredForModel": {
+    "message": "Selecciona primer un proveïdor"
+  },
+  "providerRequiredError": {
+    "message": "Tria un proveïdor d'IA a la configuració abans de traduir."
+  },
+  "customProviderOption": {
+    "message": "Proveïdor personalitzat"
+  },
   "providerSeparator": {
     "message": "──── més ────"
   },
@@ -133,5 +145,20 @@
   },
   "languageAuto": {
     "message": "Segueix l'Obsidian"
+  },
+  "settingTranslateNow": {
+    "message": "Prova la traducció"
+  },
+  "settingTranslateNowDesc": {
+    "message": "Tradueix una frase d'exemple amb la configuració anterior."
+  },
+  "btnTranslateNow": {
+    "message": "Tradueix ara"
+  },
+  "translateExampleText": {
+    "message": "Hola, món!"
+  },
+  "noticeExample": {
+    "message": "DualTran: $TEXT$"
   }
 }

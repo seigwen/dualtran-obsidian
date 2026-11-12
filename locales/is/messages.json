@@ -56,6 +56,18 @@
   "settingProviderDesc": {
     "message": "Innbyggðir veitendur fyrst, síðan allt sem models.dev þekkir (endurnýjað daglega)."
   },
+  "providerPlaceholder": {
+    "message": "Veldu þjónustuveitu"
+  },
+  "providerRequiredForModel": {
+    "message": "Veldu þjónustuveitu fyrst"
+  },
+  "providerRequiredError": {
+    "message": "Veldu AI-þjónustuveitu í stillingum áður en þú þýðir."
+  },
+  "customProviderOption": {
+    "message": "Sérsniðin þjónustuveita"
+  },
   "providerSeparator": {
     "message": "──── meira ────"
   },
@@ -133,5 +145,20 @@
   },
   "languageAuto": {
     "message": "Fylgja Obsidian"
+  },
+  "settingTranslateNow": {
+    "message": "Prófa þýðingu"
+  },
+  "settingTranslateNowDesc": {
+    "message": "Þýðir eina sýningsetningu með stillingunum hér að ofan."
+  },
+  "btnTranslateNow": {
+    "message": "Þýða núna"
+  },
+  "translateExampleText": {
+    "message": "Halló, heimur!"
+  },
+  "noticeExample": {
+    "message": "DualTran: $TEXT$"
   }
 }

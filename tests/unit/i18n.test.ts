@@ -91,12 +91,24 @@ describe("locale catalogues", () => {
   });
 
   it("does not bypass the translator for user-visible text", () => {
-    const source = fs.readFileSync(path.join(ROOT, "src", "main.ts"), "utf8");
+    const main = fs.readFileSync(path.join(ROOT, "src", "main.ts"), "utf8");
+    // main.ts may not hard-code the English source of providerRequiredError:
+    // the message comes from the injected translator.
+    const source = main.replace(/export const PROVIDER_REQUIRED_ERROR = "[^"]*";/g, "");
     const offenders: string[] = [];
     for (const pattern of [/\.setName\(\s*"/g, /\.setDesc\(\s*"/g, /\.setText\(\s*"/g, /\.setPlaceholder\(\s*"/g]) {
       for (const match of source.matchAll(pattern)) offenders.push(match[0]);
     }
     expect(offenders, offenders.join(" | ")).toEqual([]);
+  });
+
+  it("ships the SPEC 2.1 provider keys in English and Chinese", () => {
+    expect(EN.providerPlaceholder.message).toBe("Select a provider");
+    expect(EN.providerRequiredForModel.message).toBe("Select a provider first");
+    expect(EN.providerRequiredError.message).toBe("Choose an AI provider in settings before translating.");
+    expect(LOCALES.zh_CN.providerPlaceholder.message).toBe("请选择 AI 提供商");
+    expect(LOCALES.zh_CN.providerRequiredForModel.message).toBe("请先选择提供商");
+    expect(LOCALES.zh_CN.providerRequiredError.message).toBe("翻译前请先在设置中选择 AI 提供商。");
   });
 
   it("does not leave Chinese in non-Chinese locales", () => {

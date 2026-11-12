@@ -56,6 +56,18 @@
   "settingProviderDesc": {
     "message": "Спочатку вбудовані постачальники, потім усе, що відомо models.dev (оновлюється щодня)."
   },
+  "providerPlaceholder": {
+    "message": "Виберіть постачальника"
+  },
+  "providerRequiredForModel": {
+    "message": "Спочатку виберіть постачальника"
+  },
+  "providerRequiredError": {
+    "message": "Перед перекладом виберіть постачальника ШІ у налаштуваннях."
+  },
+  "customProviderOption": {
+    "message": "Власний постачальник"
+  },
   "providerSeparator": {
     "message": "──── більше ────"
   },
@@ -133,5 +145,20 @@
   },
   "languageAuto": {
     "message": "Як в Obsidian"
+  },
+  "settingTranslateNow": {
+    "message": "Перевірити переклад"
+  },
+  "settingTranslateNowDesc": {
+    "message": "Перекладає одне прикладне речення з наведеними вище налаштуваннями."
+  },
+  "btnTranslateNow": {
+    "message": "Перекласти зараз"
+  },
+  "translateExampleText": {
+    "message": "Привіт, світе!"
+  },
+  "noticeExample": {
+    "message": "DualTran: $TEXT$"
   }
 }

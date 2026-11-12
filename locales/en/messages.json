@@ -17,7 +17,11 @@
   "settingTarget": { "message": "Target language" },
   "settingTargetDesc": { "message": "Language the translated text is written in." },
   "settingProvider": { "message": "AI provider" },
-  "settingProviderDesc": { "message": "Built-in providers first, then everything models.dev knows about (refreshed daily)." },
+  "settingProviderDesc": { "message": "Pick the provider you want to use. The list merges built-in providers with models.dev." },
+  "providerPlaceholder": { "message": "Select a provider" },
+  "providerRequiredForModel": { "message": "Select a provider first" },
+  "providerRequiredError": { "message": "Choose an AI provider in settings before translating." },
+  "customProviderOption": { "message": "Custom provider" },
   "providerSeparator": { "message": "──── more ────" },
   "settingApiKey": { "message": "AI API key" },
   "settingApiKeyDesc": { "message": "Stored locally on this device only." },
@@ -43,5 +47,10 @@
   "btnRefreshing": { "message": "Refreshing…" },
   "settingLanguage": { "message": "Interface language" },
   "settingLanguageDesc": { "message": "Follows the Obsidian language unless you pick one here." },
-  "languageAuto": { "message": "Follow Obsidian" }
+  "languageAuto": { "message": "Follow Obsidian" },
+  "settingTranslateNow": { "message": "Test translation" },
+  "settingTranslateNowDesc": { "message": "Translates one sample sentence with the settings above." },
+  "btnTranslateNow": { "message": "Translate now" },
+  "translateExampleText": { "message": "Hello, world!" },
+  "noticeExample": { "message": "DualTran: $TEXT$" }
 }

@@ -56,6 +56,18 @@
   "settingProviderDesc": {
     "message": "Najprej vgrajeni ponudniki, nato vse, kar pozna models.dev (osveženo dnevno)."
   },
+  "providerPlaceholder": {
+    "message": "Izberite ponudnika"
+  },
+  "providerRequiredForModel": {
+    "message": "Najprej izberite ponudnika"
+  },
+  "providerRequiredError": {
+    "message": "Pred prevajanjem v nastavitvah izberite ponudnika AI."
+  },
+  "customProviderOption": {
+    "message": "Ponudnik po meri"
+  },
   "providerSeparator": {
     "message": "──── več ────"
   },
@@ -133,5 +145,20 @@
   },
   "languageAuto": {
     "message": "Sledi Obsidianu"
+  },
+  "settingTranslateNow": {
+    "message": "Preizkusi prevajanje"
+  },
+  "settingTranslateNowDesc": {
+    "message": "Prevede en zgledni stavek z zgornjimi nastavitvami."
+  },
+  "btnTranslateNow": {
+    "message": "Prevedi zdaj"
+  },
+  "translateExampleText": {
+    "message": "Pozdravljen, svet!"
+  },
+  "noticeExample": {
+    "message": "DualTran: $TEXT$"
   }
 }

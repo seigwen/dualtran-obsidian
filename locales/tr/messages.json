@@ -56,6 +56,18 @@
   "settingProviderDesc": {
     "message": "Önce yerleşik sağlayıcılar, ardından models.dev'in bildiği her şey (günlük yenilenir)."
   },
+  "providerPlaceholder": {
+    "message": "Bir sağlayıcı seçin"
+  },
+  "providerRequiredForModel": {
+    "message": "Önce bir sağlayıcı seçin"
+  },
+  "providerRequiredError": {
+    "message": "Çeviri yapmadan önce ayarlardan bir AI sağlayıcısı seçin."
+  },
+  "customProviderOption": {
+    "message": "Özel sağlayıcı"
+  },
   "providerSeparator": {
     "message": "──── daha fazla ────"
   },
@@ -133,5 +145,20 @@
   },
   "languageAuto": {
     "message": "Obsidian'ı takip et"
+  },
+  "settingTranslateNow": {
+    "message": "Çeviriyi sına"
+  },
+  "settingTranslateNowDesc": {
+    "message": "Yukarıdaki ayarlarla bir örnek cümleyi çevirir."
+  },
+  "btnTranslateNow": {
+    "message": "Şimdi çevir"
+  },
+  "translateExampleText": {
+    "message": "Merhaba, dünya!"
+  },
+  "noticeExample": {
+    "message": "DualTran: $TEXT$"
   }
 }

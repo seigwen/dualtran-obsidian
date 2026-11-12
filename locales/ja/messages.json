@@ -56,6 +56,18 @@
   "settingProviderDesc": {
     "message": "組み込みプロバイダーが先、その後にmodels.devが把握しているすべて（毎日更新）。"
   },
+  "providerPlaceholder": {
+    "message": "プロバイダーを選択"
+  },
+  "providerRequiredForModel": {
+    "message": "先にプロバイダーを選択してください"
+  },
+  "providerRequiredError": {
+    "message": "翻訳する前に設定で AI プロバイダーを選択してください。"
+  },
+  "customProviderOption": {
+    "message": "カスタムプロバイダー"
+  },
   "providerSeparator": {
     "message": "──── その他 ────"
   },
@@ -133,5 +145,20 @@
   },
   "languageAuto": {
     "message": "Obsidianに従う"
+  },
+  "settingTranslateNow": {
+    "message": "翻訳をテスト"
+  },
+  "settingTranslateNowDesc": {
+    "message": "上の設定でサンプル文を1つ翻訳します。"
+  },
+  "btnTranslateNow": {
+    "message": "今すぐ翻訳"
+  },
+  "translateExampleText": {
+    "message": "こんにちは、世界！"
+  },
+  "noticeExample": {
+    "message": "DualTran: $TEXT$"
   }
 }

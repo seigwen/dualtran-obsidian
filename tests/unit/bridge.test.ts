@@ -162,6 +162,67 @@ describe("createBridge — ai engine", () => {
   });
 });
 
+describe("createBridge — unconfigured AI provider (SPEC 2.1)", () => {
+  const unconfigured = {
+    ...googleSettings,
+    engine: "ai",
+    aiProvider: "",
+    aiModel: "",
+    aiBaseUrl: "",
+  };
+
+  it("throws the localized providerRequiredError and sends no request", async () => {
+    const core = makeCore();
+    const fetchImpl = vi.fn();
+    const aiFetch = vi.fn();
+    const bridge = createBridge({
+      core,
+      fetchImpl,
+      getSettings: () => unconfigured as any,
+      aiFetch,
+      providerRequiredError: () => "Choose an AI provider in settings before translating.",
+    });
+    await expect(bridge.translateBlocks(["Hello"])).rejects.toThrow(
+      "Choose an AI provider in settings before translating."
+    );
+    expect(core.streamChat).not.toHaveBeenCalled();
+    expect(core.translateGoogle).not.toHaveBeenCalled();
+    expect(fetchImpl).not.toHaveBeenCalled();
+    expect(aiFetch).not.toHaveBeenCalled();
+  });
+
+  it("falls back to the English source string when the host injects no message", async () => {
+    const core = makeCore();
+    const bridge = createBridge({ core, fetchImpl: null, getSettings: () => unconfigured as any });
+    await expect(bridge.translateBlocks(["x"])).rejects.toThrow(
+      "Choose an AI provider in settings before translating."
+    );
+    expect(core.streamChat).not.toHaveBeenCalled();
+  });
+
+  it("never invents an OpenAI provider for an empty id", async () => {
+    const core = makeCore({
+      streamChat: vi.fn(async ({ onChunk }: any) => {
+        onChunk("OK");
+        return { totalChunks: 1, streamError: null };
+      }),
+    });
+    const bridge = createBridge({ core, fetchImpl: null, getSettings: () => unconfigured as any });
+    await expect(bridge.translateBlocks(["x"])).rejects.toThrow();
+    expect(core.streamChat).not.toHaveBeenCalledWith(expect.objectContaining({ provider: "openai" }));
+  });
+
+  it("leaves the Google engine untouched", async () => {
+    const core = makeCore();
+    const bridge = createBridge({
+      core,
+      fetchImpl: null,
+      getSettings: () => ({ ...unconfigured, engine: "google" }) as any,
+    });
+    expect(await bridge.translateBlocks(["hi"])).toEqual(["T:hi"]);
+  });
+});
+
 describe("createRequestUrlFetch — json()", () => {
   it("parses the text body into an object", async () => {
     const fetchImpl = createRequestUrlFetch((async () => ({ status: 200, text: '{"a":1}' })) as any);

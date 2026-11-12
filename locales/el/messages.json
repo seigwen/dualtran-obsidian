@@ -56,6 +56,18 @@
   "settingProviderDesc": {
     "message": "Πρώτα οι ενσωματωμένοι πάροχοι, μετά ό,τι γνωρίζει το models.dev (ενημερώνεται καθημερινά)."
   },
+  "providerPlaceholder": {
+    "message": "Επιλέξτε πάροχο"
+  },
+  "providerRequiredForModel": {
+    "message": "Επιλέξτε πρώτα πάροχο"
+  },
+  "providerRequiredError": {
+    "message": "Επιλέξτε πάροχο AI στις ρυθμίσεις πριν από τη μετάφραση."
+  },
+  "customProviderOption": {
+    "message": "Προσαρμοσμένος πάροχος"
+  },
   "providerSeparator": {
     "message": "──── περισσότερα ────"
   },
@@ -133,5 +145,20 @@
   },
   "languageAuto": {
     "message": "Ακολουθήστε το Obsidian"
+  },
+  "settingTranslateNow": {
+    "message": "Δοκιμή μετάφρασης"
+  },
+  "settingTranslateNowDesc": {
+    "message": "Μεταφράζει μία προτάση δείγματος με τις ρυθμίσεις παραπάνω."
+  },
+  "btnTranslateNow": {
+    "message": "Μετάφραση τώρα"
+  },
+  "translateExampleText": {
+    "message": "Γεια σου, κόσμε!"
+  },
+  "noticeExample": {
+    "message": "DualTran: $TEXT$"
   }
 }

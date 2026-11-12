@@ -56,6 +56,18 @@
   "settingProviderDesc": {
     "message": "Prvo ugrađeni provajderi, zatim sve što models.dev poznaje (osvežava se dnevno)."
   },
+  "providerPlaceholder": {
+    "message": "Изаберите провајдера"
+  },
+  "providerRequiredForModel": {
+    "message": "Прво изаберите провајдера"
+  },
+  "providerRequiredError": {
+    "message": "Пре превођења изаберите AI провајдера у подешавањима."
+  },
+  "customProviderOption": {
+    "message": "Прилагођени провајдер"
+  },
   "providerSeparator": {
     "message": "──── više ────"
   },
@@ -133,5 +145,20 @@
   },
   "languageAuto": {
     "message": "Prati Obsidian"
+  },
+  "settingTranslateNow": {
+    "message": "Испробај превод"
+  },
+  "settingTranslateNowDesc": {
+    "message": "Преводи једну пример реченицу са горњим подешавањима."
+  },
+  "btnTranslateNow": {
+    "message": "Преведи сада"
+  },
+  "translateExampleText": {
+    "message": "Здраво, свете!"
+  },
+  "noticeExample": {
+    "message": "DualTran: $TEXT$"
   }
 }

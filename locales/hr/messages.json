@@ -56,6 +56,18 @@
   "settingProviderDesc": {
     "message": "Prvo ugrađeni pružatelji usluga, zatim sve što models.dev poznaje (osvježava se dnevno)."
   },
+  "providerPlaceholder": {
+    "message": "Odaberite pružatelja"
+  },
+  "providerRequiredForModel": {
+    "message": "Najprije odaberite pružatelja"
+  },
+  "providerRequiredError": {
+    "message": "Prije prevođenja odaberite AI pružatelja u postavkama."
+  },
+  "customProviderOption": {
+    "message": "Prilagođeni pružatelj"
+  },
   "providerSeparator": {
     "message": "──── više ────"
   },
@@ -133,5 +145,20 @@
   },
   "languageAuto": {
     "message": "Slijedi Obsidian"
+  },
+  "settingTranslateNow": {
+    "message": "Isprobaj prijevod"
+  },
+  "settingTranslateNowDesc": {
+    "message": "Prevodi jednu oglednu rečenicu s gore navedenim postavkama."
+  },
+  "btnTranslateNow": {
+    "message": "Prevedi sada"
+  },
+  "translateExampleText": {
+    "message": "Pozdrav, svijete!"
+  },
+  "noticeExample": {
+    "message": "DualTran: $TEXT$"
   }
 }

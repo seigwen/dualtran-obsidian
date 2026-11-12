@@ -56,6 +56,18 @@
   "settingProviderDesc": {
     "message": "先列内置服务商，再列 models.dev 收录的全部服务商（每日刷新）。"
   },
+  "providerPlaceholder": {
+    "message": "请选择 AI 提供商"
+  },
+  "providerRequiredForModel": {
+    "message": "请先选择提供商"
+  },
+  "providerRequiredError": {
+    "message": "翻译前请先在设置中选择 AI 提供商。"
+  },
+  "customProviderOption": {
+    "message": "自定义提供商"
+  },
   "providerSeparator": {
     "message": "──── 更多 ────"
   },
@@ -133,5 +145,20 @@
   },
   "languageAuto": {
     "message": "跟随 Obsidian"
+  },
+  "settingTranslateNow": {
+    "message": "测试翻译"
+  },
+  "settingTranslateNowDesc": {
+    "message": "用上面的设置翻译一句示例文本。"
+  },
+  "btnTranslateNow": {
+    "message": "立即翻译"
+  },
+  "translateExampleText": {
+    "message": "你好，世界！"
+  },
+  "noticeExample": {
+    "message": "DualTran：$TEXT$"
   }
 }

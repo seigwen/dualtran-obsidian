@@ -56,6 +56,18 @@
   "settingProviderDesc": {
     "message": "ابتدا ارائه‌دهنده‌های داخلی، سپس هر چیزی که models.dev می‌شناسد (روزانه به‌روزرسانی می‌شود)."
   },
+  "providerPlaceholder": {
+    "message": "یک ارائه‌دهنده انتخاب کنید"
+  },
+  "providerRequiredForModel": {
+    "message": "ابتدا یک ارائه‌دهنده انتخاب کنید"
+  },
+  "providerRequiredError": {
+    "message": "پیش از ترجمه، یک ارائه‌دهنده هوش مصنوعی در تنظیمات انتخاب کنید."
+  },
+  "customProviderOption": {
+    "message": "ارائه‌دهنده سفارشی"
+  },
   "providerSeparator": {
     "message": "──── بیشتر ────"
   },
@@ -133,5 +145,20 @@
   },
   "languageAuto": {
     "message": "پیروی از Obsidian"
+  },
+  "settingTranslateNow": {
+    "message": "آزمایش ترجمه"
+  },
+  "settingTranslateNowDesc": {
+    "message": "یک جمله نمونه را با تنظیمات بالا ترجمه می‌کند."
+  },
+  "btnTranslateNow": {
+    "message": "همین حالا ترجمه کن"
+  },
+  "translateExampleText": {
+    "message": "سلام دنیا!"
+  },
+  "noticeExample": {
+    "message": "DualTran: $TEXT$"
   }
 }

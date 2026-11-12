@@ -1,9 +1,12 @@
 import { describe, expect, it } from "vitest";
 import {
   CUSTOM_MODEL_VALUE,
+  CUSTOM_PROVIDER_ID,
   effectiveBaseUrl,
+  endpointState,
   languageOptions,
   LOWEST_REASONING,
+  modelPickerState,
   modelReasoningOptions,
   modelsForProvider,
   normalizeApiBase,
@@ -12,6 +15,9 @@ import {
   resolveEndpointOnProviderChange,
   resolveReasoningDepth,
   projectProviders,
+  providerIsUnconfigured,
+  providerPlaceholderOption,
+  providerPickerOptions,
   summarizeCatalog,
   type ModelsDevData,
   type ProviderDef,
@@ -127,6 +133,94 @@ describe("projectProviders", () => {
     const out = projectProviders({ data: null, builtIns: BUILT_INS, selectedId: "openai", resolveId });
     expect(out.map((p) => p.label)).toEqual(byLabel(BUILT_INS.map((p) => p.name)));
     expect(out.every((p) => p.source === "built-in")).toBe(true);
+  });
+});
+
+describe("providerPlaceholderOption (SPEC 2.1 empty provider)", () => {
+  it("is a disabled, empty-valued entry labelled `Select a provider`", () => {
+    expect(providerPlaceholderOption({ t: () => "Select a provider" })).toEqual({
+      value: "",
+      label: "Select a provider",
+      disabled: true,
+    });
+  });
+
+  it("is not part of the alphabetical provider list and is not counted as a provider", () => {
+    const list = projectProviders({ data: DATA, builtIns: BUILT_INS, selectedId: "", resolveId });
+    expect(list.some((option) => option.id === "")).toBe(false);
+    expect(list.map((p) => p.label)).toEqual(byLabel(list.map((p) => p.label)));
+  });
+
+  it("puts the custom provider last, after the alphabetical real providers", () => {
+    const list = providerPickerOptions({
+      data: DATA,
+      builtIns: BUILT_INS,
+      selectedId: "",
+      resolveId,
+      t: () => "Select a provider",
+    });
+    const tail = list[list.length - 1];
+    expect(tail.id).toBe(CUSTOM_PROVIDER_ID);
+    expect(tail.source).toBe("custom");
+    const real = list.slice(0, -1);
+    expect(real.map((p) => p.label)).toEqual(byLabel(real.map((p) => p.label)));
+    expect(real.some((p) => p.id === CUSTOM_PROVIDER_ID)).toBe(false);
+  });
+
+  it("adds no placeholder to the option list (the pane prepends it itself)", () => {
+    const list = providerPickerOptions({ data: DATA, builtIns: BUILT_INS, selectedId: "", resolveId });
+    expect(list.some((option) => option.id === "")).toBe(false);
+  });
+});
+
+describe("providerIsUnconfigured", () => {
+  it("treats only an empty/blank provider id as unconfigured", () => {
+    expect(providerIsUnconfigured("")).toBe(true);
+    expect(providerIsUnconfigured("   ")).toBe(true);
+    expect(providerIsUnconfigured(undefined as unknown as string)).toBe(true);
+    expect(providerIsUnconfigured("openai")).toBe(false);
+    expect(providerIsUnconfigured(CUSTOM_PROVIDER_ID)).toBe(false);
+  });
+});
+
+describe("endpointState", () => {
+  it("shows an empty value with the `https://` placeholder while unconfigured", () => {
+    const state = endpointState({ provider: "", stored: "" });
+    expect(state).toEqual({ value: "", placeholder: "https://", empty: true, autofill: false });
+    // A stored endpoint is never rewritten, but it is not shown while unconfigured.
+    expect(endpointState({ provider: "", stored: "https://proxy.example/v1" }).value).toBe("");
+  });
+
+  it("never rewrites the stored value and fills the provider api once configured", () => {
+    expect(endpointState({ provider: "openai", stored: "", data: null, builtIns: BUILT_INS, resolveId }).value).toBe(
+      "https://api.openai.com/v1"
+    );
+    expect(
+      endpointState({ provider: "openai", stored: "https://proxy.example/v1", data: null, builtIns: BUILT_INS, resolveId })
+        .value
+    ).toBe("https://proxy.example/v1");
+    expect(endpointState({ provider: "openai", stored: "", data: null, builtIns: [] as ProviderDef[], resolveId: (id) => id }).placeholder).toBe("https://");
+  });
+});
+
+describe("modelPickerState", () => {
+  it("is empty and disabled with the `Select a provider first` placeholder while unconfigured", () => {
+    const state = modelPickerState({
+      provider: "",
+      current: "gpt-4o",
+      data: DATA,
+      resolveId,
+      t: (key: string) => (key === "providerRequiredForModel" ? "Select a provider first" : key),
+    });
+    expect(state.disabled).toBe(true);
+    expect(state.options).toEqual([]);
+    expect(state.placeholder).toBe("Select a provider first");
+  });
+
+  it("lists the provider's models once a provider is chosen", () => {
+    const state = modelPickerState({ provider: "openai", current: "", data: DATA, resolveId, t: (k: string) => k });
+    expect(state.disabled).toBe(false);
+    expect(state.options.map((o) => o.value)).toEqual(["gpt-4o", "gpt-4o-mini", CUSTOM_MODEL_VALUE]);
   });
 });
 

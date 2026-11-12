@@ -56,6 +56,18 @@
   "settingProviderDesc": {
     "message": "Các nhà cung cấp tích hợp trước, sau đó là mọi thứ models.dev biết (cập nhật hàng ngày)."
   },
+  "providerPlaceholder": {
+    "message": "Chọn nhà cung cấp"
+  },
+  "providerRequiredForModel": {
+    "message": "Chọn nhà cung cấp trước"
+  },
+  "providerRequiredError": {
+    "message": "Chọn nhà cung cấp AI trong cài đặt trước khi dịch."
+  },
+  "customProviderOption": {
+    "message": "Nhà cung cấp tùy chỉnh"
+  },
   "providerSeparator": {
     "message": "──── thêm ────"
   },
@@ -133,5 +145,20 @@
   },
   "languageAuto": {
     "message": "Theo Obsidian"
+  },
+  "settingTranslateNow": {
+    "message": "Thử bản dịch"
+  },
+  "settingTranslateNowDesc": {
+    "message": "Dịch một câu mẫu bằng cài đặt ở trên."
+  },
+  "btnTranslateNow": {
+    "message": "Dịch ngay"
+  },
+  "translateExampleText": {
+    "message": "Xin chào, thế giới!"
+  },
+  "noticeExample": {
+    "message": "DualTran: $TEXT$"
   }
 }

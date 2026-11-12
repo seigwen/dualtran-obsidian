@@ -56,6 +56,18 @@
   "settingProviderDesc": {
     "message": "المزودون المدمجون أولاً، ثم كل ما يعرفه models.dev (يُحدَّث يومياً)."
   },
+  "providerPlaceholder": {
+    "message": "اختر مزودًا"
+  },
+  "providerRequiredForModel": {
+    "message": "اختر مزودًا أولاً"
+  },
+  "providerRequiredError": {
+    "message": "اختر مزود الذكاء الاصطناعي في الإعدادات قبل الترجمة."
+  },
+  "customProviderOption": {
+    "message": "مزود مخصص"
+  },
   "providerSeparator": {
     "message": "──── المزيد ────"
   },
@@ -133,5 +145,20 @@
   },
   "languageAuto": {
     "message": "اتبع Obsidian"
+  },
+  "settingTranslateNow": {
+    "message": "اختبار الترجمة"
+  },
+  "settingTranslateNowDesc": {
+    "message": "يترجم جملة نموذجية واحدة بالإعدادات أعلاه."
+  },
+  "btnTranslateNow": {
+    "message": "ترجم الآن"
+  },
+  "translateExampleText": {
+    "message": "مرحبًا بالعالم!"
+  },
+  "noticeExample": {
+    "message": "DualTran: $TEXT$"
   }
 }

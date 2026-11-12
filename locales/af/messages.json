@@ -56,6 +56,18 @@
   "settingProviderDesc": {
     "message": "Ingeboude verskaffers eerste, dan alles wat models.dev van weet (daagliks verfris)."
   },
+  "providerPlaceholder": {
+    "message": "Kies 'n verskaffer"
+  },
+  "providerRequiredForModel": {
+    "message": "Kies eers 'n verskaffer"
+  },
+  "providerRequiredError": {
+    "message": "Kies 'n KI-verskaffer in die instellings voordat jy vertaal."
+  },
+  "customProviderOption": {
+    "message": "Pasgemaakte verskaffer"
+  },
   "providerSeparator": {
     "message": "──── meer ────"
   },
@@ -133,5 +145,20 @@
   },
   "languageAuto": {
     "message": "Volg Obsidian"
+  },
+  "settingTranslateNow": {
+    "message": "Toetsvertaling"
+  },
+  "settingTranslateNowDesc": {
+    "message": "Vertaal een voorbeeldsin met die instellings hierbo."
+  },
+  "btnTranslateNow": {
+    "message": "Vertaal nou"
+  },
+  "translateExampleText": {
+    "message": "Hallo, wêreld!"
+  },
+  "noticeExample": {
+    "message": "DualTran: $TEXT$"
   }
 }
