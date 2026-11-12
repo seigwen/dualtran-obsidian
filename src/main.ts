@@ -402,7 +402,10 @@ class DualTranSettingTab extends PluginSettingTab {
         if (unconfigured) {
           const placeholder = providerPlaceholderOption({ t: this.plugin.t });
           dropdown.addOption(placeholder.value, placeholder.label);
-          if (typeof dropdown.setDisabled === "function") dropdown.setDisabled(true);
+          // Disable the placeholder row, not the picker: the user must be able
+          // to choose a provider from the empty state.
+          const placeholderOption = dropdown.selectEl?.options?.[0];
+          if (placeholderOption) placeholderOption.disabled = true;
         }
         for (const provider of providerPickerOptions({
           data,
@@ -635,7 +638,9 @@ class DualTranSettingTab extends PluginSettingTab {
       untouched,
     });
     // Fresh provider: the model belongs to the old provider and must not leak.
-    if (untouched && settings.aiBaseUrl.trim() && nextEndpoint !== settings.aiBaseUrl) {
+    // This must also run on a fresh install where aiBaseUrl is still empty;
+    // otherwise the model picker falls into its custom-entry state.
+    if (value !== settings.aiProvider || !settings.aiModel) {
       settings.aiModel = nextModel || "";
     }
     settings.aiBaseUrl = nextEndpoint;
