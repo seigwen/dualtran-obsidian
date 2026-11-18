@@ -7,6 +7,13 @@
   ],
   "actions": [
     {
+      "type": "reset"
+    },
+    {
+      "type": "wait",
+      "ms": 1500
+    },
+    {
       "type": "assertForeground",
       "title": "DualTran-Empty"
     },
@@ -57,6 +64,22 @@
     {
       "type": "wait",
       "ms": 1500
+    },
+    {
+      "type": "key",
+      "key": "17 down"
+    },
+    {
+      "type": "key",
+      "key": "69"
+    },
+    {
+      "type": "key",
+      "key": "17 up"
+    },
+    {
+      "type": "wait",
+      "ms": 800
     },
     {
       "type": "key",

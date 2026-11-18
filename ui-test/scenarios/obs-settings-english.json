@@ -7,6 +7,13 @@
   ],
   "actions": [
     {
+      "type": "reset"
+    },
+    {
+      "type": "wait",
+      "ms": 1500
+    },
+    {
       "type": "assertForeground",
       "title": "DualTran-Empty"
     },

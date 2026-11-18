@@ -12,6 +12,13 @@
   ],
   "actions": [
     {
+      "type": "reset"
+    },
+    {
+      "type": "wait",
+      "ms": 1500
+    },
+    {
       "type": "assertForeground",
       "title": "DualTran-Empty"
     },
@@ -52,9 +59,26 @@
       "ms": 2500
     },
     {
+      "type": "type",
+      "text": "DualTran"
+    },
+    {
+      "type": "wait",
+      "ms": 1200
+    },
+    {
       "type": "clickAt",
-      "x": 1135,
-      "y": 220
+      "x": 438,
+      "y": 236
+    },
+    {
+      "type": "wait",
+      "ms": 2500
+    },
+    {
+      "type": "clickAt",
+      "x": 1105,
+      "y": 503
     },
     {
       "type": "wait",

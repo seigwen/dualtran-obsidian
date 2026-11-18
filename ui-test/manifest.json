@@ -7,7 +7,8 @@
     "appPath": "C:\\Users\\hermes\\AppData\\Local\\Programs\\Obsidian\\Obsidian.exe",
     "launchArgs": [
       "C:\\Users\\Administrator\\Documents\\DualTran-Empty"
-    ]
+    ],
+    "resetScript": "C:\\DualTran-node\\in\\reset-vault.ps1"
   },
   "surfaces": [
     {
@@ -445,6 +446,26 @@
         {
           "id": "catalog",
           "question": "Are the 'Provider and model list' refresh control and the 'Test translation' / 'Translate now' control visible?",
+          "expected": true
+        }
+      ],
+      "soft": []
+    },
+    "obs-error-after": {
+      "hard": [
+        {
+          "id": "no_raw_internals",
+          "question": "Is the screen free of a raw HTML/JSON response body, a stack trace, and a full endpoint URL?",
+          "expected": true
+        },
+        {
+          "id": "editor_intact",
+          "question": "Is the source note still open with its English text, rather than replaced by garbage?",
+          "expected": true
+        },
+        {
+          "id": "no_output_file",
+          "question": "Is the file list free of a newly created 'DualTran-Error (zh-CN)' note?",
           "expected": true
         }
       ],

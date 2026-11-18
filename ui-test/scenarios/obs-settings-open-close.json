@@ -12,6 +12,13 @@
   ],
   "actions": [
     {
+      "type": "reset"
+    },
+    {
+      "type": "wait",
+      "ms": 1500
+    },
+    {
       "type": "wait",
       "ms": 1500
     },
