@@ -1,0 +1,522 @@
+{
+  "host": "dualtran-obsidian",
+  "version": "0.1.0",
+  "adapter": "windowsGui",
+  "adapterConfig": {
+    "windowTitle": "DualTran-",
+    "appPath": "C:\\Users\\hermes\\AppData\\Local\\Programs\\Obsidian\\Obsidian.exe",
+    "launchArgs": [
+      "C:\\Users\\Administrator\\Documents\\DualTran-Empty"
+    ]
+  },
+  "surfaces": [
+    {
+      "id": "settings.provider",
+      "kind": "select",
+      "label": "AI provider",
+      "location": "DualTran settings tab",
+      "expected": [
+        "empty state picker is enabled",
+        "placeholder row is disabled"
+      ]
+    },
+    {
+      "id": "settings.model",
+      "kind": "select",
+      "label": "Model",
+      "location": "DualTran settings tab",
+      "expected": [
+        "disabled while provider empty"
+      ]
+    },
+    {
+      "id": "settings.endpoint",
+      "kind": "input",
+      "label": "AI base URL（可选）",
+      "location": "DualTran settings tab, bottom of the page (row 8) — below the fold at 960x900",
+      "expected": [
+        "empty with https:// while provider empty",
+        "label comes from i18n settingBaseUrl (zh_CN: AI base URL（可选）)"
+      ],
+      "notes": "The control has always existed (src/main.ts Setting(...).addText, settings.aiBaseUrl in src/settings.ts). It was reported as missing because the scenario stopped above the fold and searched for an English label in a Chinese UI; the old blockedReason was wrong. Locate it by scrolling and matching the localized label, never by a hardcoded English string."
+    },
+    {
+      "id": "settings.reasoning",
+      "kind": "select",
+      "label": "Reasoning depth",
+      "location": "DualTran settings tab",
+      "expected": [
+        "disabled while provider empty",
+        "localized lowest label"
+      ]
+    },
+    {
+      "id": "settings.uiLanguage",
+      "kind": "select",
+      "label": "界面语言",
+      "location": "DualTran settings tab, first row",
+      "expected": [
+        "follows Obsidian by default",
+        "other options available"
+      ]
+    },
+    {
+      "id": "settings.engine",
+      "kind": "select",
+      "label": "引擎",
+      "location": "DualTran settings tab",
+      "expected": [
+        "Google and AIn (BYOK) options"
+      ]
+    },
+    {
+      "id": "settings.sourceLanguage",
+      "kind": "input",
+      "label": "源语言",
+      "location": "DualTran settings tab",
+      "expected": [
+        "auto is the default placeholder/value"
+      ]
+    },
+    {
+      "id": "settings.targetLanguage",
+      "kind": "select",
+      "label": "目标语言",
+      "location": "DualTran settings tab",
+      "expected": [
+        "full language list"
+      ]
+    },
+    {
+      "id": "settings.apiKey",
+      "kind": "input",
+      "label": "AI API Key",
+      "location": "DualTran settings tab",
+      "expected": [
+        "password field, stored locally"
+      ]
+    },
+    {
+      "id": "settings.refresh",
+      "kind": "button",
+      "label": "刷新",
+      "location": "DualTran settings tab, provider/model list row",
+      "expected": [
+        "button present and enabled"
+      ]
+    },
+    {
+      "id": "settings.test",
+      "kind": "button",
+      "label": "立即翻译",
+      "location": "DualTran settings tab, test translation row",
+      "expected": [
+        "button present and enabled"
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "id": "settings.open",
+      "label": "Open DualTran settings",
+      "entry": "Ctrl+, then DualTran tab",
+      "expected": "settings panel with all controls"
+    },
+    {
+      "id": "settings.close",
+      "label": "Close DualTran settings",
+      "entry": "Escape / settings close",
+      "expected": "settings panel disappears"
+    },
+    {
+      "id": "translate.note",
+      "label": "Translate the whole note",
+      "entry": "command palette: DualTran: 整篇笔记翻译到新文件",
+      "expected": "A new note with the translated content is created and opens"
+    },
+    {
+      "id": "translate.selection",
+      "label": "Translate the selected text",
+      "entry": "command palette: DualTran: 翻译选区（插入到下方）",
+      "expected": "The selected text is translated and inserted below the selection"
+    },
+    {
+      "id": "settings.save",
+      "label": "Save settings",
+      "entry": "change a control, close and restart Obsidian",
+      "expected": "The changed value survives the restart"
+    }
+  ],
+  "rubrics": {
+    "obs-settings-empty": {
+      "hard": [
+        {
+          "id": "provider_visible",
+          "question": "Is the DualTran settings tab visible with an AI provider selector showing a placeholder or a configured provider?",
+          "expected": true
+        },
+        {
+          "id": "endpoint_field",
+          "question": "Is the top of the DualTran settings panel visible with the provider picker, rather than a blank panel?",
+          "expected": true
+        },
+        {
+          "id": "settings_tab_visible",
+          "question": "Is the DualTran settings tab/content visible with its controls, rather than a command-palette 'command not found' or blank panel?",
+          "expected": true
+        },
+        {
+          "id": "no_raw_sentinel_or_error",
+          "question": "Is the panel free of raw sentinel values such as __lowest__, an uncaught error, or a persistent loading message?",
+          "expected": true
+        }
+      ],
+      "soft": [
+        {
+          "id": "controls_readable",
+          "question": "Are the visible controls readable without clipping or overlap?",
+          "expected": true
+        }
+      ]
+    },
+    "obs-panel-closed": {
+      "hard": [
+        {
+          "id": "panel_gone",
+          "question": "Is the DualTran settings panel gone after clicking the close control, with the normal Obsidian workspace visible instead?",
+          "expected": true
+        }
+      ],
+      "soft": []
+    },
+    "obs-settings-bottom": {
+      "hard": [
+        {
+          "id": "ui_is_chinese",
+          "question": "Are the DualTran settings labels Chinese (for example AI 提供方 / 模型 / 推理深度), confirming the panel language before any label is matched?",
+          "expected": true
+        },
+        {
+          "id": "endpoint_field",
+          "question": "Is an 'AI base URL（可选）' text field present and showing an https:// URL (the provider default or a user-typed value)?",
+          "expected": true
+        },
+        {
+          "id": "reasoning_visible",
+          "question": "Is the reasoning-depth control visible and localized, without raw sentinel __lowest__?",
+          "expected": true
+        }
+      ],
+      "soft": [
+        {
+          "id": "endpoint_near_bottom",
+          "question": "Does the base URL field sit at the bottom of the panel, below the reasoning control, as documented?",
+          "expected": true
+        }
+      ]
+    },
+    "obs-empty-top": {
+      "hard": [
+        {
+          "id": "provider_placeholder",
+          "question": "Does the AI provider control show an unselected placeholder (no provider chosen on a fresh vault)?",
+          "expected": true
+        },
+        {
+          "id": "model_disabled",
+          "question": "Is the model control empty or disabled because no provider is selected?",
+          "expected": true
+        },
+        {
+          "id": "reasoning_default",
+          "question": "Does the reasoning-depth control show the localized lowest/default option?",
+          "expected": true
+        },
+        {
+          "id": "ui_language",
+          "question": "Is the 界面语言 control visible with a selected value (跟随 Obsidian)?",
+          "expected": true
+        },
+        {
+          "id": "engine",
+          "question": "Is the 引擎 control visible showing Google or an AI engine?",
+          "expected": true
+        },
+        {
+          "id": "source_language",
+          "question": "Is the 源语言 field visible containing auto?",
+          "expected": true
+        },
+        {
+          "id": "target_language",
+          "question": "Is the 目标语言 control visible with a concrete language selected?",
+          "expected": true
+        },
+        {
+          "id": "api_key",
+          "question": "Is the AI API Key input visible (its value may be empty)?",
+          "expected": true
+        }
+      ],
+      "soft": []
+    },
+    "obs-empty-bottom": {
+      "hard": [
+        {
+          "id": "endpoint_placeholder",
+          "question": "Is the 'AI base URL（可选）' field present with an empty value showing the https:// placeholder?",
+          "expected": true
+        },
+        {
+          "id": "ui_is_chinese",
+          "question": "Are the pane labels Chinese?",
+          "expected": true
+        },
+        {
+          "id": "refresh",
+          "question": "Is a 刷新 button visible in the provider/model list row?",
+          "expected": true
+        },
+        {
+          "id": "test_translate",
+          "question": "Is a 立即翻译 button visible under the 测试翻译 row?",
+          "expected": true
+        }
+      ],
+      "soft": []
+    },
+    "obs-configured-top": {
+      "hard": [
+        {
+          "id": "provider_selected",
+          "question": "Does the AI provider control display a concrete provider name (Ollama Cloud), not the '请选择 AI 提供商' placeholder?",
+          "expected": true
+        },
+        {
+          "id": "model_populated",
+          "question": "Does the AI model control display a concrete model name instead of the '请先选择提供商' placeholder?",
+          "expected": true
+        },
+        {
+          "id": "reasoning_localized",
+          "question": "Is the reasoning-depth control visible and free of the raw sentinel __lowest__?",
+          "expected": true
+        },
+        {
+          "id": "no_error",
+          "question": "Is the pane free of an uncaught error or persistent loading message?",
+          "expected": true
+        }
+      ],
+      "soft": []
+    },
+    "obs-configured-bottom": {
+      "hard": [
+        {
+          "id": "base_url_autofilled",
+          "question": "Does the 'AI base URL (可选)' field show the Ollama Cloud endpoint https://ollama.com/v1?",
+          "expected": true
+        },
+        {
+          "id": "catalog_controls",
+          "question": "Are the provider/model catalogue refresh control and the test-translation control visible below the endpoint field?",
+          "expected": true
+        },
+        {
+          "id": "ui_is_chinese",
+          "question": "Are the pane labels Chinese (for example AI 服务商 / 模型 / 推理强度)?",
+          "expected": true
+        }
+      ],
+      "soft": []
+    },
+    "obs-configured-persisted": {
+      "hard": [
+        {
+          "id": "provider_persisted",
+          "question": "After restarting Obsidian and reopening settings, does the AI provider still show Ollama Cloud rather than the empty placeholder?",
+          "expected": true
+        },
+        {
+          "id": "model_persisted",
+          "question": "After the restart, does the AI model control still show the same concrete model, not the '请先选择提供商' placeholder?",
+          "expected": true
+        }
+      ],
+      "soft": []
+    },
+    "obs-translated-note": {
+      "hard": [
+        {
+          "id": "translated_note_open",
+          "question": "Is a note whose name ends with (zh-CN) open in the editor?",
+          "expected": true
+        },
+        {
+          "id": "chinese_translation",
+          "question": "Does the note contain a Simplified Chinese translation of the English paragraph, including the quick-brown-fox sentence translated into Chinese?",
+          "expected": true
+        },
+        {
+          "id": "no_error",
+          "question": "Is the note free of an error notice, a raw provider error, and an untranslated English-only body?",
+          "expected": true
+        }
+      ],
+      "soft": []
+    },
+    "obs-translated-selection": {
+      "hard": [
+        {
+          "id": "chinese_below",
+          "question": "Is a Simplified Chinese translation of the selected English sentence visible directly below it in the editor?",
+          "expected": true
+        },
+        {
+          "id": "source_intact",
+          "question": "Is the original English sentence still present (insert mode, not replace)?",
+          "expected": true
+        },
+        {
+          "id": "no_error",
+          "question": "Is the editor free of an error notice, a raw provider error, and a permission prompt?",
+          "expected": true
+        }
+      ],
+      "soft": []
+    },
+    "obs-source-note": {
+      "hard": [
+        {
+          "id": "english_source",
+          "question": "Is the English sentence 'The quick brown fox jumps over the lazy dog' visible in the editor?",
+          "expected": true
+        },
+        {
+          "id": "source_note_active",
+          "question": "Is the active editor tab the source note (DualTran-Test), not a translated copy?",
+          "expected": true
+        }
+      ],
+      "soft": []
+    },
+    "obs-error-branch": {
+      "hard": [
+        {
+          "id": "error_visible",
+          "question": "Is a visible Obsidian notice (toast) reporting that the translation failed, rather than a silent no-op or a blank new file?",
+          "expected": true
+        },
+        {
+          "id": "no_raw_internals",
+          "question": "Is the notice free of a raw HTML/JSON response body, a stack trace, and a full endpoint URL?",
+          "expected": true
+        },
+        {
+          "id": "editor_intact",
+          "question": "Is the source note still open with its English text, rather than replaced by garbage or an empty file?",
+          "expected": true
+        }
+      ],
+      "soft": []
+    },
+    "obs-settings-en-top": {
+      "hard": [
+        {
+          "id": "english_ui",
+          "question": "Are the plugin settings labels rendered in English (Interface language, Engine, Source language, Target language, AI provider, AI API key, AI model, AI reasoning effort), with no Chinese labels left?",
+          "expected": true
+        },
+        {
+          "id": "controls_present",
+          "question": "Are all eight top controls visible with concrete values or documented placeholders?",
+          "expected": true
+        }
+      ],
+      "soft": []
+    },
+    "obs-settings-en-bottom": {
+      "hard": [
+        {
+          "id": "endpoint",
+          "question": "Is the 'AI base URL (optional)' field visible with a https:// placeholder?",
+          "expected": true
+        },
+        {
+          "id": "catalog",
+          "question": "Are the 'Provider and model list' refresh control and the 'Test translation' / 'Translate now' control visible?",
+          "expected": true
+        }
+      ],
+      "soft": []
+    }
+  },
+  "scenarios": [
+    "obs-settings-open-close",
+    "obs-settings-empty-state",
+    "obs-settings-configured",
+    "obs-translate-note-google",
+    "obs-translate-selection-google",
+    "obs-error-ai-no-key",
+    "obs-settings-english"
+  ],
+  "inventory": {
+    "shots": [
+      {
+        "scenario": "obs-settings-english",
+        "screenshot": "settings-en-top",
+        "region": {
+          "x1": 560,
+          "y1": 120,
+          "x2": 1250,
+          "y2": 780
+        },
+        "labels": [
+          "Interface language",
+          "English",
+          "Engine",
+          "Google",
+          "Source language",
+          "auto",
+          "Target language",
+          "(en)",
+          "AI provider",
+          "Select a provider",
+          "AI API key",
+          "AI model",
+          "Select a provider first",
+          "AI reasoning effort"
+        ]
+      },
+      {
+        "scenario": "obs-settings-english",
+        "screenshot": "settings-en-bottom",
+        "region": {
+          "x1": 560,
+          "y1": 430,
+          "x2": 1250,
+          "y2": 780
+        },
+        "labels": [
+          "AI base URL",
+          "Provider & model list",
+          "324 providers",
+          "Refresh",
+          "Test translation",
+          "Translate now"
+        ]
+      }
+    ],
+    "ignore": [
+      "Follows the Obsidian language",
+      "Pick the provider you want",
+      "with models.dev",
+      "Stored locally on this device",
+      "This model declares no reasoning",
+      "effect for it",
+      "No catalogue entry",
+      "Leave empty to use the provider endpoint",
+      "Translates one sample sentence"
+    ]
+  }
+}

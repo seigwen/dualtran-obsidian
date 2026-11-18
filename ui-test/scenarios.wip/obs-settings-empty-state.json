@@ -1,0 +1,96 @@
+{
+  "id": "obs-settings-empty-state",
+  "host": "dualtran-obsidian",
+  "axis": "baseline",
+  "covers": [
+    "settings.provider",
+    "settings.model",
+    "settings.endpoint",
+    "settings.reasoning"
+  ],
+  "actions": [
+    {
+      "type": "wait",
+      "ms": 1200
+    },
+    {
+      "type": "key",
+      "key": "27",
+      "capture": false
+    },
+    {
+      "type": "wait",
+      "ms": 500
+    },
+    {
+      "type": "key",
+      "key": "17 down",
+      "capture": false
+    },
+    {
+      "type": "key",
+      "key": "188",
+      "capture": false
+    },
+    {
+      "type": "key",
+      "key": "188 up",
+      "capture": false
+    },
+    {
+      "type": "key",
+      "key": "17 up",
+      "capture": false
+    },
+    {
+      "type": "wait",
+      "ms": 1800
+    },
+    {
+      "type": "clickText",
+      "text": "第三方插件"
+    },
+    {
+      "type": "wait",
+      "ms": 1500
+    },
+    {
+      "type": "wait",
+      "ms": 2000
+    },
+    {
+      "type": "clickText",
+      "text": "DualTran"
+    },
+    {
+      "type": "wait",
+      "ms": 1500
+    },
+    {
+      "type": "clickText",
+      "text": "选项"
+    },
+    {
+      "type": "wait",
+      "ms": 2500
+    },
+    {
+      "type": "screenshot",
+      "name": "obs-empty-top",
+      "rubric": "obs-empty-top"
+    },
+    {
+      "type": "scroll",
+      "dy": 600
+    },
+    {
+      "type": "wait",
+      "ms": 800
+    },
+    {
+      "type": "screenshot",
+      "name": "obs-empty-bottom",
+      "rubric": "obs-empty-bottom"
+    }
+  ]
+}

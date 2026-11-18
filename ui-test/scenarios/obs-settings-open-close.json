@@ -1,0 +1,110 @@
+{
+  "id": "obs-settings-open-close",
+  "host": "dualtran-obsidian",
+  "axis": "baseline",
+  "covers": [
+    "settings.provider",
+    "settings.model",
+    "settings.endpoint",
+    "settings.reasoning",
+    "settings.open",
+    "settings.close"
+  ],
+  "actions": [
+    {
+      "type": "wait",
+      "ms": 1500
+    },
+    {
+      "type": "wait",
+      "ms": 500
+    },
+    {
+      "type": "key",
+      "key": "17 down",
+      "capture": false
+    },
+    {
+      "type": "key",
+      "key": "188",
+      "capture": false
+    },
+    {
+      "type": "key",
+      "key": "188 up",
+      "capture": false
+    },
+    {
+      "type": "key",
+      "key": "17 up",
+      "capture": false
+    },
+    {
+      "type": "wait",
+      "ms": 1200
+    },
+    {
+      "type": "wait",
+      "ms": 500
+    },
+    {
+      "type": "clickAt",
+      "x": 400,
+      "y": 420
+    },
+    {
+      "type": "wait",
+      "ms": 1200
+    },
+    {
+      "type": "clickAt",
+      "x": 1146,
+      "y": 628
+    },
+    {
+      "type": "wait",
+      "ms": 800
+    },
+    {
+      "type": "clickAt",
+      "x": 1005,
+      "y": 455
+    },
+    {
+      "type": "wait",
+      "ms": 2000
+    },
+    {
+      "type": "screenshot",
+      "name": "obs-settings-empty",
+      "rubric": "obs-settings-empty"
+    },
+    {
+      "type": "scroll",
+      "dy": 500
+    },
+    {
+      "type": "wait",
+      "ms": 800
+    },
+    {
+      "type": "screenshot",
+      "name": "obs-settings-bottom",
+      "rubric": "obs-settings-bottom"
+    },
+    {
+      "type": "clickAt",
+      "x": 1216,
+      "y": 96
+    },
+    {
+      "type": "wait",
+      "ms": 1200
+    },
+    {
+      "type": "screenshot",
+      "name": "obs-panel-closed",
+      "rubric": "obs-panel-closed"
+    }
+  ]
+}

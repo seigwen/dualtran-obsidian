@@ -1,0 +1,138 @@
+{
+  "id": "obs-translate-selection-google",
+  "host": "dualtran-obsidian",
+  "axis": "translate-selection",
+  "covers": [
+    "translate.selection"
+  ],
+  "actions": [
+    {
+      "type": "assertForeground",
+      "title": "DualTran-Empty"
+    },
+    {
+      "type": "key",
+      "key": "27"
+    },
+    {
+      "type": "wait",
+      "ms": 400
+    },
+    {
+      "type": "key",
+      "key": "27"
+    },
+    {
+      "type": "wait",
+      "ms": 700
+    },
+    {
+      "type": "key",
+      "key": "17 down"
+    },
+    {
+      "type": "key",
+      "key": "79"
+    },
+    {
+      "type": "key",
+      "key": "17 up"
+    },
+    {
+      "type": "wait",
+      "ms": 800
+    },
+    {
+      "type": "type",
+      "text": "DualTran-Test.md"
+    },
+    {
+      "type": "wait",
+      "ms": 1500
+    },
+    {
+      "type": "key",
+      "key": "13"
+    },
+    {
+      "type": "wait",
+      "ms": 1200
+    },
+    {
+      "type": "screenshot",
+      "name": "source-open",
+      "rubric": "obs-source-note"
+    },
+    {
+      "type": "wait",
+      "ms": 1500
+    },
+    {
+      "type": "clickAt",
+      "x": 700,
+      "y": 300
+    },
+    {
+      "type": "wait",
+      "ms": 500
+    },
+    {
+      "type": "key",
+      "key": "17 down"
+    },
+    {
+      "type": "key",
+      "key": "65"
+    },
+    {
+      "type": "key",
+      "key": "17 up"
+    },
+    {
+      "type": "wait",
+      "ms": 800
+    },
+    {
+      "type": "key",
+      "key": "17 down"
+    },
+    {
+      "type": "key",
+      "key": "80"
+    },
+    {
+      "type": "key",
+      "key": "17 up"
+    },
+    {
+      "type": "wait",
+      "ms": 800
+    },
+    {
+      "type": "type",
+      "text": "插入到下方"
+    },
+    {
+      "type": "wait",
+      "ms": 1500
+    },
+    {
+      "type": "key",
+      "key": "13"
+    },
+    {
+      "type": "wait",
+      "ms": 15000
+    },
+    {
+      "type": "screenshot",
+      "name": "translated-selection",
+      "rubric": "obs-translated-selection"
+    },
+    {
+      "type": "assertTranslation",
+      "name": "translated-selection",
+      "source": "The quick brown fox jumps over the lazy dog"
+    }
+  ]
+}

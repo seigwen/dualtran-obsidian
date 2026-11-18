@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "surfaces": [
+    "settings.apiKey",
+    "settings.endpoint",
+    "settings.engine",
+    "settings.model",
+    "settings.provider",
+    "settings.reasoning",
+    "settings.refresh",
+    "settings.sourceLanguage",
+    "settings.targetLanguage",
+    "settings.test",
+    "settings.uiLanguage"
+  ],
+  "functions": [
+    "settings.close",
+    "settings.open",
+    "settings.save",
+    "translate.note",
+    "translate.selection"
+  ],
+  "scenarios": [
+    "obs-error-ai-no-key",
+    "obs-settings-configured",
+    "obs-settings-empty-state",
+    "obs-settings-english",
+    "obs-settings-open-close",
+    "obs-translate-note-google",
+    "obs-translate-selection-google"
+  ],
+  "digest": "sha256:ca910dac9bd122a08382745dffb3ddcff1246e2d0d8ebf629ee0d0b5355fce52"
+}
