@@ -1,0 +1,136 @@
+{
+  "id": "obs-error-ai-no-key",
+  "host": "dualtran-obsidian",
+  "axis": "error-branch",
+  "covers": [
+    "settings.provider"
+  ],
+  "actions": [
+    {
+      "type": "reset",
+      "baseline": "DualTran-Baseline-AI"
+    },
+    {
+      "type": "wait",
+      "ms": 1500
+    },
+    {
+      "type": "assertForeground",
+      "title": "DualTran-Empty"
+    },
+    {
+      "type": "key",
+      "key": "27"
+    },
+    {
+      "type": "wait",
+      "ms": 400
+    },
+    {
+      "type": "key",
+      "key": "27"
+    },
+    {
+      "type": "wait",
+      "ms": 700
+    },
+    {
+      "type": "wait",
+      "ms": 1000
+    },
+    {
+      "type": "key",
+      "key": "17 down"
+    },
+    {
+      "type": "key",
+      "key": "79"
+    },
+    {
+      "type": "key",
+      "key": "17 up"
+    },
+    {
+      "type": "wait",
+      "ms": 800
+    },
+    {
+      "type": "type",
+      "text": "DualTran-Error.md"
+    },
+    {
+      "type": "wait",
+      "ms": 1500
+    },
+    {
+      "type": "key",
+      "key": "13"
+    },
+    {
+      "type": "wait",
+      "ms": 1500
+    },
+    {
+      "type": "key",
+      "key": "17 down"
+    },
+    {
+      "type": "key",
+      "key": "69"
+    },
+    {
+      "type": "key",
+      "key": "17 up"
+    },
+    {
+      "type": "wait",
+      "ms": 800
+    },
+    {
+      "type": "key",
+      "key": "17 down"
+    },
+    {
+      "type": "key",
+      "key": "80"
+    },
+    {
+      "type": "key",
+      "key": "17 up"
+    },
+    {
+      "type": "wait",
+      "ms": 800
+    },
+    {
+      "type": "type",
+      "text": "整篇笔记"
+    },
+    {
+      "type": "wait",
+      "ms": 1500
+    },
+    {
+      "type": "key",
+      "key": "13"
+    },
+    {
+      "type": "wait",
+      "ms": 4000
+    },
+    {
+      "type": "screenshot",
+      "name": "error-notice",
+      "rubric": "obs-error-branch"
+    },
+    {
+      "type": "wait",
+      "ms": 6000
+    },
+    {
+      "type": "screenshot",
+      "name": "error-after",
+      "rubric": "obs-error-after"
+    }
+  ]
+}

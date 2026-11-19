@@ -1,0 +1,147 @@
+{
+  "id": "obs-settings-configured",
+  "host": "dualtran-obsidian",
+  "axis": "configured",
+  "covers": [
+    "settings.provider",
+    "settings.model",
+    "settings.endpoint",
+    "settings.reasoning",
+    "settings.open",
+    "settings.save"
+  ],
+  "actions": [
+    {
+      "type": "reset"
+    },
+    {
+      "type": "wait",
+      "ms": 1500
+    },
+    {
+      "type": "assertForeground",
+      "title": "DualTran-Empty"
+    },
+    {
+      "type": "key",
+      "key": "27"
+    },
+    {
+      "type": "wait",
+      "ms": 400
+    },
+    {
+      "type": "key",
+      "key": "27"
+    },
+    {
+      "type": "wait",
+      "ms": 700
+    },
+    {
+      "type": "wait",
+      "ms": 800
+    },
+    {
+      "type": "key",
+      "key": "17 down"
+    },
+    {
+      "type": "key",
+      "key": "188"
+    },
+    {
+      "type": "key",
+      "key": "17 up"
+    },
+    {
+      "type": "wait",
+      "ms": 2500
+    },
+    {
+      "type": "type",
+      "text": "DualTran"
+    },
+    {
+      "type": "wait",
+      "ms": 1200
+    },
+    {
+      "type": "clickAt",
+      "x": 438,
+      "y": 236
+    },
+    {
+      "type": "wait",
+      "ms": 2500
+    },
+    {
+      "type": "clickAt",
+      "x": 1105,
+      "y": 503
+    },
+    {
+      "type": "wait",
+      "ms": 700
+    },
+    {
+      "type": "type",
+      "text": "Ollama Cloud"
+    },
+    {
+      "type": "key",
+      "key": "13"
+    },
+    {
+      "type": "wait",
+      "ms": 4000
+    },
+    {
+      "type": "screenshot",
+      "name": "configured-top",
+      "rubric": "obs-configured-top"
+    },
+    {
+      "type": "clickAt",
+      "x": 1100,
+      "y": 700
+    },
+    {
+      "type": "scroll",
+      "dy": 700
+    },
+    {
+      "type": "wait",
+      "ms": 800
+    },
+    {
+      "type": "screenshot",
+      "name": "configured-bottom",
+      "rubric": "obs-configured-bottom"
+    },
+    {
+      "type": "restart"
+    },
+    {
+      "type": "key",
+      "key": "17 down"
+    },
+    {
+      "type": "key",
+      "key": "188"
+    },
+    {
+      "type": "key",
+      "key": "17 up"
+    },
+    {
+      "type": "wait",
+      "ms": 3000
+    },
+    {
+      "type": "screenshot",
+      "name": "persisted-top",
+      "rubric": "obs-configured-persisted"
+    }
+  ]
+}

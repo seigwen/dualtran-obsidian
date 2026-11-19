@@ -1,0 +1,101 @@
+{
+  "id": "obs-settings-open-close",
+  "host": "dualtran-obsidian",
+  "axis": "baseline",
+  "covers": [
+    "settings.provider",
+    "settings.model",
+    "settings.endpoint",
+    "settings.reasoning",
+    "settings.open",
+    "settings.close"
+  ],
+  "actions": [
+    {
+      "type": "reset"
+    },
+    {
+      "type": "wait",
+      "ms": 1500
+    },
+    {
+      "type": "assertForeground",
+      "title": "DualTran-Empty"
+    },
+    {
+      "type": "key",
+      "key": "27"
+    },
+    {
+      "type": "wait",
+      "ms": 400
+    },
+    {
+      "type": "key",
+      "key": "27"
+    },
+    {
+      "type": "wait",
+      "ms": 700
+    },
+    {
+      "type": "key",
+      "key": "17 down"
+    },
+    {
+      "type": "key",
+      "key": "188"
+    },
+    {
+      "type": "key",
+      "key": "17 up"
+    },
+    {
+      "type": "wait",
+      "ms": 2500
+    },
+    {
+      "type": "type",
+      "text": "DualTran"
+    },
+    {
+      "type": "wait",
+      "ms": 1200
+    },
+    {
+      "type": "clickAt",
+      "x": 438,
+      "y": 236
+    },
+    {
+      "type": "wait",
+      "ms": 2500
+    },
+    {
+      "type": "screenshot",
+      "name": "obs-settings-open",
+      "rubric": "obs-settings-empty"
+    },
+    {
+      "type": "key",
+      "key": "27"
+    },
+    {
+      "type": "wait",
+      "ms": 500
+    },
+    {
+      "type": "key",
+      "key": "27"
+    },
+    {
+      "type": "wait",
+      "ms": 1000
+    },
+    {
+      "type": "screenshot",
+      "name": "obs-panel-closed",
+      "rubric": "obs-panel-closed"
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "id": "obs-settings-english",
+  "host": "dualtran-obsidian",
+  "axis": "ui-language",
+  "covers": [
+    "settings.uiLanguage"
+  ],
+  "actions": [
+    {
+      "type": "reset",
+      "baseline": "DualTran-Baseline-EN"
+    },
+    {
+      "type": "wait",
+      "ms": 1500
+    },
+    {
+      "type": "assertForeground",
+      "title": "DualTran-Empty"
+    },
+    {
+      "type": "key",
+      "key": "27"
+    },
+    {
+      "type": "wait",
+      "ms": 400
+    },
+    {
+      "type": "key",
+      "key": "27"
+    },
+    {
+      "type": "wait",
+      "ms": 700
+    },
+    {
+      "type": "key",
+      "key": "17 down"
+    },
+    {
+      "type": "key",
+      "key": "188"
+    },
+    {
+      "type": "key",
+      "key": "17 up"
+    },
+    {
+      "type": "wait",
+      "ms": 2500
+    },
+    {
+      "type": "type",
+      "text": "DualTran"
+    },
+    {
+      "type": "wait",
+      "ms": 1200
+    },
+    {
+      "type": "clickAt",
+      "x": 438,
+      "y": 236
+    },
+    {
+      "type": "wait",
+      "ms": 2500
+    },
+    {
+      "type": "clickAt",
+      "x": 1130,
+      "y": 196
+    },
+    {
+      "type": "wait",
+      "ms": 900
+    },
+    {
+      "type": "clickAt",
+      "x": 1130,
+      "y": 406
+    },
+    {
+      "type": "wait",
+      "ms": 2500
+    },
+    {
+      "type": "screenshot",
+      "name": "settings-en-top",
+      "rubric": "obs-settings-en-top"
+    },
+    {
+      "type": "clickAt",
+      "x": 1100,
+      "y": 700
+    },
+    {
+      "type": "scroll",
+      "dy": 700
+    },
+    {
+      "type": "wait",
+      "ms": 800
+    },
+    {
+      "type": "screenshot",
+      "name": "settings-en-bottom",
+      "rubric": "obs-settings-en-bottom"
+    }
+  ]
+}

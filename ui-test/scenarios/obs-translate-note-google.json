@@ -1,0 +1,143 @@
+{
+  "id": "obs-translate-note-google",
+  "host": "dualtran-obsidian",
+  "axis": "translate-note",
+  "covers": [
+    "translate.note"
+  ],
+  "actions": [
+    {
+      "type": "reset"
+    },
+    {
+      "type": "wait",
+      "ms": 1500
+    },
+    {
+      "type": "assertForeground",
+      "title": "DualTran-Empty"
+    },
+    {
+      "type": "key",
+      "key": "27"
+    },
+    {
+      "type": "wait",
+      "ms": 400
+    },
+    {
+      "type": "key",
+      "key": "27"
+    },
+    {
+      "type": "wait",
+      "ms": 700
+    },
+    {
+      "type": "key",
+      "key": "17 down"
+    },
+    {
+      "type": "key",
+      "key": "79"
+    },
+    {
+      "type": "key",
+      "key": "17 up"
+    },
+    {
+      "type": "wait",
+      "ms": 800
+    },
+    {
+      "type": "type",
+      "text": "DualTran-Test"
+    },
+    {
+      "type": "wait",
+      "ms": 1500
+    },
+    {
+      "type": "key",
+      "key": "13"
+    },
+    {
+      "type": "wait",
+      "ms": 1500
+    },
+    {
+      "type": "key",
+      "key": "17 down"
+    },
+    {
+      "type": "key",
+      "key": "80"
+    },
+    {
+      "type": "key",
+      "key": "17 up"
+    },
+    {
+      "type": "wait",
+      "ms": 800
+    },
+    {
+      "type": "type",
+      "text": "整篇笔记"
+    },
+    {
+      "type": "wait",
+      "ms": 1500
+    },
+    {
+      "type": "key",
+      "key": "13"
+    },
+    {
+      "type": "wait",
+      "ms": 20000
+    },
+    {
+      "type": "key",
+      "key": "17 down"
+    },
+    {
+      "type": "key",
+      "key": "79"
+    },
+    {
+      "type": "key",
+      "key": "17 up"
+    },
+    {
+      "type": "wait",
+      "ms": 800
+    },
+    {
+      "type": "type",
+      "text": "DualTran-Test (zh-CN)"
+    },
+    {
+      "type": "wait",
+      "ms": 1500
+    },
+    {
+      "type": "key",
+      "key": "13"
+    },
+    {
+      "type": "wait",
+      "ms": 2000
+    },
+    {
+      "type": "screenshot",
+      "name": "translated-note",
+      "rubric": "obs-translated-note"
+    },
+    {
+      "type": "assertTranslation",
+      "name": "translated-note",
+      "source": "The quick brown fox jumps over the lazy dog"
+    }
+  ]
+}
