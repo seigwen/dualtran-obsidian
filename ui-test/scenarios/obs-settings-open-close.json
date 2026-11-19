@@ -19,94 +19,78 @@
       "ms": 1500
     },
     {
+      "type": "assertForeground",
+      "title": "DualTran-Empty"
+    },
+    {
+      "type": "key",
+      "key": "27"
+    },
+    {
       "type": "wait",
-      "ms": 1500
+      "ms": 400
+    },
+    {
+      "type": "key",
+      "key": "27"
     },
     {
       "type": "wait",
-      "ms": 500
+      "ms": 700
     },
     {
       "type": "key",
-      "key": "17 down",
-      "capture": false
+      "key": "17 down"
     },
     {
       "type": "key",
-      "key": "188",
-      "capture": false
+      "key": "188"
     },
     {
       "type": "key",
-      "key": "188 up",
-      "capture": false
+      "key": "17 up"
     },
     {
-      "type": "key",
-      "key": "17 up",
-      "capture": false
+      "type": "wait",
+      "ms": 2500
+    },
+    {
+      "type": "type",
+      "text": "DualTran"
     },
     {
       "type": "wait",
       "ms": 1200
     },
     {
-      "type": "wait",
-      "ms": 500
-    },
-    {
       "type": "clickAt",
-      "x": 400,
-      "y": 420
+      "x": 438,
+      "y": 236
     },
     {
       "type": "wait",
-      "ms": 1200
-    },
-    {
-      "type": "clickAt",
-      "x": 1146,
-      "y": 628
-    },
-    {
-      "type": "wait",
-      "ms": 800
-    },
-    {
-      "type": "clickAt",
-      "x": 1005,
-      "y": 455
-    },
-    {
-      "type": "wait",
-      "ms": 2000
+      "ms": 2500
     },
     {
       "type": "screenshot",
-      "name": "obs-settings-empty",
+      "name": "obs-settings-open",
       "rubric": "obs-settings-empty"
     },
     {
-      "type": "scroll",
-      "dy": 500
+      "type": "key",
+      "key": "27"
     },
     {
       "type": "wait",
-      "ms": 800
+      "ms": 500
     },
     {
-      "type": "screenshot",
-      "name": "obs-settings-bottom",
-      "rubric": "obs-settings-bottom"
-    },
-    {
-      "type": "clickAt",
-      "x": 1216,
-      "y": 96
+      "type": "key",
+      "key": "27"
     },
     {
       "type": "wait",
-      "ms": 1200
+      "ms": 1000
     },
     {
       "type": "screenshot",
